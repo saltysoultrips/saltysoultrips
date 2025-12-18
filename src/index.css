@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap");
+
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+  /* Light Blue Palette - Inspired by Logo */
+  --color-brand-primary: #a8d5e2;
+  --color-brand-sky: #dceef5;
+  --color-brand-accent: #7cc5d9;
+  --color-brand-light: #f0f8fb;
+
+  /* Legacy names for backward compatibility */
+  --color-brand-sage: #a8d5e2;
+  --color-brand-sand: #dceef5;
+  --color-brand-cream: #f0f8fb;
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-stone-50);
+  color: var(--color-stone-800);
+}
+
+/* Utility overrides or custom classes if needed */
+.text-brand-sage {
+  color: var(--color-brand-primary);
+}
+.bg-brand-sage {
+  background-color: var(--color-brand-primary);
+}
+.bg-brand-cream {
+  background-color: var(--color-brand-light);
+}
+.text-brand-primary {
+  color: var(--color-brand-primary);
+}
+.bg-brand-primary {
+  background-color: var(--color-brand-primary);
+}
+.text-brand-accent {
+  color: var(--color-brand-accent);
+}
+.bg-brand-accent {
+  background-color: var(--color-brand-accent);
+}
