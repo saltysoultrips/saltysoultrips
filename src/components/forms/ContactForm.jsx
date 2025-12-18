@@ -235,7 +235,7 @@ export default function ContactForm() {
                         })}
                         type="text"
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                        placeholder="Japón, Maldivas, Italia..."
+                        placeholder="Japón, Maldivas, Italia... o 'Aún no lo sé, quiero asesoramiento'"
                       />
                       {errors.destination && (
                         <span className="text-red-500 text-sm mt-1">

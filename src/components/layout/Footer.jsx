@@ -41,7 +41,7 @@ export default function Footer() {
             <strong>Email:</strong> saltysoultrips@gmail.com
           </li>
           <li>
-            <strong>Sitio web:</strong> https://saltysoultrips.wordpress.com
+            <strong>Sitio web:</strong> https://saltysoultrips.vercel.app/
           </li>
           <li>
             <strong>Localización:</strong> Barcelona, España

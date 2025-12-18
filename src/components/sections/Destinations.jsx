@@ -14,7 +14,7 @@ const destinations = [
   {
     country: "Maldivas",
     title: "Paraíso Turquesa",
-    desc: "Villas sobre el agua y atardeceres infinitos.",
+    desc: "Sumérgete en aguas cristalinas nadando junto a tiburones ballena, tortugas y mantas gigantes. El paraíso bajo el agua te espera.",
     image:
       "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     color: "from-cyan-900/60",
@@ -30,7 +30,7 @@ const destinations = [
   {
     country: "Tanzania",
     title: "Espíritu Salvaje",
-    desc: "Safaris privados y la majestuosidad del Kilimanjaro.",
+    desc: "Safaris y la majestuosidad del Kilimanjaro.",
     image:
       "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     color: "from-yellow-900/60",
@@ -62,7 +62,7 @@ const destinations = [
   {
     country: "Marruecos",
     title: "Desierto Mágico",
-    desc: "Zocos vibrantes, noches en el Sahara y riads de lujo.",
+    desc: "Zocos vibrantes, noches en el Sahara y riads auténticos.",
     image:
       "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     color: "from-orange-900/60",

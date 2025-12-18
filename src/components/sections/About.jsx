@@ -90,11 +90,10 @@ export default function About() {
 
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
-                  <strong>¿Turista o viajero?</strong> En SaltySoulTrips
-                  elegimos perdernos para encontrarnos. Preferimos los caminos
-                  de tierra a las autopistas turísticas. Buscamos esa cafetería
-                  escondida donde solo van los locales y esa playa virgen donde
-                  el único ruido es el mar.
+                  En SaltySoulTrips elegimos perdernos para encontrarnos.
+                  Preferimos los caminos de tierra a las autopistas concurridas.
+                  Buscamos esa cafetería escondida donde solo van los locales y
+                  esa playa virgen donde el único ruido es el mar.
                 </p>
                 <p>
                   Olvídate de los catálogos estandarizados. Diseño experiencias
