@@ -9,7 +9,7 @@ export default function Services() {
     {
       title: "PAQUETE EXPLORA",
       price: "70 €",
-      image: "/explora.jpeg",
+      image: "/explora.png",
       icon: <Plane size={32} className="text-brand-sage" />,
       features: ["Búsqueda de vuelos", "Alojamiento"],
       details: [
@@ -26,7 +26,7 @@ export default function Services() {
     {
       title: "PAQUETE VIVE",
       price: "100 €",
-      image: "/vive.jpeg",
+      image: "/vive.png",
       icon: <Compass size={32} className="text-brand-cream" />,
       features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
       details: [
@@ -42,7 +42,7 @@ export default function Services() {
     {
       title: "PAQUETE CONECTA",
       price: "150 €",
-      image: "/conecta.jpeg",
+      image: "/conecta.png",
       icon: <Star size={32} className="text-brand-sage" />,
       features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
       details: [
@@ -80,7 +80,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ duration: 0.5 }}
               className={`relative rounded-3xl p-8 border hover:shadow-xl transition-all duration-300 flex flex-col ${
                 pack.color
               } ${pack.highlight ? "shadow-2xl scale-105 z-10" : "shadow-sm"}`}
@@ -214,6 +214,7 @@ export default function Services() {
               <img
                 src={selectedImage}
                 alt="Detalle del paquete"
+                loading="lazy"
                 className="w-full h-full object-contain max-h-[90vh]"
               />
             </motion.div>

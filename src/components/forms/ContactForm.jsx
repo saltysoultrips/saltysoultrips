@@ -121,6 +121,7 @@ export default function ContactForm() {
               <button
                 onClick={() => setIsSubmitted(false)}
                 className="text-stone-500 hover:text-stone-800 font-medium underline underline-offset-4"
+                aria-label="Enviar otra solicitud de viaje"
               >
                 Enviar otra solicitud
               </button>
@@ -325,6 +326,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("adults", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.adults <= 1}
+                            aria-label="Disminuir número de adultos"
                           >
                             <Minus size={14} />
                           </button>
@@ -335,6 +337,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("adults", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            aria-label="Incrementar número de adultos"
                           >
                             <Plus size={14} />
                           </button>
@@ -353,6 +356,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("children", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.children <= 0}
+                            aria-label="Disminuir número de niños"
                           >
                             <Minus size={14} />
                           </button>
@@ -363,6 +367,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("children", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            aria-label="Incrementar número de niños"
                           >
                             <Plus size={14} />
                           </button>
@@ -381,6 +386,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("babies", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.babies <= 0}
+                            aria-label="Disminuir número de bebés"
                           >
                             <Minus size={14} />
                           </button>
@@ -391,6 +397,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("babies", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            aria-label="Incrementar número de bebés"
                           >
                             <Plus size={14} />
                           </button>
@@ -528,6 +535,7 @@ export default function ContactForm() {
                         onClick={() =>
                           window.scrollTo(0, document.body.scrollHeight)
                         }
+                        aria-label="Leer Política de Privacidad"
                       >
                         Política de Privacidad
                       </button>{" "}

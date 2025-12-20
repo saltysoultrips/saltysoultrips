@@ -19,6 +19,7 @@ export default function About() {
               <img
                 src="/angela.jpeg"
                 alt="Angela - Founder SaltySoulTrips"
+                loading="lazy"
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent"></div>
@@ -41,7 +42,7 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             className="w-full lg:w-7/12 space-y-16"
           >
             {/* Part 1: Who Am I */}
@@ -58,22 +59,36 @@ export default function About() {
 
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
-                  Viajar no es simplemente lo que hago, es la esencia de lo que
-                  soy. Desde pequeña, mi maleta siempre ha estado lista para lo
-                  inesperado. He aprendido que el mundo no se entiende mirándolo
-                  desde una ventana, sino caminando sus calles, probando sus
-                  sabores y escuchando a su gente.
+                  Soy Ángela, tengo 20 años y estudio Marketing y Publicidad en
+                  Barcelona.
                 </p>
                 <p>
-                  Cada sello en mi pasaporte es una historia, un aprendizaje y
-                  una razón más para seguir explorando.
+                  A lo largo de estos años he tenido la suerte de viajar
+                  bastante, gracias a mi esfuerzo, trabajo y el de mi familia.
+                  Cada viaje ha sido una oportunidad para aprender, descubrir y
+                  conectar.
+                </p>
+                <p>
+                  Después de recibir tantas preguntas sobre cómo conseguía
+                  buenos precios, qué lugares recomendaba o cómo organizaba
+                  todo, decidí crear SaltySoulTrips. Este proyecto nace de mi
+                  pasión por viajar y de las ganas de ayudar a otros sin
+                  quedarse sin ahorros ni pasar horas navegando para encontrar
+                  los mejores destinos, fechas y precios.
                 </p>
                 <div className="bg-stone-50 p-8 rounded-2xl border-l-4 border-brand-sage my-8 shadow-sm">
                   <p className="text-stone-800 font-medium italic text-xl leading-relaxed">
-                    "SaltySoulTrips nace de una ilusión genuina: unir mi pasión
-                    por descubrir rincones auténticos con mis ganas de que tú
-                    también vivas el viaje de tu vida. Sin agobios, solo
-                    disfrute."
+                    SaltySoulTrips nace de una ilusión genuina y quiere mostrar
+                    que
+                  </p>
+                  <p className="text-stone-800 font-semibold text-xl mt-4 leading-relaxed">
+                    "Las mejores empresas no venden productos más baratos.
+                    <br />
+                    Venden transparencia en mercados opacos."
+                  </p>
+                  <p className="text-stone-800 font-medium italic text-xl mt-4 leading-relaxed">
+                    Nosotros no inventamos los viajes. Mostramos el precio real
+                    de viajar.
                   </p>
                 </div>
               </div>
@@ -85,27 +100,20 @@ export default function About() {
                 La Filosofía
               </span>
               <h3 className="text-3xl font-serif font-bold text-stone-800 mb-6">
-                Sin filtros. Sin guiones.
+                SIN FILTROS, SIN COMISIONES
               </h3>
 
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
-                <p>
-                  En SaltySoulTrips elegimos perdernos para encontrarnos.
-                  Preferimos los caminos de tierra a las autopistas concurridas.
-                  Buscamos esa cafetería escondida donde solo van los locales y
-                  esa playa virgen donde el único ruido es el mar.
+                <p className="text-xl font-medium text-stone-800">
+                  El cliente no solo viaja, APRENDE a viajar mejor.
                 </p>
+                <p>No queremos que vuelvas porque no sabes hacerlo.</p>
                 <p>
-                  Olvídate de los catálogos estandarizados. Diseño experiencias
-                  desde el corazón, cuidando cada detalle para que tu viaje no
-                  solo sea bonito,
-                  <span className="text-stone-800 font-medium">
-                    {" "}
-                    sino absolutamente inolvidable.
-                  </span>
+                  Queremos que vuelvas porque valoras nuestro conocimiento y
+                  trato.
                 </p>
                 <p className="text-xl font-medium text-brand-sage mt-6">
-                  Viajar con propósito. Viajar con alma.
+                  Viajar con propósito, viajar con alma.
                 </p>
               </div>
             </div>

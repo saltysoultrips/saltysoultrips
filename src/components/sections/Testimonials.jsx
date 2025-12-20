@@ -1,80 +1,207 @@
-import React from "react";
-import { Star, Quote } from "lucide-react";
+import React, { useRef, useEffect, useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-const reviews = [
+const experiences = [
   {
-    name: "Sofia & Marc",
-    trip: "Luna de Miel en Bali",
-    text: "Angela entendió perfectamente lo que buscábamos. Hoteles boutique preciosos lejos de las multitudes. Fue el viaje de nuestras vidas.",
+    name: "Keyla",
+    text: "La verdad todo de 10. Muy contenta, sin duda volveremos a repetir pronto.",
     rating: 5,
+    image: null,
   },
   {
-    name: "Elena R.",
-    trip: "Escapada a Nueva York",
-    text: "Tener la guía digital con recomendaciones de restaurantes locales fue un salvavidas. Comimos increíble gracias a sus tips.",
+    name: "Marco Noria",
+    text: "Todo perfecto.",
     rating: 5,
+    image: null,
   },
   {
-    name: "Familia García",
-    trip: "Costa Rica Aventura",
-    text: "Viajar con niños puede ser estresante, pero todo estaba tan bien organizado que solo tuvimos que preocuparnos de disfrutar.",
+    name: "Eduard Daniel",
+    text: "Todo perfecto, la verdad.",
     rating: 5,
+    image: null,
+  },
+  {
+    name: "Koraima Moreno",
+    text: "Nada que mejorar, estoy encantada. Un trabajazo increíble y súper satisfecha.",
+    rating: 5,
+    image: null,
+  },
+  {
+    name: "Mario Iorga",
+    text: "Está muy bien, el hecho de tener los restaurantes a mano es de mucha ayuda porque muchas veces nos pasa que nos ponemos a dar vueltas buscando y con la tontería se pasan las horas.",
+    rating: 5,
+    image: null,
+  },
+  {
+    name: "David Lobo",
+    text: "Para mí ha sido todo de 10, las dudas que he tenido han sido solucionadas al instante. Sin ninguna duda volveré a contar con Ángela para todos mis viajes, ha sido mi gran descubrimiento este año.",
+    rating: 5,
+    image: null,
+  },
+  {
+    name: "Lidia Martínez",
+    text: "La recomiendo 1000%. Nada que mejorar, atención y trabajo muy profesional y cercano.",
+    rating: 5,
+    image: null,
   },
 ];
 
 export default function Testimonials() {
+  const scrollContainerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      const newScrollPosition =
+        scrollContainerRef.current.scrollLeft +
+        (direction === "left" ? -scrollAmount : scrollAmount);
+
+      scrollContainerRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        // If we're at the end, scroll back to the beginning
+        if (container.scrollLeft >= maxScroll - 10) {
+          container.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        } else {
+          // Otherwise, scroll to the next item
+          scroll("right");
+        }
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <section
       id="testimonials"
-      className="py-24 bg-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-stone-50 to-white relative overflow-hidden"
     >
-      {/* Decorative quotes background */}
-      <Quote className="absolute top-10 left-10 text-stone-100 w-64 h-64 -rotate-12 -z-0" />
+      {/* Background decoration */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-brand-sage/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand-sky/10 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            Reseñas
+            Experiencias
           </span>
-          <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2">
+          <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
             Lo que dicen nuestros viajeros
           </h2>
+          <p className="text-stone-600 max-w-2xl mx-auto">
+            Testimonios reales de personas que han confiado en SaltySoulTrips
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
-            <div
-              key={index}
-              className="bg-stone-50 p-8 rounded-3xl relative border border-stone-100 hover:shadow-lg transition-shadow"
-            >
-              <div className="flex gap-1 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    className="text-brand-sage fill-brand-sage"
-                  />
-                ))}
-              </div>
-              <p className="text-stone-600 mb-6 italic text-lg leading-relaxed">
-                "{review.text}"
-              </p>
+        {/* Carousel Container */}
+        <div className="relative group">
+          {/* Navigation Buttons - Desktop */}
+          <button
+            onClick={() => scroll("left")}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-brand-sage transition-all duration-300 opacity-0 group-hover:opacity-100"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="text-stone-700" size={24} />
+          </button>
 
-              <div className="flex items-center gap-4 border-t border-stone-200 pt-6">
-                <div className="w-10 h-10 rounded-full bg-brand-sand/50 flex items-center justify-center text-stone-700 font-bold text-sm">
-                  {review.name.charAt(0)}
-                </div>
-                <div>
-                  <h4 className="font-bold text-stone-800 text-sm">
-                    {review.name}
-                  </h4>
-                  <p className="text-xs text-stone-500 uppercase tracking-wide">
-                    {review.trip}
-                  </p>
+          <button
+            onClick={() => scroll("right")}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-brand-sage transition-all duration-300 opacity-0 group-hover:opacity-100"
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="text-stone-700" size={24} />
+          </button>
+
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-4"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            {experiences.map((experience, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[350px] md:w-[400px] snap-center"
+              >
+                <div className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+                  {/* Optional Image */}
+                  {experience.image && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <img
+                        src={experience.image}
+                        alt={`Experiencia de ${experience.name}`}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+
+                  <div className="p-8 flex flex-col flex-grow">
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(experience.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={18}
+                          className="text-amber-400 fill-amber-400"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Testimonial Text */}
+                    <p className="text-stone-700 mb-6 italic text-lg leading-relaxed flex-grow">
+                      «{experience.text}»
+                    </p>
+
+                    {/* Author */}
+                    <div className="flex items-center gap-4 pt-6 border-t border-stone-100">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-sage to-brand-sky flex items-center justify-center text-white font-bold text-lg shadow-md">
+                        {experience.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-stone-800">
+                          {experience.name}
+                        </h4>
+                        <p className="text-xs text-stone-500">
+                          Cliente SaltySoulTrips
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Mobile scroll indicator */}
+          <div className="md:hidden text-center mt-6">
+            <p className="text-sm text-stone-500 italic">
+              ← Desliza para ver más →
+            </p>
+          </div>
         </div>
       </div>
     </section>

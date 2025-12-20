@@ -72,7 +72,7 @@ export default function HowItWorks() {
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               className="relative"
             >
               <div className="flex flex-col md:flex-row items-start gap-6 bg-stone-50 p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">

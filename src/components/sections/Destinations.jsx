@@ -86,7 +86,7 @@ export default function Destinations() {
             href="#contact"
             className="hidden md:flex items-center gap-2 text-stone-500 hover:text-brand-sage transition-colors font-medium"
           >
-            Ver todos los destinos <ArrowUpRight size={18} />
+            Cualquier destino es posible. <ArrowUpRight size={18} />
           </a>
         </div>
 
@@ -97,12 +97,13 @@ export default function Destinations() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-lg"
             >
               <img
                 src={dest.image}
                 alt={dest.country}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div
@@ -129,7 +130,7 @@ export default function Destinations() {
             href="#contact"
             className="inline-flex items-center gap-2 text-stone-500 hover:text-brand-sage transition-colors font-medium"
           >
-            Ver todos los destinos <ArrowUpRight size={18} />
+            Cualquier destino es posible. <ArrowUpRight size={18} />
           </a>
         </div>
       </div>

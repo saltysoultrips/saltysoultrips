@@ -25,18 +25,20 @@ export default function Hero() {
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-            Viajes de autor, <br className="hidden md:block" />
+            Consultoría de viajes sin comisiones.{" "}
+            <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-700 to-stone-500 italic">
-              diseñados a tu medida
+              Pagas por mi tiempo, no por tus reservas.
             </span>
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10 font-light">
-            Olvídate de los paquetes estándar. Creamos experiencias únicas
-            basadas en tus gustos, donde el lujo es la tranquilidad de no
-            preocuparse por nada.
+            No somos una agencia de viajes. Somos consultoras de optimización:
+            hacemos "ingeniería inversa" de tu presupuesto para conseguir
+            experiencias de lujo a precio de coste. Diseñamos tu itinerario 100%
+            a medida para que viajes con libertad, estilo y control total.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <a
               href="#contact"
               className="group relative px-8 py-4 bg-brand-sage text-stone-800 text-lg font-medium rounded-full shadow-lg hover:shadow-xl hover:bg-[#8dc9db] transition-all duration-300 overflow-hidden"
@@ -59,7 +61,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ duration: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <div className="w-[1px] h-16 bg-gradient-to-b from-stone-300 to-transparent"></div>

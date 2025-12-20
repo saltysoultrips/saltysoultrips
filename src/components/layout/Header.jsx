@@ -7,10 +7,10 @@ export default function Header() {
 
   const navLinks = [
     { name: "Historia", href: "#about" },
-    { name: "Destinos", href: "#destinations" },
     { name: "Cómo funciona", href: "#how-it-works" },
+    { name: "Destinos", href: "#destinations" },
     { name: "Packs", href: "#services" },
-    { name: "Reseñas", href: "#testimonials" },
+    { name: "Experiencias", href: "#testimonials" },
     { name: "Contacto", href: "#contact" },
   ];
 
