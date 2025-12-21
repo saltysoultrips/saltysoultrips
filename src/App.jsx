@@ -10,6 +10,7 @@ const HowItWorks = lazy(() => import("./components/sections/HowItWorks"));
 const Services = lazy(() => import("./components/sections/Services"));
 const Testimonials = lazy(() => import("./components/sections/Testimonials"));
 const ContactForm = lazy(() => import("./components/forms/ContactForm"));
+const FAQ = lazy(() => import("./components/sections/FAQ"));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -41,6 +42,9 @@ function App() {
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <ContactForm />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <FAQ />
         </Suspense>
       </main>
       <Footer />

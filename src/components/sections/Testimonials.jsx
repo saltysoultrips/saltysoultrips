@@ -6,13 +6,13 @@ const experiences = [
     name: "Keyla",
     text: "La verdad todo de 10. Muy contenta, sin duda volveremos a repetir pronto.",
     rating: 5,
-    image: null,
+    image: "/keylareseña.jpg",
   },
   {
     name: "Marco Noria",
     text: "Todo perfecto.",
     rating: 5,
-    image: null,
+    image: "/marcoreseña.jpeg",
   },
   {
     name: "Eduard Daniel",
@@ -30,19 +30,19 @@ const experiences = [
     name: "Mario Iorga",
     text: "Está muy bien, el hecho de tener los restaurantes a mano es de mucha ayuda porque muchas veces nos pasa que nos ponemos a dar vueltas buscando y con la tontería se pasan las horas.",
     rating: 5,
-    image: null,
+    image: "/marioreseña.jpg",
   },
   {
     name: "David Lobo",
-    text: "Para mí ha sido todo de 10, las dudas que he tenido han sido solucionadas al instante. Sin ninguna duda volveré a contar con Ángela para todos mis viajes, ha sido mi gran descubrimiento este año.",
+    text: "Creeme que me alegro cada vez más de haber contactado contigo y haber contratado tus servicios, que atención por Dios, da gusto conocer personas como tú.",
     rating: 5,
-    image: null,
+    image: "/davidreseña.jpg",
   },
   {
     name: "Lidia Martínez",
     text: "La recomiendo 1000%. Nada que mejorar, atención y trabajo muy profesional y cercano.",
     rating: 5,
-    image: null,
+    image: "/lidiareseña.jpg",
   },
 ];
 
@@ -148,17 +148,6 @@ export default function Testimonials() {
                 className="flex-shrink-0 w-[350px] md:w-[400px] snap-center"
               >
                 <div className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                  {/* Optional Image */}
-                  {experience.image && (
-                    <div className="w-full h-48 overflow-hidden">
-                      <img
-                        src={experience.image}
-                        alt={`Experiencia de ${experience.name}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
-
                   <div className="p-8 flex flex-col flex-grow">
                     {/* Stars */}
                     <div className="flex gap-1 mb-4">
@@ -175,6 +164,17 @@ export default function Testimonials() {
                     <p className="text-stone-700 mb-6 italic text-lg leading-relaxed flex-grow">
                       «{experience.text}»
                     </p>
+
+                    {/* Optional Image between text and author */}
+                    {experience.image && (
+                      <div className="mb-6 rounded-lg overflow-hidden">
+                        <img
+                          src={experience.image}
+                          alt={`Experiencia de ${experience.name}`}
+                          className="w-full h-64 object-cover"
+                        />
+                      </div>
+                    )}
 
                     {/* Author */}
                     <div className="flex items-center gap-4 pt-6 border-t border-stone-100">

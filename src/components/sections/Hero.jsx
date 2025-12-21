@@ -25,11 +25,7 @@ export default function Hero() {
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-            Consultoría de viajes sin comisiones.{" "}
-            <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-700 to-stone-500 italic">
-              Pagas por mi tiempo, no por tus reservas.
-            </span>
+            Viajes a tu gusto <br className="hidden md:block" />
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10 font-light">
             No somos una agencia de viajes. Somos consultoras de optimización:

@@ -12,6 +12,7 @@ export default function Header() {
     { name: "Packs", href: "#services" },
     { name: "Experiencias", href: "#testimonials" },
     { name: "Contacto", href: "#contact" },
+    { name: "FAQ", href: "#faq" },
   ];
 
   const handleScroll = (e, href) => {
