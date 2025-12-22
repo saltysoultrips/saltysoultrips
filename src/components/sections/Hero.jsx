@@ -28,9 +28,6 @@ export default function Hero() {
             Viajes personalizados <br className="hidden md:block" />
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10 font-light">
-            <span className="block font-semibold text-stone-800 mb-2">
-              Viajes personalizados
-            </span>
             Diseñamos tu itinerario 100% a medida para que viajes con libertad,
             estilo y control total.
           </p>
