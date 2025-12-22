@@ -19,7 +19,7 @@ export default function Hero() {
         >
           <div className="mb-6 flex justify-center">
             <img
-              src="/logoHorizontal.png"
+              src="/resto/logoHorizontal.png"
               alt="Saltysoultrips"
               className="h-16 w-auto object-contain"
             />
@@ -28,10 +28,11 @@ export default function Hero() {
             Viajes personalizados <br className="hidden md:block" />
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10 font-light">
-            No somos una agencia de viajes. Somos consultoras de optimización:
-            hacemos "ingeniería inversa" de tu presupuesto para conseguir
-            experiencias de lujo a precio de coste. Diseñamos tu itinerario 100%
-            a medida para que viajes con libertad, estilo y control total.
+            <span className="block font-semibold text-stone-800 mb-2">
+              Viajes personalizados
+            </span>
+            Diseñamos tu itinerario 100% a medida para que viajes con libertad,
+            estilo y control total.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">

@@ -17,7 +17,7 @@ export default function About() {
           >
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/angela.jpeg"
+                src="/resto/angela.jpeg"
                 alt="Angela - Founder SaltySoulTrips"
                 loading="lazy"
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
@@ -76,7 +76,7 @@ export default function About() {
                   quedarse sin ahorros ni pasar horas navegando para encontrar
                   los mejores destinos, fechas y precios.
                 </p>
-                <div className="bg-stone-50 p-8 rounded-2xl border-l-4 border-brand-sage my-8 shadow-sm">
+                <div className="bg-stone-50 p-8 rounded-2xl border-l-4 border-brand-sage my-8 shadow-sm text-center">
                   <p className="text-stone-800 font-medium italic text-xl leading-relaxed">
                     SaltySoulTrips nace de una ilusión genuina y quiere mostrar
                     que

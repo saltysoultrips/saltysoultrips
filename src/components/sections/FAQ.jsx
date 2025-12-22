@@ -156,24 +156,12 @@ export default function FAQ() {
             responderemos lo antes posible.
           </p>
           <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("contact");
-              if (element) {
-                const headerOffset = 85;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition =
-                  elementPosition + window.scrollY - headerOffset;
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
-              }
-            }}
+            href="https://wa.me/34611794842"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-brand-sage text-white px-6 py-3 rounded-full font-medium hover:bg-brand-sage/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
-            Contáctanos
+            Contáctanos por WhatsApp
           </a>
         </motion.div>
       </div>

@@ -9,7 +9,7 @@ export default function Services() {
     {
       title: "PAQUETE EXPLORA",
       price: "70 €",
-      image: "/explora.png",
+      image: "/paquetes/explora.png",
       icon: <Plane size={32} className="text-brand-sage" />,
       features: ["Búsqueda de vuelos", "Alojamiento"],
       details: [
@@ -26,7 +26,7 @@ export default function Services() {
     {
       title: "PAQUETE VIVE",
       price: "100 €",
-      image: "/vive.png",
+      image: "/paquetes/vive.png",
       icon: <Compass size={32} className="text-brand-cream" />,
       features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
       details: [
@@ -42,7 +42,7 @@ export default function Services() {
     {
       title: "PAQUETE CONECTA",
       price: "150 €",
-      image: "/conecta.png",
+      image: "/paquetes/conecta.png",
       icon: <Star size={32} className="text-brand-sage" />,
       features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
       details: [

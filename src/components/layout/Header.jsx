@@ -50,7 +50,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center">
             {/* Asegúrate de que la ruta a tu logo sea correcta */}
-            <img src="/logo.png" alt="AuraTravel" className="h-20 w-auto" />
+            <img
+              src="/resto/logo.png"
+              alt="AuraTravel"
+              className="h-20 w-auto"
+            />
           </div>
 
           {/* Desktop Menu */}

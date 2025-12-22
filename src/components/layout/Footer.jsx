@@ -148,6 +148,24 @@ export default function Footer() {
               <p className="text-stone-500 mt-2 text-sm max-w-xs">
                 Diseñando recuerdos inolvidables en cada rincón del mundo.
               </p>
+              <div className="mt-3 space-y-1">
+                <p className="text-stone-600 text-sm">
+                  <a
+                    href="tel:+34611794842"
+                    className="hover:text-brand-sage transition-colors"
+                  >
+                    📞 611 79 48 42
+                  </a>
+                </p>
+                <p className="text-stone-600 text-sm">
+                  <a
+                    href="mailto:saltysoultrips@gmail.com"
+                    className="hover:text-brand-sage transition-colors"
+                  >
+                    ✉️ saltysoultrips@gmail.com
+                  </a>
+                </p>
+              </div>
             </div>
 
             <div className="flex space-x-6">
@@ -175,13 +193,6 @@ export default function Footer() {
                 aria-label="Facebook"
               >
                 <Facebook size={24} />
-              </a>
-              <a
-                href="mailto:saltysoultrips@gmail.com"
-                className="text-stone-400 hover:text-brand-sage transition-colors"
-                aria-label="Email"
-              >
-                <Mail size={24} />
               </a>
             </div>
           </div>

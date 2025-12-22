@@ -4,45 +4,59 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 const experiences = [
   {
     name: "Keyla",
+    destination: "Le Barcarès",
     text: "La verdad todo de 10. Muy contenta, sin duda volveremos a repetir pronto.",
     rating: 5,
-    image: "/keylareseña.jpg",
+    image: "/reseñas/keylareseña.jpg",
   },
   {
     name: "Marco Noria",
+    destination: "Londres",
     text: "Todo perfecto.",
     rating: 5,
-    image: "/marcoreseña.jpeg",
+    image: "/reseñas/marcoreseña.jpeg",
   },
   {
     name: "Eduard Daniel",
+    destination: "Cabo Verde",
     text: "Todo perfecto, la verdad.",
     rating: 5,
     image: null,
   },
   {
     name: "Koraima Moreno",
+    destination: "Londres",
     text: "Nada que mejorar, estoy encantada. Un trabajazo increíble y súper satisfecha.",
     rating: 5,
     image: null,
   },
   {
     name: "Mario Iorga",
+    destination: "Andorra",
     text: "Está muy bien, el hecho de tener los restaurantes a mano es de mucha ayuda porque muchas veces nos pasa que nos ponemos a dar vueltas buscando y con la tontería se pasan las horas.",
     rating: 5,
-    image: "/marioreseña.jpg",
+    image: "/reseñas/marioreseña.jpg",
   },
   {
     name: "David Lobo",
-    text: "Creeme que me alegro cada vez más de haber contactado contigo y haber contratado tus servicios, que atención por Dios, da gusto conocer personas como tú.",
+    destination: "Viena y Praga",
+    text: "Para mí ha sido todo de 10, las dudas que he tenido han sido solucionadas al instante. Sin ninguna duda volveré a contar con Ángela para todos mis viajes, ha sido mi gran descubrimiento este año.",
     rating: 5,
-    image: "/davidreseña.jpg",
+    image: "/reseñas/davidreseña.jpg",
+  },
+  {
+    name: "Modesta",
+    destination: "Viena y Praga",
+    text: "Que maravilla de viaje, y que bien montando Ángela, mil gracias de nuevo.",
+    rating: 5,
+    image: null,
   },
   {
     name: "Lidia Martínez",
+    destination: "Praga",
     text: "La recomiendo 1000%. Nada que mejorar, atención y trabajo muy profesional y cercano.",
     rating: 5,
-    image: "/lidiareseña.jpg",
+    image: "/reseñas/lidiareseña.jpg",
   },
 ];
 
@@ -186,7 +200,7 @@ export default function Testimonials() {
                           {experience.name}
                         </h4>
                         <p className="text-xs text-stone-500">
-                          Cliente SaltySoulTrips
+                          {experience.destination}
                         </p>
                       </div>
                     </div>
