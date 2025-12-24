@@ -52,7 +52,7 @@ export default function Header() {
             {/* Asegúrate de que la ruta a tu logo sea correcta */}
             <img
               src="/resto/logo.png"
-              alt="AuraTravel"
+              alt="SaltySoulTrips"
               className="h-20 w-auto"
             />
           </div>
