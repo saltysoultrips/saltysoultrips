@@ -7,8 +7,8 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-brand-sage/20 rounded-full blur-[100px] opacity-70"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-brand-sky/30 rounded-full blur-[100px] opacity-70"></div>
+        <div className="absolute top-[-10%] left-0 w-[500px] h-[500px] bg-brand-sage/20 rounded-full blur-[100px] opacity-70"></div>
+        <div className="absolute bottom-[10%] right-0 w-[400px] h-[400px] bg-brand-sky/30 rounded-full blur-[100px] opacity-70"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

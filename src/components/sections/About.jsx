@@ -34,7 +34,7 @@ export default function About() {
             </div>
 
             {/* Simple decorative element instead of Quote Card */}
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-sage/20 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute -bottom-10 right-0 w-40 h-40 bg-brand-sage/20 rounded-full blur-3xl -z-10"></div>
           </motion.div>
 
           {/* Content Side */}
