@@ -51,9 +51,9 @@ export default function Header() {
           <div className="flex-shrink-0 flex items-center">
             {/* Asegúrate de que la ruta a tu logo sea correcta */}
             <img
-              src="/resto/logo.png"
+              src="/resto/logoHorizontal.png"
               alt="SaltySoulTrips"
-              className="h-20 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 

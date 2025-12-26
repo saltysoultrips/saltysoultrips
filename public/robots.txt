@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+
+Sitemap: https://www.saltysoultrips.com/sitemap.xml

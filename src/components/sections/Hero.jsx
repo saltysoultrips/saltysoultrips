@@ -19,9 +19,9 @@ export default function Hero() {
         >
           <div className="mb-6 flex justify-center">
             <img
-              src="/resto/logoHorizontal.png"
+              src="/resto/logo.png"
               alt="Saltysoultrips"
-              className="h-16 w-auto object-contain"
+              className="h-40 w-auto object-contain"
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
