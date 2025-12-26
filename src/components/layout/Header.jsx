@@ -53,7 +53,7 @@ export default function Header() {
             <img
               src="/resto/logoHorizontal.png"
               alt="SaltySoulTrips"
-              className="h-16 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 
