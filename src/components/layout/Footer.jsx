@@ -192,13 +192,6 @@ export default function Footer() {
                 >
                   <TikTokIcon size={24} />
                 </a>
-                <a
-                  href="#"
-                  className="text-stone-400 hover:text-brand-sage transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={24} />
-                </a>
               </div>
             </div>
 
