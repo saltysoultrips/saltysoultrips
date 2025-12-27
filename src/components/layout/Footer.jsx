@@ -143,60 +143,108 @@ export default function Footer() {
         className="bg-stone-100 py-12 border-t border-stone-200"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center bg-white p-8 rounded-3xl shadow-sm">
-            <div className="mb-6 md:mb-0 text-center md:text-left">
-              <h3 className="text-2xl font-serif font-bold text-stone-800">
-                Saltysoultrips
-              </h3>
-              <p className="text-stone-500 mt-2 text-sm max-w-xs">
-                Diseñando recuerdos inolvidables en cada rincón del mundo.
-              </p>
-              <div className="mt-3 space-y-1">
-                <p className="text-stone-600 text-sm">
-                  <a
-                    href="tel:+34611794842"
-                    className="hover:text-brand-sage transition-colors"
-                  >
-                    📞 611 79 48 42
-                  </a>
+          <div className="bg-white p-8 rounded-3xl shadow-sm">
+            {/* Main Footer Content */}
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="mb-6 md:mb-0 text-center md:text-left">
+                <h3 className="text-2xl font-serif font-bold text-stone-800">
+                  Saltysoultrips
+                </h3>
+                <p className="text-stone-500 mt-2 text-sm max-w-xs">
+                  Diseñando recuerdos inolvidables en cada rincón del mundo.
                 </p>
-                <p className="text-stone-600 text-sm">
-                  <a
-                    href="mailto:saltysoultrips@gmail.com"
-                    className="hover:text-brand-sage transition-colors"
-                  >
-                    ✉️ saltysoultrips@gmail.com
-                  </a>
-                </p>
+                <div className="mt-3 space-y-1">
+                  <p className="text-stone-600 text-sm">
+                    <a
+                      href="tel:+34611794842"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      📞 611 79 48 42
+                    </a>
+                  </p>
+                  <p className="text-stone-600 text-sm">
+                    <a
+                      href="mailto:saltysoultrips@gmail.com"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      ✉️ saltysoultrips@gmail.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex space-x-6">
+                <a
+                  href="https://www.instagram.com/saltysoultrips/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-400 hover:text-brand-sage transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@saltysoultrips"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-400 hover:text-brand-sage transition-colors"
+                  aria-label="TikTok"
+                >
+                  <TikTokIcon size={24} />
+                </a>
+                <a
+                  href="#"
+                  className="text-stone-400 hover:text-brand-sage transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
               </div>
             </div>
 
-            <div className="flex space-x-6">
-              <a
-                href="https://www.instagram.com/saltysoultrips/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone-400 hover:text-brand-sage transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={24} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@saltysoultrips"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone-400 hover:text-brand-sage transition-colors"
-                aria-label="TikTok"
-              >
-                <TikTokIcon size={24} />
-              </a>
-              <a
-                href="#"
-                className="text-stone-400 hover:text-brand-sage transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={24} />
-              </a>
+            {/* Colaboradores Section - Now inside the white box */}
+            <div className="mt-10 pt-8 border-t border-stone-200 text-center">
+              <h4 className="text-lg font-semibold text-stone-700 mb-6">
+                Colaboradores
+              </h4>
+              <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <a
+                  href="https://holafly.sjv.io/YROPnq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+                >
+                  <img
+                    src="/resto/holafly.png"
+                    alt="Holafly"
+                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </a>
+                <a
+                  href="https://heymondo.es/?utm_medium=Afiliado&utm_source=SALTYSOULTRIPS&utm_campaign=PRINCIPAL&cod_descuento=SALTYSOULTRIPS&ag_campaign=WEB&agencia=ABWmUCzTeUoAOchm5JnRMQLaoEQzCpUNGrl5Ty4s"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+                >
+                  <img
+                    src="/resto/heymondo.png"
+                    alt="Heymondo"
+                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </a>
+                <a
+                  href="https://www.getyourguide.es?partner_id=QLUQS6L&cmp=share_to_earn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+                >
+                  <img
+                    src="/resto/getyourguide.png"
+                    alt="GetYourGuide"
+                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </a>
+              </div>
             </div>
           </div>
 

@@ -60,22 +60,17 @@ export default function About() {
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
                   Soy Ángela, tengo 20 años y estudio Marketing y Publicidad en
-                  Barcelona.
+                  Barcelona. Viajar se ha convertido en mi forma favorita de
+                  aprender y descubrir el mundo, siempre buscando buenos
+                  precios.
                 </p>
+
                 <p>
-                  A lo largo de estos años he tenido la suerte de viajar
-                  bastante, gracias a mi esfuerzo, trabajo y el de mi familia.
-                  Cada viaje ha sido una oportunidad para aprender, descubrir y
-                  conectar.
+                  Así nació SaltySoulTrips: un proyecto para ayudarte a viajar
+                  sin arruinarte y sin pasarte horas comparando destinos, fechas
+                  y ofertas.
                 </p>
-                <p>
-                  Después de recibir tantas preguntas sobre cómo conseguía
-                  buenos precios, qué lugares recomendaba o cómo organizaba
-                  todo, decidí crear SaltySoulTrips. Este proyecto nace de mi
-                  pasión por viajar y de las ganas de ayudar a otros sin
-                  quedarse sin ahorros ni pasar horas navegando para encontrar
-                  los mejores destinos, fechas y precios.
-                </p>
+                <br></br>
                 <div className="bg-stone-50 p-8 rounded-2xl border-l-4 border-brand-sage my-8 shadow-sm text-center">
                   <p className="text-stone-800 font-medium italic text-xl leading-relaxed">
                     SaltySoulTrips nace de una ilusión genuina y quiere mostrar

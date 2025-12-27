@@ -84,7 +84,7 @@ const experiences = [
   },
   {
     name: "Andrea Gimenez",
-    destination: "Viajera",
+    destination: "Disneyland Paris",
     text: "Experiencia muy buena sin duda volvere a contactar",
     rating: 5,
     image: null,
