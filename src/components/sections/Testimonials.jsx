@@ -8,6 +8,7 @@ const experiences = [
     text: "La verdad todo de 10. Muy contenta, sin duda volveremos a repetir pronto.",
     rating: 5,
     image: "/reseñas/keylareseña.jpg",
+    date: "Julio 2025",
   },
   {
     name: "Marco Noria",
@@ -15,6 +16,7 @@ const experiences = [
     text: "Todo perfecto.",
     rating: 5,
     image: "/reseñas/marcoreseña.jpeg",
+    date: "Octubre 2025",
   },
   {
     name: "Eduard Daniel",
@@ -22,6 +24,7 @@ const experiences = [
     text: "Todo perfecto, la verdad.",
     rating: 5,
     image: null,
+    date: "Agosto 2025",
   },
   {
     name: "Koraima Moreno",
@@ -29,6 +32,7 @@ const experiences = [
     text: "Nada que mejorar, estoy encantada. Un trabajazo increíble y súper satisfecha.",
     rating: 5,
     image: null,
+    date: "Agosto 2025",
   },
   {
     name: "Mario Iorga",
@@ -36,6 +40,7 @@ const experiences = [
     text: "Está muy bien, el hecho de tener los restaurantes a mano es de mucha ayuda porque muchas veces nos pasa que nos ponemos a dar vueltas buscando y con la tontería se pasan las horas.",
     rating: 5,
     image: "/reseñas/marioreseña.jpg",
+    date: "Julio 2025",
   },
   {
     name: "David Lobo",
@@ -43,6 +48,7 @@ const experiences = [
     text: "Para mí ha sido todo de 10, las dudas que he tenido han sido solucionadas al instante. Sin ninguna duda volveré a contar con Ángela para todos mis viajes, ha sido mi gran descubrimiento este año.",
     rating: 5,
     image: "/reseñas/davidreseña.jpg",
+    date: "Septiembre 2025",
   },
   {
     name: "Modesta",
@@ -50,6 +56,7 @@ const experiences = [
     text: "Que maravilla de viaje, y que bien montando Ángela, mil gracias de nuevo.",
     rating: 5,
     image: null,
+    date: "Septiembre 2025",
   },
   {
     name: "Lidia Martínez",
@@ -57,6 +64,31 @@ const experiences = [
     text: "La recomiendo 1000%. Nada que mejorar, atención y trabajo muy profesional y cercano.",
     rating: 5,
     image: "/reseñas/lidiareseña.jpg",
+    date: "Noviembre 2025",
+  },
+  {
+    name: "Iker Delgado",
+    destination: "Bulgaria",
+    text: "Experiencia de 10, el trato de Ángela ha sido perfecto en todo momento y me he sentido muy cómodo recibiendo su ayuda. Me facilitaron la vida en todo, desde el itinerario personalizado para mis días en Bulgaria y la búsqueda de vuelos según mi disponibilidad, hasta las actividades, los sitios qué ver, dónde comer, los alojamientos y el transporte.",
+    rating: 5,
+    image: "/reseñas/ikerreseña.jpeg",
+    date: "Diciembre 2025",
+  },
+  {
+    name: "Beatrice",
+    destination: "India y Sri Lanka",
+    text: "Increible, 1 mes recorriendo la India y Srilanka, una experiencia cercana e increible. Además de organizada hasta el mínimo detalle y con amor. Pensaba que este viaje nos costaría mínimo el doble y Angela nos lo organizó con un precio increible. Mil gracias de corazón!",
+    rating: 5,
+    image: "/reseñas/beatricereseña.jpeg",
+    date: "Diciembre 2025",
+  },
+  {
+    name: "Andrea Gimenez",
+    destination: "Viajera",
+    text: "Experiencia muy buena sin duda volvere a contactar",
+    rating: 5,
+    image: null,
+    date: "Agosto 2025",
   },
 ];
 
@@ -202,6 +234,11 @@ export default function Testimonials() {
                         <p className="text-xs text-stone-500">
                           {experience.destination}
                         </p>
+                        {experience.date && (
+                          <p className="text-xs text-stone-400 mt-0.5">
+                            {experience.date}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>

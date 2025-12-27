@@ -7,12 +7,13 @@ export default function Header() {
 
   const navLinks = [
     { name: "Historia", href: "#about" },
-    { name: "Cómo funciona", href: "#how-it-works" },
     { name: "Destinos", href: "#destinations" },
+    { name: "Cómo funciona", href: "#how-it-works" },
     { name: "Packs", href: "#services" },
     { name: "Experiencias", href: "#testimonials" },
-    { name: "Contacto", href: "#contact" },
     { name: "FAQ", href: "#faq" },
+    { name: "Descuentos", href: "#discounts" },
+    { name: "Contacto", href: "#footer" },
   ];
 
   const handleScroll = (e, href) => {

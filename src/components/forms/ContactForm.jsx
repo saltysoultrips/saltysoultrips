@@ -31,6 +31,7 @@ export default function ContactForm() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [flexibleDates, setFlexibleDates] = useState(false);
 
   // Traveler state
   const [counts, setCounts] = useState({
@@ -248,58 +249,87 @@ export default function ContactForm() {
                 </div>
 
                 {/* Dates */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Fecha Ida
+                <div className="space-y-4">
+                  {/* Flexible Dates Checkbox */}
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      id="flexibleDates"
+                      checked={flexibleDates}
+                      onChange={(e) => {
+                        setFlexibleDates(e.target.checked);
+                        if (e.target.checked) {
+                          setValue("dateStart", "");
+                          setValue("dateEnd", "");
+                        }
+                      }}
+                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                    />
+                    <label
+                      htmlFor="flexibleDates"
+                      className="text-sm font-medium text-stone-700 cursor-pointer"
+                    >
+                      Tengo fechas flexibles
                     </label>
-                    <div className="relative">
-                      <Calendar
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <input
-                        {...register("dateStart", {
-                          required: "Fecha de ida requerida",
-                        })}
-                        type="date"
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600"
-                      />
-                      {errors.dateStart && (
-                        <span className="text-red-500 text-sm mt-1">
-                          {errors.dateStart.message}
-                        </span>
-                      )}
-                    </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Fecha Vuelta
-                    </label>
-                    <div className="relative">
-                      <Calendar
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <input
-                        {...register("dateEnd", {
-                          required: "Fecha de vuelta requerida",
-                          validate: (value) => {
-                            if (!watchDateStart) return true;
-                            return (
-                              new Date(value) >= new Date(watchDateStart) ||
-                              "La fecha de vuelta no puede ser anterior a la de ida"
-                            );
-                          },
-                        })}
-                        type="date"
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600"
-                      />
-                      {errors.dateEnd && (
-                        <span className="text-red-500 text-sm mt-1">
-                          {errors.dateEnd.message}
-                        </span>
-                      )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                        Fecha Ida
+                      </label>
+                      <div className="relative">
+                        <Calendar
+                          className="absolute left-4 top-3.5 text-stone-400"
+                          size={18}
+                        />
+                        <input
+                          {...register("dateStart", {
+                            required:
+                              !flexibleDates && "Fecha de ida requerida",
+                          })}
+                          type="date"
+                          disabled={flexibleDates}
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        />
+                        {errors.dateStart && (
+                          <span className="text-red-500 text-sm mt-1">
+                            {errors.dateStart.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                        Fecha Vuelta
+                      </label>
+                      <div className="relative">
+                        <Calendar
+                          className="absolute left-4 top-3.5 text-stone-400"
+                          size={18}
+                        />
+                        <input
+                          {...register("dateEnd", {
+                            required:
+                              !flexibleDates && "Fecha de vuelta requerida",
+                            validate: (value) => {
+                              if (flexibleDates || !watchDateStart) return true;
+                              return (
+                                new Date(value) >= new Date(watchDateStart) ||
+                                "La fecha de vuelta no puede ser anterior a la de ida"
+                              );
+                            },
+                          })}
+                          type="date"
+                          disabled={flexibleDates}
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        />
+                        {errors.dateEnd && (
+                          <span className="text-red-500 text-sm mt-1">
+                            {errors.dateEnd.message}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
