@@ -56,7 +56,7 @@ export default function About() {
                   20 años. Pasaporte en mano.
                 </span>
               </h2>
-
+              <br></br>
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
                   Soy Ángela, tengo 20 años y estudio Marketing y Publicidad en
