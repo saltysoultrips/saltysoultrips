@@ -237,6 +237,18 @@ export default function Footer() {
                     className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </a>
+                <a
+                  href="https://static.airhelp.com/affiliate/affiliate_form_es_air21965.html?utm_source=pap&utm_medium=affiliate&utm_campaign=aff-6952a80eaa308&a_aid=6952a80eaa308&a_bid=588e3a14&partner_id=6952a80eaa308"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+                >
+                  <img
+                    src="/resto/airhelp.png"
+                    alt="AirHelp"
+                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </a>
               </div>
             </div>
           </div>
