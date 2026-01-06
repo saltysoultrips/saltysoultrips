@@ -1,5 +1,5 @@
 import React from "react";
-import { Shield, Wifi, MapPin } from "lucide-react";
+import { Shield, Wifi, MapPin, Plane } from "lucide-react";
 
 const discountOffers = [
   {
@@ -29,6 +29,15 @@ const discountOffers = [
     url: "https://www.getyourguide.es?partner_id=QLUQS6L&cmp=share_to_earn",
     icon: MapPin,
   },
+  {
+    name: "AirHelp",
+    logo: "/resto/airhelp.png",
+    title: "¿Vuelo retrasado o cancelado?",
+    description: "¡Obtén hasta 600 €!",
+    buttonText: "Reclamar compensación",
+    url: "https://static.airhelp.com/affiliate/affiliate_form_es_air21965.html?utm_source=pap&utm_medium=affiliate&utm_campaign=aff-6952a80eaa308&a_aid=6952a80eaa308&a_bid=588e3a14&partner_id=6952a80eaa308",
+    icon: Plane,
+  },
 ];
 
 export default function Discounts() {
@@ -56,7 +65,7 @@ export default function Discounts() {
         </div>
 
         {/* Discount Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {discountOffers.map((offer, index) => {
             const Icon = offer.icon;
             return (
