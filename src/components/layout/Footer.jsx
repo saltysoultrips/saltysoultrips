@@ -182,10 +182,6 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-sage mt-1">•</span>
-                <span>Se emite factura digital tras confirmar el pago</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-brand-sage mt-1">•</span>
                 <span>
                   El itinerario se entrega una vez confirmado el pago completo
                 </span>
@@ -231,29 +227,12 @@ export default function Footer() {
               Reembolsos
             </h5>
             <div className="space-y-3">
-              <div className="bg-white rounded-lg p-3 border-l-4 border-green-500">
-                <div className="font-bold text-green-700 mb-1">
-                  ✓ 100% de reembolso
-                </div>
-                <div className="text-sm text-stone-600">
-                  Si cancelas en las primeras 24 horas tras el pago
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-3 border-l-4 border-amber-500">
-                <div className="font-bold text-amber-700 mb-1">
-                  ✓ 50% de reembolso
-                </div>
-                <div className="text-sm text-stone-600">
-                  Si cancelas antes de que comencemos a trabajar en tu
-                  itinerario
-                </div>
-              </div>
               <div className="bg-white rounded-lg p-3 border-l-4 border-red-500">
                 <div className="font-bold text-red-700 mb-1">
                   ✗ Sin reembolso
                 </div>
                 <div className="text-sm text-stone-600">
-                  Una vez entregado el itinerario personalizado
+                  Una vez confirmado el pago, no se realizan reembolsos
                 </div>
               </div>
               <div className="bg-white rounded-lg p-3 border-l-4 border-brand-sage">
