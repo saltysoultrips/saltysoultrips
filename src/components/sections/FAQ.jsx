@@ -54,6 +54,12 @@ const faqs = [
     answer:
       "Absolutamente. Si no estás familiarizado con reservas online, te damos instrucciones paso a paso. Es más fácil de lo que parece y te damos toda la información necesaria.",
   },
+  {
+    question:
+      "¿Los precios son fijos independientemente del número de personas?",
+    answer:
+      "Nuestros paquetes base están diseñados para familias o grupos de hasta 6 viajeros. A partir de 7 personas, se aplica un suplemento de gestión",
+  },
 ];
 
 export default function FAQ() {

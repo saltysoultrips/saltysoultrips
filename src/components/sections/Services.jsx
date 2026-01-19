@@ -186,6 +186,12 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
+
+        <p className="mt-12 text-center text-stone-600 max-w-3xl mx-auto font-medium">
+          Tarifas válidas para grupos de hasta 6 personas. Para grupos más
+          grandes, consulta nuestro suplemento de logística grupal enviándonos
+          un mensaje!
+        </p>
       </div>
 
       {/* Image Modal */}
