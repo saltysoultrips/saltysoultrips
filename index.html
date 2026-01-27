@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
 
+    <!-- Performance: Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://wa.me" />
+
     <!-- Favicons (favicon.io) -->
     <link
       rel="icon"
@@ -36,24 +42,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
-    <title>SaltySoulTrips</title>
+    <title>
+      Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos
+    </title>
     <meta
       name="description"
-      content="Viajes personalizados y experiencias auténticas diseñadas a tu medida. Descubre el mundo sin filtros ni guiones, con itinerarios únicos y sostenibles. No somos una agencia, somos diseñadores de momentos inolvidables."
+      content="Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida sin comisiones. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!"
     />
     <meta
       name="keywords"
-      content="viajes de autor, agencia de viajes boutique, viajes personalizados, saltysoultrips, experiencias únicas, turismo sostenible, viajes a medida, viajes auténticos, itinerarios personalizados, viajes Tanzania, viajes Zanzíbar"
+      content="viajes personalizados, viajes personalizados a japón, viajes personalizados a italia, viajes personalizados a grecia, viajes personalizados a tailandia, viajes personalizados a bali, viajes personalizados a maldivas, viajes personalizados a tanzania, viajes personalizados a marruecos, viajes personalizados a vietnam, viajes personalizados a india, viajes personalizados a china, viajes personalizados a perú, viajes personalizados a méxico, viajes personalizados a islandia, viajes personalizados a egipto, viajes personalizados a sudáfrica, viajes personalizados a nueva zelanda, viajes personalizados a australia, viajes personalizados a estados unidos, viajes personalizados a canadá, viajes a medida, itinerarios personalizados, diseño de viajes, planificador de viajes, agencia viajes boutique, viajes sin comisiones, saltysoultrips"
     />
-    <meta name="author" content="SaltySoulTrips" />
+    <meta name="author" content="SaltySoulTrips - Angela" />
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
     <link rel="canonical" href="https://www.saltysoultrips.com/" />
 
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="ES" />
+    <meta name="geo.placename" content="España" />
+    <meta name="geo.position" content="41.3851;2.1734" />
+    <meta name="ICBM" content="41.3851, 2.1734" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#9DD3E0" />
+    <meta name="msapplication-TileColor" content="#9DD3E0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#9DD3E0" />
+
     <!-- Language -->
     <meta property="og:locale" content="es_ES" />
+    <meta http-equiv="content-language" content="es" />
 
     <!-- Google Site Verification -->
     <meta
@@ -66,11 +86,11 @@
     <meta property="og:site_name" content="SaltySoulTrips" />
     <meta
       property="og:title"
-      content="SaltySoulTrips | Viajes Personalizados y Experiencias Auténticas"
+      content="Viajes Personalizados a Medida | SaltySoulTrips"
     />
     <meta
       property="og:description"
-      content="Viajes personalizados y experiencias auténticas. No somos una agencia, somos diseñadores de momentos inolvidables."
+      content="Diseñamos viajes personalizados 100% a tu medida. ⭐ 5 estrellas. Sin comisiones ocultas. Japón, Maldivas, Tanzania y cualquier destino."
     />
     <meta
       property="og:image"
@@ -78,56 +98,262 @@
     />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
+    <meta
+      property="og:image:alt"
+      content="SaltySoulTrips - Viajes Personalizados"
+    />
     <meta property="og:url" content="https://www.saltysoultrips.com/" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="SaltySoulTrips | Viajes de Autor Personalizados"
+      content="Viajes Personalizados a Medida | SaltySoulTrips"
     />
     <meta
       name="twitter:description"
-      content="Diseñamos tu viaje soñado con alma y propósito. Experiencias auténticas y sostenibles."
+      content="Diseñamos tu viaje soñado con alma y propósito. ⭐ 5 estrellas. Experiencias auténticas y sostenibles."
     />
     <meta
       name="twitter:image"
       content="https://www.saltysoultrips.com/resto/logoGoogle.png"
     />
     <meta name="twitter:site" content="@saltysoultrips" />
+    <meta name="twitter:creator" content="@saltysoultrips" />
 
-    <!-- Structured Data (Schema.org) -->
+    <!-- Structured Data: TravelAgency with AggregateRating -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
         "name": "SaltySoulTrips",
-        "description": "Viajes personalizados y experiencias auténticas diseñadas a tu medida.",
+        "description": "Diseñamos viajes personalizados 100% a tu medida. Itinerarios únicos sin comisiones ocultas para cualquier destino del mundo.",
         "url": "https://www.saltysoultrips.com",
         "logo": "https://www.saltysoultrips.com/resto/logoGoogle.png",
         "image": "https://www.saltysoultrips.com/resto/logoGoogle.png",
         "telephone": "+34-611-79-48-42",
         "email": "hola@saltysoultrips.com",
+        "founder": {
+          "@type": "Person",
+          "name": "Angela",
+          "jobTitle": "Fundadora y Diseñadora de Viajes"
+        },
         "address": {
           "@type": "PostalAddress",
+          "addressLocality": "Barcelona",
+          "addressRegion": "Cataluña",
           "addressCountry": "ES"
         },
         "sameAs": [
           "https://www.instagram.com/saltysoultrips",
           "https://www.facebook.com/saltysoultrips"
         ],
-        "priceRange": "€€€",
+        "priceRange": "€€-€€€",
         "areaServed": {
           "@type": "Country",
           "name": "España"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "11",
+          "reviewCount": "11"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Paquetes de Viajes Personalizados",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Paquete Explora",
+                "description": "Guía esencial: búsqueda de vuelos, alojamiento, presupuesto aproximado, lugares de interés, gastronomía típica y apps esenciales"
+              },
+              "price": "70",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Paquete Vive",
+                "description": "Experiencia completa: todo lo de Explora más actividades recomendadas, mapa guía visual y transportes internos explicados"
+              },
+              "price": "100",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Paquete Conecta",
+                "description": "Viaje premium: todo incluido con seguro, SIM, visado, tarjetas bancarias sin comisión, itinerario optimizado y presupuesto detallado"
+              },
+              "price": "150",
+              "priceCurrency": "EUR"
+            }
+          ]
+        },
         "knowsAbout": [
           "Viajes personalizados",
-          "Turismo sostenible",
-          "Experiencias auténticas",
-          "Viajes a Tanzania"
+          "Itinerarios a medida",
+          "Viajes personalizados a Japón",
+          "Viajes personalizados a Italia",
+          "Viajes personalizados a Grecia",
+          "Viajes personalizados a Tailandia",
+          "Viajes personalizados a Bali",
+          "Viajes personalizados a Maldivas",
+          "Viajes personalizados a Tanzania",
+          "Viajes personalizados a Marruecos",
+          "Viajes personalizados a Vietnam",
+          "Viajes personalizados a India",
+          "Viajes personalizados a China",
+          "Viajes personalizados a Perú",
+          "Viajes personalizados a México",
+          "Viajes personalizados a Islandia",
+          "Viajes personalizados a Egipto",
+          "Viajes personalizados a Sudáfrica",
+          "Viajes personalizados a Nueva Zelanda",
+          "Viajes personalizados a Australia",
+          "Safaris en África",
+          "Turismo sostenible"
         ],
         "slogan": "No somos una agencia, somos diseñadores de momentos inolvidables"
+      }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Ustedes hacen las reservas por mí?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Nosotros te mostramos exactamente DÓNDE y CÓMO reservar para conseguir el mejor precio y condiciones. Tú haces tus propias reservas y pagos. Así mantienes el control de tu dinero y tus datos personales."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué debería pagar por algo que puedo hacer yo mismo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque nosotros invertimos horas comparando cientos de opciones, conocemos trucos que no aparecen en Google, sabemos cuándo y dónde reservar para ahorrar, y optimizamos cada euro de tu presupuesto. Básicamente, te ahorramos tiempo, dinero y el estrés de planificar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tardan en preparar mi itinerario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Entre 5-10 días hábiles dependiendo de la complejidad. Para viajes más urgentes podemos trabajar en modo express con un suplemento adicional."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si los precios cambian después de entregarme el itinerario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Los precios de vuelos y hoteles fluctúan constantemente. Te entregamos el itinerario con los precios actuales y te recomendamos reservar pronto. Si hay cambios significativos, te avisamos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿A qué destinos viajan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cualquier destino del mundo. Europa, Asia, América, África, Oceanía, islas remotas... Si existe un aeropuerto o forma de llegar, podemos planificarlo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Por qué es mejor que yo haga mis propias reservas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tienes control total de tu dinero, de tus datos, acumulas puntos/millas en tus programas de fidelidad, acceso directo a atención al cliente de aerolíneas/hoteles, flexibilidad para elegir tus métodos de pago favoritos y sin intermediarios en caso de cambios o cancelaciones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿En qué se diferencian de una agencia de viajes tradicional?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Las agencias reservan por ti (marcan precios o cobran comisiones ocultas). Nosotros te ENSEÑAMOS a reservar directo y te ahorramos ese margen. Tú mantienes el control total."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo sé que las recomendaciones son realmente las mejores?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Porque no tenemos conflicto de intereses. No ganamos comisiones, así que no tenemos razón para recomendarte algo más caro o peor. Solo queremos que quedes tan satisfecho que nos recomiendes a otros."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si necesito ayuda durante el viaje?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aunque no gestionamos las reservas, estamos disponibles para orientación o consejos si surge algún imprevisto. Sin embargo, cualquier gestión de cambios/cancelaciones la haces directamente con el proveedor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Me enseñan cómo hacer las reservas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutamente. Si no estás familiarizado con reservas online, te damos instrucciones paso a paso. Es más fácil de lo que parece y te damos toda la información necesaria."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Los precios son fijos independientemente del número de personas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nuestros paquetes base están diseñados para familias o grupos de hasta 6 viajeros. A partir de 7 personas, se aplica un suplemento de gestión."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://www.saltysoultrips.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Servicios",
+            "item": "https://www.saltysoultrips.com/#services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Destinos",
+            "item": "https://www.saltysoultrips.com/#destinations"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Contacto",
+            "item": "https://www.saltysoultrips.com/#contact"
+          }
+        ]
       }
     </script>
   </head>
