@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
     { name: "Historia", href: "#about" },
@@ -18,31 +21,30 @@ export default function Header() {
 
   const handleScroll = (e, href) => {
     e.preventDefault();
-
-    // 1. Cerramos el menú primero
     setIsOpen(false);
 
-    // 2. Pequeño delay para que el menú se cierre antes del scroll
+    // Si no estamos en la home, navegamos primero
+    if (location.pathname !== "/") {
+      navigate(`/${href}`);
+      return;
+    }
+
+    // Scroll manual si estamos en home
     setTimeout(() => {
-      // 3. Extraemos el ID quitando el '#'
       const targetId = href.replace("#", "");
       const element = document.getElementById(targetId);
 
       if (element) {
-        // 4. Altura del header (80px) + un poco de aire (5px)
         const headerOffset = 85;
-
-        // 5. Calculamos la posición exacta
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-        // 6. Scroll manual suave
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
-    }, 100); // 100ms delay para que la animación del menú termine
+    }, 100);
   };
 
   return (
