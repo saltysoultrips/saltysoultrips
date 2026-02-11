@@ -65,26 +65,39 @@ export default function About() {
                   precios.
                 </p>
 
-                <p>
-                  Así nació SaltySoulTrips: un proyecto para ayudarte a viajar
-                  sin arruinarte y sin pasarte horas comparando destinos, fechas
-                  y ofertas.
+                <p className="text-lg text-stone-600 mb-6 leading-relaxed">
+                  Después de años organizando viajes por todo el mundo, me di
+                  cuenta de una realidad: la mayoría de la gente pierde horas de
+                  su tiempo y mucho dinero por no saber dónde buscar, así nació
+                  Saltysoultrips.
                 </p>
-                <br></br>
-                <div className="bg-stone-50 p-8 rounded-2xl border-l-4 border-brand-sage my-8 shadow-sm text-center">
-                  <p className="text-stone-800 font-medium italic text-xl leading-relaxed">
-                    SaltySoulTrips nace de una ilusión genuina y quiere mostrar
-                    que
-                  </p>
-                  <p className="text-stone-800 font-semibold text-xl mt-4 leading-relaxed">
-                    "Las mejores empresas no venden productos más baratos.
-                    <br />
-                    Venden transparencia en mercados opacos."
-                  </p>
-                  <p className="text-stone-800 font-medium italic text-xl mt-4 leading-relaxed">
-                    Nosotros no inventamos los viajes. Mostramos el precio real
-                    de viajar.
-                  </p>
+                <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
+                  <h4 className="font-serif font-bold text-xl text-stone-800 mb-4">
+                    Lo que debes saber:
+                  </h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <span className="text-brand-sage text-xl mt-1">✓</span>
+                      <span className="text-stone-600">
+                        <strong>Tú tienes el control:</strong> Yo no toco tu
+                        dinero. Tú haces las reservas con mis enlaces.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-brand-sage text-xl mt-1">✓</span>
+                      <span className="text-stone-600">
+                        <strong>Gestión directa:</strong> Reservas directamente
+                        en las webs oficiales y a tu nombre.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-brand-sage text-xl mt-1">✓</span>
+                      <span className="text-stone-600">
+                        <strong>Asesoría técnica:</strong> Pagas por mi tiempo y
+                        experiencia, no por el viaje en sí.
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

@@ -49,7 +49,7 @@ const steps = [
     description:
       "Cuando tengas todo reservado, en un plazo aproximado de 5 a 7 días laborables preparo tu viaje en formato visual, con el itinerario día a día, mapas, recomendaciones y extras según el paquete elegido.",
     detail:
-      "Una vez recibido tu viaje final, empieza la aventura: seguirás contando con mi apoyo y consejos para que disfrutes al máximo de tu experiencia antes, durante y después del viaje.",
+      "Una vez recibido tu viaje final, empieza la aventura: seguirás contando con mi apoyo y consejos para que disfrutes al máximo de tu experiencia pero recuerda! No somos una agencia, somos una consultoría.",
     bg: "bg-brand-sage",
   },
 ];

@@ -46,7 +46,7 @@ export default function ContactForm() {
   useEffect(() => {
     setValue(
       "travelers",
-      `Adultos: ${counts.adults}, Niños: ${counts.children}, Bebés: ${counts.babies}`
+      `Adultos: ${counts.adults}, Niños: ${counts.children}, Bebés: ${counts.babies}`,
     );
   }, [counts, setValue]);
 
@@ -522,6 +522,10 @@ export default function ContactForm() {
                           {errors.package.message}
                         </span>
                       )}
+                      <p className="text-xs text-brand-sage mt-1 ml-1">
+                        (Antes de elegir ves a echarle un vistazo lo que incluye
+                        cada uno más arriba)
+                      </p>
                     </div>
                   </div>
                 </div>

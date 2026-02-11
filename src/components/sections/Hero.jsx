@@ -27,11 +27,13 @@ export default function Hero() {
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
             Viajes personalizados <br className="hidden md:block" />
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10 font-light">
-            Diseñamos tu itinerario 100% a medida para que viajes con libertad,
-            estilo y control total.
-          </p>
 
+          <p className="mt-4 text-base sm:text-lg text-brand-sage font-medium max-w-2xl mx-auto leading-relaxed">
+            "Yo hago todo el trabajo pesado: busco los mejores vuelos, hoteles y
+            rutas. Tú solo tienes que hacer clic y reservar con los enlaces que
+            te enviaré."
+          </p>
+          <br></br>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <a
               href="#contact"
@@ -50,16 +52,6 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-[1px] h-16 bg-gradient-to-b from-stone-300 to-transparent"></div>
-      </motion.div>
     </section>
   );
 }

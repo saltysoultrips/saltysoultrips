@@ -13,6 +13,7 @@ const Testimonials = lazy(() => import("./components/sections/Testimonials"));
 const ContactForm = lazy(() => import("./components/forms/ContactForm"));
 const FAQ = lazy(() => import("./components/sections/FAQ"));
 const Discounts = lazy(() => import("./components/sections/Discounts"));
+const Deliverables = lazy(() => import("./components/sections/Deliverables"));
 
 // Lazy load destination page
 const DestinationPage = lazy(() => import("./pages/DestinationPage"));
@@ -69,6 +70,9 @@ function HomePage() {
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <Services />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Deliverables />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <Testimonials />
