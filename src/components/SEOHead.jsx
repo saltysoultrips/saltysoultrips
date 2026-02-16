@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 /**
- * Componente para manejar meta tags dinámicos sin react-helmet
+ * Componente para manejar meta tags dinámicos usando react-helmet-async
  * Compatible con React 19
  */
 export default function SEOHead({
@@ -11,67 +11,32 @@ export default function SEOHead({
   ogImage = "https://www.saltysoultrips.com/resto/logoGoogle.png",
   schemaData = null,
 }) {
-  useEffect(() => {
-    // Update title
-    document.title = title;
+  return (
+    <Helmet>
+      {/* Title */}
+      <title>{title}</title>
 
-    // Helper to update or create meta tag
-    const updateMeta = (selector, content, attr = "content") => {
-      let element = document.querySelector(selector);
-      if (element) {
-        element.setAttribute(attr, content);
-      }
-    };
+      {/* Standard Meta Tags */}
+      <meta name="description" content={description} />
+      <link rel="canonical" href={canonicalUrl} />
 
-    // Helper to update or create link tag
-    const updateLink = (rel, href) => {
-      let element = document.querySelector(`link[rel="${rel}"]`);
-      if (element) {
-        element.setAttribute("href", href);
-      }
-    };
+      {/* Open Graph / Facebook */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:type" content="website" />
 
-    // Update standard meta tags
-    updateMeta('meta[name="description"]', description);
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
 
-    // Update Open Graph tags
-    updateMeta('meta[property="og:title"]', title);
-    updateMeta('meta[property="og:description"]', description);
-    updateMeta('meta[property="og:url"]', canonicalUrl);
-    updateMeta('meta[property="og:image"]', ogImage);
-
-    // Update Twitter tags
-    updateMeta('meta[name="twitter:title"]', title);
-    updateMeta('meta[name="twitter:description"]', description);
-    updateMeta('meta[name="twitter:image"]', ogImage);
-
-    // Update canonical URL
-    updateLink("canonical", canonicalUrl);
-
-    // Add/update schema.org data if provided
-    if (schemaData) {
-      let scriptTag = document.querySelector(
-        'script[data-schema="destination"]',
-      );
-      if (!scriptTag) {
-        scriptTag = document.createElement("script");
-        scriptTag.type = "application/ld+json";
-        scriptTag.setAttribute("data-schema", "destination");
-        document.head.appendChild(scriptTag);
-      }
-      scriptTag.textContent = JSON.stringify(schemaData);
-    }
-
-    // Cleanup function to remove destination schema when unmounting
-    return () => {
-      const scriptTag = document.querySelector(
-        'script[data-schema="destination"]',
-      );
-      if (scriptTag) {
-        scriptTag.remove();
-      }
-    };
-  }, [title, description, canonicalUrl, ogImage, schemaData]);
-
-  return null; // This component doesn't render anything
+      {/* Structured Data (JSON-LD) */}
+      {schemaData && (
+        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+      )}
+    </Helmet>
+  );
 }

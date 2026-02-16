@@ -1,36 +1,20 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  Calendar,
-  Lightbulb,
-  MapPin,
-  MessageCircle,
-} from "lucide-react";
+import { ArrowLeft, Calendar, MessageCircle } from "lucide-react";
 import { getDestinationBySlug } from "../data/destinationsData";
 import SEOHead from "../components/SEOHead";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import NotFound from "./NotFound";
 
 export default function DestinationPage() {
   const { slug } = useParams();
   const destination = getDestinationBySlug(slug);
 
-  // Si no se encuentra el destino, mostrar mensaje
+  // Si no se encuentra el destino, mostrar la página 404 personalizada
   if (!destination) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-stone-50">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-stone-800 mb-4">
-            Destino no encontrado
-          </h1>
-          <Link to="/" className="text-brand-sage hover:underline">
-            Volver al inicio
-          </Link>
-        </div>
-      </div>
-    );
+    return <NotFound />;
   }
 
   // Schema.org para TouristDestination
@@ -154,15 +138,15 @@ export default function DestinationPage() {
 
       {/* Best Time & Tips Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="max-w-3xl mx-auto">
           {/* Best Time */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-brand-sage/10 to-brand-sea/10 rounded-3xl p-8"
+            className="bg-gradient-to-br from-brand-sage/10 to-brand-sea/10 rounded-3xl p-8 text-center"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center justify-center gap-3 mb-4">
               <Calendar className="text-brand-sage" size={24} />
               <h3 className="text-xl font-semibold text-stone-800">
                 Mejor época para viajar
@@ -171,33 +155,9 @@ export default function DestinationPage() {
             <p className="text-2xl font-serif font-bold text-brand-sage mb-3">
               {destination.bestTime.months}
             </p>
-            <p className="text-stone-600">{destination.bestTime.reason}</p>
-          </motion.div>
-
-          {/* Tips */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-stone-100 rounded-3xl p-8"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <Lightbulb className="text-amber-500" size={24} />
-              <h3 className="text-xl font-semibold text-stone-800">
-                Consejos de viaje
-              </h3>
-            </div>
-            <ul className="space-y-3">
-              {destination.tips.map((tip, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <MapPin
-                    className="text-brand-sage flex-shrink-0 mt-1"
-                    size={16}
-                  />
-                  <span className="text-stone-600">{tip}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              {destination.bestTime.reason}
+            </p>
           </motion.div>
         </div>
       </section>

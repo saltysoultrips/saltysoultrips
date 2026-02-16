@@ -18,6 +18,14 @@ const Deliverables = lazy(() => import("./components/sections/Deliverables"));
 // Lazy load destination page
 const DestinationPage = lazy(() => import("./pages/DestinationPage"));
 
+// Lazy load new pages
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogList = lazy(() => import("./pages/blog/BlogList"));
+const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
+
+// Cookie Consent
+import CookieConsent from "./components/ui/CookieConsent";
+
 // Simple loading fallback
 const LoadingFallback = () => (
   <div className="flex items-center justify-center py-20">
@@ -97,17 +105,58 @@ function App() {
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        {/* Blog Routes */}
+        <Route
+          path="/blog"
+          element={
+            <ScrollToTopWrapper>
+              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+                <Header />
+                <BlogList />
+                <Footer />
+              </div>
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/blog/:slug"
+          element={
+            <ScrollToTopWrapper>
+              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+                <Header />
+                <BlogPost />
+                <Footer />
+              </div>
+            </ScrollToTopWrapper>
+          }
+        />
+
+        {/* Dynamic Destination Pages */}
         <Route
           path="/:slug"
           element={
             <ScrollToTopWrapper>
-              <Suspense fallback={<LoadingFallback />}>
-                <DestinationPage />
-              </Suspense>
+              <DestinationPage />
+            </ScrollToTopWrapper>
+          }
+        />
+
+        {/* 404 Catch-all */}
+        <Route
+          path="*"
+          element={
+            <ScrollToTopWrapper>
+              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+                <Header />
+                <NotFound />
+                <Footer />
+              </div>
             </ScrollToTopWrapper>
           }
         />
       </Routes>
+      <CookieConsent />
     </Suspense>
   );
 }
