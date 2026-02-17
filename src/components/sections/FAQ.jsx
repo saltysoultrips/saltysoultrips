@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "¿A qué destinos viajan?",
     answer:
-      "Cualquier destino del mundo. Europa, Asia, América, África, Oceanía, islas remotas... Si existe un aeropuerto o forma de llegar, podemos planificarlo.",
+      "Me especializo en destinos que he visitado personalmente, pero también organizo viajes a lugares que aún no he explorado. ",
   },
   {
     question: "¿Por qué es mejor que yo haga mis propias reservas?",

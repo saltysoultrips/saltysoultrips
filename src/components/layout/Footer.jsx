@@ -518,7 +518,10 @@ export default function Footer() {
                   <img
                     src="/resto/holafly.png"
                     alt="Holafly"
-                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
                   />
                 </a>
                 <a
@@ -530,7 +533,10 @@ export default function Footer() {
                   <img
                     src="/resto/heymondo.png"
                     alt="Heymondo"
-                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
                   />
                 </a>
                 <a
@@ -542,7 +548,10 @@ export default function Footer() {
                   <img
                     src="/resto/getyourguide.png"
                     alt="GetYourGuide"
-                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
                   />
                 </a>
                 <a
@@ -554,7 +563,10 @@ export default function Footer() {
                   <img
                     src="/resto/airhelp.png"
                     alt="AirHelp"
-                    className="h-8 md:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
                   />
                 </a>
               </div>

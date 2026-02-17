@@ -1,8 +1,15 @@
 import React, { lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
+import SEOHead from "./components/SEOHead";
+import LazySection from "./components/utils/LazySection";
 
 // Lazy load components that aren't immediately visible
 const About = lazy(() => import("./components/sections/About"));
@@ -47,23 +54,50 @@ function ScrollToTopWrapper({ children }) {
   return children;
 }
 
+// Keep track if it's the very first load of the application
+let isInitialLoad = true;
+
 // Home page component with all sections
 function HomePage() {
   const { hash } = useLocation();
+  const navType = useNavigationType(); // "POP", "PUSH", "REPLACE"
 
   React.useEffect(() => {
+    // Check if it's a browser reload
+    const navEntry = performance.getEntriesByType("navigation")[0];
+    const isBrowserReload = navEntry?.type === "reload";
+
+    // Only block scroll if it's the initial load AND a reload AND a POP event
+    if (isInitialLoad) {
+      isInitialLoad = false;
+      if (isBrowserReload && navType === "POP" && hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+        window.scrollTo(0, 0);
+        return;
+      }
+    }
+
     if (hash) {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+          // Clear hash from URL after scrolling to keep it clean
+          setTimeout(() => {
+            window.history.replaceState(null, "", window.location.pathname);
+          }, 1000);
         }
-      }, 500); // Small delay to ensure lazy loaded components are mounted
+      }, 500);
     }
-  }, [hash]);
+  }, [hash, navType]);
 
   return (
     <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+      <SEOHead
+        title="Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos"
+        description="Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!"
+        canonicalUrl="https://www.saltysoultrips.com/"
+      />
       <Header />
       <main>
         <Hero />
@@ -71,28 +105,44 @@ function HomePage() {
           <About />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Destinations />
+          <LazySection id="destinations" minHeight="800px">
+            <Destinations />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <HowItWorks />
+          <LazySection id="how-it-works" minHeight="600px">
+            <HowItWorks />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Services />
+          <LazySection id="services" minHeight="600px">
+            <Services />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Deliverables />
+          <LazySection minHeight="400px">
+            <Deliverables />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Testimonials />
+          <LazySection minHeight="400px">
+            <Testimonials />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <ContactForm />
+          <LazySection id="contact" minHeight="600px">
+            <ContactForm />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <FAQ />
+          <LazySection minHeight="500px">
+            <FAQ />
+          </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Discounts />
+          <LazySection minHeight="300px">
+            <Discounts />
+          </LazySection>
         </Suspense>
       </main>
       <Footer />
@@ -134,7 +184,7 @@ function App() {
 
         {/* Dynamic Destination Pages */}
         <Route
-          path="/:slug"
+          path="/destinos/:slug"
           element={
             <ScrollToTopWrapper>
               <DestinationPage />

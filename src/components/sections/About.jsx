@@ -20,6 +20,8 @@ export default function About() {
                 src="/resto/angela.jpeg"
                 alt="Angela - Founder SaltySoulTrips"
                 loading="lazy"
+                width="600"
+                height="800"
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent"></div>
@@ -53,18 +55,15 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
                 Hola, soy Angela. <br />
                 <span className="text-stone-400 text-3xl md:text-4xl block mt-2">
-                  20 años. Pasaporte en mano.
+                  21 años. Pasaporte en mano.
                 </span>
               </h2>
               <br></br>
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
-                  Soy Ángela, tengo 20 años y estudio Marketing y Publicidad en
-                  Barcelona. Viajar se ha convertido en mi forma favorita de
-                  aprender y descubrir el mundo, siempre buscando buenos
-                  precios.
+                  Me especializo en destinos que he visitado personalmente, pero
+                  también organizo viajes a lugares que aún no he explorado.
                 </p>
-
                 <p className="text-lg text-stone-600 mb-6 leading-relaxed">
                   Después de años organizando viajes por todo el mundo, me di
                   cuenta de una realidad: la mayoría de la gente pierde horas de

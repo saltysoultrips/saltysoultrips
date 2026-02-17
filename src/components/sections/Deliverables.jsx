@@ -50,43 +50,59 @@ export default function Deliverables() {
             <span className="text-brand-sage">bandeja de entrada?</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-stone-600 font-light">
-            Al contratar cualquier pack, te enviaré un dossier digital completo
+            Al contratar cualquier pack, te enviaré una guia digital completo
             para que solo te preocupes de disfrutar.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {deliverableItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col items-center text-center"
-            >
-              <div
-                className={`w-16 h-16 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center mb-6`}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Deliverable Items */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {deliverableItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col items-center text-center h-full"
               >
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold text-stone-800 mb-4 font-serif">
-                {item.title}
-              </h3>
-              <p className="text-stone-600 leading-relaxed">
-                {item.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+                <div
+                  className={`w-14 h-14 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center mb-5`}
+                >
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-bold text-stone-800 mb-3 font-serif leading-tight">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-stone-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* Mobile Mockup / Visual Representation Hint */}
-        {/* You could add an image here if you have one, for now we use a nice subtle background element */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-stone-400 italic">
-            * El contenido específico puede variar ligeramente según el paquete
-            elegido.
-          </p>
+          {/* Right Column: Digital Guide Image */}
+          <div className="relative mt-12 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative max-w-md mx-auto"
+            >
+              <div className="absolute inset-0 bg-brand-sage/20 blur-3xl rounded-full transform -translate-y-4 scale-90 -z-10"></div>
+              <img
+                src="/resto/guiadigital.png"
+                alt="Vista previa de la guía digital Salty Soul Trips"
+                className="rounded-3xl shadow-2xl border-4 border-white mx-auto w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500"
+              />
+            </motion.div>
+            <p className="text-sm text-stone-400 italic mt-8 text-center max-w-xs mx-auto">
+              * El contenido específico puede variar ligeramente según el
+              paquete elegido.
+            </p>
+          </div>
         </div>
       </div>
     </section>

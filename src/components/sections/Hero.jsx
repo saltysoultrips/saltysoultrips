@@ -22,6 +22,9 @@ export default function Hero() {
               src="/resto/logo.png"
               alt="Saltysoultrips"
               className="h-40 w-auto object-contain"
+              width="300"
+              height="160"
+              fetchPriority="high"
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">

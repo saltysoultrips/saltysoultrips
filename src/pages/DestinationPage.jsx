@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, MessageCircle } from "lucide-react";
+import { ArrowLeft, Calendar, MessageCircle, MapPin } from "lucide-react";
 import { getDestinationBySlug } from "../data/destinationsData";
 import SEOHead from "../components/SEOHead";
 import Header from "../components/layout/Header";
@@ -17,13 +17,44 @@ export default function DestinationPage() {
     return <NotFound />;
   }
 
+  const canonicalUrl = `https://www.saltysoultrips.com/${destination.slug}`;
+  const whatsappMessage = `Hola! Me interesa un viaje personalizado a ${destination.country}. ¿Podrían ayudarme?`;
+  const whatsappUrl = `https://wa.me/34611794842?text=${encodeURIComponent(whatsappMessage)}`;
+
+  // Schema.org para Breadcrumbs
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://www.saltysoultrips.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Destinos",
+        item: "https://www.saltysoultrips.com/#destinations",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: destination.country,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
   // Schema.org para TouristDestination
-  const schemaData = {
+  const destinationSchema = {
     "@context": "https://schema.org",
     "@type": "TouristDestination",
-    name: `Viajes Personalizados a ${destination.name}`,
+    name: `Viajes Personalizados a ${destination.country}`,
     description: destination.metaDescription,
-    url: `https://www.saltysoultrips.com/${destination.slug}`,
+    url: canonicalUrl,
+    image: [destination.hero.image],
     touristType: [
       "Adventure travelers",
       "Luxury travelers",
@@ -38,9 +69,7 @@ export default function DestinationPage() {
     publicAccess: true,
   };
 
-  const canonicalUrl = `https://www.saltysoultrips.com/${destination.slug}`;
-  const whatsappMessage = `Hola! Me interesa un viaje personalizado a ${destination.name}. ¿Podrían ayudarme?`;
-  const whatsappUrl = `https://wa.me/34611794842?text=${encodeURIComponent(whatsappMessage)}`;
+  const schemaData = [destinationSchema, breadcrumbSchema];
 
   return (
     <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
@@ -48,6 +77,7 @@ export default function DestinationPage() {
         title={destination.title}
         description={destination.metaDescription}
         canonicalUrl={canonicalUrl}
+        ogImage={destination.hero.image}
         schemaData={schemaData}
       />
 
@@ -56,9 +86,18 @@ export default function DestinationPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <img
-          src={destination.hero.image}
-          alt={`Viajes personalizados a ${destination.name}`}
+          src={`${destination.hero.image}&w=1920&q=80`}
+          srcSet={`
+            ${destination.hero.image}&w=640&q=80 640w,
+            ${destination.hero.image}&w=1024&q=80 1024w,
+            ${destination.hero.image}&w=1600&q=80 1600w,
+            ${destination.hero.image}&w=1920&q=80 1920w
+          `}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          alt={`Viajes personalizados a ${destination.country}`}
           className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
         />
         <div
           className={`absolute inset-0 bg-gradient-to-t ${destination.color} via-black/30 to-transparent`}
@@ -82,7 +121,7 @@ export default function DestinationPage() {
               {destination.hero.subtitle}
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-4">
-              Viajes Personalizados a {destination.name}
+              Viajes Personalizados a {destination.country}
             </h1>
             <p className="text-xl text-white/90 max-w-2xl">
               {destination.hero.tagline}
@@ -91,16 +130,35 @@ export default function DestinationPage() {
         </div>
       </section>
 
-      {/* Intro Section */}
+      {/* Intro & About Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-lg text-stone-600 leading-relaxed"
         >
-          {destination.intro}
-        </motion.p>
+          <div className="flex items-center gap-2 mb-6">
+            <MapPin className="text-brand-sage" size={22} />
+            <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
+              Sobre el destino
+            </span>
+          </div>
+          <h2 className="text-3xl font-serif font-bold text-stone-800 mb-6">
+            Descubre {destination.country}
+          </h2>
+          <p className="text-lg text-stone-600 leading-relaxed mb-6">
+            {destination.intro}
+          </p>
+          {destination.about &&
+            destination.about.map((paragraph, i) => (
+              <p
+                key={i}
+                className="text-base text-stone-600 leading-relaxed mb-4"
+              >
+                {paragraph}
+              </p>
+            ))}
+        </motion.div>
       </section>
 
       {/* Highlights Section */}
@@ -111,7 +169,7 @@ export default function DestinationPage() {
               Experiencias
             </span>
             <h2 className="text-3xl font-serif font-bold text-stone-800 mt-2">
-              Lo mejor de {destination.name}
+              Lo mejor de {destination.country}
             </h2>
           </div>
 
@@ -136,15 +194,14 @@ export default function DestinationPage() {
         </div>
       </section>
 
-      {/* Best Time & Tips Section */}
+      {/* Best Time Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto">
-          {/* Best Time */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-brand-sage/10 to-brand-sea/10 rounded-3xl p-8 text-center"
+            className="bg-gradient-to-br from-brand-sage/10 to-brand-sea/10 rounded-3xl p-8 text-center flex flex-col justify-center"
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <Calendar className="text-brand-sage" size={24} />
@@ -171,7 +228,7 @@ export default function DestinationPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
-              ¿Listo para tu viaje a {destination.name}?
+              ¿Listo para tu viaje a {destination.country}?
             </h2>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
               Diseñamos un itinerario 100% a tu medida, sin comisiones ocultas.
