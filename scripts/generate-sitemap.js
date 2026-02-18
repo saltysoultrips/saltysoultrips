@@ -38,17 +38,7 @@ async function generateSitemap() {
     console.log(`✅ Found ${destinations.length} destinations in Sanity.`);
   } catch (error) {
     console.error("❌ Error fetching from Sanity:", error.message);
-
-    try {
-      console.log("⚠️  Falling back to local data...");
-      // Dynamic import to avoid issues if file is missing in future
-      const { destinationsData } =
-        await import("../src/data/destinationsData.js");
-      destinations = destinationsData;
-    } catch (localError) {
-      console.error("❌ Could not load local data either.");
-      destinations = [];
-    }
+    destinations = [];
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

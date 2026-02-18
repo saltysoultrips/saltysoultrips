@@ -5,7 +5,7 @@ import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import MessageCircle from "lucide-react/dist/esm/icons/message-circle";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
-import { getDestinationBySlug } from "../data/destinationsData";
+
 import { client, urlFor } from "../lib/sanity";
 import SEOHead from "../components/SEOHead";
 import Header from "../components/layout/Header";
@@ -14,9 +14,7 @@ import NotFound from "./NotFound";
 
 export default function DestinationPage() {
   const { slug } = useParams();
-  const [destination, setDestination] = React.useState(
-    getDestinationBySlug(slug),
-  );
+  const [destination, setDestination] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -27,17 +25,16 @@ export default function DestinationPage() {
 
         if (sanityDest) {
           // Map Sanity data to our internal structure
-          const localDest = getDestinationBySlug(sanityDest.slug.current);
           const mappedDest = {
             ...sanityDest,
             slug: sanityDest.slug.current,
             img_src: sanityDest.heroImage
               ? urlFor(sanityDest.heroImage).url()
-              : localDest?.img_src || null,
+              : null,
             hero: {
               image: sanityDest.heroImage
                 ? urlFor(sanityDest.heroImage).url()
-                : localDest?.hero?.image || null,
+                : null,
               subtitle: sanityDest.heroSubtitle,
               tagline: sanityDest.heroTagline,
             },

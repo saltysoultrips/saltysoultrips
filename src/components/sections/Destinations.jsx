@@ -5,11 +5,11 @@ import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import Star from "lucide-react/dist/esm/icons/star";
-import { destinationsData } from "../../data/destinationsData";
+
 import { client, urlFor } from "../../lib/sanity";
 
 export default function Destinations() {
-  const [destinations, setDestinations] = useState(destinationsData);
+  const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
     const fetchDestinations = async () => {
@@ -18,26 +18,17 @@ export default function Destinations() {
         const sanityDestinations = await client.fetch(query);
 
         if (sanityDestinations && sanityDestinations.length > 0) {
-          const mappedDestinations = sanityDestinations.map((d) => {
-            const localDest = destinationsData.find(
-              (ld) => ld.slug === d.slug?.current,
-            );
-            return {
-              ...d,
-              slug: d.slug?.current || "", // Fix: Sanity slug is an object
-              img_src: d.heroImage
-                ? urlFor(d.heroImage).url()
-                : localDest?.img_src || d.img_src,
-              hero: {
-                ...d.hero,
-                image: d.heroImage
-                  ? urlFor(d.heroImage).url()
-                  : localDest?.hero?.image || d.hero?.image,
-                subtitle: d.heroSubtitle || d.hero?.subtitle,
-                tagline: d.heroTagline || d.hero?.tagline,
-              },
-            };
-          });
+          const mappedDestinations = sanityDestinations.map((d) => ({
+            ...d,
+            slug: d.slug?.current || "", // Fix: Sanity slug is an object
+            img_src: d.heroImage ? urlFor(d.heroImage).url() : d.img_src,
+            hero: {
+              ...d.hero,
+              image: d.heroImage ? urlFor(d.heroImage).url() : d.hero?.image,
+              subtitle: d.heroSubtitle || d.hero?.subtitle,
+              tagline: d.heroTagline || d.hero?.tagline,
+            },
+          }));
           setDestinations(mappedDestinations);
         }
       } catch (error) {
