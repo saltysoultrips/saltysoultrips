@@ -3,7 +3,7 @@ import Star from "lucide-react/dist/esm/icons/star";
 import ChevronLeft from "lucide-react/dist/esm/icons/chevron-left";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 
-const experiences = [
+const fallbackExperiences = [
   {
     name: "Keyla",
     destination: "Le Barcarès",
@@ -94,9 +94,34 @@ const experiences = [
   },
 ];
 
+import { client, urlFor } from "../../lib/sanity";
+
 export default function Testimonials() {
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [experiences, setExperiences] = useState(fallbackExperiences);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const query = '*[_type == "testimonial"]';
+        const sanityTestimonials = await client.fetch(query);
+
+        if (sanityTestimonials && sanityTestimonials.length > 0) {
+          const mappedTestimonials = sanityTestimonials.map((t) => ({
+            ...t,
+            image: t.image ? urlFor(t.image).url() : null,
+          }));
+          setExperiences(mappedTestimonials);
+        }
+      } catch (error) {
+        console.error("Error fetching testimonials from Sanity:", error);
+        // Fallback is already set in initial state
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {

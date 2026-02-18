@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
@@ -6,10 +6,50 @@ import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import Star from "lucide-react/dist/esm/icons/star";
 import { destinationsData } from "../../data/destinationsData";
+import { client, urlFor } from "../../lib/sanity";
 
 export default function Destinations() {
+  const [destinations, setDestinations] = useState(destinationsData);
+
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const query = '*[_type == "destination"]';
+        const sanityDestinations = await client.fetch(query);
+
+        if (sanityDestinations && sanityDestinations.length > 0) {
+          const mappedDestinations = sanityDestinations.map((d) => {
+            const localDest = destinationsData.find(
+              (ld) => ld.slug === d.slug?.current,
+            );
+            return {
+              ...d,
+              slug: d.slug?.current || "", // Fix: Sanity slug is an object
+              img_src: d.heroImage
+                ? urlFor(d.heroImage).url()
+                : localDest?.img_src || d.img_src,
+              hero: {
+                ...d.hero,
+                image: d.heroImage
+                  ? urlFor(d.heroImage).url()
+                  : localDest?.hero?.image || d.hero?.image,
+                subtitle: d.heroSubtitle || d.hero?.subtitle,
+                tagline: d.heroTagline || d.hero?.tagline,
+              },
+            };
+          });
+          setDestinations(mappedDestinations);
+        }
+      } catch (error) {
+        console.error("Error fetching destinations from Sanity:", error);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
+
   // Group destinations by region
-  const destinationsByRegion = destinationsData.reduce((acc, dest) => {
+  const destinationsByRegion = destinations.reduce((acc, dest) => {
     const region = dest.region || "Otros";
     if (!acc[region]) {
       acc[region] = [];
@@ -125,11 +165,35 @@ export default function Destinations() {
                             className="relative h-[480px] rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500"
                           >
                             <img
-                              src={`${dest.img_src || dest.hero?.image}&w=800&q=80`}
+                              src={`${dest.img_src || dest.hero?.image}${
+                                (dest.img_src || dest.hero?.image)?.includes(
+                                  "?",
+                                )
+                                  ? "&"
+                                  : "?"
+                              }w=800&q=80`}
                               srcSet={`
-                                ${dest.img_src || dest.hero?.image}&w=400&q=80 400w,
-                                ${dest.img_src || dest.hero?.image}&w=800&q=80 800w,
-                                ${dest.img_src || dest.hero?.image}&w=1200&q=80 1200w
+                                ${dest.img_src || dest.hero?.image}${
+                                  (dest.img_src || dest.hero?.image)?.includes(
+                                    "?",
+                                  )
+                                    ? "&"
+                                    : "?"
+                                }w=400&q=80 400w,
+                                ${dest.img_src || dest.hero?.image}${
+                                  (dest.img_src || dest.hero?.image)?.includes(
+                                    "?",
+                                  )
+                                    ? "&"
+                                    : "?"
+                                }w=800&q=80 800w,
+                                ${dest.img_src || dest.hero?.image}${
+                                  (dest.img_src || dest.hero?.image)?.includes(
+                                    "?",
+                                  )
+                                    ? "&"
+                                    : "?"
+                                }w=1200&q=80 1200w
                               `}
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                               alt={`Viaje a ${dest.country} - ${dest.title}`}

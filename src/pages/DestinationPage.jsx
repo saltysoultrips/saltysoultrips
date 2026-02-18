@@ -6,6 +6,7 @@ import Calendar from "lucide-react/dist/esm/icons/calendar";
 import MessageCircle from "lucide-react/dist/esm/icons/message-circle";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import { getDestinationBySlug } from "../data/destinationsData";
+import { client, urlFor } from "../lib/sanity";
 import SEOHead from "../components/SEOHead";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -13,12 +14,58 @@ import NotFound from "./NotFound";
 
 export default function DestinationPage() {
   const { slug } = useParams();
-  const destination = getDestinationBySlug(slug);
+  const [destination, setDestination] = React.useState(
+    getDestinationBySlug(slug),
+  );
+  const [loading, setLoading] = React.useState(true);
 
-  // Si no se encuentra el destino, mostrar la página 404 personalizada
-  if (!destination) {
+  React.useEffect(() => {
+    const fetchDestination = async () => {
+      try {
+        const query = `*[_type == "destination" && slug.current == $slug][0]`;
+        const sanityDest = await client.fetch(query, { slug });
+
+        if (sanityDest) {
+          // Map Sanity data to our internal structure
+          const localDest = getDestinationBySlug(sanityDest.slug.current);
+          const mappedDest = {
+            ...sanityDest,
+            slug: sanityDest.slug.current,
+            img_src: sanityDest.heroImage
+              ? urlFor(sanityDest.heroImage).url()
+              : localDest?.img_src || null,
+            hero: {
+              image: sanityDest.heroImage
+                ? urlFor(sanityDest.heroImage).url()
+                : localDest?.hero?.image || null,
+              subtitle: sanityDest.heroSubtitle,
+              tagline: sanityDest.heroTagline,
+            },
+            // Ensure arrays exist
+            highlights: sanityDest.highlights || [],
+            about: sanityDest.about || [],
+          };
+          setDestination(mappedDest);
+        }
+      } catch (error) {
+        console.error("Error fetching destination from Sanity:", error);
+        // Fallback to local data (already set in initial state)
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestination();
+  }, [slug]);
+
+  // Si no se encuentra el destino (ni en local ni en Sanity), mostrar 404
+  if (!destination && !loading) {
     return <NotFound />;
   }
+
+  // Show loading state while fetching if no local data exists (optional, depends on UX preference)
+  // For now, we render with local data immediately if available (stale-while-revalidate strategy)
+  if (!destination) return <div className="h-screen bg-stone-50"></div>;
 
   const canonicalUrl = `https://www.saltysoultrips.com/${destination.slug}`;
   const whatsappMessage = `Hola! Me interesa un viaje personalizado a ${destination.country}. ¿Podrían ayudarme?`;
@@ -90,12 +137,22 @@ export default function DestinationPage() {
         {/* Hero Section */}
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <img
-            src={`${destination.hero.image}&w=1920&q=80`}
+            src={`${destination.hero.image}${
+              destination.hero.image?.includes("?") ? "&" : "?"
+            }w=1920&q=95&auto=format`}
             srcSet={`
-              ${destination.hero.image}&w=640&q=80 640w,
-              ${destination.hero.image}&w=1024&q=80 1024w,
-              ${destination.hero.image}&w=1600&q=80 1600w,
-              ${destination.hero.image}&w=1920&q=80 1920w
+              ${destination.hero.image}${
+                destination.hero.image?.includes("?") ? "&" : "?"
+              }w=640&q=90&auto=format 640w,
+              ${destination.hero.image}${
+                destination.hero.image?.includes("?") ? "&" : "?"
+              }w=1024&q=90&auto=format 1024w,
+              ${destination.hero.image}${
+                destination.hero.image?.includes("?") ? "&" : "?"
+              }w=1600&q=95&auto=format 1600w,
+              ${destination.hero.image}${
+                destination.hero.image?.includes("?") ? "&" : "?"
+              }w=2400&q=95&auto=format 2400w
             `}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
             alt={`Paisaje representativo de ${destination.country}`}
