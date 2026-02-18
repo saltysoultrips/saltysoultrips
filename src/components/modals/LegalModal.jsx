@@ -1,5 +1,5 @@
 import React from "react";
-import { X } from "lucide-react";
+import X from "lucide-react/dist/esm/icons/x";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function LegalModal({ isOpen, onClose, title, content }) {

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
 import { blogPosts } from "../../data/blogData";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import Calendar from "lucide-react/dist/esm/icons/calendar";
+import User from "lucide-react/dist/esm/icons/user";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
 
 export default function BlogList() {
   return (

@@ -26,6 +26,7 @@ export default function SEOHead({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content="es_ES" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -1,5 +1,8 @@
 import React from "react";
-import { Shield, Wifi, MapPin, Plane } from "lucide-react";
+import Shield from "lucide-react/dist/esm/icons/shield";
+import Wifi from "lucide-react/dist/esm/icons/wifi";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import Plane from "lucide-react/dist/esm/icons/plane";
 
 const discountOffers = [
   {
@@ -42,10 +45,7 @@ const discountOffers = [
 
 export default function Discounts() {
   return (
-    <section
-      id="discounts"
-      className="py-24 bg-gradient-to-br from-white to-stone-50 relative overflow-hidden"
-    >
+    <section className="py-24 bg-gradient-to-br from-white to-stone-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-brand-sky/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-sage/10 rounded-full blur-3xl"></div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
+import HelpCircle from "lucide-react/dist/esm/icons/help-circle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
@@ -70,7 +71,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

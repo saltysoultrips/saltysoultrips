@@ -1,7 +1,10 @@
 import { useParams, Navigate, Link } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
 import { blogPosts } from "../../data/blogData";
-import { Calendar, User, ArrowLeft, Tag } from "lucide-react";
+import Calendar from "lucide-react/dist/esm/icons/calendar";
+import User from "lucide-react/dist/esm/icons/user";
+import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
+import Tag from "lucide-react/dist/esm/icons/tag";
 
 export default function BlogPost() {
   const { slug } = useParams();

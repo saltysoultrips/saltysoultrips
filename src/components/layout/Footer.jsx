@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Instagram, Facebook, Mail } from "lucide-react";
+import Instagram from "lucide-react/dist/esm/icons/instagram";
+import Facebook from "lucide-react/dist/esm/icons/facebook";
+import Mail from "lucide-react/dist/esm/icons/mail";
 import LegalModal from "../modals/LegalModal";
 
 // Custom TikTok Icon since it might not be in the lucide version used or for specific styling

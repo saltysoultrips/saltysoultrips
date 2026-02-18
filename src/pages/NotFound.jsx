@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Plane } from "lucide-react";
+import Plane from "lucide-react/dist/esm/icons/plane";
 import SEOHead from "../components/SEOHead";
 
 export default function NotFound() {

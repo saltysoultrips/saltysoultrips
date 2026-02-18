@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { Plane, Compass, Star, Check, X } from "lucide-react";
+import Plane from "lucide-react/dist/esm/icons/plane";
+import Compass from "lucide-react/dist/esm/icons/compass";
+import Star from "lucide-react/dist/esm/icons/star";
+import Check from "lucide-react/dist/esm/icons/check";
+import X from "lucide-react/dist/esm/icons/x";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Services() {
@@ -59,7 +63,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 bg-stone-50">
+    <section className="py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">

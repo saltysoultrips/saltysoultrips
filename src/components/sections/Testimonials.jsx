@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import Star from "lucide-react/dist/esm/icons/star";
+import ChevronLeft from "lucide-react/dist/esm/icons/chevron-left";
+import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 
 const experiences = [
   {
@@ -136,10 +138,7 @@ export default function Testimonials() {
   }, [isPaused]);
 
   return (
-    <section
-      id="testimonials"
-      className="py-24 bg-gradient-to-br from-stone-50 to-white relative overflow-hidden"
-    >
+    <section className="py-24 bg-gradient-to-br from-stone-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-brand-sage/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand-sky/10 rounded-full blur-3xl"></div>

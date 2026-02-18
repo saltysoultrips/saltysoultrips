@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MousePointerClick } from "lucide-react";
+import MousePointerClick from "lucide-react/dist/esm/icons/mouse-pointer-click";
 
 export default function Hero() {
   return (

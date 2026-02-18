@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  X,
-  ChevronDown,
-  ChevronUp,
-  Check,
-  Shield,
-  Globe,
-  Info,
-} from "lucide-react";
+
+import X from "lucide-react/dist/esm/icons/x";
+import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
+import ChevronUp from "lucide-react/dist/esm/icons/chevron-up";
+import Check from "lucide-react/dist/esm/icons/check";
+import Shield from "lucide-react/dist/esm/icons/shield";
+import Globe from "lucide-react/dist/esm/icons/globe";
+import Info from "lucide-react/dist/esm/icons/info";
 
 const COOKIE_STORAGE_KEY = "saltysoultrips_cookie_consent";
 

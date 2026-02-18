@@ -87,7 +87,7 @@ function HomePage() {
             window.history.replaceState(null, "", window.location.pathname);
           }, 1000);
         }
-      }, 500);
+      }, 100);
     }
   }, [hash, navType]);
 
@@ -125,7 +125,7 @@ function HomePage() {
           </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection minHeight="400px">
+          <LazySection id="testimonials" minHeight="400px">
             <Testimonials />
           </LazySection>
         </Suspense>
@@ -135,12 +135,12 @@ function HomePage() {
           </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection minHeight="500px">
+          <LazySection id="faq" minHeight="500px">
             <FAQ />
           </LazySection>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection minHeight="300px">
+          <LazySection id="discounts" minHeight="300px">
             <Discounts />
           </LazySection>
         </Suspense>

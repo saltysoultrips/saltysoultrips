@@ -51,7 +51,7 @@ export default function LazySection({
   }, [rootMargin, id, location.hash]);
 
   return (
-    <div ref={containerRef} style={{ minHeight }} className="w-full">
+    <div ref={containerRef} id={id} style={{ minHeight }} className="w-full">
       {isVisible ? children : null}
     </div>
   );

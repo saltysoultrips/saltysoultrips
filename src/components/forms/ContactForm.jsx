@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Send,
-  CheckCircle,
-  Calendar,
-  Users,
-  MapPin,
-  Euro,
-  Briefcase,
-  Package,
-  User,
-  Baby,
-  Plus,
-  Minus,
-} from "lucide-react";
+import Send from "lucide-react/dist/esm/icons/send";
+import CheckCircle from "lucide-react/dist/esm/icons/check-circle";
+import Calendar from "lucide-react/dist/esm/icons/calendar";
+import Users from "lucide-react/dist/esm/icons/users";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import Euro from "lucide-react/dist/esm/icons/euro";
+import Briefcase from "lucide-react/dist/esm/icons/briefcase";
+import Package from "lucide-react/dist/esm/icons/package";
+import User from "lucide-react/dist/esm/icons/user";
+import Baby from "lucide-react/dist/esm/icons/baby";
+import Plus from "lucide-react/dist/esm/icons/plus";
+import Minus from "lucide-react/dist/esm/icons/minus";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactForm() {
@@ -88,7 +86,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-stone-100">
+    <section className="py-24 bg-stone-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">

@@ -1,6 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Smartphone, Link, Map, Calculator } from "lucide-react";
+import Smartphone from "lucide-react/dist/esm/icons/smartphone";
+import LinkId from "lucide-react/dist/esm/icons/link";
+import Map from "lucide-react/dist/esm/icons/map";
+import Calculator from "lucide-react/dist/esm/icons/calculator";
 
 export default function Deliverables() {
   const deliverableItems = [
@@ -13,7 +16,7 @@ export default function Deliverables() {
       bgColor: "bg-brand-sage/10",
     },
     {
-      icon: <Link size={32} />,
+      icon: <LinkId size={32} />,
       title: "Acceso Directo a Reservas",
       description:
         "Enlaces listos para que reserves vuelos, alojamientos y transportes en un clic, sin vueltas.",

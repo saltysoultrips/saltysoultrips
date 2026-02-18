@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Compass } from "lucide-react";
+import Compass from "lucide-react/dist/esm/icons/compass";
 
 export default function About() {
   return (

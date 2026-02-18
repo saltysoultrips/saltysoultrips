@@ -1,11 +1,9 @@
 import React from "react";
-import {
-  MessageSquare,
-  FileText,
-  CreditCard,
-  HeartHandshake,
-  MapPin,
-} from "lucide-react";
+import MessageSquare from "lucide-react/dist/esm/icons/message-square";
+import FileText from "lucide-react/dist/esm/icons/file-text";
+import CreditCard from "lucide-react/dist/esm/icons/credit-card";
+import HeartHandshake from "lucide-react/dist/esm/icons/heart-handshake";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -56,7 +54,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-serif font-bold text-stone-800">

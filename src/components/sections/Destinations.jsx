@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, MapPin, ChevronDown, Star } from "lucide-react";
+import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
+import Star from "lucide-react/dist/esm/icons/star";
 import { destinationsData } from "../../data/destinationsData";
 
 export default function Destinations() {
@@ -39,7 +42,7 @@ export default function Destinations() {
   };
 
   return (
-    <section id="destinations" className="py-24 bg-stone-50">
+    <section className="py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 text-center md:text-left">
           <div>
