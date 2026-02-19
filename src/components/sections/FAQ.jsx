@@ -1,70 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import HelpCircle from "lucide-react/dist/esm/icons/help-circle";
 import { motion, AnimatePresence } from "framer-motion";
-
-const faqs = [
-  {
-    question: "¿Ustedes hacen las reservas por mí?",
-    answer:
-      "No. Nosotros te mostramos exactamente DÓNDE y CÓMO reservar para conseguir el mejor precio y condiciones. Tú haces tus propias reservas y pagos. Así mantienes el control de tu dinero y tus datos personales.",
-  },
-  {
-    question: "¿Por qué debería pagar por algo que puedo hacer yo mismo?",
-    answer:
-      "Porque nosotros invertimos horas comparando cientos de opciones, conocemos trucos que no aparecen en Google, sabemos cuándo y dónde reservar para ahorrar, y optimizamos cada euro de tu presupuesto. Básicamente, te ahorramos tiempo, dinero y el estrés de planificar.",
-  },
-  {
-    question: "¿Cuánto tardan en preparar mi itinerario?",
-    answer:
-      "Entre 5-10 días hábiles dependiendo de la complejidad. Para viajes más urgentes podemos trabajar en modo express con un suplemento adicional.",
-  },
-  {
-    question:
-      "¿Qué pasa si los precios cambian después de entregarme el itinerario?",
-    answer:
-      "Los precios de vuelos y hoteles fluctúan constantemente. Te entregamos el itinerario con los precios actuales y te recomendamos reservar pronto. Si hay cambios significativos, te avisamos.",
-  },
-  {
-    question: "¿A qué destinos viajan?",
-    answer:
-      "Me especializo en destinos que he visitado personalmente, pero también organizo viajes a lugares que aún no he explorado. ",
-  },
-  {
-    question: "¿Por qué es mejor que yo haga mis propias reservas?",
-    answer:
-      "Tienes control total de tu dinero, de tus datos, acumulas puntos/millas en tus programas de fidelidad, acceso directo a atención al cliente de aerolíneas/hoteles, flexibilidad para elegir tus métodos de pago favoritos y sin intermediarios en caso de cambios o cancelaciones.",
-  },
-  {
-    question: "¿En qué se diferencian de una agencia de viajes tradicional?",
-    answer:
-      "Las agencias reservan por ti (marcan precios o cobran comisiones ocultas). Nosotros te ENSEÑAMOS a reservar directo y te ahorramos ese margen. Tú mantienes el control total.",
-  },
-  {
-    question: "¿Cómo sé que las recomendaciones son realmente las mejores?",
-    answer:
-      "Porque no tenemos conflicto de intereses. No ganamos comisiones, así que no tenemos razón para recomendarte algo más caro o peor. Solo queremos que quedes tan satisfecho que nos recomiendes a otros.",
-  },
-  {
-    question: "¿Qué pasa si necesito ayuda durante el viaje?",
-    answer:
-      "Aunque no gestionamos las reservas, estamos disponibles para orientación o consejos si surge algún imprevisto. Sin embargo, cualquier gestión de cambios/cancelaciones la haces directamente con el proveedor (aerolínea, hotel, etc.).",
-  },
-  {
-    question: "¿Me enseñan cómo hacer las reservas?",
-    answer:
-      "Absolutamente. Si no estás familiarizado con reservas online, te damos instrucciones paso a paso. Es más fácil de lo que parece y te damos toda la información necesaria.",
-  },
-  {
-    question:
-      "¿Los precios son fijos independientemente del número de personas?",
-    answer:
-      "Nuestros paquetes base están diseñados para familias o grupos de hasta 6 viajeros. A partir de 7 personas, se aplica un suplemento de gestión",
-  },
-];
+import { client } from "../../lib/sanity";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const query =
+          '*[_type == "faq"] | order(order asc){ question, answer }';
+        const sanityFaqs = await client.fetch(query);
+
+        if (sanityFaqs && sanityFaqs.length > 0) {
+          setFaqs(sanityFaqs);
+        }
+      } catch (error) {
+        console.error("Error fetching FAQs from Sanity:", error);
+      }
+    };
+
+    fetchFaqs();
+  }, []);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
