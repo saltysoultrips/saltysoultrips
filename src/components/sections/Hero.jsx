@@ -28,7 +28,7 @@ export default function Hero() {
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-            Viajes personalizados <br className="hidden md:block" />
+            Viajes personalizados <br className="hidden md:block" /> a tu medida
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-brand-sage font-medium max-w-2xl mx-auto leading-relaxed">

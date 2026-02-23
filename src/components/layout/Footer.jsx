@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Instagram from "lucide-react/dist/esm/icons/instagram";
 import Facebook from "lucide-react/dist/esm/icons/facebook";
 import Mail from "lucide-react/dist/esm/icons/mail";
@@ -481,6 +482,79 @@ export default function Footer() {
                     </a>
                   </p>
                 </div>
+              </div>
+
+              {/* Destinos SEO Column */}
+              <div className="mb-8 md:mb-0 text-center md:text-left">
+                <h4 className="text-sm font-bold text-stone-800 uppercase tracking-widest mb-4">
+                  Destinos Destacados
+                </h4>
+                <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-stone-500 text-sm">
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-tailandia"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Tailandia
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-bali"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Bali
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-maldivas"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Maldivas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-nueva-york"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Nueva York
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-londres"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Londres
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-menorca"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Menorca
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-abu-dhabi"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Abu Dhabi
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/destinos/viajes-a-portugal"
+                      className="hover:text-brand-sage transition-colors"
+                    >
+                      Portugal
+                    </Link>
+                  </li>
+                </ul>
               </div>
 
               <div className="flex space-x-6">

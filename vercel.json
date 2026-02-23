@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.saltysoultrips.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -18,7 +18,8 @@ export default function BlogList() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-sage mb-6">
-              Diario de Viaje
+              Blog de Viajes: <br className="hidden md:block" /> Inspiración y
+              Guías
             </h1>
             <p className="text-xl text-stone-600">
               Inspiración, historias y secretos para tu próxima gran aventura.
