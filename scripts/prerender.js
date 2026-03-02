@@ -1,3 +1,9 @@
+// Skip pre-rendering on Vercel (Puppeteer can't run there)
+if (process.env.VERCEL) {
+  console.log("⏭️  Skipping pre-rendering on Vercel (CI environment)");
+  process.exit(0);
+}
+
 import puppeteer from "puppeteer";
 import { createServer } from "http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
