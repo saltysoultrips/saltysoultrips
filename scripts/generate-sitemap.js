@@ -11,7 +11,6 @@ const SITEMAP_PATH = path.join(__dirname, "../public/sitemap.xml");
 const DOMAIN = "https://www.saltysoultrips.com";
 
 // Sanity Client Setup
-// We use a public read-only token or just projectId/dataset for public data
 const client = createClient({
   projectId: "wzn5s2a9",
   dataset: "production",
@@ -22,6 +21,13 @@ const client = createClient({
 const staticRoutes = [
   { url: "/", changefreq: "weekly", priority: 1.0 },
   { url: "/blog", changefreq: "weekly", priority: 0.8 },
+];
+
+// Blog post slugs (hardcoded since they come from local data)
+const blogPosts = [
+  { slug: "mejor-epoca-viajar-japon" },
+  { slug: "consejos-viaje-maldivas-barato" },
+  { slug: "imprescindibles-tanzania-safari" },
 ];
 
 async function generateSitemap() {
@@ -51,6 +57,18 @@ ${staticRoutes
     <lastmod>${currentDate}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
+  </url>`,
+  )
+  .join("\n")}
+
+  <!-- Blog Post Routes -->
+${blogPosts
+  .map(
+    (post) => `  <url>
+    <loc>${DOMAIN}/blog/${post.slug}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>`,
   )
   .join("\n")}

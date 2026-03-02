@@ -9,7 +9,6 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
 import SEOHead from "./components/SEOHead";
-import LazySection from "./components/utils/LazySection";
 
 // Lazy load components that aren't immediately visible
 const About = lazy(() => import("./components/sections/About"));
@@ -105,44 +104,44 @@ function HomePage() {
           <About />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="destinations" minHeight="800px">
+          <div id="destinations">
             <Destinations />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="how-it-works" minHeight="600px">
+          <div id="how-it-works">
             <HowItWorks />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="services" minHeight="600px">
+          <div id="services">
             <Services />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection minHeight="400px">
+          <div>
             <Deliverables />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="testimonials" minHeight="400px">
+          <div id="testimonials">
             <Testimonials />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="contact" minHeight="600px">
+          <div id="contact">
             <ContactForm />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="faq" minHeight="500px">
+          <div id="faq">
             <FAQ />
-          </LazySection>
+          </div>
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <LazySection id="discounts" minHeight="300px">
+          <div id="discounts">
             <Discounts />
-          </LazySection>
+          </div>
         </Suspense>
       </main>
       <Footer />

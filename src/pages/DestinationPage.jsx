@@ -64,7 +64,7 @@ export default function DestinationPage() {
   // For now, we render with local data immediately if available (stale-while-revalidate strategy)
   if (!destination) return <div className="h-screen bg-stone-50"></div>;
 
-  const canonicalUrl = `https://www.saltysoultrips.com/${destination.slug}`;
+  const canonicalUrl = `https://www.saltysoultrips.com/destinos/${destination.slug}`;
   const whatsappMessage = `Hola! Me interesa un viaje personalizado a ${destination.country}. ¿Podrían ayudarme?`;
   const whatsappUrl = `https://wa.me/34611794842?text=${encodeURIComponent(whatsappMessage)}`;
 
