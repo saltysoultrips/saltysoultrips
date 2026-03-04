@@ -118,11 +118,16 @@ export default function DestinationPage() {
 
   const schemaData = [destinationSchema, breadcrumbSchema];
 
+  const seoTitle = `Viajes a ${destination.country}: ${destination.title} | SaltySoulTrips`;
+  const seoDescription =
+    destination.metaDescription ||
+    `Diseñamos tu viaje personalizado a ${destination.country} a medida. Descubre itinerarios únicos y sin comisiones ocultas para tu próxima aventura: ${destination.title}.`;
+
   return (
     <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
       <SEOHead
-        title={destination.title}
-        description={destination.metaDescription}
+        title={seoTitle}
+        description={seoDescription}
         canonicalUrl={canonicalUrl}
         ogImage={destination.hero.image}
         schemaData={schemaData}
