@@ -90,12 +90,135 @@ function HomePage() {
     }
   }, [hash, navType]);
 
+  const travelAgencySchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    name: "SaltySoulTrips",
+    image: "https://www.saltysoultrips.com/resto/logo.png",
+    "@id": "https://www.saltysoultrips.com",
+    url: "https://www.saltysoultrips.com",
+    telephone: "+34611794842",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Barcelona",
+      addressRegion: "Barcelona",
+      addressCountry: "ES",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.3851,
+      longitude: 2.1734,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+    sameAs: [
+      "https://www.instagram.com/saltysoultrips/",
+      "https://www.tiktok.com/@saltysoultrips",
+    ],
+    priceRange: "$$",
+  };
+
+  const productSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Paquete Explora - Itinerario de Viaje Personalizado",
+      description:
+        "Itinerario digital completo con transporte, alojamiento y actividades recomendadas.",
+      brand: {
+        "@type": "Brand",
+        name: "SaltySoulTrips",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://www.saltysoultrips.com/#services",
+        priceCurrency: "EUR",
+        price: "50",
+        availability: "https://schema.org/InStock",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Paquete Vive - Asesoría de Viaje Completa",
+      description:
+        "Incluye todo lo del Pack Explora más asesoría personalizada y consejos locales.",
+      brand: {
+        "@type": "Brand",
+        name: "SaltySoulTrips",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://www.saltysoultrips.com/#services",
+        priceCurrency: "EUR",
+        price: "90",
+        availability: "https://schema.org/InStock",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Paquete Conecta - Planificación de Viaje Premium",
+      description:
+        "La experiencia más completa con soporte continuo y máxima personalización.",
+      brand: {
+        "@type": "Brand",
+        name: "SaltySoulTrips",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://www.saltysoultrips.com/#services",
+        priceCurrency: "EUR",
+        price: "130",
+        availability: "https://schema.org/InStock",
+      },
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "¿Qué es SaltySoulTrips?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "SaltySoulTrips es un servicio de asesoría y planificación de viajes personalizados donde diseñamos tu itinerario a medida para que tú solo tengas que reservar y disfrutar.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Cómo recibo mi itinerario?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Recibirás un documento digital detallado con todos los enlaces directos para reservar tus vuelos, hoteles y actividades recomendadas.",
+        },
+      },
+    ],
+  };
+
+  const homeSchema = [travelAgencySchema, ...productSchema, faqSchema];
+
   return (
     <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
       <SEOHead
         title="Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos"
         description="Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!"
         canonicalUrl="https://www.saltysoultrips.com/"
+        schemaData={homeSchema}
       />
       <Header />
       <main>

@@ -73,7 +73,8 @@ export default function Services() {
             Elige tu Experiencia
           </h2>
           <p className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">
-            Desde una guía esencial hasta un diseño completo de tu aventura.
+            Desde una guía esencial hasta un diseño completo de tu aventura a
+            medida.
           </p>
         </div>
 
