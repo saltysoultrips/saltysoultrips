@@ -23,28 +23,27 @@ const staticRoutes = [
   { url: "/blog", changefreq: "weekly", priority: 0.8 },
 ];
 
-// Blog post slugs (hardcoded since they come from local data)
-const blogPosts = [
-  { slug: "mejor-epoca-viajar-japon" },
-  { slug: "consejos-viaje-maldivas-barato" },
-  { slug: "imprescindibles-tanzania-safari" },
-];
-
 async function generateSitemap() {
   console.log("🗺️  Generating Sitemap...");
   const currentDate = new Date().toISOString().split("T")[0];
 
   let destinations = [];
+  let blogPosts = [];
 
   try {
     // Fetch slugs from Sanity
-    console.log("🔌 Fetching destinations from Sanity...");
-    const query = '*[_type == "destination"]{ "slug": slug.current }';
-    destinations = await client.fetch(query);
+    console.log("🔌 Fetching data from Sanity...");
+    
+    const destQuery = '*[_type == "destination"]{ "slug": slug.current }';
+    destinations = await client.fetch(destQuery);
     console.log(`✅ Found ${destinations.length} destinations in Sanity.`);
+
+    const postQuery = '*[_type == "post"]{ "slug": slug.current }';
+    blogPosts = await client.fetch(postQuery);
+    console.log(`✅ Found ${blogPosts.length} blog posts in Sanity.`);
+    
   } catch (error) {
     console.error("❌ Error fetching from Sanity:", error.message);
-    destinations = [];
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -63,6 +62,7 @@ ${staticRoutes
 
   <!-- Blog Post Routes -->
 ${blogPosts
+  .filter((p) => p.slug)
   .map(
     (post) => `  <url>
     <loc>${DOMAIN}/blog/${post.slug}</loc>

@@ -1,11 +1,38 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
-import { blogPosts } from "../../data/blogData";
+import { client, urlFor } from "../../lib/sanity";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
-import User from "lucide-react/dist/esm/icons/user";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
 
 export default function BlogList() {
+  const [blogPosts, setBlogPosts] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const query = `*[_type == "post"] | order(date desc)`;
+        const data = await client.fetch(query);
+        setBlogPosts(data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
+        <div className="text-stone-400">Cargando blog...</div>
+      </div>
+    );
+  }
+
   return (
     <>
       <SEOHead
@@ -26,58 +53,53 @@ export default function BlogList() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <article
-                key={post.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
-              >
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className="block relative overflow-hidden h-48"
+          {blogPosts.length === 0 ? (
+            <div className="text-center py-20 text-stone-500">
+              No hay artículos publicados todavía.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <article
+                  key={post._id}
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
                 >
-                  <img
-                    src={post.coverImage}
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-sage uppercase tracking-wider">
-                    {post.category}
-                  </div>
-                </Link>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center gap-4 text-xs text-stone-500 mb-3">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <User className="w-3 h-3" />
-                      {post.author}
-                    </span>
-                  </div>
-
-                  <Link to={`/blog/${post.slug}`} className="block mb-3">
-                    <h2 className="text-xl font-display font-bold text-brand-sage leading-tight group-hover:text-brand-ochre transition-colors">
-                      {post.title}
-                    </h2>
-                  </Link>
-
-                  <p className="text-stone-600 text-sm line-clamp-3 mb-4 flex-grow">
-                    {post.excerpt}
-                  </p>
-
                   <Link
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-brand-sage font-medium text-sm hover:text-brand-ochre transition-colors mt-auto"
+                    to={`/blog/${post.slug.current}`}
+                    className="block relative overflow-hidden h-48"
                   >
-                    Leer artículo <ArrowRight className="w-4 h-4 ml-1" />
+                    <img
+                      src={post.coverImage ? urlFor(post.coverImage).url() : ""}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-center gap-4 text-xs text-stone-500 mb-3">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {post.date}
+                      </span>
+                    </div>
+
+                    <Link to={`/blog/${post.slug.current}`} className="block mb-3">
+                      <h2 className="text-xl font-display font-bold text-brand-sage leading-tight group-hover:text-brand-ochre transition-colors">
+                        {post.title}
+                      </h2>
+                    </Link>
+
+                    <Link
+                      to={`/blog/${post.slug.current}`}
+                      className="inline-flex items-center text-brand-sage font-medium text-sm hover:text-brand-ochre transition-colors mt-auto"
+                    >
+                      Leer artículo <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

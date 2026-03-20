@@ -1,14 +1,108 @@
+import React from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
+import { PortableText } from "@portabletext/react";
 import SEOHead from "../../components/SEOHead";
-import { blogPosts } from "../../data/blogData";
+import { client, urlFor } from "../../lib/sanity";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
-import User from "lucide-react/dist/esm/icons/user";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
-import Tag from "lucide-react/dist/esm/icons/tag";
+
+const components = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) return null;
+      return (
+        <figure className="my-8">
+          <img
+            src={urlFor(value).width(1200).fit("max").auto("format").url()}
+            alt={value.alt || "Imagen del blog"}
+            className="rounded-2xl w-full"
+          />
+          {value.caption && (
+            <figcaption className="text-center text-sm text-stone-500 mt-2 font-sans">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+  },
+  block: {
+    h2: ({ children }) => (
+      <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-sage mt-12 mb-6">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl md:text-2xl font-display font-bold text-brand-sage mt-8 mb-4">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-lg md:text-xl font-display font-bold text-brand-sage mt-6 mb-3">
+        {children}
+      </h4>
+    ),
+    normal: ({ children }) => (
+      <p className="mb-6 leading-relaxed text-stone-700">{children}</p>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-brand-sage pl-6 my-8 italic text-stone-600 bg-stone-50 py-4 rounded-r-lg text-xl">
+        {children}
+      </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="list-disc pl-6 mb-8 space-y-2 text-stone-700">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="list-decimal pl-6 mb-8 space-y-2 text-stone-700">{children}</ol>
+    ),
+  },
+  marks: {
+    link: ({ children, value }) => {
+      const rel = !value.href.startsWith("/") ? "noreferrer noopener" : undefined;
+      return (
+        <a
+          href={value.href}
+          rel={rel}
+          className="text-brand-sage underline decoration-brand-sage/30 underline-offset-4 hover:decoration-brand-sage transition-all"
+        >
+          {children}
+        </a>
+      );
+    },
+  },
+};
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const post = blogPosts.find((p) => p.slug === slug);
+  const [post, setPost] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const query = `*[_type == "post" && slug.current == $slug][0]`;
+        const data = await client.fetch(query, { slug });
+        setPost(data);
+      } catch (error) {
+        console.error("Error fetching blog post:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
+        <div className="text-stone-400">Cargando artículo...</div>
+      </div>
+    );
+  }
 
   if (!post) {
     return <Navigate to="/404" replace />;
@@ -19,13 +113,13 @@ export default function BlogPost() {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    image: [post.coverImage],
+    image: [post.coverImage ? urlFor(post.coverImage).url() : ""],
     datePublished: post.date,
     dateModified: post.date,
     author: [
       {
         "@type": "Person",
-        name: post.author,
+        name: "SaltySoulTrips",
         url: "https://www.saltysoultrips.com/about",
       },
     ],
@@ -37,21 +131,20 @@ export default function BlogPost() {
         url: "https://www.saltysoultrips.com/resto/logoGoogle.png",
       },
     },
-    description: post.excerpt,
+    description: post.title,
   };
 
   return (
     <>
       <SEOHead
         title={`${post.title} | Blog SaltySoulTrips`}
-        description={post.excerpt}
-        canonicalUrl={`https://www.saltysoultrips.com/blog/${post.slug}`}
-        ogImage={post.coverImage}
+        description={post.title}
+        canonicalUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
+        ogImage={post.coverImage ? urlFor(post.coverImage).url() : ""}
         schemaData={articleSchema}
       />
 
       <article className="pt-24 pb-16 min-h-screen bg-stone-50">
-        {/* Hero Section */}
         <div className="container mx-auto px-4 max-w-4xl">
           <Link
             to="/blog"
@@ -62,7 +155,7 @@ export default function BlogPost() {
 
           <div className="relative rounded-3xl overflow-hidden aspect-video shadow-lg mb-8">
             <img
-              src={post.coverImage}
+              src={post.coverImage ? urlFor(post.coverImage).url() : ""}
               alt={post.title}
               className="w-full h-full object-cover"
             />
@@ -70,14 +163,8 @@ export default function BlogPost() {
 
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm -mt-20 relative z-10 mx-4 md:mx-0">
             <div className="flex flex-wrap gap-4 items-center text-sm text-stone-500 mb-6 border-b border-stone-100 pb-6">
-              <span className="bg-brand-sage/10 text-brand-sage px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
-                <Tag className="w-3 h-3" /> {post.category}
-              </span>
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" /> {post.date}
-              </span>
-              <span className="flex items-center gap-1">
-                <User className="w-4 h-4" /> {post.author}
               </span>
             </div>
 
@@ -85,10 +172,9 @@ export default function BlogPost() {
               {post.title}
             </h1>
 
-            <div
-              className="prose prose-stone prose-lg max-w-none text-stone-700 font-serif leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div className="prose-custom font-serif text-lg">
+              <PortableText value={post.content} components={components} />
+            </div>
           </div>
         </div>
       </article>

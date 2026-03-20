@@ -23,13 +23,6 @@ const sanityClient = createClient({
   apiVersion: "2024-02-18",
 });
 
-// Blog post slugs (from local data)
-const blogSlugs = [
-  "mejor-epoca-viajar-japon",
-  "consejos-viaje-maldivas-barato",
-  "imprescindibles-tanzania-safari",
-];
-
 // Simple static file server for the dist directory
 function startServer(port) {
   return new Promise((resolve) => {
@@ -83,16 +76,13 @@ function startServer(port) {
 async function getRoutes() {
   const routes = ["/", "/blog"];
 
-  // Add blog posts
-  for (const slug of blogSlugs) {
-    routes.push(`/blog/${slug}`);
-  }
-
-  // Fetch destination slugs from Sanity
+  // Fetch slugs from Sanity
   try {
-    console.log("🔌 Fetching destination slugs from Sanity...");
-    const query = '*[_type == "destination"]{ "slug": slug.current }';
-    const destinations = await sanityClient.fetch(query);
+    console.log("🔌 Fetching slugs from Sanity...");
+    
+    // Destinations
+    const destQuery = '*[_type == "destination"]{ "slug": slug.current }';
+    const destinations = await sanityClient.fetch(destQuery);
     console.log(`✅ Found ${destinations.length} destinations`);
 
     for (const dest of destinations) {
@@ -100,8 +90,19 @@ async function getRoutes() {
         routes.push(`/destinos/${dest.slug}`);
       }
     }
+
+    // Blog Posts
+    const postQuery = '*[_type == "post"]{ "slug": slug.current }';
+    const posts = await sanityClient.fetch(postQuery);
+    console.log(`✅ Found ${posts.length} blog posts`);
+
+    for (const post of posts) {
+      if (post.slug) {
+        routes.push(`/blog/${post.slug}`);
+      }
+    }
   } catch (error) {
-    console.error("❌ Error fetching destinations from Sanity:", error.message);
+    console.error("❌ Error fetching from Sanity:", error.message);
   }
 
   return routes;
