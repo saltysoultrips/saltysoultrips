@@ -125,26 +125,33 @@ export default function Discounts() {
                     className="max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                
+
                 {/* Content Side */}
                 <div className="w-full lg:w-2/3 p-10 lg:p-14 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left relative">
                   {/* Background accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-brand-sage/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-brand-sage/10 transition-colors duration-500"></div>
-                  
+
                   <div className="max-w-xl relative z-10">
                     <div className="flex items-center gap-3 mb-4 justify-center md:justify-start">
                       <div className="w-8 h-8 rounded-full bg-brand-sage/10 flex items-center justify-center">
                         <Car className="text-brand-sage" size={18} />
                       </div>
-                      <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">Recomendado por SaltySoulTrips</span>
+                      <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
+                        Recomendado por SaltySoulTrips
+                      </span>
                     </div>
                     <p className="text-2xl text-stone-700 font-serif font-medium leading-tight">
-                      Para moverte por tu cuenta, siempre reservamos nuestro vehículo a través de <span className="text-brand-sage font-bold italic">DiscoverCars</span>.
+                      Para moverte por tu cuenta, siempre reservamos nuestro
+                      vehículo a través de{" "}
+                      <span className="text-brand-sage font-bold italic">
+                        DiscoverCars
+                      </span>
+                      .
                     </p>
                   </div>
-                  
+
                   <a
-                    href="https://www.discovercars.com?a_aid=saltysoultrips&a_bid=f29909e9"
+                    href="https://www.discovercars.com/?a_aid=saltysoultrips"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative z-10 whitespace-nowrap px-12 py-5 bg-stone-800 hover:bg-brand-sage text-white font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-brand-sage/30 hover:-translate-y-1 active:scale-95"
@@ -153,14 +160,14 @@ export default function Discounts() {
                   </a>
                 </div>
               </div>
-              
+
               {/* Tracking Pixel (hidden) */}
-              <img 
-                style={{ border: 0, display: 'none' }} 
-                src="https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&amp;a_bid=f29909e9" 
-                width="1" 
-                height="1" 
-                alt="" 
+              <img
+                style={{ border: 0, display: "none" }}
+                src="https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&amp;a_bid=f29909e9"
+                width="1"
+                height="1"
+                alt=""
               />
             </div>
           </div>
@@ -180,8 +187,10 @@ export default function Discounts() {
               />
               <div className="h-px w-12 bg-stone-300 hidden md:block"></div>
               <p className="text-stone-600 font-medium text-lg">
-                <span className="font-bold uppercase tracking-tight">Siteminder</span> | El mayor
-                proveedor del mundo de tecnología para hoteles
+                <span className="font-bold uppercase tracking-tight">
+                  Siteminder
+                </span>{" "}
+                | El mayor proveedor del mundo de tecnología para hoteles
               </p>
             </div>
           </div>
@@ -198,4 +207,3 @@ export default function Discounts() {
     </section>
   );
 }
-

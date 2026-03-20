@@ -646,7 +646,7 @@ export default function Footer() {
                   />
                 </a>
                 <a
-                  href="https://www.discovercars.com?a_aid=saltysoultrips&a_bid=f29909e9"
+                  href="https://www.discovercars.com/?a_aid=saltysoultrips"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="opacity-70 hover:opacity-100 transition-opacity duration-300"
