@@ -11,7 +11,7 @@ const discountOffers = [
     logo: "/resto/heymondo.png",
     title: "Tu seguro de viaje",
     description: "Viaja protegido con el mejor seguro de viajes",
-    buttonText: "5% de descuento",
+    buttonText: "15% de descuento",
     url: "https://heymondo.es/?utm_medium=Afiliado&utm_source=SALTYSOULTRIPS&utm_campaign=PRINCIPAL&cod_descuento=SALTYSOULTRIPS&ag_campaign=WEB&agencia=ABWmUCzTeUoAOchm5JnRMQLaoEQzCpUNGrl5Ty4s",
     icon: Shield,
   },
