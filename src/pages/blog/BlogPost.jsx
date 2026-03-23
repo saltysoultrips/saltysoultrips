@@ -11,14 +11,14 @@ const components = {
     image: ({ value }) => {
       if (!value?.asset?._ref) return null;
       return (
-        <figure className="my-8">
+        <figure className="my-10 flex flex-col items-center">
           <img
-            src={urlFor(value).width(1200).fit("max").auto("format").url()}
+            src={urlFor(value).width(1000).height(562).fit("crop").auto("format").url()}
             alt={value.alt || "Imagen del blog"}
-            className="rounded-2xl w-full"
+            className="rounded-2xl w-full max-w-3xl aspect-video object-cover shadow-sm"
           />
           {value.caption && (
-            <figcaption className="text-center text-sm text-stone-500 mt-2 font-sans">
+            <figcaption className="text-center text-sm text-stone-500 mt-3 font-sans text-balance">
               {value.caption}
             </figcaption>
           )}
