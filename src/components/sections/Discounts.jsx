@@ -187,10 +187,8 @@ export default function Discounts() {
               />
               <div className="h-px w-12 bg-stone-300 hidden md:block"></div>
               <p className="text-stone-600 font-medium text-lg">
-                <span className="font-bold uppercase tracking-tight">
-                  Siteminder
-                </span>{" "}
-                | El mayor proveedor del mundo de tecnología para hoteles
+                <b>SiteMinder</b> | El mayor proveedor del mundo de tecnología
+                para hoteles
               </p>
             </div>
           </div>
