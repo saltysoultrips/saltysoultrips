@@ -12,6 +12,7 @@ import User from "lucide-react/dist/esm/icons/user";
 import Baby from "lucide-react/dist/esm/icons/baby";
 import Plus from "lucide-react/dist/esm/icons/plus";
 import Minus from "lucide-react/dist/esm/icons/minus";
+import PawPrint from "lucide-react/dist/esm/icons/paw-print";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactForm() {
@@ -25,6 +26,7 @@ export default function ContactForm() {
   } = useForm({
     defaultValues: {
       travelers: "Adultos: 1, Niños: 0, Bebés: 0",
+      hasPets: "no",
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,6 +41,7 @@ export default function ContactForm() {
   });
 
   const watchDateStart = watch("dateStart");
+  const watchHasPets = watch("hasPets");
 
   // Update hidden form field whenever counts change
   useEffect(() => {
@@ -526,6 +529,58 @@ export default function ContactForm() {
                       </p>
                     </div>
                   </div>
+                </div>
+
+                {/* Pets */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                  <div>
+                    <label className="block text-sm font-medium text-stone-700 mb-2">
+                      ¿Viajas con mascotas?
+                    </label>
+                    <div className="relative">
+                      <PawPrint
+                        className="absolute left-4 top-3.5 text-stone-400"
+                        size={18}
+                      />
+                      <select
+                        {...register("hasPets")}
+                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
+                      >
+                        <option value="no">No, por ahora no</option>
+                        <option value="yes">Sí, somos un equipo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <AnimatePresence>
+                    {watchHasPets === "yes" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <label className="block text-sm font-medium text-stone-700 mb-2">
+                          ¿Qué mascota(s) viene(n)?
+                        </label>
+                        <input
+                          {...register("petsDetails", {
+                            required:
+                              watchHasPets === "yes"
+                                ? "Dinos qué mascotas te acompañan"
+                                : false,
+                          })}
+                          type="text"
+                          className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                          placeholder="Perro, gato, elefante..."
+                        />
+                        {errors.petsDetails && (
+                          <span className="text-red-500 text-sm mt-1">
+                            {errors.petsDetails.message}
+                          </span>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Extras & Message */}

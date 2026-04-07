@@ -646,6 +646,21 @@ export default function Footer() {
                   />
                 </a>
                 <a
+                  href="https://www.tkqlhce.com/click-101693924-12119568"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+                >
+                  <img
+                    src="/resto/iberia.png"
+                    alt="Iberia"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
+                  />
+                </a>
+                <a
                   href="https://www.discovercars.com/?a_aid=saltysoultrips"
                   target="_blank"
                   rel="noopener noreferrer"
