@@ -42,6 +42,16 @@ const discountOffers = [
     url: "https://static.airhelp.com/affiliate/affiliate_form_es_air21965.html?utm_source=pap&utm_medium=affiliate&utm_campaign=aff-6952a80eaa308&a_aid=6952a80eaa308&a_bid=588e3a14&partner_id=6952a80eaa308",
     icon: Plane,
   },
+  {
+    name: "Iberia",
+    logo: "/resto/iberia.png",
+    title: "Encuentra tus vuelos",
+    description: "Vuela a cualquier rincón del mundo al mejor precio.",
+    buttonText: "Reservar",
+    url: "https://www.tkqlhce.com/click-101693924-12119568",
+    trackingPixel: "https://www.lduhtrp.net/image-101693924-12119568",
+    icon: Plane,
+  },
 ];
 
 export default function Discounts() {
@@ -66,13 +76,13 @@ export default function Discounts() {
         </div>
 
         {/* Discount Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {discountOffers.map((offer, index) => {
             const Icon = offer.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] xl:w-[calc(20%-1.6rem)] bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group"
               >
                 <div className="p-8 flex flex-col items-center text-center h-full">
                   {/* Icon */}
@@ -108,13 +118,24 @@ export default function Discounts() {
                   >
                     {offer.buttonText}
                   </a>
+
+                  {/* Tracking Pixel */}
+                  {offer.trackingPixel && (
+                    <img
+                      src={offer.trackingPixel}
+                      width="1"
+                      height="1"
+                      style={{ border: 0, display: "none" }}
+                      alt=""
+                    />
+                  )}
                 </div>
               </div>
             );
           })}
 
-          {/* Custom DiscoverCars Banner - Now part of the grid and spanning all columns */}
-          <div className="md:col-span-2 lg:col-span-4 mt-4">
+          {/* Custom DiscoverCars Banner */}
+          <div className="w-full mt-4">
             <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group">
               <div className="flex flex-col lg:flex-row items-stretch min-h-[180px]">
                 {/* Logo Side */}
