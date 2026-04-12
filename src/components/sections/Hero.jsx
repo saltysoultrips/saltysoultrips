@@ -6,9 +6,23 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] left-0 w-[500px] h-[500px] bg-brand-sage/20 rounded-full blur-[100px] opacity-70"></div>
-        <div className="absolute bottom-[10%] right-0 w-[400px] h-[400px] bg-brand-sky/30 rounded-full blur-[100px] opacity-70"></div>
+      <div className="absolute inset-0 z-0 bg-white">
+        {/* Soft Blue/Teal Glow - Center */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at center, rgba(141, 201, 219, 0.4) 0%, transparent 70%)",
+            opacity: 0.6,
+          }}
+        />
+        {/* Soft Sky Blue Glow - Top Right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at top right, rgba(186, 230, 253, 0.5), transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -21,21 +35,12 @@ export default function Hero() {
             <img
               src="/resto/logo.png"
               alt="Saltysoultrips"
-              className="h-40 w-auto object-contain"
-              width="300"
-              height="160"
+              className="h-56 md:h-80 w-auto object-contain"
+              width="600"
+              height="320"
               fetchPriority="high"
             />
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-            Viajes personalizados <br className="hidden md:block" /> a tu medida
-          </h1>
-
-          <p className="mt-4 text-base sm:text-lg text-brand-sage font-medium max-w-2xl mx-auto leading-relaxed">
-            "Yo hago todo el trabajo pesado: busco los mejores vuelos, hoteles y
-            rutas. Tú solo tienes que hacer clic y reservar con los enlaces que
-            te enviaré."
-          </p>
           <br></br>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <a

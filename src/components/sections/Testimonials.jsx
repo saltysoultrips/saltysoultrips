@@ -163,10 +163,26 @@ export default function Testimonials() {
   }, [isPaused]);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-stone-50 to-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-brand-sage/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand-sky/10 rounded-full blur-3xl"></div>
+    <section className="relative py-24 overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 z-0 bg-white">
+        {/* Soft Blue/Teal Glow - Center */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at center, rgba(141, 201, 219, 0.4) 0%, transparent 70%)",
+            opacity: 0.6,
+          }}
+        />
+        {/* Soft Sky Blue Glow - Top Right */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(circle at top right, rgba(186, 230, 253, 0.5), transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">

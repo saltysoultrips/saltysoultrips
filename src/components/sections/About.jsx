@@ -53,47 +53,33 @@ export default function About() {
                 Conóceme
               </span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-                Hola, soy Angela. <br />
+                Hola, soy Ángela. <br />
                 <span className="text-stone-400 text-3xl md:text-4xl block mt-2">
                   21 años. Pasaporte en mano.
                 </span>
               </h2>
-              <br></br>
               <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
                 <p>
-                  Me especializo en destinos que he visitado personalmente, pero
-                  también organizo viajes a lugares que aún no he explorado.
-                </p>
-                <p className="text-lg text-stone-600 mb-6 leading-relaxed">
-                  Después de años organizando viajes por todo el mundo, me di
-                  cuenta de una realidad: la mayoría de la gente pierde horas de
-                  su tiempo y mucho dinero por no saber dónde buscar, así nació
-                  Saltysoultrips.
+                  Te ayudo a organizar viajes personalizados sin que pierdas horas buscando ni pagues de más.
                 </p>
                 <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-                  <h4 className="font-serif font-bold text-xl text-stone-800 mb-4">
-                    Lo que debes saber:
-                  </h4>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <span className="text-brand-sage text-xl mt-1">✓</span>
                       <span className="text-stone-600">
-                        <strong>Tú tienes el control:</strong> Yo no toco tu
-                        dinero. Tú haces las reservas con mis enlaces.
+                        <strong>Tú haces las reservas (total control)</strong>
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-brand-sage text-xl mt-1">✓</span>
                       <span className="text-stone-600">
-                        <strong>Gestión directa:</strong> Reservas directamente
-                        en las webs oficiales y a tu nombre.
+                        <strong>Sin intermediarios</strong>
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-brand-sage text-xl mt-1">✓</span>
                       <span className="text-stone-600">
-                        <strong>Asesoría técnica:</strong> Pagas por mi tiempo y
-                        experiencia, no por el viaje en sí.
+                        <strong>Pagas solo por mi asesoría</strong>
                       </span>
                     </li>
                   </ul>

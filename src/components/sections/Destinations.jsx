@@ -114,20 +114,20 @@ export default function Destinations() {
                 onClick={() => toggleRegion(region)}
                 className="w-full flex items-center justify-between group focus:outline-none"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 min-w-0">
                   <h3
-                    className={`text-3xl font-serif font-bold transition-colors duration-300 ${isOpen ? "text-brand-sage" : "text-stone-800 group-hover:text-brand-sage"}`}
+                    className={`text-2xl sm:text-3xl font-serif font-bold transition-colors duration-300 ${isOpen ? "text-brand-sage" : "text-stone-800 group-hover:text-brand-sage"}`}
                   >
                     {region}
                   </h3>
-                  <span className="text-sm bg-stone-100 text-stone-500 py-1 px-3 rounded-full font-medium">
+                  <span className="text-xs sm:text-sm bg-stone-100 text-stone-500 py-1 px-3 rounded-full font-medium whitespace-nowrap shrink-0">
                     {destinations.length} destinos
                   </span>
                 </div>
                 <div
-                  className={`p-2 rounded-full bg-white shadow-sm border border-stone-100 transition-transform duration-300 ${isOpen ? "rotate-180 bg-brand-sage text-white border-brand-sage" : "text-stone-400"}`}
+                  className={`p-1.5 sm:p-2 rounded-full bg-white shadow-sm border border-stone-100 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 bg-brand-sage text-white border-brand-sage" : "text-stone-400"}`}
                 >
-                  <ChevronDown size={24} />
+                  <ChevronDown size={20} className="sm:w-6 sm:h-6" />
                 </div>
               </button>
 
