@@ -157,15 +157,20 @@ async function prerender() {
         timeout: 30000,
       });
 
-      // Wait for actual meaningful content to render (h1 tag appears after data loads)
+      // Wait for actual meaningful content to render
       // This is critical for destination pages that fetch from Sanity
       await page.waitForFunction(
-        () => {
+        (isHome) => {
           const root = document.querySelector("#root");
+          if (isHome) {
+            // For homepage, check if the main logo or footer is rendered
+            return root?.querySelector("img[alt='Saltysoultrips']") || root?.querySelector("footer");
+          }
           const h1 = root?.querySelector("h1");
           return h1 && h1.textContent.trim().length > 0;
         },
         { timeout: 15000 },
+        route === "/"
       );
 
       // Wait for react-helmet-async to update the <head> meta tags

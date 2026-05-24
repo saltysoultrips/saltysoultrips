@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Shield from "lucide-react/dist/esm/icons/shield";
 import Wifi from "lucide-react/dist/esm/icons/wifi";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
@@ -11,7 +11,7 @@ const discountOffers = [
     logo: "/resto/heymondo.png",
     title: "Tu seguro de viaje",
     description: "Viaja protegido con el mejor seguro de viajes",
-    buttonText: "15% de descuento",
+    buttonText: "5% de descuento",
     url: "https://heymondo.es/?utm_medium=Afiliado&utm_source=SALTYSOULTRIPS&utm_campaign=PRINCIPAL&cod_descuento=SALTYSOULTRIPS&ag_campaign=WEB&agencia=ABWmUCzTeUoAOchm5JnRMQLaoEQzCpUNGrl5Ty4s",
     icon: Shield,
   },
@@ -55,6 +55,114 @@ const discountOffers = [
 ];
 
 export default function Discounts() {
+  useEffect(() => {
+    // 1. Inject Expedia official stylesheet
+    const styleId = "expedia-affiliate-style";
+    let link = document.getElementById(styleId);
+    if (!link) {
+      link = document.createElement("link");
+      link.id = styleId;
+      link.rel = "stylesheet";
+      link.href = "https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.css";
+      link.className = "eg-affiliate-banners-style";
+      document.head.appendChild(link);
+    }
+
+    // 2. Perform elements initialization matching the official script
+    const elements = Array.from(document.querySelectorAll('.eg-affiliate-banners'));
+    const bannerElements = {};
+
+    elements.forEach((element) => {
+      // If already has an iframe, skip to prevent duplicates
+      if (element.querySelector('iframe')) return;
+
+      const program = element.getAttribute('data-program') || "";
+      const layout = element.getAttribute('data-layout') || "";
+      const image = element.getAttribute('data-image') || "";
+      const message = element.getAttribute('data-message') || "";
+      const linkParam = element.getAttribute('data-link') || "";
+      const networkId = element.getAttribute('data-network') || "";
+      const mdpcid = element.getAttribute('data-mdpcid') || "";
+      const camRef = element.getAttribute('data-camref') || "";
+      const pubRef = element.getAttribute('data-pubref') || "";
+      const adRef = element.getAttribute('data-adref') || "";
+
+      // Generate instance ID
+      const base = 36;
+      const timestamp = Date.now().toString(base);
+      const key = Math.random().toString(base).substring(2);
+      const instance = timestamp + key;
+
+      element.setAttribute('data-instance', instance);
+
+      // Build query string matching getUrlSearch of official script
+      const params = [
+        ['program', program],
+        ['layout', layout],
+        ['image', image],
+        ['message', message],
+        ['link', linkParam],
+        ['network', networkId],
+        ['mdpcid', mdpcid],
+        ['camref', camRef],
+        ['pubref', pubRef],
+        ['adref', adRef],
+        ['instance', instance],
+      ];
+
+      const urlSearch = params
+        .map(([k, v]) => (v ? `${k}=${encodeURIComponent(v)}` : ""))
+        .filter(Boolean)
+        .join('&');
+
+      const frame = document.createElement('iframe');
+      frame.className = 'eg-affiliate-banners-frame mx-auto';
+      frame.src = `https://creator.expediagroup.com/products/banners?${urlSearch}`;
+      frame.style.width = '300px'; // default layout width
+      frame.style.height = '250px'; // default layout height
+      frame.style.margin = 'auto';
+      frame.style.border = 'none';
+      frame.style.display = 'block';
+
+      element.appendChild(frame);
+      bannerElements[instance] = element;
+    });
+
+    // 3. Listen to messages for iframe resizing matching the official script
+    const handleMessage = (event) => {
+      const allowedOrigins = [
+        'https://creator.expediagroup.com',
+        'https://creatorexpediagroupcom.staging.exp-test.net',
+        'https://creatorexpediacom.sandbox.exp-test.net:8443/',
+        'https://localhost:8443',
+      ];
+
+      if (!allowedOrigins.includes(event.origin)) return;
+      if (!event.data || event.data.type !== 'eg-affiliate-banners/resize') return;
+
+      const { meta, payload } = event.data;
+      const targetElement = bannerElements[meta.instance] || document.querySelector(`[data-instance="${meta.instance}"]`);
+      if (targetElement) {
+        const frame = targetElement.querySelector('.eg-affiliate-banners-frame');
+        if (frame && payload?.frame?.style) {
+          if (payload.frame.style.width) frame.style.width = payload.frame.style.width;
+          if (payload.frame.style.height) frame.style.height = payload.frame.style.height;
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+      // Cleanup iframes to avoid duplication on re-mount
+      elements.forEach((element) => {
+        const frame = element.querySelector('.eg-affiliate-banners-frame');
+        if (frame) frame.remove();
+      });
+    };
+  }, []);
+
   return (
     <section className="py-24 bg-gradient-to-br from-white to-stone-50 relative overflow-hidden">
       {/* Background decoration */}
@@ -190,6 +298,93 @@ export default function Discounts() {
                 height="1"
                 alt=""
               />
+            </div>
+          </div>
+        </div>
+        {/* Custom Hotel & Accommodation Affiliates */}
+        <div className="w-full mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Agoda Card */}
+            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group p-8 sm:p-10 flex flex-col items-center justify-between text-center min-h-[460px]">
+              <div className="w-full flex flex-col items-center">
+                {/* Logo */}
+                <div className="mb-6 h-16 flex items-center justify-center">
+                  <img
+                    src="/resto/agoda.png"
+                    alt="Agoda"
+                    className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                
+                {/* Title & Badge */}
+                <div className="flex items-center gap-3 mb-2 justify-center">
+                  <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
+                    AGODA AFILIADOS
+                  </span>
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
+                  Tu Alojamiento Perfecto
+                </h3>
+                
+                {/* Agoda Banner Container (matching Expedia style) */}
+                <div className="flex justify-center items-center w-full max-w-[340px] min-h-[250px] p-2 bg-stone-50 rounded-2xl border border-stone-100 shadow-inner mx-auto">
+                  <a 
+                    href="https://www.agoda.com/partners/partnersearch.aspx?pcs=10&cid=1966059&hid=567167" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block overflow-hidden rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow duration-300 w-[300px] h-[230px] bg-white"
+                  >
+                    <img 
+                      src="https://q-xx.bstatic.com/xdata/images/hotel/max300/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o=" 
+                      srcSet="https://q-xx.bstatic.com/xdata/images/hotel/max300/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o= 1x, https://q-xx.bstatic.com/xdata/images/hotel/max500/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o= 2x" 
+                      alt="Agoda Alojamientos"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Expedia Card */}
+            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group p-8 sm:p-10 flex flex-col items-center justify-between text-center min-h-[460px]">
+              <div className="w-full flex flex-col items-center">
+                {/* Logo */}
+                <div className="mb-6 h-16 flex items-center justify-center">
+                  <img
+                    src="/resto/expedia.png"
+                    alt="Expedia"
+                    className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                
+                {/* Title & Badge */}
+                <div className="flex items-center gap-3 mb-2 justify-center">
+                  <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
+                    EXPEDIA AFILIADOS
+                  </span>
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
+                  Escapadas y Vuelos
+                </h3>
+                
+                {/* Dynamic Expedia Banner Container */}
+                <div className="flex justify-center items-center w-full max-w-[340px] min-h-[250px] p-2 bg-stone-50 rounded-2xl border border-stone-100 shadow-inner mx-auto">
+                  <div 
+                    className="eg-affiliate-banners mx-auto" 
+                    data-program="us-expedia" 
+                    data-network="pz" 
+                    data-layout="medium-rectangle" 
+                    data-image="relaxing" 
+                    data-message="find-perfect-getaway-package" 
+                    data-camref="1110lGaeG" 
+                    data-pubref="" 
+                    data-link="stays"
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
