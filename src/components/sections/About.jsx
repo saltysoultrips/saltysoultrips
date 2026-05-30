@@ -1,42 +1,53 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Compass from "lucide-react/dist/esm/icons/compass";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-start gap-16">
-          {/* Photos & Visuals Side */}
+    <section id="about" className="py-24 bg-sand-200 overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-sand-300 rounded-bl-full opacity-50 -z-10 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-sage rounded-tr-full opacity-30 -z-10 blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          {/* Visuals Side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-5/12 relative top-0 lg:sticky lg:top-32"
+            className="w-full lg:w-1/2 relative"
           >
-            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src="/resto/angela.jpeg"
-                alt="Angela - Founder SaltySoulTrips"
-                loading="lazy"
-                width="600"
-                height="800"
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent"></div>
-
-              <div className="absolute bottom-8 left-8 text-white">
-                <p className="font-serif text-3xl font-bold">Angela</p>
-                <div className="h-1 w-12 bg-lime-200 mt-2 mb-1"></div>
-                <p className="text-sm tracking-widest uppercase opacity-90">
-                  SaltySoulTrips Founder
-                </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4 mt-8">
+                <img
+                  src="https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=600&auto=format&fit=crop"
+                  alt="Destino premium"
+                  className="rounded-2xl shadow-xl w-full h-48 object-cover"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=600&auto=format&fit=crop"
+                  alt="Playa tropical"
+                  className="rounded-2xl shadow-xl w-full h-64 object-cover"
+                />
+              </div>
+              <div className="space-y-4">
+                <img
+                  src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=600&auto=format&fit=crop"
+                  alt="Aventura en la montaña"
+                  className="rounded-2xl shadow-xl w-full h-64 object-cover"
+                />
+                <div className="glass rounded-2xl p-6 shadow-xl flex items-center justify-center h-48">
+                  <div className="text-center">
+                    <p className="text-4xl font-serif font-bold text-sand-800">100%</p>
+                    <p className="text-sm font-medium text-sand-600 uppercase tracking-widest mt-2">{t('about.customLabel')}</p>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Simple decorative element instead of Quote Card */}
-            <div className="absolute -bottom-10 right-0 w-40 h-40 bg-brand-sage/20 rounded-full blur-3xl -z-10"></div>
           </motion.div>
 
           {/* Content Side */}
@@ -45,41 +56,38 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-7/12 space-y-16"
+            className="w-full lg:w-1/2 space-y-10"
           >
-            {/* Part 1: Who Am I */}
             <div>
-              <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-3">
-                Conóceme
+              <span className="text-sand-600 font-semibold tracking-wider uppercase text-sm block mb-3">
+                {t('about.label')}
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-                Hola, soy Ángela. <br />
-                <span className="text-stone-400 text-3xl md:text-4xl block mt-2">
-                  21 años. Pasaporte en mano.
-                </span>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-6 leading-tight">
+                {t('about.title')} <br />
+                <span className="text-sand-600 italic">{t('about.titleItalic')}</span>
               </h2>
-              <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
+              <div className="space-y-6 text-lg text-brand-dark font-light leading-relaxed text-balance">
                 <p>
-                  Te ayudo a organizar viajes personalizados sin que pierdas horas buscando ni pagues de más.
+                  {t('about.description')}
                 </p>
-                <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-brand-sage text-xl mt-1">✓</span>
-                      <span className="text-stone-600">
-                        <strong>Tú haces las reservas (total control)</strong>
+                <div className="glass p-8 rounded-3xl border border-white/40">
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-4">
+                      <span className="text-sand-600 bg-sand-200 p-1 rounded-full"><Compass size={20} /></span>
+                      <span className="text-brand-dark">
+                        <strong>{t('about.point1')}</strong>
                       </span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-brand-sage text-xl mt-1">✓</span>
-                      <span className="text-stone-600">
-                        <strong>Sin intermediarios</strong>
+                    <li className="flex items-start gap-4">
+                      <span className="text-sand-600 bg-sand-200 p-1 rounded-full"><Compass size={20} /></span>
+                      <span className="text-brand-dark">
+                        <strong>{t('about.point2')}</strong>
                       </span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-brand-sage text-xl mt-1">✓</span>
-                      <span className="text-stone-600">
-                        <strong>Pagas solo por mi asesoría</strong>
+                    <li className="flex items-start gap-4">
+                      <span className="text-sand-600 bg-sand-200 p-1 rounded-full"><Compass size={20} /></span>
+                      <span className="text-brand-dark">
+                        <strong>{t('about.point3')}</strong>
                       </span>
                     </li>
                   </ul>
@@ -87,26 +95,17 @@ export default function About() {
               </div>
             </div>
 
-            {/* Part 2: Philosophy */}
-            <div className="border-t border-stone-200 pt-10">
-              <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-3">
-                La Filosofía
-              </span>
-              <h3 className="text-3xl font-serif font-bold text-stone-800 mb-6">
-                SIN FILTROS, SIN COMISIONES
+            <div className="border-t border-sand-300 pt-8">
+              <h3 className="text-2xl font-serif font-bold text-brand-dark mb-4">
+                {t('about.tagline')}
               </h3>
-
-              <div className="space-y-6 text-lg text-stone-600 font-light leading-relaxed">
-                <p className="text-xl font-medium text-stone-800">
-                  El cliente no solo viaja, APRENDE a viajar mejor.
+              <div className="space-y-4 text-brand-dark font-light leading-relaxed">
+                <p className="text-xl font-medium text-sand-800">
+                  {t('about.taglineText1')}
                 </p>
-                <p>No queremos que vuelvas porque no sabes hacerlo.</p>
+                <p>{t('about.taglineText2')}</p>
                 <p>
-                  Queremos que vuelvas porque valoras nuestro conocimiento y
-                  trato.
-                </p>
-                <p className="text-xl font-medium text-brand-sage mt-6">
-                  Viajar con propósito, viajar con alma.
+                  {t('about.taglineText3')}
                 </p>
               </div>
             </div>

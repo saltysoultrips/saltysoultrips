@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Star from "lucide-react/dist/esm/icons/star";
 import ChevronLeft from "lucide-react/dist/esm/icons/chevron-left";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
+import { useTranslation } from "react-i18next";
 
 const fallbackExperiences = [
   {
@@ -97,6 +98,7 @@ const fallbackExperiences = [
 import { client, urlFor } from "../../lib/sanity";
 
 export default function Testimonials() {
+  const { t } = useTranslation();
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [experiences, setExperiences] = useState(fallbackExperiences);
@@ -187,13 +189,13 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            Experiencias
+            {t('testimonials.label')}
           </span>
           <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
-            Lo que dicen nuestros viajeros
+            {t('testimonials.title')}
           </h2>
           <p className="text-stone-600 max-w-2xl mx-auto">
-            Testimonios reales de personas que han confiado en SaltySoulTrips
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -290,7 +292,7 @@ export default function Testimonials() {
           {/* Mobile scroll indicator */}
           <div className="md:hidden text-center mt-6">
             <p className="text-sm text-stone-500 italic">
-              ← Desliza para ver más →
+              {t('testimonials.scrollHint')}
             </p>
           </div>
         </div>

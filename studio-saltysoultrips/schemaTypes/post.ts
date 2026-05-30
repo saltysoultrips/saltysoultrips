@@ -7,19 +7,35 @@ export const post = defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Título',
+      title: 'Título (ES)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'title_en',
+      title: 'Title (EN)',
+      type: 'string',
+      description: 'English title of the blog post',
+    }),
+    defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Slug (ES)',
       type: 'slug',
       options: {
         source: 'title',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug_en',
+      title: 'Slug (EN) - For SEO',
+      type: 'slug',
+      description: 'English URL slug',
+      options: {
+        source: 'title_en',
+        maxLength: 96,
+      },
     }),
     defineField({
       name: 'date',
@@ -37,8 +53,22 @@ export const post = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'excerpt',
+      title: 'Excerpt / Resumen (ES)',
+      type: 'text',
+      description: 'Short summary shown in listing pages (Spanish)',
+      rows: 3,
+    }),
+    defineField({
+      name: 'excerpt_en',
+      title: 'Excerpt / Summary (EN)',
+      type: 'text',
+      description: 'Short summary shown in listing pages (English)',
+      rows: 3,
+    }),
+    defineField({
       name: 'content',
-      title: 'Contenido',
+      title: 'Contenido (ES)',
       type: 'array',
       of: [
         {
@@ -88,6 +118,64 @@ export const post = defineType({
               name: 'caption',
               type: 'string',
               title: 'Pie de foto',
+            }
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'content_en',
+      title: 'Content (EN)',
+      description: 'English version of the blog post content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+            annotations: [
+              {
+                title: 'URL',
+                name: 'link',
+                type: 'object',
+                fields: [
+                  {
+                    title: 'URL',
+                    name: 'href',
+                    type: 'url',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
             }
           ],
         },

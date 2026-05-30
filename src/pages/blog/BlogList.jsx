@@ -4,8 +4,12 @@ import SEOHead from "../../components/SEOHead";
 import { client, urlFor } from "../../lib/sanity";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
+import { useTranslation } from "react-i18next";
 
 export default function BlogList() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.language; // 'es' or 'en'
+
   const [blogPosts, setBlogPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -25,10 +29,15 @@ export default function BlogList() {
     fetchPosts();
   }, []);
 
+  // Helper: pick the right language field with ES fallback
+  const pick = (post, field) => post[`${field}_en`] && lang === "en"
+    ? post[`${field}_en`]
+    : post[field];
+
   if (loading) {
     return (
       <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
-        <div className="text-stone-400">Cargando blog...</div>
+        <div className="text-stone-400">{lang === "en" ? "Loading blog..." : "Cargando blog..."}</div>
       </div>
     );
   }
@@ -36,8 +45,12 @@ export default function BlogList() {
   return (
     <>
       <SEOHead
-        title="Blog de Viajes | Consejos y Guías | SaltySoulTrips"
-        description="Descubre nuestros mejores consejos, guías de destinos y trucos para viajar por el mundo de forma auténtica y a tu medida."
+        title={lang === "en"
+          ? "Travel Blog | Tips & Guides | SaltySoulTrips"
+          : "Blog de Viajes | Consejos y Guías | SaltySoulTrips"}
+        description={lang === "en"
+          ? "Discover our best travel tips, destination guides and tricks to travel the world authentically and your way."
+          : "Descubre nuestros mejores consejos, guías de destinos y trucos para viajar por el mundo de forma auténtica y a tu medida."}
         canonicalUrl="https://www.saltysoultrips.com/blog"
       />
 
@@ -45,17 +58,20 @@ export default function BlogList() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-sage mb-6">
-              Blog de Viajes: <br className="hidden md:block" /> Inspiración y
-              Guías
+              {lang === "en"
+                ? <>Travel Blog: <br className="hidden md:block" /> Inspiration & Guides</>
+                : <>Blog de Viajes: <br className="hidden md:block" /> Inspiración y Guías</>}
             </h1>
             <p className="text-xl text-stone-600">
-              Inspiración, historias y secretos para tu próxima gran aventura.
+              {lang === "en"
+                ? "Inspiration, stories and secrets for your next great adventure."
+                : "Inspiración, historias y secretos para tu próxima gran aventura."}
             </p>
           </div>
 
           {blogPosts.length === 0 ? (
             <div className="text-center py-20 text-stone-500">
-              No hay artículos publicados todavía.
+              {lang === "en" ? "No articles published yet." : "No hay artículos publicados todavía."}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,12 +81,12 @@ export default function BlogList() {
                   className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
                 >
                   <Link
-                    to={`/blog/${post.slug.current}`}
+                    to={`/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
                     className="block relative overflow-hidden h-48"
                   >
                     <img
                       src={post.coverImage ? urlFor(post.coverImage).url() : ""}
-                      alt={post.title}
+                      alt={pick(post, "title")}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </Link>
@@ -83,17 +99,24 @@ export default function BlogList() {
                       </span>
                     </div>
 
-                    <Link to={`/blog/${post.slug.current}`} className="block mb-3">
+                    <Link to={`/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`} className="block mb-3">
                       <h2 className="text-xl font-display font-bold text-brand-sage leading-tight group-hover:text-brand-ochre transition-colors">
-                        {post.title}
+                        {pick(post, "title")}
                       </h2>
                     </Link>
 
+                    {/* Show excerpt if available */}
+                    {pick(post, "excerpt") && (
+                      <p className="text-sm text-stone-600 mb-4 line-clamp-2 flex-grow">
+                        {pick(post, "excerpt")}
+                      </p>
+                    )}
+
                     <Link
-                      to={`/blog/${post.slug.current}`}
+                      to={`/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
                       className="inline-flex items-center text-brand-sage font-medium text-sm hover:text-brand-ochre transition-colors mt-auto"
                     >
-                      Leer artículo <ArrowRight className="w-4 h-4 ml-1" />
+                      {lang === "en" ? "Read article" : "Leer artículo"} <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
                 </article>

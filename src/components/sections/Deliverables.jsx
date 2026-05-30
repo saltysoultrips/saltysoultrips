@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import Smartphone from "lucide-react/dist/esm/icons/smartphone";
 import LinkId from "lucide-react/dist/esm/icons/link";
@@ -6,36 +7,34 @@ import Map from "lucide-react/dist/esm/icons/map";
 import Calculator from "lucide-react/dist/esm/icons/calculator";
 
 export default function Deliverables() {
+  const { t } = useTranslation();
+
   const deliverableItems = [
     {
       icon: <Smartphone size={32} />,
-      title: "Guía PDF Interactiva",
-      description:
-        "Toda tu ruta diseñada paso a paso, lista para llevar en tu móvil.",
+      title: t("deliverables.item1Title"),
+      description: t("deliverables.item1Desc"),
       color: "text-brand-sage",
       bgColor: "bg-brand-sage/10",
     },
     {
       icon: <LinkId size={32} />,
-      title: "Acceso Directo a Reservas",
-      description:
-        "Enlaces listos para que reserves vuelos, alojamientos y transportes en un clic, sin vueltas.",
+      title: t("deliverables.item2Title"),
+      description: t("deliverables.item2Desc"),
       color: "text-blue-500",
       bgColor: "bg-blue-50",
     },
     {
       icon: <Map size={32} />,
-      title: "Tu Mapa Personalizado",
-      description:
-        "Un mapa de Google Maps con todos los puntos clave (visitas, restaurantes, secretos locales) para que no te pierdas nada.",
+      title: t("deliverables.item3Title"),
+      description: t("deliverables.item3Desc"),
       color: "text-amber-500",
       bgColor: "bg-amber-50",
     },
     {
       icon: <Calculator size={32} />,
-      title: "Control de Gastos",
-      description:
-        "Un desglose detallado del presupuesto total para que sepas cuánto podrías gastar.",
+      title: t("deliverables.item4Title"),
+      description: t("deliverables.item4Desc"),
       color: "text-emerald-500",
       bgColor: "bg-emerald-50",
     },
@@ -46,15 +45,14 @@ export default function Deliverables() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-3">
-            El entregable
+            {t("deliverables.label")}
           </span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
-            ¿Qué recibirás en tu <br />
-            <span className="text-brand-sage">bandeja de entrada?</span>
+            {t("deliverables.title")} <br />
+            <span className="text-brand-sage">{t("deliverables.titleHighlight")}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-stone-600 font-light">
-            Al contratar cualquier pack, te enviaré una guia digital completo
-            para que solo te preocupes de disfrutar.
+            {t("deliverables.subtitle")}
           </p>
         </div>
 
@@ -102,8 +100,7 @@ export default function Deliverables() {
               />
             </motion.div>
             <p className="text-sm text-stone-400 italic mt-8 text-center max-w-xs mx-auto">
-              * El contenido específico puede variar ligeramente según el
-              paquete elegido.
+              {t("deliverables.disclaimer")}
             </p>
           </div>
         </div>

@@ -1,92 +1,137 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import X from "lucide-react/dist/esm/icons/x";
+import Globe from "lucide-react/dist/esm/icons/globe";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: "Historia", href: "#about" },
-    { name: "Destinos", href: "#destinations" },
-    { name: "Cómo funciona", href: "#how-it-works" },
-    { name: "Packs", href: "#services" },
-    { name: "Experiencias", href: "#testimonials" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Descuentos", href: "#discounts" },
-    { name: "Contacto", href: "#footer" },
+    { name: t("header.nav.destinos"), href: "/destinos" },
+    { name: t("header.nav.packs"), href: "/servicios" },
+    { name: t("header.nav.comoFunciona"), href: "/como-funciona" },
+    { name: t("header.nav.experiencias"), href: "/experiencias" },
+    { name: t("header.nav.descuentos"), href: "/descuentos" },
+    { name: t("header.nav.blog"), href: "/blog" },
+    { name: t("header.nav.contacto"), href: "/contacto" },
   ];
 
-  const handleScroll = (e, href) => {
+  const handleNavigation = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
 
-    // Si no estamos en la home, navegamos primero
-    if (location.pathname !== "/") {
-      navigate(`/${href}`);
-      return;
-    }
-
-    // Scroll manual si estamos en home
-    setTimeout(() => {
-      const targetId = href.replace("#", "");
-      const element = document.getElementById(targetId);
-
-      if (element) {
-        const headerOffset = 85;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            const headerOffset = 85;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          }
+        }, 500);
+      } else {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const headerOffset = 85;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
       }
-    }, 100);
+    } else {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'es' ? 'en' : 'es';
+    i18n.changeLanguage(newLang);
+  };
+
+  const isHome = location.pathname === "/";
+  const isTransparent = isHome && !isScrolled;
+
+  const headerBgClass = isTransparent
+    ? "bg-transparent border-transparent"
+    : "bg-sand-100/95 backdrop-blur-md border-b border-sand-200 shadow-sm";
+
+  const textColorClass = isTransparent
+    ? "text-white hover:text-sand-200 drop-shadow-md"
+    : "text-brand-dark hover:text-sand-600";
+
+  const logoClass = isTransparent
+    ? "filter brightness-0 invert drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+    : "filter drop-shadow-sm sepia-[.2] hue-rotate-[-10deg]";
+
   return (
-    <nav className="fixed w-full z-50 bg-stone-50/80 backdrop-blur-md border-b border-stone-200/50">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${headerBgClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center">
-            {/* Asegúrate de que la ruta a tu logo sea correcta */}
+          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate("/")}>
             <img
               src="/resto/logoHorizontal.png"
               alt="SaltySoulTrips"
-              className="h-12 w-auto"
+              className={`h-12 w-auto transition-all duration-300 ${logoClass}`}
             />
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-6 items-center">
+          <div className="hidden lg:flex space-x-5 xl:space-x-6 items-center">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
-                className="text-stone-600 hover:text-stone-900 transition-colors text-sm uppercase tracking-wide font-medium transform hover:scale-105 duration-200"
+                onClick={(e) => handleNavigation(e, link.href)}
+                className={`${textColorClass} transition-colors text-sm uppercase tracking-wide font-medium transform hover:scale-105 duration-200`}
               >
                 {link.name}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => handleScroll(e, "#contact")}
-              className="bg-stone-800 text-stone-50 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-700 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+            
+            {/* Desktop Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className={`${textColorClass} flex items-center gap-1.5 ml-2 hover:bg-white/10 px-3 py-1.5 rounded-full transition-all`}
+              aria-label="Change language"
             >
-              Diseñar Viaje
-            </a>
+              <Globe size={16} />
+              <span className="text-sm font-bold">{t("header.langSwitcher")}</span>
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile Menu Button & Lang Switcher */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className={`${textColorClass} flex items-center gap-1 p-2`}
+              aria-label="Change language"
+            >
+              <Globe size={20} />
+              <span className="text-sm font-bold">{t("header.langSwitcher")}</span>
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-stone-800 hover:text-stone-600 transition-colors p-2"
+              className={`${textColorClass} transition-colors p-2`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -102,25 +147,25 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-stone-50 border-t border-stone-100 overflow-hidden shadow-xl"
+            className="lg:hidden bg-sand-100 border-t border-sand-200 overflow-hidden shadow-xl"
           >
             <div className="px-4 pt-4 pb-8 space-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="block px-4 py-3 text-stone-600 text-lg font-medium hover:bg-white hover:shadow-sm rounded-xl transition-all"
+                  onClick={(e) => handleNavigation(e, link.href)}
+                  className="block px-4 py-3 text-brand-dark text-lg font-medium hover:bg-sand-200 hover:shadow-sm rounded-xl transition-all"
                 >
                   {link.name}
                 </a>
               ))}
               <a
-                href="#contact"
-                onClick={(e) => handleScroll(e, "#contact")}
-                className="block mt-6 text-center bg-stone-800 text-stone-50 px-3 py-4 rounded-xl font-medium shadow-md active:scale-95 transition-transform"
+                href="/contacto"
+                onClick={(e) => handleNavigation(e, "/contacto")}
+                className="block mt-6 text-center bg-brand-dark text-sand-100 px-3 py-4 rounded-xl font-medium shadow-md active:scale-95 transition-transform"
               >
-                Empieza tu Viaje
+                {t("header.empiezaViaje")}
               </a>
             </div>
           </motion.div>

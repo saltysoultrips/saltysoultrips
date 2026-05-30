@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Plane from "lucide-react/dist/esm/icons/plane";
 import Compass from "lucide-react/dist/esm/icons/compass";
 import Star from "lucide-react/dist/esm/icons/star";
@@ -7,56 +8,62 @@ import X from "lucide-react/dist/esm/icons/x";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Services() {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
 
   const packs = [
     {
-      title: "PAQUETE EXPLORA",
+      title: t("services.pack1.title"),
       price: "70 €",
       image: "/paquetes/explora.png",
       icon: <Plane size={32} className="text-brand-sage" />,
-      features: ["Búsqueda de vuelos", "Alojamiento"],
+      features: [t("services.pack1.feature1"), t("services.pack1.feature2")],
       details: [
-        "Presupuesto aproximado",
-        "Lugares de interés",
-        "Gastronomía típica",
-        "Apps esenciales para el destino",
+        t("services.pack1.detail1"),
+        t("services.pack1.detail2"),
+        t("services.pack1.detail3"),
+        t("services.pack1.detail4"),
       ],
-      idealFor:
-        "Viajeros independientes que quieren una guía clara sin perder tiempo buscando.",
+      idealFor: t("services.pack1.idealFor"),
       highlight: false,
       color: "border-stone-200 bg-white",
     },
     {
-      title: "PAQUETE VIVE",
+      title: t("services.pack2.title"),
       price: "100 €",
       image: "/paquetes/vive.png",
       icon: <Compass size={32} className="text-brand-cream" />,
-      features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
-      details: [
-        "Actividades recomendadas con enlaces",
-        "Mapa guía visual en Google",
-        "Transportes internos explicados (cómo moverse fácil y barato)",
+      features: [
+        t("services.pack2.feature1"),
+        t("services.pack2.feature2"),
+        t("services.pack2.feature3"),
       ],
-      idealFor:
-        "Viajeros que quieren una experiencia más cuidada y sentir que tienen un 'asistente de viaje'.",
+      details: [
+        t("services.pack2.detail1"),
+        t("services.pack2.detail2"),
+        t("services.pack2.detail3"),
+      ],
+      idealFor: t("services.pack2.idealFor"),
       highlight: true,
       color: "border-stone-800 bg-stone-800 text-white",
     },
     {
-      title: "PAQUETE CONECTA",
+      title: t("services.pack3.title"),
       price: "150 €",
       image: "/paquetes/conecta.png",
       icon: <Star size={32} className="text-brand-sage" />,
-      features: ["Búsqueda de vuelos", "Alojamiento", "Todo lo anterior"],
-      details: [
-        "Búsqueda mejor seguro de viaje + SIM + visado (si es necesario)",
-        "Recomendaciones de tarjetas bancarias sin comisión",
-        "Itinerario optimizado",
-        "Presupuesto detallado por categorías (por rangos y comparativas)",
+      features: [
+        t("services.pack3.feature1"),
+        t("services.pack3.feature2"),
+        t("services.pack3.feature3"),
       ],
-      idealFor:
-        "Para ti si quieres un viaje completo, organizado y lleno de detalles únicos. Tú solo reservas, yo te lo diseño todo.",
+      details: [
+        t("services.pack3.detail1"),
+        t("services.pack3.detail2"),
+        t("services.pack3.detail3"),
+        t("services.pack3.detail4"),
+      ],
+      idealFor: t("services.pack3.idealFor"),
       highlight: false,
       color: "border-stone-200 bg-white",
     },
@@ -67,14 +74,13 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            Nuestros Servicios
+            {t("services.label")}
           </span>
           <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2">
-            Elige tu Experiencia
+            {t("services.title")}
           </h2>
           <p className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">
-            Desde una guía esencial hasta un diseño completo de tu aventura a
-            medida.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -143,7 +149,7 @@ export default function Services() {
                       pack.highlight ? "text-white" : "text-stone-500"
                     }`}
                   >
-                    Incluye:
+                    {t("services.includes")}
                   </p>
                   {pack.details.map((detail, idx) => (
                     <div key={idx} className="flex items-start gap-2">
@@ -172,7 +178,7 @@ export default function Services() {
                   }`}
                 >
                   <span className="font-semibold not-italic block mb-1">
-                    Ideal para:
+                    {t("services.idealFor")}
                   </span>
                   "{pack.idealFor}"
                 </div>
@@ -186,16 +192,14 @@ export default function Services() {
                     : "bg-stone-100 text-stone-800 hover:bg-stone-200"
                 }`}
               >
-                Ver Detalles
+                {t("services.seeDetails")}
               </button>
             </motion.div>
           ))}
         </div>
 
         <p className="mt-12 text-center text-stone-600 max-w-3xl mx-auto font-medium">
-          Tarifas válidas para grupos de hasta 6 personas. Para grupos más
-          grandes, consulta nuestro suplemento de logística grupal enviándonos
-          un mensaje!
+          {t("services.groupNote")}
         </p>
       </div>
 

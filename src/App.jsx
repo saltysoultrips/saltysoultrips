@@ -8,23 +8,17 @@ import {
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
 import SEOHead from "./components/SEOHead";
 
-// Lazy load components that aren't immediately visible
-const About = lazy(() => import("./components/sections/About"));
-const Destinations = lazy(() => import("./components/sections/Destinations"));
-const HowItWorks = lazy(() => import("./components/sections/HowItWorks"));
-const Services = lazy(() => import("./components/sections/Services"));
-const Testimonials = lazy(() => import("./components/sections/Testimonials"));
-const ContactForm = lazy(() => import("./components/forms/ContactForm"));
-const FAQ = lazy(() => import("./components/sections/FAQ"));
-const Discounts = lazy(() => import("./components/sections/Discounts"));
-const Deliverables = lazy(() => import("./components/sections/Deliverables"));
-
-// Lazy load destination page
-const DestinationPage = lazy(() => import("./pages/DestinationPage"));
-
 // Lazy load new pages
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const DestinationsPage = lazy(() => import("./pages/DestinationsPage"));
+const HowItWorksPage = lazy(() => import("./pages/HowItWorksPage"));
+const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
+const DiscountsPage = lazy(() => import("./pages/DiscountsPage"));
+const DestinationPage = lazy(() => import("./pages/DestinationPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogList = lazy(() => import("./pages/blog/BlogList"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
@@ -35,7 +29,7 @@ import CookieConsent from "./components/ui/CookieConsent";
 // Simple loading fallback
 const LoadingFallback = () => (
   <div className="flex items-center justify-center py-20">
-    <div className="w-12 h-12 border-4 border-brand-sage border-t-transparent rounded-full animate-spin"></div>
+    <div className="w-12 h-12 border-4 border-sand-400 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
@@ -143,77 +137,18 @@ function HomePage() {
       },
       offers: {
         "@type": "Offer",
-        url: "https://www.saltysoultrips.com/#services",
+        url: "https://www.saltysoultrips.com/servicios",
         priceCurrency: "EUR",
         price: "50",
         availability: "https://schema.org/InStock",
       },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "Paquete Vive - Asesoría de Viaje Completa",
-      description:
-        "Incluye todo lo del Pack Explora más asesoría personalizada y consejos locales.",
-      brand: {
-        "@type": "Brand",
-        name: "SaltySoulTrips",
-      },
-      offers: {
-        "@type": "Offer",
-        url: "https://www.saltysoultrips.com/#services",
-        priceCurrency: "EUR",
-        price: "90",
-        availability: "https://schema.org/InStock",
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "Paquete Conecta - Planificación de Viaje Premium",
-      description:
-        "La experiencia más completa con soporte continuo y máxima personalización.",
-      brand: {
-        "@type": "Brand",
-        name: "SaltySoulTrips",
-      },
-      offers: {
-        "@type": "Offer",
-        url: "https://www.saltysoultrips.com/#services",
-        priceCurrency: "EUR",
-        price: "130",
-        availability: "https://schema.org/InStock",
-      },
-    },
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "¿Qué es SaltySoulTrips?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "SaltySoulTrips es un servicio de asesoría y planificación de viajes personalizados donde diseñamos tu itinerario a medida para que tú solo tengas que reservar y disfrutar.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Cómo recibo mi itinerario?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Recibirás un documento digital detallado con todos los enlaces directos para reservar tus vuelos, hoteles y actividades recomendadas.",
-        },
-      },
-    ],
-  };
-
-  const homeSchema = [travelAgencySchema, ...productSchema, faqSchema];
+  const homeSchema = [travelAgencySchema, ...productSchema];
 
   return (
-    <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+    <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
       <SEOHead
         title="Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos"
         description="Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!"
@@ -223,49 +158,9 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
-        <Suspense fallback={<LoadingFallback />}>
+        <div id="filosofia">
           <About />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="destinations">
-            <Destinations />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="how-it-works">
-            <HowItWorks />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="services">
-            <Services />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div>
-            <Deliverables />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="testimonials">
-            <Testimonials />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="contact">
-            <ContactForm />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="faq">
-            <FAQ />
-          </div>
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <div id="discounts">
-            <Discounts />
-          </div>
-        </Suspense>
+        </div>
       </main>
       <Footer />
     </div>
@@ -277,13 +172,21 @@ function App() {
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        
+        {/* New Multi-page Routes */}
+        <Route path="/servicios" element={<ScrollToTopWrapper><ServicesPage /></ScrollToTopWrapper>} />
+        <Route path="/descuentos" element={<ScrollToTopWrapper><DiscountsPage /></ScrollToTopWrapper>} />
+        <Route path="/contacto" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
+        <Route path="/destinos" element={<ScrollToTopWrapper><DestinationsPage /></ScrollToTopWrapper>} />
+        <Route path="/como-funciona" element={<ScrollToTopWrapper><HowItWorksPage /></ScrollToTopWrapper>} />
+        <Route path="/experiencias" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
 
         {/* Blog Routes */}
         <Route
           path="/blog"
           element={
             <ScrollToTopWrapper>
-              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+              <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
                 <Header />
                 <BlogList />
                 <Footer />
@@ -295,7 +198,7 @@ function App() {
           path="/blog/:slug"
           element={
             <ScrollToTopWrapper>
-              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+              <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
                 <Header />
                 <BlogPost />
                 <Footer />
@@ -319,7 +222,7 @@ function App() {
           path="*"
           element={
             <ScrollToTopWrapper>
-              <div className="font-sans antialiased text-stone-800 bg-stone-50 selection:bg-brand-sage selection:text-white">
+              <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
                 <Header />
                 <NotFound />
                 <Footer />

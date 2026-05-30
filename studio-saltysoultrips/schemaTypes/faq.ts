@@ -7,15 +7,27 @@ export const faq = defineType({
   fields: [
     defineField({
       name: 'question',
-      title: 'Pregunta',
+      title: 'Pregunta (ES)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'answer',
-      title: 'Respuesta',
+      title: 'Respuesta (ES)',
       type: 'text',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'question_en',
+      title: 'Question (EN)',
+      type: 'string',
+      description: 'English translation of the question',
+    }),
+    defineField({
+      name: 'answer_en',
+      title: 'Answer (EN)',
+      type: 'text',
+      description: 'English translation of the answer',
     }),
     defineField({
       name: 'order',

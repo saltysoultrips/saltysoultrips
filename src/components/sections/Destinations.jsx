@@ -20,7 +20,8 @@ export default function Destinations() {
         if (sanityDestinations && sanityDestinations.length > 0) {
           const mappedDestinations = sanityDestinations.map((d) => ({
             ...d,
-            slug: d.slug?.current || "", // Fix: Sanity slug is an object
+            slug: d.slug?.current || "",
+            slug_en: d.slug_en?.current || d.slug?.current || "", // Fix: Sanity slug is an object
             img_src: d.heroImage ? urlFor(d.heroImage).url() : d.img_src,
             hero: {
               ...d.hero,
@@ -118,7 +119,7 @@ export default function Destinations() {
                   <h3
                     className={`text-2xl sm:text-3xl font-serif font-bold transition-colors duration-300 ${isOpen ? "text-brand-sage" : "text-stone-800 group-hover:text-brand-sage"}`}
                   >
-                    {region}
+                    {t(`regions.${region}`)}
                   </h3>
                   <span className="text-xs sm:text-sm bg-stone-100 text-stone-500 py-1 px-3 rounded-full font-medium whitespace-nowrap shrink-0">
                     {destinations.length} destinos
@@ -144,7 +145,7 @@ export default function Destinations() {
                       {destinations.map((dest, index) => (
                         <Link
                           key={dest.id || index}
-                          to={`/destinos/${dest.slug}`}
+                          to={`/destinos/${lang === 'en' && dest.slug_en ? dest.slug_en : dest.slug}`}
                           className="block group"
                           aria-label={`Ver detalles de viaje a ${dest.country}`}
                         >

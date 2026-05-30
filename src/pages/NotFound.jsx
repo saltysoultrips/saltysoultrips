@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Plane from "lucide-react/dist/esm/icons/plane";
 import SEOHead from "../components/SEOHead";
+import { useTranslation } from "react-i18next";
 
 export default function NotFound() {
+  const { t } = useTranslation();
   return (
     <>
       <SEOHead
@@ -72,14 +74,14 @@ export default function NotFound() {
           className="relative z-10 max-w-2xl mx-auto"
         >
           <h1 className="text-6xl md:text-8xl font-display font-bold text-brand-sage mb-2">
-            Ups...
+            {t('notFound.title')}
           </h1>
           <h2 className="text-2xl md:text-3xl font-display text-stone-700 mb-6 font-semibold">
-            Este vuelo no ha despegado
+            {t('notFound.subtitle')}
           </h2>
           <p className="text-lg text-stone-600 mb-10 max-w-lg mx-auto leading-relaxed">
-            La página que buscas se ha cancelado por turbulencias. <br />
-            Mejor volvamos a tierra firme.
+            {t('notFound.description')} <br />
+            {t('notFound.description2')}
           </p>
 
           <Link
@@ -88,7 +90,7 @@ export default function NotFound() {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Plane className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-45" />
-              Reprogramar viaje
+              {t('notFound.cta')}
             </span>
           </Link>
         </motion.div>

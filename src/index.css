@@ -6,51 +6,62 @@
 @plugin "tailwindcss-animate";
 
 @theme {
-  /* Light Blue Palette - Inspired by Logo */
-  --color-brand-primary: #a8d5e2;
-  --color-brand-sky: #dceef5;
-  --color-brand-accent: #7cc5d9;
-  --color-brand-light: #f0f8fb;
-
-  /* Legacy names for backward compatibility */
-  --color-brand-sage: #a8d5e2;
-  --color-brand-sand: #dceef5;
-  --color-brand-cream: #f0f8fb;
-
+  --color-brand-primary: #C1D3C4;
+  --color-brand-sky: #D8E8E8;
+  --color-brand-accent: #E8E1D8;
+  --color-brand-light: #F5F5F0;
+  
+  --color-sand-100: #fcfaf8;
+  --color-sand-200: #f5f0e6;
+  --color-sand-300: #eaddc5;
+  --color-sand-400: #dcb78e;
+  
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
 }
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-stone-50);
-  color: var(--color-stone-800);
+  background-color: var(--color-sand-100);
+  color: #2c2c2c;
   overflow-x: hidden;
 }
 
-/* Utility overrides or custom classes if needed */
-.text-brand-sage {
-  color: var(--color-brand-primary);
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
-.bg-brand-sage {
-  background-color: var(--color-brand-primary);
+
+.glass-dark {
+  background: rgba(44, 44, 44, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.bg-brand-cream {
-  background-color: var(--color-brand-light);
+
+/* Custom Utilities */
+.text-balance {
+  text-wrap: balance;
 }
-.text-brand-primary {
-  color: var(--color-brand-primary);
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
 }
-.bg-brand-primary {
-  background-color: var(--color-brand-primary);
-}
-.text-brand-accent {
-  color: var(--color-brand-accent);
-}
-.bg-brand-accent {
-  background-color: var(--color-brand-accent);
-}
+
+/* Legacy Support */
+.text-brand-sage { color: var(--color-brand-primary); }
+.bg-brand-sage { background-color: var(--color-brand-primary); }
+.bg-brand-cream { background-color: var(--color-brand-light); }
+.text-brand-primary { color: var(--color-brand-primary); }
+.bg-brand-primary { background-color: var(--color-brand-primary); }
+.text-brand-accent { color: var(--color-brand-accent); }
+.bg-brand-accent { background-color: var(--color-brand-accent); }

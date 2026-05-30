@@ -3,8 +3,11 @@ import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import HelpCircle from "lucide-react/dist/esm/icons/help-circle";
 import { motion, AnimatePresence } from "framer-motion";
 import { client } from "../../lib/sanity";
+import { useTranslation } from "react-i18next";
 
 export default function FAQ() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const [openIndex, setOpenIndex] = useState(null);
   const [faqs, setFaqs] = useState([]);
 
@@ -12,7 +15,7 @@ export default function FAQ() {
     const fetchFaqs = async () => {
       try {
         const query =
-          '*[_type == "faq"] | order(order asc){ question, answer }';
+          '*[_type == "faq"] | order(order asc){ question, answer, question_en, answer_en }';
         const sanityFaqs = await client.fetch(query);
 
         if (sanityFaqs && sanityFaqs.length > 0) {
@@ -39,11 +42,10 @@ export default function FAQ() {
             <HelpCircle className="text-brand-sage" size={32} />
           </div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800">
-            Preguntas Frecuentes
+            {t('faq.title')}
           </h2>
           <p className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">
-            Resolvemos todas tus dudas para que empieces tu viaje con total
-            confianza
+            {t('faq.subtitle')}
           </p>
           <div className="w-16 h-1 bg-brand-sage mx-auto mt-4 rounded-full"></div>
         </div>
@@ -67,7 +69,8 @@ export default function FAQ() {
                 aria-controls={`faq-answer-${index}`}
               >
                 <span className="text-stone-800 font-medium text-base md:text-lg group-hover:text-brand-sage transition-colors">
-                  {faq.question}
+                  {/* Use English if available, else Spanish */}
+                  {lang === 'en' && faq.question_en ? faq.question_en : faq.question}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
@@ -98,7 +101,7 @@ export default function FAQ() {
                   >
                     <div className="px-6 pb-5 pt-0">
                       <p className="text-stone-600 leading-relaxed">
-                        {faq.answer}
+                        {lang === 'en' && faq.answer_en ? faq.answer_en : faq.answer}
                       </p>
                     </div>
                   </motion.div>
@@ -116,11 +119,10 @@ export default function FAQ() {
           className="mt-12 text-center bg-stone-800 rounded-2xl p-8 md:p-10"
         >
           <h3 className="text-2xl font-serif font-bold text-white mb-3">
-            ¿Tienes alguna otra pregunta?
+            {t('faq.ctaTitle')}
           </h3>
           <p className="text-stone-300 mb-6 max-w-lg mx-auto">
-            Estamos aquí para ayudarte. No dudes en contactarnos y te
-            responderemos lo antes posible.
+            {t('faq.ctaSubtitle')}
           </p>
           <a
             href="https://wa.me/34611794842"
@@ -128,7 +130,7 @@ export default function FAQ() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-brand-sage text-white px-6 py-3 rounded-full font-medium hover:bg-brand-sage/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
-            Contáctanos por WhatsApp
+            {t('faq.ctaButton')}
           </a>
         </motion.div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import Send from "lucide-react/dist/esm/icons/send";
 import CheckCircle from "lucide-react/dist/esm/icons/check-circle";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
@@ -16,6 +17,9 @@ import PawPrint from "lucide-react/dist/esm/icons/paw-print";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactForm() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
   const {
     register,
     handleSubmit,
@@ -25,7 +29,9 @@ export default function ContactForm() {
     reset,
   } = useForm({
     defaultValues: {
-      travelers: "Adultos: 1, Niños: 0, Bebés: 0",
+      travelers: lang === "en"
+        ? "Adults: 1, Children: 0, Babies: 0"
+        : "Adultos: 1, Niños: 0, Bebés: 0",
       hasPets: "no",
     },
   });
@@ -43,13 +49,20 @@ export default function ContactForm() {
   const watchDateStart = watch("dateStart");
   const watchHasPets = watch("hasPets");
 
-  // Update hidden form field whenever counts change
+  // Update hidden form field whenever counts or lang change
   useEffect(() => {
-    setValue(
-      "travelers",
-      `Adultos: ${counts.adults}, Niños: ${counts.children}, Bebés: ${counts.babies}`,
-    );
-  }, [counts, setValue]);
+    if (lang === "en") {
+      setValue(
+        "travelers",
+        `Adults: ${counts.adults}, Children: ${counts.children}, Babies: ${counts.babies}`,
+      );
+    } else {
+      setValue(
+        "travelers",
+        `Adultos: ${counts.adults}, Niños: ${counts.children}, Bebés: ${counts.babies}`,
+      );
+    }
+  }, [counts, setValue, lang]);
 
   const updateCount = (type, operation) => {
     setCounts((prev) => {
@@ -79,10 +92,10 @@ export default function ContactForm() {
       });
       setIsSubmitted(true);
       reset();
-      setCounts({ adults: 1, children: 0, babies: 0 }); // Reset counters
+      setCounts({ adults: 1, children: 0, babies: 0 });
     } catch (error) {
       console.error("Error submitting", error);
-      setIsSubmitted(true); // Fallback for UI
+      setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,13 +106,13 @@ export default function ContactForm() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            Empieza tu aventura
+            {t("contact.label")}
           </span>
           <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2">
-            Diseña tu Viaje
+            {t("contact.title")}
           </h2>
           <p className="mt-4 text-lg text-stone-600">
-            Cuéntanos tus sueños y nosotros nos encargamos del resto.
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -114,18 +127,17 @@ export default function ContactForm() {
                 <CheckCircle size={40} />
               </div>
               <h3 className="text-3xl font-serif font-bold text-stone-800 mb-4">
-                ¡Mensaje Recibido!
+                {t("contact.successTitle")}
               </h3>
               <p className="text-stone-600 text-lg mb-8">
-                Gracias por confiar en nosotros. Un diseñador de viajes se
-                pondrá en contacto contigo muy pronto.
+                {t("contact.successText")}
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
                 className="text-stone-500 hover:text-stone-800 font-medium underline underline-offset-4"
-                aria-label="Enviar otra solicitud de viaje"
+                aria-label={t("contact.sendAnother")}
               >
-                Enviar otra solicitud
+                {t("contact.sendAnother")}
               </button>
             </motion.div>
           ) : (
@@ -134,15 +146,15 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Nombre Completo
+                    {t("contact.fullName")}
                   </label>
                   <input
                     {...register("name", {
-                      required: "El nombre es obligatorio",
+                      required: t("contact.fullNameRequired"),
                     })}
                     type="text"
                     className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
-                    placeholder="Tu nombre"
+                    placeholder={t("contact.fullNamePlaceholder")}
                   />
                   {errors.name && (
                     <span className="text-red-500 text-sm mt-1">
@@ -152,14 +164,14 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Email
+                    {t("contact.email")}
                   </label>
                   <input
                     {...register("email", {
-                      required: "El email es obligatorio",
+                      required: t("contact.emailRequired"),
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Email inválido",
+                        message: t("contact.emailInvalid"),
                       },
                     })}
                     type="email"
@@ -174,11 +186,11 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Teléfono
+                    {t("contact.phone")}
                   </label>
                   <input
                     {...register("phone", {
-                      required: "El teléfono es obligatorio",
+                      required: t("contact.phoneRequired"),
                     })}
                     type="tel"
                     className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
@@ -192,16 +204,16 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              {/* Trip Origins & Destinations */}
+              {/* Trip Details */}
               <div className="space-y-6 pt-6 border-t border-stone-100">
                 <h3 className="text-lg font-serif font-semibold text-stone-800">
-                  Detalles del Viaje
+                  {t("contact.tripDetails")}
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Origen
+                      {t("contact.origin")}
                     </label>
                     <div className="relative">
                       <MapPin
@@ -210,11 +222,11 @@ export default function ContactForm() {
                       />
                       <input
                         {...register("origin", {
-                          required: "Dinos desde dónde sales",
+                          required: t("contact.originRequired"),
                         })}
                         type="text"
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                        placeholder="Madrid, Barcelona..."
+                        placeholder={t("contact.originPlaceholder")}
                       />
                       {errors.origin && (
                         <span className="text-red-500 text-sm mt-1">
@@ -225,7 +237,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Destino Soñado
+                      {t("contact.dreamDestination")}
                     </label>
                     <div className="relative">
                       <MapPin
@@ -234,11 +246,11 @@ export default function ContactForm() {
                       />
                       <input
                         {...register("destination", {
-                          required: "Dinos dónde quieres ir",
+                          required: t("contact.dreamDestinationRequired"),
                         })}
                         type="text"
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                        placeholder="Japón, Maldivas, Italia... o 'Aún no lo sé, quiero asesoramiento'"
+                        placeholder={t("contact.dreamDestinationPlaceholder")}
                       />
                       {errors.destination && (
                         <span className="text-red-500 text-sm mt-1">
@@ -251,7 +263,6 @@ export default function ContactForm() {
 
                 {/* Dates */}
                 <div className="space-y-4">
-                  {/* Flexible Dates Checkbox */}
                   <div className="flex items-center gap-3">
                     <input
                       type="checkbox"
@@ -270,14 +281,14 @@ export default function ContactForm() {
                       htmlFor="flexibleDates"
                       className="text-sm font-medium text-stone-700 cursor-pointer"
                     >
-                      Tengo fechas flexibles
+                      {t("contact.flexibleDates")}
                     </label>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-stone-700 mb-2">
-                        Fecha Ida
+                        {t("contact.departureDate")}
                       </label>
                       <div className="relative">
                         <Calendar
@@ -287,7 +298,7 @@ export default function ContactForm() {
                         <input
                           {...register("dateStart", {
                             required:
-                              !flexibleDates && "Fecha de ida requerida",
+                              !flexibleDates && t("contact.departureDateRequired"),
                           })}
                           type="date"
                           disabled={flexibleDates}
@@ -302,7 +313,7 @@ export default function ContactForm() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-stone-700 mb-2">
-                        Fecha Vuelta
+                        {t("contact.returnDate")}
                       </label>
                       <div className="relative">
                         <Calendar
@@ -312,12 +323,12 @@ export default function ContactForm() {
                         <input
                           {...register("dateEnd", {
                             required:
-                              !flexibleDates && "Fecha de vuelta requerida",
+                              !flexibleDates && t("contact.returnDateRequired"),
                             validate: (value) => {
                               if (flexibleDates || !watchDateStart) return true;
                               return (
                                 new Date(value) >= new Date(watchDateStart) ||
-                                "La fecha de vuelta no puede ser anterior a la de ida"
+                                t("contact.returnDateInvalid")
                               );
                             },
                           })}
@@ -340,15 +351,15 @@ export default function ContactForm() {
                   {/* Custom Traveler Counter */}
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Viajeros
+                      {t("contact.travelers")}
                     </label>
                     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
                       {/* Adults */}
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="font-medium text-stone-800">Adultos</p>
+                          <p className="font-medium text-stone-800">{t("contact.adults")}</p>
                           <p className="text-xs text-stone-500">
-                            16 años o más
+                            {t("contact.adultsAge")}
                           </p>
                         </div>
                         <div className="flex items-center gap-3">
@@ -357,7 +368,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("adults", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.adults <= 1}
-                            aria-label="Disminuir número de adultos"
+                            aria-label="Decrease adults"
                           >
                             <Minus size={14} />
                           </button>
@@ -368,7 +379,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("adults", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
-                            aria-label="Incrementar número de adultos"
+                            aria-label="Increase adults"
                           >
                             <Plus size={14} />
                           </button>
@@ -378,8 +389,8 @@ export default function ContactForm() {
                       {/* Children */}
                       <div className="flex items-center justify-between border-t border-stone-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">Niños</p>
-                          <p className="text-xs text-stone-500">2 - 15 años</p>
+                          <p className="font-medium text-stone-800">{t("contact.children")}</p>
+                          <p className="text-xs text-stone-500">{t("contact.childrenAge")}</p>
                         </div>
                         <div className="flex items-center gap-3">
                           <button
@@ -387,7 +398,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("children", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.children <= 0}
-                            aria-label="Disminuir número de niños"
+                            aria-label="Decrease children"
                           >
                             <Minus size={14} />
                           </button>
@@ -398,7 +409,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("children", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
-                            aria-label="Incrementar número de niños"
+                            aria-label="Increase children"
                           >
                             <Plus size={14} />
                           </button>
@@ -408,8 +419,8 @@ export default function ContactForm() {
                       {/* Babies */}
                       <div className="flex items-center justify-between border-t border-stone-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">Bebés</p>
-                          <p className="text-xs text-stone-500">Hasta 2 años</p>
+                          <p className="font-medium text-stone-800">{t("contact.babies")}</p>
+                          <p className="text-xs text-stone-500">{t("contact.babiesAge")}</p>
                         </div>
                         <div className="flex items-center gap-3">
                           <button
@@ -417,7 +428,7 @@ export default function ContactForm() {
                             onClick={() => updateCount("babies", "minus")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
                             disabled={counts.babies <= 0}
-                            aria-label="Disminuir número de bebés"
+                            aria-label="Decrease babies"
                           >
                             <Minus size={14} />
                           </button>
@@ -428,7 +439,7 @@ export default function ContactForm() {
                             type="button"
                             onClick={() => updateCount("babies", "add")}
                             className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
-                            aria-label="Incrementar número de bebés"
+                            aria-label="Increase babies"
                           >
                             <Plus size={14} />
                           </button>
@@ -442,7 +453,7 @@ export default function ContactForm() {
 
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Presupuesto (pp)
+                      {t("contact.budget")}
                     </label>
                     <div className="relative">
                       <Euro
@@ -451,10 +462,10 @@ export default function ContactForm() {
                       />
                       <input
                         {...register("budget", {
-                          required: "Presupuesto aproximado requerido",
+                          required: t("contact.budgetRequired"),
                         })}
                         type="text"
-                        placeholder="Ej: 1500-2000€"
+                        placeholder={t("contact.budgetPlaceholder")}
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                       />
                       {errors.budget && (
@@ -470,7 +481,7 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Tipo de Viaje
+                      {t("contact.tripType")}
                     </label>
                     <div className="relative">
                       <Briefcase
@@ -479,17 +490,17 @@ export default function ContactForm() {
                       />
                       <select
                         {...register("tripType", {
-                          required: "Selecciona un tipo",
+                          required: t("contact.tripTypeRequired"),
                         })}
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
                       >
-                        <option value="">Selecciona...</option>
-                        <option value="luna_miel">Luna de Miel</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="relax">Relax / Playa</option>
-                        <option value="cultural">Cultural</option>
-                        <option value="familia">En Familia</option>
-                        <option value="sorpresa">Sorpréndeme</option>
+                        <option value="">{t("contact.tripTypeSelect")}</option>
+                        <option value="luna_miel">{t("contact.tripTypeHoneymoon")}</option>
+                        <option value="aventura">{t("contact.tripTypeAdventure")}</option>
+                        <option value="relax">{t("contact.tripTypeRelax")}</option>
+                        <option value="cultural">{t("contact.tripTypeCultural")}</option>
+                        <option value="familia">{t("contact.tripTypeFamily")}</option>
+                        <option value="sorpresa">{t("contact.tripTypeSurprise")}</option>
                       </select>
                       {errors.tripType && (
                         <span className="text-red-500 text-sm mt-1">
@@ -500,7 +511,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Paquete Deseado
+                      {t("contact.package")}
                     </label>
                     <div className="relative">
                       <Package
@@ -509,14 +520,14 @@ export default function ContactForm() {
                       />
                       <select
                         {...register("package", {
-                          required: "Selecciona un paquete",
+                          required: t("contact.packageRequired"),
                         })}
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none uppercase"
                       >
-                        <option value="">Selecciona...</option>
-                        <option value="explora">Paquete Explora</option>
-                        <option value="vive">Paquete Vive</option>
-                        <option value="conecta">Paquete Conecta</option>
+                        <option value="">{t("contact.packageSelect")}</option>
+                        <option value="explora">{t("contact.packageExplora")}</option>
+                        <option value="vive">{t("contact.packageVive")}</option>
+                        <option value="conecta">{t("contact.packageConecta")}</option>
                       </select>
                       {errors.package && (
                         <span className="text-red-500 text-sm mt-1">
@@ -524,8 +535,7 @@ export default function ContactForm() {
                         </span>
                       )}
                       <p className="text-xs text-brand-sage mt-1 ml-1">
-                        (Antes de elegir ves a echarle un vistazo lo que incluye
-                        cada uno más arriba)
+                        {t("contact.packageHint")}
                       </p>
                     </div>
                   </div>
@@ -535,7 +545,7 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
-                      ¿Viajas con mascotas?
+                      {t("contact.hasPets")}
                     </label>
                     <div className="relative">
                       <PawPrint
@@ -546,8 +556,8 @@ export default function ContactForm() {
                         {...register("hasPets")}
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
                       >
-                        <option value="no">No, por ahora no</option>
-                        <option value="yes">Sí, somos un equipo</option>
+                        <option value="no">{t("contact.hasPetsNo")}</option>
+                        <option value="yes">{t("contact.hasPetsYes")}</option>
                       </select>
                     </div>
                   </div>
@@ -560,18 +570,18 @@ export default function ContactForm() {
                         className="overflow-hidden"
                       >
                         <label className="block text-sm font-medium text-stone-700 mb-2">
-                          ¿Qué mascota(s) viene(n)?
+                          {t("contact.petsDetails")}
                         </label>
                         <input
                           {...register("petsDetails", {
                             required:
                               watchHasPets === "yes"
-                                ? "Dinos qué mascotas te acompañan"
+                                ? t("contact.petsDetailsRequired")
                                 : false,
                           })}
                           type="text"
                           className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                          placeholder="Perro, gato, elefante..."
+                          placeholder={t("contact.petsDetailsPlaceholder")}
                         />
                         {errors.petsDetails && (
                           <span className="text-red-500 text-sm mt-1">
@@ -586,13 +596,13 @@ export default function ContactForm() {
                 {/* Extras & Message */}
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Extras y Comentarios
+                    {t("contact.extras")}
                   </label>
                   <textarea
                     {...register("message")}
                     rows="4"
                     className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
-                    placeholder="Cuéntanos cualquier detalle extra (alergias, intereses especiales, dudas...)"
+                    placeholder={t("contact.extrasPlaceholder")}
                   ></textarea>
                 </div>
               </div>
@@ -603,7 +613,7 @@ export default function ContactForm() {
                   <div className="flex items-center h-5">
                     <input
                       {...register("privacyPolicy", {
-                        required: "Debes aceptar la política de privacidad",
+                        required: t("contact.privacyRequired"),
                       })}
                       id="privacyPolicy"
                       type="checkbox"
@@ -615,18 +625,18 @@ export default function ContactForm() {
                       htmlFor="privacyPolicy"
                       className="font-medium text-stone-700 cursor-pointer"
                     >
-                      He leído y acepto la{" "}
+                      {t("contact.privacyLabel")}{" "}
                       <button
                         type="button"
                         className="text-brand-sage hover:underline"
                         onClick={() =>
                           window.scrollTo(0, document.body.scrollHeight)
                         }
-                        aria-label="Leer Política de Privacidad"
+                        aria-label={t("contact.privacyLink")}
                       >
-                        Política de Privacidad
+                        {t("contact.privacyLink")}
                       </button>{" "}
-                      y el uso de mis datos para gestionar esta solicitud.
+                      {t("contact.privacyLabel2")}
                     </label>
                     {errors.privacyPolicy && (
                       <p className="text-red-500 mt-1">
@@ -650,8 +660,7 @@ export default function ContactForm() {
                       htmlFor="marketingConsent"
                       className="text-stone-600 cursor-pointer"
                     >
-                      Acepto recibir comunicaciones comerciales y novedades
-                      sobre viajes e inspiración.
+                      {t("contact.marketingConsent")}
                     </label>
                   </div>
                 </div>
@@ -664,10 +673,10 @@ export default function ContactForm() {
                   className="w-full py-4 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    "Enviando..."
+                    t("contact.submitting")
                   ) : (
                     <>
-                      Enviar Solicitud <Send size={18} />
+                      {t("contact.submit")} <Send size={18} />
                     </>
                   )}
                 </button>

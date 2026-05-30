@@ -7,19 +7,35 @@ export const destination = defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title (ES)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'title_en',
+      title: 'Title (EN)',
+      type: 'string',
+      description: 'English title for the destination card',
+    }),
+    defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Slug (ES)',
       type: 'slug',
       options: {
         source: 'title',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug_en',
+      title: 'Slug (EN) - For SEO',
+      type: 'slug',
+      description: 'English URL slug (e.g. japan instead of japon)',
+      options: {
+        source: 'title_en',
+        maxLength: 96,
+      },
     }),
     defineField({
       name: 'country',
@@ -53,28 +69,58 @@ export const destination = defineType({
     }),
     defineField({
       name: 'heroSubtitle',
-      title: 'Hero Subtitle',
+      title: 'Hero Subtitle (ES)',
       type: 'string',
+    }),
+    defineField({
+      name: 'heroSubtitle_en',
+      title: 'Hero Subtitle (EN)',
+      type: 'string',
+      description: 'English version of the hero subtitle',
     }),
     defineField({
       name: 'heroTagline',
-      title: 'Hero Tagline',
+      title: 'Hero Tagline (ES)',
       type: 'string',
+    }),
+    defineField({
+      name: 'heroTagline_en',
+      title: 'Hero Tagline (EN)',
+      type: 'string',
+      description: 'English version of the hero tagline',
     }),
     defineField({
       name: 'intro',
-      title: 'Intro Description',
+      title: 'Intro Description (ES)',
       type: 'text',
+    }),
+    defineField({
+      name: 'intro_en',
+      title: 'Intro Description (EN)',
+      type: 'text',
+      description: 'English version of the intro description',
     }),
     defineField({
       name: 'description_larga',
-      title: 'Card Description',
+      title: 'Card Description (ES)',
       type: 'string',
     }),
     defineField({
+      name: 'description_larga_en',
+      title: 'Card Description (EN)',
+      type: 'string',
+      description: 'English version of the card description',
+    }),
+    defineField({
       name: 'metaDescription',
-      title: 'SEO Description',
+      title: 'SEO Description (ES)',
       type: 'text',
+    }),
+    defineField({
+      name: 'metaDescription_en',
+      title: 'SEO Description (EN)',
+      type: 'text',
+      description: 'English SEO description',
     }),
     defineField({
       name: 'highlights',
@@ -85,8 +131,10 @@ export const destination = defineType({
           type: 'object',
           fields: [
             { name: 'icon', title: 'Icon (Emoji)', type: 'string' },
-            { name: 'title', title: 'Title', type: 'string' },
-            { name: 'desc', title: 'Description', type: 'string' },
+            { name: 'title', title: 'Title (ES)', type: 'string' },
+            { name: 'title_en', title: 'Title (EN)', type: 'string' },
+            { name: 'desc', title: 'Description (ES)', type: 'string' },
+            { name: 'desc_en', title: 'Description (EN)', type: 'string' },
           ],
         },
       ],
@@ -96,15 +144,24 @@ export const destination = defineType({
       title: 'Best Time to Visit',
       type: 'object',
       fields: [
-        { name: 'months', title: 'Months', type: 'string' },
-        { name: 'reason', title: 'Reason', type: 'string' },
+        { name: 'months', title: 'Months (ES)', type: 'string' },
+        { name: 'months_en', title: 'Months (EN)', type: 'string' },
+        { name: 'reason', title: 'Reason (ES)', type: 'string' },
+        { name: 'reason_en', title: 'Reason (EN)', type: 'string' },
       ],
     }),
     defineField({
       name: 'about',
-      title: 'About (Paragraphs)',
+      title: 'About (ES) — Paragraphs',
       type: 'array',
       of: [{ type: 'text' }],
+    }),
+    defineField({
+      name: 'about_en',
+      title: 'About (EN) — Paragraphs',
+      type: 'array',
+      of: [{ type: 'text' }],
+      description: 'English version of the about paragraphs',
     }),
     defineField({
       name: 'color',

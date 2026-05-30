@@ -5,7 +5,7 @@ import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import MessageCircle from "lucide-react/dist/esm/icons/message-circle";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
-
+import { useTranslation } from "react-i18next";
 import { client, urlFor } from "../lib/sanity";
 import SEOHead from "../components/SEOHead";
 import Header from "../components/layout/Header";
@@ -13,6 +13,8 @@ import Footer from "../components/layout/Footer";
 import NotFound from "./NotFound";
 
 export default function DestinationPage() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const { slug } = useParams();
   const [destination, setDestination] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -20,14 +22,23 @@ export default function DestinationPage() {
   React.useEffect(() => {
     const fetchDestination = async () => {
       try {
-        const query = `*[_type == "destination" && slug.current == $slug][0]`;
+        // Query tries to find the destination where either slug matches (Spanish) or slug_en matches (English)
+        const query = `*[_type == "destination" && (slug.current == $slug || slug_en.current == $slug)][0]`;
         const sanityDest = await client.fetch(query, { slug });
 
         if (sanityDest) {
-          // Map Sanity data to our internal structure
+          // Helper: pick bilingual field, fallback to ES
+          const pick = (field) => lang === 'en' && sanityDest[`${field}_en`]
+            ? sanityDest[`${field}_en`]
+            : sanityDest[field];
+
           const mappedDest = {
             ...sanityDest,
-            slug: sanityDest.slug.current,
+            slug: sanityDest.slug?.current || "",
+            slug_en: sanityDest.slug_en?.current || sanityDest.slug?.current || "",
+            title: pick('title'),
+            intro: pick('intro'),
+            metaDescription: pick('metaDescription'),
             img_src: sanityDest.heroImage
               ? urlFor(sanityDest.heroImage).url()
               : null,
@@ -35,12 +46,25 @@ export default function DestinationPage() {
               image: sanityDest.heroImage
                 ? urlFor(sanityDest.heroImage).url()
                 : null,
-              subtitle: sanityDest.heroSubtitle,
-              tagline: sanityDest.heroTagline,
+              subtitle: pick('heroSubtitle'),
+              tagline: pick('heroTagline'),
             },
-            // Ensure arrays exist
-            highlights: sanityDest.highlights || [],
-            about: sanityDest.about || [],
+            highlights: (sanityDest.highlights || []).map(h => ({
+              ...h,
+              title: lang === 'en' && h.title_en ? h.title_en : h.title,
+              desc: lang === 'en' && h.desc_en ? h.desc_en : h.desc,
+            })),
+            about: lang === 'en' && sanityDest.about_en && sanityDest.about_en.length > 0
+              ? sanityDest.about_en
+              : (sanityDest.about || []),
+            bestTime: {
+              months: lang === 'en' && sanityDest.bestTime?.months_en
+                ? sanityDest.bestTime.months_en
+                : sanityDest.bestTime?.months,
+              reason: lang === 'en' && sanityDest.bestTime?.reason_en
+                ? sanityDest.bestTime.reason_en
+                : sanityDest.bestTime?.reason,
+            },
           };
           setDestination(mappedDest);
         }
@@ -53,7 +77,7 @@ export default function DestinationPage() {
     };
 
     fetchDestination();
-  }, [slug]);
+  }, [slug, lang]);
 
   // Si no se encuentra el destino (ni en local ni en Sanity), mostrar 404
   if (!destination && !loading) {
@@ -129,6 +153,8 @@ export default function DestinationPage() {
         title={seoTitle}
         description={seoDescription}
         canonicalUrl={canonicalUrl}
+        esUrl={`https://www.saltysoultrips.com/destinos/${destination.slug}`}
+        enUrl={`https://www.saltysoultrips.com/destinos/${destination.slug_en}`}
         ogImage={destination.hero.image}
         schemaData={schemaData}
       />
@@ -173,7 +199,7 @@ export default function DestinationPage() {
               aria-label="Volver a la lista de destinos"
             >
               <ArrowLeft size={18} />
-              <span>Volver a destinos</span>
+              <span>{t('destinationPage.backToDestinations')}</span>
             </Link>
 
             <motion.div
@@ -185,7 +211,7 @@ export default function DestinationPage() {
                 {destination.hero.subtitle}
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-4">
-                Viajes Personalizados a {destination.country}
+                {t('destinationPage.heroTitle', { country: destination.country })}
               </h1>
               <p className="text-xl text-white/90 max-w-2xl">
                 {destination.hero.tagline}
@@ -204,11 +230,11 @@ export default function DestinationPage() {
             <div className="flex items-center gap-2 mb-6">
               <MapPin className="text-brand-sage" size={22} />
               <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-                Sobre el destino
+                {t('destinationPage.aboutDestination')}
               </span>
             </div>
             <h2 className="text-3xl font-serif font-bold text-stone-800 mb-6">
-              Descubre {destination.country}
+              {t('destinationPage.discover', { country: destination.country })}
             </h2>
             <p className="text-lg text-stone-600 leading-relaxed mb-6">
               {destination.intro}
@@ -230,10 +256,10 @@ export default function DestinationPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-                Experiencias
+                {t('destinationPage.experiencesLabel')}
               </span>
               <h2 className="text-3xl font-serif font-bold text-stone-800 mt-2">
-                Lo mejor de {destination.country}
+                {t('destinationPage.bestOf', { country: destination.country })}
               </h2>
             </div>
 
@@ -270,7 +296,7 @@ export default function DestinationPage() {
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Calendar className="text-brand-sage" size={24} />
                 <h3 className="text-xl font-semibold text-stone-800">
-                  Mejor época para viajar
+                  {t('destinationPage.bestTimeTitle')}
                 </h3>
               </div>
               <p className="text-2xl font-serif font-bold text-brand-sage mb-3">
@@ -292,11 +318,10 @@ export default function DestinationPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
-                ¿Listo para tu viaje a {destination.country}?
+                {t('destinationPage.ctaTitle', { country: destination.country })}
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Diseñamos un itinerario 100% a tu medida, sin comisiones
-                ocultas. Cuéntanos tu viaje soñado y lo hacemos realidad.
+                {t('destinationPage.ctaSubtitle')}
               </p>
               <a
                 href={whatsappUrl}
@@ -306,7 +331,7 @@ export default function DestinationPage() {
                 aria-label={`Contactar por WhatsApp para viaje a ${destination.country}`}
               >
                 <MessageCircle size={24} />
-                Contáctanos por WhatsApp
+                {t('destinationPage.ctaButton')}
               </a>
             </motion.div>
           </div>

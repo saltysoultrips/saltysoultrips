@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Shield from "lucide-react/dist/esm/icons/shield";
 import Wifi from "lucide-react/dist/esm/icons/wifi";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
@@ -55,6 +56,7 @@ const discountOffers = [
 ];
 
 export default function Discounts() {
+  const { t } = useTranslation();
   useEffect(() => {
     // 1. Inject Expedia official stylesheet
     const styleId = "expedia-affiliate-style";
@@ -172,14 +174,13 @@ export default function Discounts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            Descuentos Exclusivos
+            {t('discounts.label')}
           </span>
           <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
-            Nuestros Aliados para tu Viaje
+            {t('discounts.title')}
           </h2>
           <p className="text-stone-600 max-w-2xl mx-auto">
-            Aprovecha estos descuentos y servicios especiales para hacer tu
-            viaje aún más increíble
+            {t('discounts.subtitle')}
           </p>
         </div>
 
@@ -266,12 +267,11 @@ export default function Discounts() {
                         <Car className="text-brand-sage" size={18} />
                       </div>
                       <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                        Recomendado por SaltySoulTrips
+                        {t('discounts.recommendedBy')}
                       </span>
                     </div>
                     <p className="text-2xl text-stone-700 font-serif font-medium leading-tight">
-                      Para moverte por tu cuenta, siempre reservamos nuestro
-                      vehículo a través de{" "}
+                      {t('discounts.discoverCarsText')}{" "}
                       <span className="text-brand-sage font-bold italic">
                         DiscoverCars
                       </span>
@@ -285,7 +285,7 @@ export default function Discounts() {
                     rel="noopener noreferrer"
                     className="relative z-10 whitespace-nowrap px-12 py-5 bg-stone-800 hover:bg-brand-sage text-white font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-brand-sage/30 hover:-translate-y-1 active:scale-95"
                   >
-                    Alquilar coche ahora
+                    {t('discounts.rentCarNow')}
                   </a>
                 </div>
               </div>
@@ -320,11 +320,11 @@ export default function Discounts() {
                 {/* Title & Badge */}
                 <div className="flex items-center gap-3 mb-2 justify-center">
                   <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                    AGODA AFILIADOS
+                    {t('discounts.agodaLabel')}
                   </span>
                 </div>
                 <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
-                  Tu Alojamiento Perfecto
+                  {t('discounts.agodaTitle')}
                 </h3>
                 
                 {/* Agoda Banner Container (matching Expedia style) */}
@@ -363,11 +363,11 @@ export default function Discounts() {
                 {/* Title & Badge */}
                 <div className="flex items-center gap-3 mb-2 justify-center">
                   <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                    EXPEDIA AFILIADOS
+                    {t('discounts.expediaLabel')}
                   </span>
                 </div>
                 <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
-                  Escapadas y Vuelos
+                  {t('discounts.expediaTitle')}
                 </h3>
                 
                 {/* Dynamic Expedia Banner Container */}
@@ -393,7 +393,7 @@ export default function Discounts() {
         <div className="mt-20 pt-12 border-t border-stone-200">
           <div className="text-center">
             <span className="text-brand-sage font-semibold tracking-wider uppercase text-xs">
-              Nuestro Partner Tecnológico
+              {t('discounts.techPartner')}
             </span>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-8">
               <img
@@ -403,8 +403,7 @@ export default function Discounts() {
               />
               <div className="h-px w-12 bg-stone-300 hidden md:block"></div>
               <p className="text-stone-600 font-medium text-lg">
-                <b>SiteMinder</b> | El mayor proveedor del mundo de tecnología
-                para hoteles
+                <b>SiteMinder</b> | {t('discounts.techPartnerDesc')}
               </p>
             </div>
           </div>
@@ -413,8 +412,7 @@ export default function Discounts() {
         {/* Optional Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-stone-500 italic">
-            * Al utilizar estos enlaces, nos ayudas a seguir ofreciendo el mejor
-            servicio sin coste adicional para ti
+            {t('discounts.affiliateNote')}
           </p>
         </div>
       </div>

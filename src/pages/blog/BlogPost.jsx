@@ -5,6 +5,7 @@ import SEOHead from "../../components/SEOHead";
 import { client, urlFor } from "../../lib/sanity";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
+import { useTranslation } from "react-i18next";
 
 const components = {
   types: {
@@ -77,13 +78,16 @@ const components = {
 
 export default function BlogPost() {
   const { slug } = useParams();
+  const { i18n } = useTranslation();
+  const lang = i18n.language; // 'es' or 'en'
+
   const [post, setPost] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchPost = async () => {
       try {
-        const query = `*[_type == "post" && slug.current == $slug][0]`;
+        const query = `*[_type == "post" && (slug.current == $slug || slug_en.current == $slug)][0]`;
         const data = await client.fetch(query, { slug });
         setPost(data);
       } catch (error) {
@@ -99,7 +103,7 @@ export default function BlogPost() {
   if (loading) {
     return (
       <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
-        <div className="text-stone-400">Cargando artículo...</div>
+        <div className="text-stone-400">{lang === "en" ? "Loading article..." : "Cargando artículo..."}</div>
       </div>
     );
   }
@@ -108,11 +112,19 @@ export default function BlogPost() {
     return <Navigate to="/404" replace />;
   }
 
+  // Pick the right language field with ES fallback
+  const pick = (field) => post[`${field}_en`] && lang === "en"
+    ? post[`${field}_en`]
+    : post[field];
+
+  const displayTitle = pick("title");
+  const displayContent = pick("content");
+
   // Schema.org Article data
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
+    headline: displayTitle,
     image: [post.coverImage ? urlFor(post.coverImage).url() : ""],
     datePublished: post.date,
     dateModified: post.date,
@@ -131,15 +143,17 @@ export default function BlogPost() {
         url: "https://www.saltysoultrips.com/resto/logoGoogle.png",
       },
     },
-    description: post.title,
+    description: displayTitle,
   };
 
   return (
     <>
       <SEOHead
-        title={`${post.title} | Blog SaltySoulTrips`}
-        description={post.title}
-        canonicalUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
+        title={`${displayTitle} | Blog SaltySoulTrips`}
+        description={displayTitle}
+        canonicalUrl={`https://www.saltysoultrips.com/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
+        esUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
+        enUrl={`https://www.saltysoultrips.com/blog/${post.slug_en ? post.slug_en.current : post.slug.current}`}
         ogImage={post.coverImage ? urlFor(post.coverImage).url() : ""}
         schemaData={articleSchema}
       />
@@ -150,13 +164,14 @@ export default function BlogPost() {
             to="/blog"
             className="inline-flex items-center text-stone-500 hover:text-brand-sage transition-colors mb-8"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Volver al Blog
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {lang === "en" ? "Back to Blog" : "Volver al Blog"}
           </Link>
 
           <div className="relative rounded-3xl overflow-hidden aspect-video shadow-lg mb-8">
             <img
               src={post.coverImage ? urlFor(post.coverImage).url() : ""}
-              alt={post.title}
+              alt={displayTitle}
               className="w-full h-full object-cover"
             />
           </div>
@@ -166,14 +181,20 @@ export default function BlogPost() {
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" /> {post.date}
               </span>
+              {/* Show language notice if English content not available */}
+              {lang === "en" && !post.title_en && (
+                <span className="text-xs bg-amber-50 text-amber-600 border border-amber-200 px-3 py-1 rounded-full">
+                  This article is only available in Spanish
+                </span>
+              )}
             </div>
 
             <h1 className="text-3xl md:text-5xl font-display font-bold text-brand-sage mb-8 leading-tight">
-              {post.title}
+              {displayTitle}
             </h1>
 
             <div className="prose-custom font-serif text-lg">
-              <PortableText value={post.content} components={components} />
+              <PortableText value={displayContent} components={components} />
             </div>
           </div>
         </div>
