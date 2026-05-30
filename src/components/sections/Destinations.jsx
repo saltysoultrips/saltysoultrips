@@ -5,10 +5,13 @@ import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import Star from "lucide-react/dist/esm/icons/star";
+import { useTranslation } from "react-i18next";
 
 import { client, urlFor } from "../../lib/sanity";
 
 export default function Destinations() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
@@ -21,13 +24,14 @@ export default function Destinations() {
           const mappedDestinations = sanityDestinations.map((d) => ({
             ...d,
             slug: d.slug?.current || "",
-            slug_en: d.slug_en?.current || d.slug?.current || "", // Fix: Sanity slug is an object
+            slug_en: d.slug_en?.current || d.slug?.current || "",
+            title: lang === 'en' && d.title_en ? d.title_en : d.title,
             img_src: d.heroImage ? urlFor(d.heroImage).url() : d.img_src,
             hero: {
               ...d.hero,
               image: d.heroImage ? urlFor(d.heroImage).url() : d.hero?.image,
-              subtitle: d.heroSubtitle || d.hero?.subtitle,
-              tagline: d.heroTagline || d.hero?.tagline,
+              subtitle: lang === 'en' && d.heroSubtitle_en ? d.heroSubtitle_en : (d.heroSubtitle || d.hero?.subtitle),
+              tagline: lang === 'en' && d.heroTagline_en ? d.heroTagline_en : (d.heroTagline || d.hero?.tagline),
             },
           }));
           setDestinations(mappedDestinations);
@@ -38,7 +42,7 @@ export default function Destinations() {
     };
 
     fetchDestinations();
-  }, []);
+  }, [lang]);
 
   // Group destinations by region
   const destinationsByRegion = destinations.reduce((acc, dest) => {
@@ -79,21 +83,20 @@ export default function Destinations() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 text-center md:text-left">
           <div>
             <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-2">
-              Inspiración viajera
+              {t('destinations.label')}
             </span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 leading-tight">
-              Explora el Mundo
+              {t('destinations.title')}
             </h2>
             <p className="mt-4 text-stone-600 max-w-2xl font-light text-lg">
-              Descubre destinos únicos diseñados para conectar contigo. Desde
-              rascacielos infinitos hasta playas desiertas.
+              {t('destinations.subtitle')}
             </p>
           </div>
           <a
             href="#contact"
             className="hidden md:flex items-center gap-2 text-stone-500 hover:text-brand-sage transition-colors font-medium group"
           >
-            Diseñar mi viaje a medida{" "}
+            {t('destinations.designTrip')}{" "}
             <ArrowUpRight
               size={18}
               className="group-hover:translate-x-1 transition-transform"
@@ -122,7 +125,7 @@ export default function Destinations() {
                     {t(`regions.${region}`)}
                   </h3>
                   <span className="text-xs sm:text-sm bg-stone-100 text-stone-500 py-1 px-3 rounded-full font-medium whitespace-nowrap shrink-0">
-                    {destinations.length} destinos
+                    {destinations.length} {t('destinations.destinationsCount')}
                   </span>
                 </div>
                 <div
@@ -208,7 +211,7 @@ export default function Destinations() {
                               <div className="h-0 group-hover:h-auto overflow-hidden opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                                 <div className="mb-4 space-y-1">
                                   <p className="text-xs text-brand-sage font-bold uppercase tracking-wider mb-2">
-                                    Lo mejor:
+                                    {t('destinations.bestOf')}
                                   </p>
                                   {dest.highlights &&
                                     dest.highlights.slice(0, 3).map((h, i) => (
@@ -227,7 +230,7 @@ export default function Destinations() {
                                     ))}
                                 </div>
                                 <span className="inline-flex items-center gap-2 text-white text-sm font-medium hover:underline">
-                                  Ver itinerario completo{" "}
+                                  {t('destinations.seeFullItinerary')}{" "}
                                   <ArrowUpRight size={14} />
                                 </span>
                               </div>
@@ -248,7 +251,7 @@ export default function Destinations() {
             href="#contact"
             className="inline-flex items-center gap-2 text-brand-sage font-bold border-b border-brand-sage pb-1"
           >
-            ¿No encuentras tu destino? Escríbeme <ArrowUpRight size={18} />
+            {t('destinations.noDestination')} <ArrowUpRight size={18} />
           </a>
         </div>
       </div>

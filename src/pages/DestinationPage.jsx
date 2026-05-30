@@ -291,7 +291,7 @@ export default function DestinationPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-brand-sage/10 to-brand-sea/10 rounded-3xl p-8 text-center flex flex-col justify-center"
+              className="bg-gradient-to-br from-brand-sage/10 to-brand-sky/10 rounded-3xl p-8 text-center flex flex-col justify-center"
             >
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Calendar className="text-brand-sage" size={24} />
@@ -310,24 +310,24 @@ export default function DestinationPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-brand-sage to-brand-sea">
+        <section className="py-20 bg-brand-sky/20 border-t border-brand-sky/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-sky-800 mb-4">
                 {t('destinationPage.ctaTitle', { country: destination.country })}
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-sky-900/80 text-lg mb-8 max-w-2xl mx-auto">
                 {t('destinationPage.ctaSubtitle')}
               </p>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-brand-sage px-8 py-4 rounded-full font-semibold text-lg hover:bg-stone-100 transition-colors shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-3 bg-white text-sky-600 border border-sky-100 px-8 py-4 rounded-full font-semibold text-lg hover:bg-sky-50 transition-colors shadow-lg hover:shadow-xl"
                 aria-label={`Contactar por WhatsApp para viaje a ${destination.country}`}
               >
                 <MessageCircle size={24} />
