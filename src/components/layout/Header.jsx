@@ -21,14 +21,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isEn = i18n.language === 'en';
+
   const navLinks = [
-    { name: t("header.nav.destinos"), href: "/destinos" },
-    { name: t("header.nav.packs"), href: "/servicios" },
-    { name: t("header.nav.comoFunciona"), href: "/como-funciona" },
-    { name: t("header.nav.experiencias"), href: "/experiencias" },
-    { name: t("header.nav.descuentos"), href: "/descuentos" },
+    { name: t("header.nav.destinos"), href: isEn ? "/destinations" : "/destinos" },
+    { name: t("header.nav.packs"), href: isEn ? "/services" : "/servicios" },
+    { name: t("header.nav.comoFunciona"), href: isEn ? "/how-it-works" : "/como-funciona" },
+    { name: t("header.nav.experiencias"), href: isEn ? "/experiences" : "/experiencias" },
+    { name: t("header.nav.descuentos"), href: isEn ? "/discounts" : "/descuentos" },
     { name: t("header.nav.blog"), href: "/blog" },
-    { name: t("header.nav.contacto"), href: "/contacto" },
+    { name: t("header.nav.contacto"), href: isEn ? "/contact" : "/contacto" },
   ];
 
   const handleNavigation = (e, href) => {
@@ -66,6 +68,33 @@ export default function Header() {
   const toggleLanguage = () => {
     const newLang = i18n.language === 'es' ? 'en' : 'es';
     i18n.changeLanguage(newLang);
+
+    // Auto-redirect to the translated URL path for static pages
+    const currentPath = location.pathname;
+    
+    const esToEn = {
+      '/destinos': '/destinations',
+      '/servicios': '/services',
+      '/como-funciona': '/how-it-works',
+      '/experiencias': '/experiences',
+      '/descuentos': '/discounts',
+      '/contacto': '/contact'
+    };
+    
+    const enToEs = {
+      '/destinations': '/destinos',
+      '/services': '/servicios',
+      '/how-it-works': '/como-funciona',
+      '/experiences': '/experiencias',
+      '/discounts': '/descuentos',
+      '/contact': '/contacto'
+    };
+    
+    if (newLang === 'en' && esToEn[currentPath]) {
+      navigate(esToEn[currentPath], { replace: true });
+    } else if (newLang === 'es' && enToEs[currentPath]) {
+      navigate(enToEs[currentPath], { replace: true });
+    }
   };
 
   const isHome = location.pathname === "/";
@@ -161,8 +190,8 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="/contacto"
-                onClick={(e) => handleNavigation(e, "/contacto")}
+                href={isEn ? "/contact" : "/contacto"}
+                onClick={(e) => handleNavigation(e, isEn ? "/contact" : "/contacto")}
                 className="block mt-6 text-center bg-brand-dark text-sand-100 px-3 py-4 rounded-xl font-medium shadow-md active:scale-95 transition-transform"
               >
                 {t("header.empiezaViaje")}

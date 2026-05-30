@@ -175,11 +175,22 @@ function App() {
         
         {/* New Multi-page Routes */}
         <Route path="/servicios" element={<ScrollToTopWrapper><ServicesPage /></ScrollToTopWrapper>} />
+        <Route path="/services" element={<ScrollToTopWrapper><ServicesPage /></ScrollToTopWrapper>} />
+        
         <Route path="/descuentos" element={<ScrollToTopWrapper><DiscountsPage /></ScrollToTopWrapper>} />
+        <Route path="/discounts" element={<ScrollToTopWrapper><DiscountsPage /></ScrollToTopWrapper>} />
+        
         <Route path="/contacto" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
+        <Route path="/contact" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
+        
         <Route path="/destinos" element={<ScrollToTopWrapper><DestinationsPage /></ScrollToTopWrapper>} />
+        <Route path="/destinations" element={<ScrollToTopWrapper><DestinationsPage /></ScrollToTopWrapper>} />
+        
         <Route path="/como-funciona" element={<ScrollToTopWrapper><HowItWorksPage /></ScrollToTopWrapper>} />
+        <Route path="/how-it-works" element={<ScrollToTopWrapper><HowItWorksPage /></ScrollToTopWrapper>} />
+        
         <Route path="/experiencias" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
+        <Route path="/experiences" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
 
         {/* Blog Routes */}
         <Route
@@ -210,6 +221,14 @@ function App() {
         {/* Dynamic Destination Pages */}
         <Route
           path="/destinos/:slug"
+          element={
+            <ScrollToTopWrapper>
+              <DestinationPage />
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/destinations/:slug"
           element={
             <ScrollToTopWrapper>
               <DestinationPage />

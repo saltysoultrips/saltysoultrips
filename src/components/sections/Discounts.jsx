@@ -56,7 +56,9 @@ const discountOffers = [
 ];
 
 export default function Discounts() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
   useEffect(() => {
     // 1. Inject Expedia official stylesheet
     const styleId = "expedia-affiliate-style";
@@ -163,7 +165,7 @@ export default function Discounts() {
         if (frame) frame.remove();
       });
     };
-  }, []);
+  }, [lang]);
 
   return (
     <section className="py-24 bg-gradient-to-br from-white to-stone-50 relative overflow-hidden">
@@ -317,12 +319,7 @@ export default function Discounts() {
                   />
                 </div>
                 
-                {/* Title & Badge */}
-                <div className="flex items-center gap-3 mb-2 justify-center">
-                  <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                    {t('discounts.agodaLabel')}
-                  </span>
-                </div>
+                {/* Title */}
                 <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
                   {t('discounts.agodaTitle')}
                 </h3>
@@ -360,12 +357,7 @@ export default function Discounts() {
                   />
                 </div>
                 
-                {/* Title & Badge */}
-                <div className="flex items-center gap-3 mb-2 justify-center">
-                  <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                    {t('discounts.expediaLabel')}
-                  </span>
-                </div>
+                {/* Title */}
                 <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
                   {t('discounts.expediaTitle')}
                 </h3>
@@ -374,11 +366,11 @@ export default function Discounts() {
                 <div className="flex justify-center items-center w-full max-w-[340px] min-h-[250px] p-2 bg-stone-50 rounded-2xl border border-stone-100 shadow-inner mx-auto">
                   <div 
                     className="eg-affiliate-banners mx-auto" 
-                    data-program="us-expedia" 
+                    data-program={lang === 'en' ? "us-expedia" : "es-expedia"}
                     data-network="pz" 
                     data-layout="medium-rectangle" 
                     data-image="relaxing" 
-                    data-message="find-perfect-getaway-package" 
+                    data-message={lang === 'en' ? "find-perfect-getaway-package" : "encuentra-escapada-perfecta"} 
                     data-camref="1110lGaeG" 
                     data-pubref="" 
                     data-link="stays"
