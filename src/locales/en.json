@@ -145,7 +145,52 @@
     "expediaTitle": "Getaways and Flights",
     "techPartner": "Our Technology Partner",
     "techPartnerDesc": "The world's largest provider of technology for hotels",
-    "affiliateNote": "* By using these links, you help us continue offering the best service at no extra cost to you"
+    "affiliateNote": "* By using these links, you help us continue offering the best service at no extra cost to you",
+    "heymondo": {
+      "title": "Your travel insurance",
+      "desc": "Travel protected with the best travel insurance",
+      "btn": "5% discount"
+    },
+    "holafly": {
+      "title": "Internet on your travels",
+      "desc": "Stay connected anywhere in the world",
+      "btn": "5% discount"
+    },
+    "gyg": {
+      "title": "Tours and activities",
+      "desc": "The best experiences for your trip",
+      "btn": "Book now"
+    },
+    "airhelp": {
+      "title": "Flight delayed or cancelled?",
+      "desc": "Get up to €600!",
+      "btn": "Claim compensation"
+    },
+    "iberia": {
+      "title": "Find your flights",
+      "desc": "Fly to any corner of the world at the best price.",
+      "btn": "Book now"
+    },
+    "discovercars": {
+      "title": "Car Rental",
+      "desc": "To get around on your own, book at the best price.",
+      "btn": "Rent a car"
+    },
+    "turbopass": {
+      "title": "Official City Passes",
+      "desc": "Save time and money on tourist attractions.",
+      "btn": "See passes"
+    },
+    "agoda": {
+      "title": "Your Perfect Accommodation",
+      "desc": "Find the best hotels and accommodations.",
+      "btn": "See hotels"
+    },
+    "expedia": {
+      "title": "Getaways and Flights",
+      "desc": "Find the perfect getaway with Expedia.",
+      "btn": "Search trips"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",

@@ -143,9 +143,54 @@
     "agodaTitle": "Tu Alojamiento Perfecto",
     "expediaLabel": "EXPEDIA AFILIADOS",
     "expediaTitle": "Escapadas y Vuelos",
-    "techPartner": "Nuestro Partner Tecnológico",
-    "techPartnerDesc": "El mayor proveedor del mundo de tecnología para hoteles",
-    "affiliateNote": "* Al utilizar estos enlaces, nos ayudas a seguir ofreciendo el mejor servicio sin coste adicional para ti"
+    "techPartner": "Nuestro Socio Tecnológico",
+    "techPartnerDesc": "El mayor proveedor mundial de tecnología para hoteles",
+    "affiliateNote": "* Al usar estos enlaces, nos ayudas a seguir ofreciendo el mejor servicio sin coste extra para ti",
+    "heymondo": {
+      "title": "Tu seguro de viaje",
+      "desc": "Viaja protegido con el mejor seguro de viajes",
+      "btn": "5% de descuento"
+    },
+    "holafly": {
+      "title": "Internet en tus viajes",
+      "desc": "Mantente conectado en cualquier parte del mundo",
+      "btn": "5% de descuento"
+    },
+    "gyg": {
+      "title": "Tours y actividades",
+      "desc": "Las mejores experiencias para tu viaje",
+      "btn": "Reservar"
+    },
+    "airhelp": {
+      "title": "¿Vuelo retrasado o cancelado?",
+      "desc": "¡Obtén hasta 600 €!",
+      "btn": "Reclamar compensación"
+    },
+    "iberia": {
+      "title": "Encuentra tus vuelos",
+      "desc": "Vuela a cualquier rincón del mundo al mejor precio.",
+      "btn": "Reservar"
+    },
+    "discovercars": {
+      "title": "Alquiler de coches",
+      "desc": "Para moverte por tu cuenta, reserva al mejor precio.",
+      "btn": "Alquilar coche"
+    },
+    "turbopass": {
+      "title": "City Passes Oficiales",
+      "desc": "Ahorra tiempo y dinero en atracciones turísticas.",
+      "btn": "Ver pases"
+    },
+    "agoda": {
+      "title": "Tu Alojamiento Perfecto",
+      "desc": "Encuentra los mejores hoteles y alojamientos.",
+      "btn": "Ver hoteles"
+    },
+    "expedia": {
+      "title": "Escapadas y Vuelos",
+      "desc": "Encuentra la escapada perfecta con Expedia.",
+      "btn": "Buscar viajes"
+    }
   },
   "faq": {
     "title": "Preguntas Frecuentes",

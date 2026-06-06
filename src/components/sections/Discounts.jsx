@@ -10,49 +10,69 @@ import Ticket from "lucide-react/dist/esm/icons/ticket";
 const discountOffers = [
   {
     name: "Heymondo",
+    id: "heymondo",
     logo: "/resto/heymondo.png",
-    title: "Tu seguro de viaje",
-    description: "Viaja protegido con el mejor seguro de viajes",
-    buttonText: "5% de descuento",
     url: "https://heymondo.es/?utm_medium=Afiliado&utm_source=SALTYSOULTRIPS&utm_campaign=PRINCIPAL&cod_descuento=SALTYSOULTRIPS&ag_campaign=WEB&agencia=ABWmUCzTeUoAOchm5JnRMQLaoEQzCpUNGrl5Ty4s",
     icon: Shield,
   },
   {
     name: "Holafly",
+    id: "holafly",
     logo: "/resto/holafly.png",
-    title: "Internet en tus viajes",
-    description: "Mantente conectado en cualquier parte del mundo",
-    buttonText: "5% de descuento",
     url: "https://holafly.sjv.io/YROPnq",
     icon: Wifi,
   },
   {
     name: "GetYourGuide",
+    id: "gyg",
     logo: "/resto/getyourguide.png",
-    title: "Tours y actividades",
-    description: "Las mejores experiencias para tu viaje",
-    buttonText: "Reservar",
     url: "https://www.getyourguide.es?partner_id=QLUQS6L&cmp=share_to_earn",
     icon: MapPin,
   },
   {
     name: "AirHelp",
+    id: "airhelp",
     logo: "/resto/airhelp.png",
-    title: "¿Vuelo retrasado o cancelado?",
-    description: "¡Obtén hasta 600 €!",
-    buttonText: "Reclamar compensación",
     url: "https://static.airhelp.com/affiliate/affiliate_form_es_air21965.html?utm_source=pap&utm_medium=affiliate&utm_campaign=aff-6952a80eaa308&a_aid=6952a80eaa308&a_bid=588e3a14&partner_id=6952a80eaa308",
     icon: Plane,
   },
   {
     name: "Iberia",
+    id: "iberia",
     logo: "/resto/iberia.png",
-    title: "Encuentra tus vuelos",
-    description: "Vuela a cualquier rincón del mundo al mejor precio.",
-    buttonText: "Reservar",
     url: "https://www.tkqlhce.com/click-101693924-12119568",
     trackingPixel: "https://www.lduhtrp.net/image-101693924-12119568",
     icon: Plane,
+  },
+  {
+    name: "DiscoverCars",
+    id: "discovercars",
+    logo: "/resto/discovercars.png",
+    url: "https://www.discovercars.com/?a_aid=saltysoultrips",
+    trackingPixel: "https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&a_bid=f29909e9",
+    icon: Car,
+  },
+  {
+    name: "Turbopass",
+    id: "turbopass",
+    logo: "/resto/turbopass.png",
+    url: "https://www.awin1.com/cread.php?s=4784603&v=126733&q=605539&r=2815824",
+    trackingPixel: "https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824",
+    icon: Ticket,
+  },
+  {
+    name: "Agoda",
+    id: "agoda",
+    logo: "/resto/agoda.png",
+    url: "https://www.agoda.com/partners/partnersearch.aspx?pcs=10&cid=1966059&hid=567167",
+    icon: MapPin,
+  },
+  {
+    name: "Expedia",
+    id: "expedia",
+    logo: "/resto/expedia.png",
+    url: "https://www.expedia.es/",
+    icon: MapPin,
   },
 ];
 
@@ -188,13 +208,13 @@ export default function Discounts() {
         </div>
 
         {/* Discount Cards Grid */}
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {discountOffers.map((offer, index) => {
             const Icon = offer.icon;
             return (
               <div
                 key={index}
-                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)] xl:w-[calc(20%-1.6rem)] bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+                className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
               >
                 <div className="p-8 flex flex-col items-center text-center h-full">
                   {/* Icon */}
@@ -213,12 +233,12 @@ export default function Discounts() {
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-stone-800 mb-3">
-                    {offer.title}
+                    {t(`discounts.${offer.id}.title`)}
                   </h3>
 
                   {/* Description */}
                   <p className="text-stone-600 mb-6 flex-grow">
-                    {offer.description}
+                    {t(`discounts.${offer.id}.desc`)}
                   </p>
 
                   {/* CTA Button */}
@@ -228,7 +248,7 @@ export default function Discounts() {
                     rel="noopener noreferrer"
                     className="w-full py-3 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-white font-medium text-center transition-all duration-300 shadow-md hover:shadow-lg"
                   >
-                    {offer.buttonText}
+                    {t(`discounts.${offer.id}.btn`)}
                   </a>
 
                   {/* Tracking Pixel */}
@@ -245,198 +265,6 @@ export default function Discounts() {
               </div>
             );
           })}
-
-          {/* Custom Banners: DiscoverCars & Turbopass */}
-          <div className="w-full mt-8 grid grid-cols-1 xl:grid-cols-2 gap-8">
-            {/* DiscoverCars Banner */}
-            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col">
-              <div className="flex flex-col lg:flex-row items-stretch flex-grow">
-                {/* Logo Side */}
-                <div className="w-full lg:w-[35%] p-8 flex items-center justify-center bg-stone-50/50 border-b lg:border-b-0 lg:border-r border-stone-100 group-hover:bg-white transition-colors duration-500 min-h-[160px]">
-                  <img
-                    src="/resto/discovercars.png"
-                    alt="DiscoverCars"
-                    className="max-w-[90%] max-h-28 object-contain transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-
-                {/* Content Side */}
-                <div className="w-full lg:w-[65%] p-6 md:p-8 flex flex-col items-start justify-center gap-6 text-left relative">
-                  {/* Background accent */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-sage/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-brand-sage/10 transition-colors duration-500"></div>
-
-                  <div className="w-full relative z-10">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-brand-sage/10 flex items-center justify-center">
-                        <Car className="text-brand-sage" size={18} />
-                      </div>
-                      <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                        {t('discounts.recommendedBy')}
-                      </span>
-                    </div>
-                    <p className="text-xl md:text-2xl text-stone-700 font-serif font-medium leading-tight mt-2">
-                      {t('discounts.discoverCarsText')}{" "}
-                      <span className="text-brand-sage font-bold italic">
-                        DiscoverCars
-                      </span>
-                      .
-                    </p>
-                  </div>
-
-                  <a
-                    href="https://www.discovercars.com/?a_aid=saltysoultrips"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative z-10 inline-flex items-center justify-center px-8 py-3 bg-stone-800 hover:bg-brand-sage text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-brand-sage/30 hover:-translate-y-1 active:scale-95 w-full md:w-auto mt-2"
-                  >
-                    {t('discounts.rentCarNow')}
-                  </a>
-                </div>
-              </div>
-
-              {/* Tracking Pixel (hidden) */}
-              <img
-                style={{ border: 0, display: "none" }}
-                src="https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&amp;a_bid=f29909e9"
-                width="1"
-                height="1"
-                alt=""
-              />
-            </div>
-
-            {/* Turbopass Banner */}
-            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col">
-              <div className="flex flex-col lg:flex-row items-stretch flex-grow">
-                {/* Logo Side */}
-                <div className="w-full lg:w-[35%] p-8 flex items-center justify-center bg-stone-50/50 border-b lg:border-b-0 lg:border-r border-stone-100 group-hover:bg-white transition-colors duration-500 min-h-[160px]">
-                  <img
-                    src="/resto/turbopass.png"
-                    alt="Turbopass"
-                    className="max-w-[90%] max-h-28 object-contain transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-
-                {/* Content Side */}
-                <div className="w-full lg:w-[65%] p-6 md:p-8 flex flex-col items-start justify-center gap-6 text-left relative">
-                  {/* Background accent */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-sky/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-brand-sky/10 transition-colors duration-500"></div>
-
-                  <div className="w-full relative z-10">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-brand-sky/10 flex items-center justify-center">
-                        <Ticket className="text-brand-sky" size={18} />
-                      </div>
-                      <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
-                        CITY PASSES OFICIALES
-                      </span>
-                    </div>
-                    <p className="text-xl md:text-2xl text-stone-700 font-serif font-medium leading-tight mt-2">
-                      Ahorra tiempo y dinero en atracciones turísticas con{" "}
-                      <span className="text-brand-sky font-bold italic">
-                        Turbopass
-                      </span>
-                      .
-                    </p>
-                  </div>
-
-                  <a
-                    href="https://www.awin1.com/cread.php?s=4784603&v=126733&q=605539&r=2815824"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative z-10 inline-flex items-center justify-center px-8 py-3 bg-stone-800 hover:bg-brand-sky text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:-translate-y-1 active:scale-95 w-full md:w-auto mt-2"
-                  >
-                    Ver pases
-                  </a>
-                </div>
-              </div>
-
-              {/* Tracking Pixel (hidden) */}
-              <img
-                style={{ border: 0, display: "none" }}
-                src="https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824"
-                width="1"
-                height="1"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        {/* Custom Hotel & Accommodation Affiliates */}
-        <div className="w-full mt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Agoda Card */}
-            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group p-8 sm:p-10 flex flex-col items-center justify-between text-center min-h-[460px]">
-              <div className="w-full flex flex-col items-center">
-                {/* Logo */}
-                <div className="mb-6 h-16 flex items-center justify-center">
-                  <img
-                    src="/resto/agoda.png"
-                    alt="Agoda"
-                    className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Title */}
-                <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
-                  {t('discounts.agodaTitle')}
-                </h3>
-                
-                {/* Agoda Banner Container (matching Expedia style) */}
-                <div className="flex justify-center items-center w-full max-w-[340px] min-h-[250px] p-2 bg-stone-50 rounded-2xl border border-stone-100 shadow-inner mx-auto">
-                  <a 
-                    href="https://www.agoda.com/partners/partnersearch.aspx?pcs=10&cid=1966059&hid=567167" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block overflow-hidden rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow duration-300 w-[300px] h-[230px] bg-white"
-                  >
-                    <img 
-                      src="https://q-xx.bstatic.com/xdata/images/hotel/max300/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o=" 
-                      srcSet="https://q-xx.bstatic.com/xdata/images/hotel/max300/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o= 1x, https://q-xx.bstatic.com/xdata/images/hotel/max500/86313137.jpg?k=7af9c812b6386d2ed2b7558eef9b0502a852c7c43267aaecda1d0f7cfb55c505&o= 2x" 
-                      alt="Agoda Alojamientos"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      loading="lazy"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Expedia Card */}
-            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group p-8 sm:p-10 flex flex-col items-center justify-between text-center min-h-[460px]">
-              <div className="w-full flex flex-col items-center">
-                {/* Logo */}
-                <div className="mb-6 h-16 flex items-center justify-center">
-                  <img
-                    src="/resto/expedia.png"
-                    alt="Expedia"
-                    className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Title */}
-                <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">
-                  {t('discounts.expediaTitle')}
-                </h3>
-                
-                {/* Dynamic Expedia Banner Container */}
-                <div className="flex justify-center items-center w-full max-w-[340px] min-h-[250px] p-2 bg-stone-50 rounded-2xl border border-stone-100 shadow-inner mx-auto">
-                  <div 
-                    className="eg-affiliate-banners mx-auto" 
-                    data-program={lang === 'en' ? "us-expedia" : "es-expedia"}
-                    data-network="pz" 
-                    data-layout="medium-rectangle" 
-                    data-image="relaxing" 
-                    data-message={lang === 'en' ? "find-perfect-getaway-package" : "encuentra-escapada-perfecta"} 
-                    data-camref="1110lGaeG" 
-                    data-pubref="" 
-                    data-link="stays"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Partner Tecnológico Section */}
