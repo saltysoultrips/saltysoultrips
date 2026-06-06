@@ -217,7 +217,7 @@ export default function Testimonials() {
 
                 {/* Optional Image Perfectly Integrated at the Bottom */}
                 {experience.image && (
-                  <div className="w-full h-48 overflow-hidden relative">
+                  <div className="w-full h-72 overflow-hidden relative">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                     <img
                       src={experience.image}

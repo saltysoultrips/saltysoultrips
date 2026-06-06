@@ -266,6 +266,73 @@ export default function Footer() {
                     height="40"
                   />
                 </a>
+                <a
+                  href="https://www.agoda.com/partners/partnersearch.aspx?pcs=10&cid=1966059&hid=567167"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
+                >
+                  <img
+                    src="/resto/agoda.png"
+                    alt="Agoda"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
+                  />
+                </a>
+                <a
+                  href="https://www.expedia.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
+                >
+                  <img
+                    src="/resto/expedia.png"
+                    alt="Expedia"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
+                  />
+                </a>
+                <a
+                  href="https://www.siteminder.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
+                >
+                  <img
+                    src="/resto/siteminder.png"
+                    alt="SiteMinder"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
+                  />
+                </a>
+                <a
+                  href="https://www.awin1.com/cread.php?s=4784603&v=126733&q=605539&r=2815824"
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
+                >
+                  <img
+                    src="/resto/turbopass.png"
+                    alt="Turbopass"
+                    className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                    width="120"
+                    height="40"
+                  />
+                  {/* Tracking Pixel */}
+                  <img 
+                    src="https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824" 
+                    className="hidden" 
+                    alt="" 
+                    aria-hidden="true" 
+                  />
+                </a>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import Wifi from "lucide-react/dist/esm/icons/wifi";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Plane from "lucide-react/dist/esm/icons/plane";
 import Car from "lucide-react/dist/esm/icons/car";
+import Ticket from "lucide-react/dist/esm/icons/ticket";
 
 const discountOffers = [
   {
@@ -245,26 +246,27 @@ export default function Discounts() {
             );
           })}
 
-          {/* Custom DiscoverCars Banner */}
-          <div className="w-full mt-4">
-            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group">
-              <div className="flex flex-col lg:flex-row items-stretch min-h-[180px]">
+          {/* Custom Banners: DiscoverCars & Turbopass */}
+          <div className="w-full mt-8 grid grid-cols-1 xl:grid-cols-2 gap-8">
+            {/* DiscoverCars Banner */}
+            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col">
+              <div className="flex flex-col lg:flex-row items-stretch flex-grow">
                 {/* Logo Side */}
-                <div className="w-full lg:w-1/3 p-10 flex items-center justify-center bg-stone-50/50 border-b lg:border-b-0 lg:border-r border-stone-100 group-hover:bg-white transition-colors duration-500">
+                <div className="w-full lg:w-[35%] p-8 flex items-center justify-center bg-stone-50/50 border-b lg:border-b-0 lg:border-r border-stone-100 group-hover:bg-white transition-colors duration-500 min-h-[160px]">
                   <img
                     src="/resto/discovercars.png"
                     alt="DiscoverCars"
-                    className="max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                    className="max-w-[90%] max-h-28 object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
 
                 {/* Content Side */}
-                <div className="w-full lg:w-2/3 p-10 lg:p-14 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left relative">
+                <div className="w-full lg:w-[65%] p-6 md:p-8 flex flex-col items-start justify-center gap-6 text-left relative">
                   {/* Background accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-brand-sage/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-brand-sage/10 transition-colors duration-500"></div>
 
-                  <div className="max-w-xl relative z-10">
-                    <div className="flex items-center gap-3 mb-4 justify-center md:justify-start">
+                  <div className="w-full relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
                       <div className="w-8 h-8 rounded-full bg-brand-sage/10 flex items-center justify-center">
                         <Car className="text-brand-sage" size={18} />
                       </div>
@@ -272,7 +274,7 @@ export default function Discounts() {
                         {t('discounts.recommendedBy')}
                       </span>
                     </div>
-                    <p className="text-2xl text-stone-700 font-serif font-medium leading-tight">
+                    <p className="text-xl md:text-2xl text-stone-700 font-serif font-medium leading-tight mt-2">
                       {t('discounts.discoverCarsText')}{" "}
                       <span className="text-brand-sage font-bold italic">
                         DiscoverCars
@@ -285,7 +287,7 @@ export default function Discounts() {
                     href="https://www.discovercars.com/?a_aid=saltysoultrips"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 whitespace-nowrap px-12 py-5 bg-stone-800 hover:bg-brand-sage text-white font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-brand-sage/30 hover:-translate-y-1 active:scale-95"
+                    className="relative z-10 inline-flex items-center justify-center px-8 py-3 bg-stone-800 hover:bg-brand-sage text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-brand-sage/30 hover:-translate-y-1 active:scale-95 w-full md:w-auto mt-2"
                   >
                     {t('discounts.rentCarNow')}
                   </a>
@@ -296,6 +298,62 @@ export default function Discounts() {
               <img
                 style={{ border: 0, display: "none" }}
                 src="https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&amp;a_bid=f29909e9"
+                width="1"
+                height="1"
+                alt=""
+              />
+            </div>
+
+            {/* Turbopass Banner */}
+            <div className="bg-white rounded-[2.5rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col">
+              <div className="flex flex-col lg:flex-row items-stretch flex-grow">
+                {/* Logo Side */}
+                <div className="w-full lg:w-[35%] p-8 flex items-center justify-center bg-stone-50/50 border-b lg:border-b-0 lg:border-r border-stone-100 group-hover:bg-white transition-colors duration-500 min-h-[160px]">
+                  <img
+                    src="/resto/turbopass.png"
+                    alt="Turbopass"
+                    className="max-w-[90%] max-h-28 object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+
+                {/* Content Side */}
+                <div className="w-full lg:w-[65%] p-6 md:p-8 flex flex-col items-start justify-center gap-6 text-left relative">
+                  {/* Background accent */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-sky/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-brand-sky/10 transition-colors duration-500"></div>
+
+                  <div className="w-full relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-brand-sky/10 flex items-center justify-center">
+                        <Ticket className="text-brand-sky" size={18} />
+                      </div>
+                      <span className="text-brand-sage font-bold uppercase tracking-[0.2em] text-[10px]">
+                        CITY PASSES OFICIALES
+                      </span>
+                    </div>
+                    <p className="text-xl md:text-2xl text-stone-700 font-serif font-medium leading-tight mt-2">
+                      Ahorra tiempo y dinero en atracciones turísticas con{" "}
+                      <span className="text-brand-sky font-bold italic">
+                        Turbopass
+                      </span>
+                      .
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://www.awin1.com/cread.php?s=4784603&v=126733&q=605539&r=2815824"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 inline-flex items-center justify-center px-8 py-3 bg-stone-800 hover:bg-brand-sky text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:-translate-y-1 active:scale-95 w-full md:w-auto mt-2"
+                  >
+                    Ver pases
+                  </a>
+                </div>
+              </div>
+
+              {/* Tracking Pixel (hidden) */}
+              <img
+                style={{ border: 0, display: "none" }}
+                src="https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824"
                 width="1"
                 height="1"
                 alt=""
