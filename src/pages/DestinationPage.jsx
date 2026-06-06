@@ -154,7 +154,7 @@ export default function DestinationPage() {
         description={seoDescription}
         canonicalUrl={canonicalUrl}
         esUrl={`https://www.saltysoultrips.com/destinos/${destination.slug}`}
-        enUrl={`https://www.saltysoultrips.com/destinos/${destination.slug_en}`}
+        enUrl={`https://www.saltysoultrips.com/destinations/${destination.slug_en || destination.slug}`}
         ogImage={destination.hero.image}
         schemaData={schemaData}
       />

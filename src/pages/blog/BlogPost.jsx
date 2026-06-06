@@ -119,6 +119,8 @@ export default function BlogPost() {
 
   const displayTitle = pick("title");
   const displayContent = pick("content");
+  // Use excerpt as meta description — fallback to first 160 chars of title if no excerpt
+  const displayExcerpt = pick("excerpt") || `${displayTitle} - Blog de viajes de SaltySoulTrips.`;
 
   // Schema.org Article data
   const articleSchema = {
@@ -127,12 +129,12 @@ export default function BlogPost() {
     headline: displayTitle,
     image: [post.coverImage ? urlFor(post.coverImage).url() : ""],
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updatedAt || post.date,
     author: [
       {
         "@type": "Person",
-        name: "SaltySoulTrips",
-        url: "https://www.saltysoultrips.com/about",
+        name: "Angela - SaltySoulTrips",
+        url: "https://www.saltysoultrips.com/",
       },
     ],
     publisher: {
@@ -143,14 +145,14 @@ export default function BlogPost() {
         url: "https://www.saltysoultrips.com/resto/logoGoogle.png",
       },
     },
-    description: displayTitle,
+    description: displayExcerpt,
   };
 
   return (
     <>
       <SEOHead
         title={`${displayTitle} | Blog SaltySoulTrips`}
-        description={displayTitle}
+        description={displayExcerpt}
         canonicalUrl={`https://www.saltysoultrips.com/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
         esUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
         enUrl={`https://www.saltysoultrips.com/blog/${post.slug_en ? post.slug_en.current : post.slug.current}`}

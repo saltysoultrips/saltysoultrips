@@ -294,5 +294,39 @@
     "Estados Unidos": "United States",
     "Islas y Paraísos": "Islands & Paradises",
     "Otros": "Others"
+  },
+  "seo": {
+    "home": {
+      "title": "Personalized Travel Itineraries | SaltySoulTrips - Custom Trips",
+      "description": "We design your 100% personalized travel itinerary. Japan, Maldives, Tanzania, Thailand and any destination worldwide. Unique itineraries with no hidden fees. 5 stars."
+    },
+    "destinations": {
+      "title": "Travel Destinations | Custom Itineraries | SaltySoulTrips",
+      "description": "Explore all our destinations and start planning your tailor-made trip. Japan, Maldives, Tanzania, Bali, Qatar and many more. 100% personalized itineraries."
+    },
+    "services": {
+      "title": "Travel Packs & Services | SaltySoulTrips",
+      "description": "Discover our personalized travel design packs. From essential itineraries to full trip planning. Transparent pricing and no hidden commissions."
+    },
+    "howItWorks": {
+      "title": "How It Works | Custom Travel Planning | SaltySoulTrips",
+      "description": "Discover how we design your personalized trip step by step. A simple, transparent process completely adapted to you. No agencies, no commissions."
+    },
+    "contact": {
+      "title": "Contact | Start Your Custom Trip | SaltySoulTrips",
+      "description": "Get in touch to start designing your tailor-made trip. Response in less than 24 hours. Your next adventure starts here."
+    },
+    "testimonials": {
+      "title": "Traveler Experiences & Reviews | SaltySoulTrips",
+      "description": "Read real reviews from our travelers. Over 50 personalized trips with 5-star ratings. Your satisfaction is our priority."
+    },
+    "discounts": {
+      "title": "Travel Discounts & Deals | SaltySoulTrips",
+      "description": "Save on your next trip with our exclusive deals. Flights, car rentals, hotels, travel insurance and city passes at the best prices."
+    },
+    "blog": {
+      "title": "Travel Blog | Guides & Itineraries | SaltySoulTrips",
+      "description": "Travel guides, detailed itineraries and expert tips to plan your next trip. Japan, Maldives, Thailand, Tanzania and much more."
+    }
   }
 }

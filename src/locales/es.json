@@ -294,5 +294,39 @@
     "Estados Unidos": "Estados Unidos",
     "Islas y Paraísos": "Islas y Paraísos",
     "Otros": "Otros"
+  },
+  "seo": {
+    "home": {
+      "title": "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos",
+      "description": "Diseñamos tu viaje personalizado 100% a medida. Japón, Maldivas, Tanzania, Tailandia y cualquier destino del mundo. Itinerarios únicos sin comisiones ocultas. 5 estrellas."
+    },
+    "destinations": {
+      "title": "Destinos de Viaje Personalizados | SaltySoulTrips",
+      "description": "Explora todos nuestros destinos y empieza a diseñar tu viaje a medida. Japón, Maldivas, Tanzania, Bali, Qatar y muchos más. Itinerarios 100% personalizados."
+    },
+    "services": {
+      "title": "Packs y Servicios de Viaje a Medida | SaltySoulTrips",
+      "description": "Descubre nuestros packs de diseño de viajes personalizados. Desde itinerarios esenciales hasta planificación completa. Precios transparentes y sin comisiones ocultas."
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona | Diseño de Viajes a Medida | SaltySoulTrips",
+      "description": "Descubre cómo diseñamos tu viaje personalizado paso a paso. Un proceso simple, transparente y completamente adaptado a ti. Sin agencias, sin comisiones."
+    },
+    "contact": {
+      "title": "Contacto | Empieza tu Viaje Personalizado | SaltySoulTrips",
+      "description": "Ponte en contacto para empezar a diseñar tu viaje a medida. Respuesta en menos de 24 horas. Tu próxima aventura empieza aquí."
+    },
+    "testimonials": {
+      "title": "Experiencias y Testimonios de Viajeros | SaltySoulTrips",
+      "description": "Lee las opiniones reales de nuestros viajeros. Más de 50 viajes personalizados con valoraciones de 5 estrellas. Tu satisfacción es nuestra prioridad."
+    },
+    "discounts": {
+      "title": "Descuentos y Ofertas de Viaje | SaltySoulTrips",
+      "description": "Ahorra en tu próximo viaje con nuestras ofertas exclusivas. Vuelos, alquiler de coches, hoteles, seguros de viaje y city passes con los mejores descuentos."
+    },
+    "blog": {
+      "title": "Blog de Viajes | Guías e Itinerarios | SaltySoulTrips",
+      "description": "Guías de viaje, itinerarios detallados y consejos de expertos para planificar tu próximo viaje. Japón, Maldivas, Tailandia, Tanzania y mucho más."
+    }
   }
 }

@@ -10,9 +10,13 @@ export default function SEOHead({
   description,
   canonicalUrl,
   ogImage = "https://www.saltysoultrips.com/resto/logoGoogle.png",
+  ogImageWidth = "1200",
+  ogImageHeight = "630",
+  ogType = "website",
   schemaData = null,
   esUrl,
   enUrl,
+  noIndex = false,
 }) {
   const { i18n } = useTranslation();
   const lang = i18n.language || "es";
@@ -25,6 +29,16 @@ export default function SEOHead({
 
       {/* Title */}
       <title>{title}</title>
+
+      {/* Robots — noindex for 404 and other non-indexable pages */}
+      {noIndex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+      )}
 
       {/* Standard Meta Tags */}
       <meta name="description" content={description} />
@@ -41,13 +55,18 @@ export default function SEOHead({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:type" content="website" />
+      <meta property="og:image:width" content={ogImageWidth} />
+      <meta property="og:image:height" content={ogImageHeight} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:type" content={ogType} />
       <meta property="og:locale" content={locale} />
       {lang === "es" && <meta property="og:locale:alternate" content="en_US" />}
       {lang === "en" && <meta property="og:locale:alternate" content="es_ES" />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@saltysoultrips" />
+      <meta name="twitter:creator" content="@saltysoultrips" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />

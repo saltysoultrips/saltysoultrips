@@ -12,6 +12,7 @@ export default function NotFound() {
         title="404 - Vuelo Cancelado | SaltySoulTrips"
         description="Ups.. Este vuelo no ha despegado. La página que buscas se ha cancelado por turbulencias."
         canonicalUrl="https://www.saltysoultrips.com/404"
+        noIndex={true}
       />
       <div className="min-h-[85vh] flex flex-col items-center justify-center px-4 text-center bg-sky-50 overflow-hidden relative">
         {/* Background Clouds */}
