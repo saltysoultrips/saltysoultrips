@@ -125,50 +125,10 @@ export default function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400;
-      const newScrollPosition =
-        scrollContainerRef.current.scrollLeft +
-        (direction === "left" ? -scrollAmount : scrollAmount);
-
-      scrollContainerRef.current.scrollTo({
-        left: newScrollPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  // Auto-scroll every 5 seconds
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const container = scrollContainerRef.current;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-
-        // If we're at the end, scroll back to the beginning
-        if (container.scrollLeft >= maxScroll - 10) {
-          container.scrollTo({
-            left: 0,
-            behavior: "smooth",
-          });
-        } else {
-          // Otherwise, scroll to the next item
-          scroll("right");
-        }
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0 bg-white">
-        {/* Soft Blue/Teal Glow - Center */}
         <div
           className="absolute inset-0"
           style={{
@@ -176,7 +136,6 @@ export default function Testimonials() {
             opacity: 0.6,
           }}
         />
-        {/* Soft Sky Blue Glow - Top Right */}
         <div
           className="absolute inset-0"
           style={{
@@ -187,7 +146,7 @@ export default function Testimonials() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
             {t('testimonials.label')}
           </span>
@@ -199,102 +158,78 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative group">
-          {/* Navigation Buttons - Desktop */}
-          <button
-            onClick={() => scroll("left")}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-brand-sage transition-all duration-300 opacity-0 group-hover:opacity-100"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="text-stone-700" size={24} />
-          </button>
+        {/* Masonry Grid Layout */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {experiences.map((experience, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid inline-block w-full"
+            >
+              <div className="bg-white/80 backdrop-blur-md rounded-[2rem] border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 overflow-hidden relative group">
+                
+                {/* Decorative Giant Quote Mark */}
+                <div className="absolute top-4 right-6 text-9xl text-brand-sky/10 font-serif leading-none select-none z-0">
+                  «
+                </div>
 
-          <button
-            onClick={() => scroll("right")}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl hover:bg-brand-sage transition-all duration-300 opacity-0 group-hover:opacity-100"
-            aria-label="Siguiente"
-          >
-            <ChevronRight className="text-stone-700" size={24} />
-          </button>
-
-          {/* Scrollable Container */}
-          <div
-            ref={scrollContainerRef}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={() => setIsPaused(true)}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-4"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            {experiences.map((experience, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[350px] md:w-[400px] snap-center"
-              >
-                <div className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                  <div className="p-8 flex flex-col flex-grow">
-                    {/* Stars */}
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(experience.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={18}
-                          className="text-amber-400 fill-amber-400"
-                        />
-                      ))}
+                <div className="p-8 relative z-10">
+                  {/* Author Header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-sage to-brand-sky flex items-center justify-center text-white font-bold text-xl shadow-sm border-2 border-white">
+                      {experience.name.charAt(0)}
                     </div>
-
-                    {/* Testimonial Text */}
-                    <p className="text-stone-700 mb-6 italic text-lg leading-relaxed flex-grow">
-                      «{experience.text}»
-                    </p>
-
-                    {/* Optional Image between text and author */}
-                    {experience.image && (
-                      <div className="mb-6 rounded-lg overflow-hidden">
-                        <img
-                          src={experience.image}
-                          alt={`Experiencia de ${experience.name}`}
-                          className="w-full h-64 object-cover"
-                        />
-                      </div>
-                    )}
-
-                    {/* Author */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-stone-100">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-sage to-brand-sky flex items-center justify-center text-white font-bold text-lg shadow-md">
-                        {experience.name.charAt(0)}
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-stone-800">
-                          {experience.name}
-                        </h4>
-                        <p className="text-xs text-stone-500">
+                    <div>
+                      <h4 className="font-bold text-stone-800 text-lg leading-tight">
+                        {experience.name}
+                      </h4>
+                      <div className="flex items-center gap-2 mt-1">
+                        <p className="text-xs font-semibold text-brand-sage uppercase tracking-wider">
                           {experience.destination}
                         </p>
                         {experience.date && (
-                          <p className="text-xs text-stone-400 mt-0.5">
-                            {experience.date}
-                          </p>
+                          <>
+                            <span className="text-stone-300">•</span>
+                            <p className="text-xs text-stone-400">
+                              {experience.date}
+                            </p>
+                          </>
                         )}
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
 
-          {/* Mobile scroll indicator */}
-          <div className="md:hidden text-center mt-6">
-            <p className="text-sm text-stone-500 italic">
-              {t('testimonials.scrollHint')}
-            </p>
-          </div>
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-5">
+                    {[...Array(experience.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={16}
+                        className="text-amber-400 fill-amber-400"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Testimonial Text */}
+                  <p className="text-stone-700 italic text-base leading-relaxed">
+                    "{experience.text}"
+                  </p>
+                </div>
+
+                {/* Optional Image Perfectly Integrated at the Bottom */}
+                {experience.image && (
+                  <div className="w-full h-48 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+                    <img
+                      src={experience.image}
+                      alt={`Viaje de ${experience.name} a ${experience.destination}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

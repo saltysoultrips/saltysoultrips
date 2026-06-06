@@ -5,6 +5,7 @@ import {
   useLocation,
   useNavigationType,
 } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
@@ -54,6 +55,7 @@ let isInitialLoad = true;
 function HomePage() {
   const { hash } = useLocation();
   const navType = useNavigationType(); // "POP", "PUSH", "REPLACE"
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     // Check if it's a browser reload
@@ -150,9 +152,11 @@ function HomePage() {
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
       <SEOHead
-        title="Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos"
-        description="Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!"
+        title={t("seo.home.title", "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos")}
+        description={t("seo.home.description", "Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!")}
         canonicalUrl="https://www.saltysoultrips.com/"
+        esUrl="https://www.saltysoultrips.com/"
+        enUrl="https://www.saltysoultrips.com/"
         schemaData={homeSchema}
       />
       <Header />

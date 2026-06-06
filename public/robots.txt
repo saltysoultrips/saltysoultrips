@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /studio/
+Disallow: /studio-saltysoultrips/
 
 Sitemap: https://www.saltysoultrips.com/sitemap.xml

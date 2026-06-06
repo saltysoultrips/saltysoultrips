@@ -1,94 +1,97 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { createClient } from "@sanity/client";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SITEMAP_PATH = path.join(__dirname, "../public/sitemap.xml");
-const DOMAIN = "https://www.saltysoultrips.com";
+const PROJECT_ID = 'wzn5s2a9';
+const DATASET = 'production';
+const API_VERSION = '2024-02-18';
+const BASE_URL = 'https://www.saltysoultrips.com';
 
-// Sanity Client Setup
-const client = createClient({
-  projectId: "wzn5s2a9",
-  dataset: "production",
-  useCdn: true,
-  apiVersion: "2024-02-18",
-});
-
-const staticRoutes = [
-  { url: "/", changefreq: "weekly", priority: 1.0 },
-  { url: "/blog", changefreq: "weekly", priority: 0.8 },
-];
+async function fetchSanityData(query) {
+  const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
+    return json.result;
+  } catch (error) {
+    console.error('Error fetching from Sanity:', error);
+    return [];
+  }
+}
 
 async function generateSitemap() {
-  console.log("🗺️  Generating Sitemap...");
-  const currentDate = new Date().toISOString().split("T")[0];
+  const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
+  
+  // Static routes map (es -> en)
+  const staticRoutes = {
+    '/': '/',
+    '/servicios': '/services',
+    '/descuentos': '/discounts',
+    '/contacto': '/contact',
+    '/destinos': '/destinations',
+    '/como-funciona': '/how-it-works',
+    '/experiencias': '/experiences',
+    '/blog': '/blog'
+  };
 
-  let destinations = [];
-  let blogPosts = [];
+  let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`;
 
-  try {
-    // Fetch slugs from Sanity
-    console.log("🔌 Fetching data from Sanity...");
+  // Helper to add URL to sitemap with hreflang
+  const addUrl = (esPath, enPath) => {
+    sitemapXml += `  <url>\n`;
+    sitemapXml += `    <loc>${BASE_URL}${esPath}</loc>\n`;
+    sitemapXml += `    <xhtml:link rel="alternate" hreflang="es" href="${BASE_URL}${esPath}"/>\n`;
+    sitemapXml += `    <xhtml:link rel="alternate" hreflang="en" href="${BASE_URL}${enPath}"/>\n`;
+    sitemapXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${esPath}"/>\n`;
+    sitemapXml += `  </url>\n`;
     
-    const destQuery = '*[_type == "destination"]{ "slug": slug.current }';
-    destinations = await client.fetch(destQuery);
-    console.log(`✅ Found ${destinations.length} destinations in Sanity.`);
+    // If EN path is different, add an entry for it too
+    if (esPath !== enPath) {
+      sitemapXml += `  <url>\n`;
+      sitemapXml += `    <loc>${BASE_URL}${enPath}</loc>\n`;
+      sitemapXml += `    <xhtml:link rel="alternate" hreflang="es" href="${BASE_URL}${esPath}"/>\n`;
+      sitemapXml += `    <xhtml:link rel="alternate" hreflang="en" href="${BASE_URL}${enPath}"/>\n`;
+      sitemapXml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${esPath}"/>\n`;
+      sitemapXml += `  </url>\n`;
+    }
+  };
 
-    const postQuery = '*[_type == "post"]{ "slug": slug.current }';
-    blogPosts = await client.fetch(postQuery);
-    console.log(`✅ Found ${blogPosts.length} blog posts in Sanity.`);
-    
-  } catch (error) {
-    console.error("❌ Error fetching from Sanity:", error.message);
+  // 1. Add Static Routes
+  for (const [esPath, enPath] of Object.entries(staticRoutes)) {
+    addUrl(esPath, enPath);
   }
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Static Routes -->
-${staticRoutes
-  .map(
-    (route) => `  <url>
-    <loc>${DOMAIN}${route.url}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>`,
-  )
-  .join("\n")}
+  // 2. Fetch and add Destinations
+  const destinations = await fetchSanityData('*[_type == "destination"]{slug, slug_en}');
+  if (destinations) {
+    destinations.forEach(dest => {
+      if (dest.slug?.current) {
+        const esPath = `/destinos/${dest.slug.current}`;
+        const enPath = `/destinations/${dest.slug_en?.current || dest.slug.current}`;
+        addUrl(esPath, enPath);
+      }
+    });
+  }
 
-  <!-- Blog Post Routes -->
-${blogPosts
-  .filter((p) => p.slug)
-  .map(
-    (post) => `  <url>
-    <loc>${DOMAIN}/blog/${post.slug}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`,
-  )
-  .join("\n")}
+  // 3. Fetch and add Blog Posts
+  const posts = await fetchSanityData('*[_type == "post"]{slug, slug_en}');
+  if (posts) {
+    posts.forEach(post => {
+      if (post.slug?.current) {
+        const esPath = `/blog/${post.slug.current}`;
+        const enPath = `/blog/${post.slug_en?.current || post.slug.current}`;
+        addUrl(esPath, enPath);
+      }
+    });
+  }
 
-  <!-- Dynamic Destination Routes -->
-${destinations
-  .filter((d) => d.slug) // Ensure slug exists
-  .map(
-    (dest) => `  <url>
-    <loc>${DOMAIN}/destinos/${dest.slug}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>`,
-  )
-  .join("\n")}
-</urlset>`;
+  sitemapXml += `</urlset>`;
 
-  fs.writeFileSync(SITEMAP_PATH, xml);
-  console.log(`✅ Sitemap created successfully at ${SITEMAP_PATH}`);
+  fs.writeFileSync(sitemapPath, sitemapXml);
+  console.log(`Sitemap generated successfully with ${Object.keys(staticRoutes).length + (destinations?.length || 0) + (posts?.length || 0)} main entries.`);
 }
 
 generateSitemap();

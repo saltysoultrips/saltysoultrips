@@ -1,164 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Static Routes -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.saltysoultrips.com/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/servicios"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/services</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/servicios"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/descuentos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/descuentos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/discounts"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/descuentos"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/discounts</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/descuentos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/discounts"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/descuentos"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/contacto"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/contacto"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/como-funciona</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/como-funciona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/como-funciona"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/como-funciona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/como-funciona"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/experiencias</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/experiencias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/experiences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/experiencias"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/experiences</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/experiencias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/experiences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/experiencias"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog"/>
   </url>
-
-  <!-- Blog Post Routes -->
-  <url>
-    <loc>https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saltysoultrips.com/blog/tailandia-vs-bali</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Dynamic Destination Routes -->
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viaje-albania</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viaje-albania"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viaje-albania"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viaje-albania"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viaje-albania</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viaje-albania"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viaje-albania"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viaje-albania"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viaje-montenegro</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viaje-montenegro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viaje-montenegro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viaje-montenegro"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viaje-montenegro</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viaje-montenegro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viaje-montenegro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viaje-montenegro"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-abu-dhabi</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-abu-dhabi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-abu-dhabi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-abu-dhabi"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-abu-dhabi</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-abu-dhabi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-abu-dhabi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-abu-dhabi"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-bali</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-bali"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-bali"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-bali"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-bali</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-bali"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-bali"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-bali"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-barcelona</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-barcelona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-barcelona"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-barcelona"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-barcelona</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-barcelona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-barcelona"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-barcelona"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-boston</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-boston"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-boston"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-boston"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-boston</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-boston"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-boston"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-boston"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-francia</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-francia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-francia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-francia"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-francia</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-francia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-francia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-francia"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-fuerteventura</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-fuerteventura"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-fuerteventura"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-fuerteventura"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-fuerteventura</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-fuerteventura"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-fuerteventura"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-fuerteventura"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-londres</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-londres"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-londres"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-londres"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-londres</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-londres"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-londres"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-londres"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-luxemburgo</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-luxemburgo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-luxemburgo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-luxemburgo"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-luxemburgo</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-luxemburgo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-luxemburgo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-luxemburgo"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-madrid</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-madrid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-madrid"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-madrid"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-madrid</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-madrid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-madrid"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-madrid"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-maldivas</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-maldivas"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-maldivas</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-maldivas"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-mallorca</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-mallorca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-mallorca"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-mallorca"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-mallorca</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-mallorca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-mallorca"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-mallorca"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-menorca</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-menorca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-menorca"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-menorca"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-menorca</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-menorca"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-menorca"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-menorca"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-milan</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-milan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-milan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-milan"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-milan</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-milan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-milan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-milan"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-nueva-york</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-nueva-york"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-nueva-york"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-nueva-york"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-nueva-york</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-nueva-york"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-nueva-york"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-nueva-york"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-portugal</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-portugal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-portugal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-portugal"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-portugal</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-portugal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-portugal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-portugal"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-qatar</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-qatar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-qatar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-qatar"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-qatar</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-qatar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-qatar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-qatar"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-tailandia</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-tailandia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-tailandia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-tailandia"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-tailandia</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-tailandia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-tailandia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-tailandia"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/destinos/viajes-a-washington</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-washington"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-washington"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-washington"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/destinations/viajes-a-washington</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/destinos/viajes-a-washington"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/destinations/viajes-a-washington"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/destinos/viajes-a-washington"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/blog/tailandia-vs-bali</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/tailandia-vs-bali"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/tailandia-vs-bali"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/tailandia-vs-bali"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao"/>
   </url>
 </urlset>
