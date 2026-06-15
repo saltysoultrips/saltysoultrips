@@ -327,5 +327,21 @@
       "title": "Blog de Viajes | Guías e Itinerarios | SaltySoulTrips",
       "description": "Guías de viaje, itinerarios detallados y consejos de expertos para planificar tu próximo viaje. Japón, Maldivas, Tailandia, Tanzania y mucho más."
     }
+  },
+  "cookies": {
+    "title": "Valoramos tu privacidad",
+    "description": "Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y mostrarte contenido personalizado. Puedes aceptar todas las cookies, rechazarlas o configurarlas a tu gusto.",
+    "configure": "Configurar",
+    "reject": "Rechazar no esenciales",
+    "acceptAll": "Aceptar todas",
+    "configTitle": "Configuración de Cookies",
+    "necessary": "Necesarias",
+    "alwaysActive": "Siempre activas",
+    "necessaryDesc": "Estas cookies son esenciales para que el sitio web funcione correctamente. No se pueden desactivar.",
+    "analytics": "Analíticas",
+    "analyticsDesc": "Nos ayudan a entender cómo interactúas con la web para mejorar la experiencia de usuario.",
+    "marketing": "Marketing",
+    "marketingDesc": "Se utilizan para mostrarte publicidad relevante según tus intereses y navegación.",
+    "save": "Guardar preferencias"
   }
 }

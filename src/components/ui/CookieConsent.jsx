@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import X from "lucide-react/dist/esm/icons/x";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
@@ -11,6 +12,7 @@ import Info from "lucide-react/dist/esm/icons/info";
 const COOKIE_STORAGE_KEY = "saltysoultrips_cookie_consent";
 
 export default function CookieConsent() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState({
@@ -82,13 +84,10 @@ export default function CookieConsent() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex-1 space-y-2">
               <h3 className="text-lg font-serif text-stone-800 font-medium flex items-center gap-2">
-                <span className="text-xl">🍪</span> Valoramos tu privacidad
+                <span className="text-xl">🍪</span> {t("cookies.title")}
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed max-w-3xl">
-                Utilizamos cookies propias y de terceros para mejorar tu
-                experiencia, analizar el tráfico y mostrarte contenido
-                personalizado. Puedes aceptar todas las cookies, rechazarlas o
-                configurarlas a tu gusto.
+                {t("cookies.description")}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto min-w-fit">
@@ -96,19 +95,19 @@ export default function CookieConsent() {
                 onClick={() => setShowDetails(true)}
                 className="px-4 py-2 text-sm font-medium text-stone-600 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors whitespace-nowrap"
               >
-                Configurar
+                {t("cookies.configure")}
               </button>
               <button
                 onClick={handleRejectNonEssential}
                 className="px-4 py-2 text-sm font-medium text-brand-sage border border-brand-sage hover:bg-brand-sage/10 rounded-lg transition-colors whitespace-nowrap"
               >
-                Rechazar no esenciales
+                {t("cookies.reject")}
               </button>
               <button
                 onClick={handleAcceptAll}
                 className="px-4 py-2 text-sm font-medium text-white bg-brand-sage hover:bg-[#A9C2AD] rounded-lg shadow-sm transition-colors whitespace-nowrap"
               >
-                Aceptar todas
+                {t("cookies.acceptAll")}
               </button>
             </div>
           </div>
@@ -116,7 +115,7 @@ export default function CookieConsent() {
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
             <div className="flex items-center justify-between border-b border-brand-sand pb-4">
               <h3 className="text-lg font-serif text-stone-800 font-medium">
-                Configuración de Cookies
+                {t("cookies.configTitle")}
               </h3>
               <button
                 onClick={() => setShowDetails(false)}
@@ -132,15 +131,14 @@ export default function CookieConsent() {
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 text-stone-800 font-medium">
                     <Shield className="w-4 h-4 text-brand-sage" />
-                    Necesarias
+                    {t("cookies.necessary")}
                   </div>
                   <div className="flex items-center gap-2 text-xs font-medium text-brand-sage bg-white px-2 py-0.5 rounded-full border border-brand-sage/20">
-                    <Check className="w-3 h-3" /> Siempre activas
+                    <Check className="w-3 h-3" /> {t("cookies.alwaysActive")}
                   </div>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  Estas cookies son esenciales para que el sitio web funcione
-                  correctamente. No se pueden desactivar.
+                  {t("cookies.necessaryDesc")}
                 </p>
               </div>
 
@@ -156,7 +154,7 @@ export default function CookieConsent() {
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 text-stone-800 font-medium">
                     <Globe className="w-4 h-4 text-stone-600" />
-                    Analíticas
+                    {t("cookies.analytics")}
                   </div>
                   <div
                     className={`w-10 h-5 rounded-full relative transition-colors ${
@@ -171,8 +169,7 @@ export default function CookieConsent() {
                   </div>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  Nos ayudan a entender cómo interactúas con la web para mejorar
-                  la experiencia de usuario.
+                  {t("cookies.analyticsDesc")}
                 </p>
               </div>
 
@@ -188,7 +185,7 @@ export default function CookieConsent() {
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 text-stone-800 font-medium">
                     <Info className="w-4 h-4 text-stone-600" />
-                    Marketing
+                    {t("cookies.marketing")}
                   </div>
                   <div
                     className={`w-10 h-5 rounded-full relative transition-colors ${
@@ -203,8 +200,7 @@ export default function CookieConsent() {
                   </div>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  Se utilizan para mostrarte publicidad relevante según tus
-                  intereses y navegación.
+                  {t("cookies.marketingDesc")}
                 </p>
               </div>
             </div>
@@ -214,13 +210,13 @@ export default function CookieConsent() {
                 onClick={handleRejectNonEssential}
                 className="px-4 py-2 text-sm font-medium text-stone-600 hover:text-stone-800 transition-colors"
               >
-                Rechazar no esenciales
+                {t("cookies.reject")}
               </button>
               <button
                 onClick={handleSavePreferences}
                 className="px-6 py-2 text-sm font-medium text-white bg-brand-sage hover:bg-[#A9C2AD] rounded-lg shadow-sm transition-colors"
               >
-                Guardar preferencias
+                {t("cookies.save")}
               </button>
             </div>
           </div>
