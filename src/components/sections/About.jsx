@@ -104,9 +104,9 @@ export default function About() {
                   {t('about.taglineText1')}
                 </p>
                 <p>{t('about.taglineText2')}</p>
-                <p>
-                  {t('about.taglineText3')}
-                </p>
+                {t('about.taglineText3') && (
+                  <p>{t('about.taglineText3')}</p>
+                )}
               </div>
             </div>
           </motion.div>

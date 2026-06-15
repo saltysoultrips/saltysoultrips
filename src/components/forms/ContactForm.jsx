@@ -33,6 +33,7 @@ export default function ContactForm() {
         ? "Adults: 1, Children: 0, Babies: 0"
         : "Adultos: 1, Niños: 0, Bebés: 0",
       hasPets: "no",
+      orientationPack: false,
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -477,7 +478,7 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                {/* Trip Type & Package */}
+                {/* Trip Type */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
@@ -507,36 +508,6 @@ export default function ContactForm() {
                           {errors.tripType.message}
                         </span>
                       )}
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      {t("contact.package")}
-                    </label>
-                    <div className="relative">
-                      <Package
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <select
-                        {...register("package", {
-                          required: t("contact.packageRequired"),
-                        })}
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none uppercase"
-                      >
-                        <option value="">{t("contact.packageSelect")}</option>
-                        <option value="explora">{t("contact.packageExplora")}</option>
-                        <option value="vive">{t("contact.packageVive")}</option>
-                        <option value="conecta">{t("contact.packageConecta")}</option>
-                      </select>
-                      {errors.package && (
-                        <span className="text-red-500 text-sm mt-1">
-                          {errors.package.message}
-                        </span>
-                      )}
-                      <p className="text-xs text-brand-sage mt-1 ml-1">
-                        {t("contact.packageHint")}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -604,6 +575,26 @@ export default function ContactForm() {
                     className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                     placeholder={t("contact.extrasPlaceholder")}
                   ></textarea>
+                </div>
+
+                {/* Orientation Pack Checkbox */}
+                <div className="flex items-start gap-3 mt-4">
+                  <div className="flex items-center h-5">
+                    <input
+                      {...register("orientationPack")}
+                      id="orientationPack"
+                      type="checkbox"
+                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                    />
+                  </div>
+                  <div className="text-sm">
+                    <label
+                      htmlFor="orientationPack"
+                      className="font-medium text-stone-700 cursor-pointer"
+                    >
+                      {t("contact.orientationPack")}
+                    </label>
+                  </div>
                 </div>
               </div>
 

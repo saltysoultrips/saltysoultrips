@@ -25,7 +25,6 @@ export default function Header() {
 
   const navLinks = [
     { name: t("header.nav.destinos"), href: isEn ? "/destinations" : "/destinos" },
-    { name: t("header.nav.packs"), href: isEn ? "/services" : "/servicios" },
     { name: t("header.nav.comoFunciona"), href: isEn ? "/how-it-works" : "/como-funciona" },
     { name: t("header.nav.experiencias"), href: isEn ? "/experiences" : "/experiencias" },
     { name: t("header.nav.descuentos"), href: isEn ? "/discounts" : "/descuentos" },
