@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { packagesData } from "../../data/packagesData";
 import Instagram from "lucide-react/dist/esm/icons/instagram";
 import Facebook from "lucide-react/dist/esm/icons/facebook";
 import Mail from "lucide-react/dist/esm/icons/mail";
@@ -82,70 +83,16 @@ export default function Footer() {
                   {t("footer.featuredDestinations")}
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sand-800 text-sm font-medium">
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-tailandia"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Tailandia
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-bali"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Bali
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-maldivas"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Maldivas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-nueva-york"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Nueva York
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-londres"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Londres
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-menorca"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Menorca
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-abu-dhabi"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Abu Dhabi
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/destinos/viajes-a-portugal"
-                      className="hover:text-sand-600 transition-colors"
-                    >
-                      Portugal
-                    </Link>
-                  </li>
+                  {packagesData.slice(0, 8).map((pkg) => (
+                    <li key={pkg.id}>
+                      <Link
+                        to={`/${isEn ? 'packages' : 'paquetes'}/${pkg.id}`}
+                        className="hover:text-sand-600 transition-colors"
+                      >
+                        {isEn ? pkg.title.en : pkg.title.es}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 

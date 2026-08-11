@@ -24,8 +24,7 @@ export default function Header() {
   const isEn = i18n.language === 'en';
 
   const navLinks = [
-    { name: t("header.nav.destinos"), href: isEn ? "/destinations" : "/destinos" },
-    { name: t("header.nav.comoFunciona"), href: isEn ? "/how-it-works" : "/como-funciona" },
+    { name: t("header.nav.paquetes"), href: isEn ? "/packages" : "/paquetes" },
     { name: t("header.nav.experiencias"), href: isEn ? "/experiences" : "/experiencias" },
     { name: t("header.nav.descuentos"), href: isEn ? "/discounts" : "/descuentos" },
     { name: t("header.nav.blog"), href: "/blog" },
@@ -72,18 +71,16 @@ export default function Header() {
     const currentPath = location.pathname;
     
     const esToEn = {
-      '/destinos': '/destinations',
+      '/paquetes': '/packages',
       '/servicios': '/services',
-      '/como-funciona': '/how-it-works',
       '/experiencias': '/experiences',
       '/descuentos': '/discounts',
       '/contacto': '/contact'
     };
     
     const enToEs = {
-      '/destinations': '/destinos',
+      '/packages': '/paquetes',
       '/services': '/servicios',
-      '/how-it-works': '/como-funciona',
       '/experiences': '/experiencias',
       '/discounts': '/descuentos',
       '/contact': '/contacto'

@@ -1,7 +1,7 @@
 {
   "header": {
     "nav": {
-      "destinos": "Destinos",
+      "paquetes": "Paquetes",
       "packs": "Packs",
       "comoFunciona": "Cómo funciona",
       "experiencias": "Experiencias",
@@ -15,7 +15,7 @@
   },
   "footer": {
     "tagline": "Diseñando recuerdos inolvidables en cada rincón del mundo.",
-    "featuredDestinations": "Destinos Destacados",
+    "featuredDestinations": "Paquetes Destacados",
     "collaborators": "Colaboradores",
     "rights": "Saltysoultrips. Todos los derechos reservados.",
     "privacyPolicy": "Política de Privacidad",
@@ -294,14 +294,24 @@
     "Islas y Paraísos": "Islas y Paraísos",
     "Otros": "Otros"
   },
+  "packages": {
+    "title": "Nuestros Paquetes",
+    "subtitle": "Descubre nuestros paquetes diseñados al detalle. Filtra por continente o tipo de viaje para encontrar tu experiencia ideal.",
+    "filters": {
+      "continent": "Continente",
+      "type": "Tipo de Viaje"
+    },
+    "requestQuote": "Pedir Presupuesto",
+    "back": "Volver a Paquetes"
+  },
   "seo": {
     "home": {
       "title": "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos",
       "description": "Diseñamos tu viaje personalizado 100% a medida. Japón, Maldivas, Tanzania, Tailandia y cualquier destino del mundo. Itinerarios únicos sin comisiones ocultas. 5 estrellas."
     },
-    "destinations": {
-      "title": "Destinos de Viaje Personalizados | SaltySoulTrips",
-      "description": "Explora todos nuestros destinos y empieza a diseñar tu viaje a medida. Japón, Maldivas, Tanzania, Bali, Qatar y muchos más. Itinerarios 100% personalizados."
+    "packages": {
+      "title": "Paquetes de Viaje | SaltySoulTrips",
+      "description": "Explora todos nuestros paquetes de viaje y empieza a diseñar tu viaje a medida."
     },
     "services": {
       "title": "Packs y Servicios de Viaje a Medida | SaltySoulTrips",

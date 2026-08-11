@@ -15,11 +15,10 @@ import SEOHead from "./components/SEOHead";
 // Lazy load new pages
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
-const DestinationsPage = lazy(() => import("./pages/DestinationsPage"));
-const HowItWorksPage = lazy(() => import("./pages/HowItWorksPage"));
+const PackagesPage = lazy(() => import("./pages/PackagesPage"));
+const PackageDetailPage = lazy(() => import("./pages/PackageDetailPage"));
 const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const DiscountsPage = lazy(() => import("./pages/DiscountsPage"));
-const DestinationPage = lazy(() => import("./pages/DestinationPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogList = lazy(() => import("./pages/blog/BlogList"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
@@ -187,11 +186,8 @@ function App() {
         <Route path="/contacto" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
         <Route path="/contact" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
         
-        <Route path="/destinos" element={<ScrollToTopWrapper><DestinationsPage /></ScrollToTopWrapper>} />
-        <Route path="/destinations" element={<ScrollToTopWrapper><DestinationsPage /></ScrollToTopWrapper>} />
-        
-        <Route path="/como-funciona" element={<ScrollToTopWrapper><HowItWorksPage /></ScrollToTopWrapper>} />
-        <Route path="/how-it-works" element={<ScrollToTopWrapper><HowItWorksPage /></ScrollToTopWrapper>} />
+        <Route path="/paquetes" element={<ScrollToTopWrapper><PackagesPage /></ScrollToTopWrapper>} />
+        <Route path="/packages" element={<ScrollToTopWrapper><PackagesPage /></ScrollToTopWrapper>} />
         
         <Route path="/experiencias" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
         <Route path="/experiences" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
@@ -222,20 +218,20 @@ function App() {
           }
         />
 
-        {/* Dynamic Destination Pages */}
+        {/* Dynamic Package Pages */}
         <Route
-          path="/destinos/:slug"
+          path="/paquetes/:slug"
           element={
             <ScrollToTopWrapper>
-              <DestinationPage />
+              <PackageDetailPage />
             </ScrollToTopWrapper>
           }
         />
         <Route
-          path="/destinations/:slug"
+          path="/packages/:slug"
           element={
             <ScrollToTopWrapper>
-              <DestinationPage />
+              <PackageDetailPage />
             </ScrollToTopWrapper>
           }
         />

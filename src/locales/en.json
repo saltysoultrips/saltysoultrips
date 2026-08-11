@@ -1,7 +1,7 @@
 {
   "header": {
     "nav": {
-      "destinos": "Destinations",
+      "paquetes": "Packages",
       "packs": "Packs",
       "comoFunciona": "How it works",
       "experiencias": "Experiences",
@@ -15,7 +15,7 @@
   },
   "footer": {
     "tagline": "Designing unforgettable memories in every corner of the world.",
-    "featuredDestinations": "Featured Destinations",
+    "featuredDestinations": "Featured Packages",
     "collaborators": "Collaborators",
     "rights": "Saltysoultrips. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
@@ -294,14 +294,24 @@
     "Islas y Paraísos": "Islands & Paradises",
     "Otros": "Others"
   },
+  "packages": {
+    "title": "Our Packages",
+    "subtitle": "Discover our meticulously designed packages. Filter by continent or trip type to find your ideal experience.",
+    "filters": {
+      "continent": "Continent",
+      "type": "Trip Type"
+    },
+    "requestQuote": "Request a Quote",
+    "back": "Back to Packages"
+  },
   "seo": {
     "home": {
       "title": "Personalized Travel Itineraries | SaltySoulTrips - Custom Trips",
       "description": "We design your 100% personalized travel itinerary. Japan, Maldives, Tanzania, Thailand and any destination worldwide. Unique itineraries with no hidden fees. 5 stars."
     },
-    "destinations": {
-      "title": "Travel Destinations | Custom Itineraries | SaltySoulTrips",
-      "description": "Explore all our destinations and start planning your tailor-made trip. Japan, Maldives, Tanzania, Bali, Qatar and many more. 100% personalized itineraries."
+    "packages": {
+      "title": "Travel Packages | SaltySoulTrips",
+      "description": "Explore all our travel packages and start planning your tailor-made trip."
     },
     "services": {
       "title": "Travel Packs & Services | SaltySoulTrips",
