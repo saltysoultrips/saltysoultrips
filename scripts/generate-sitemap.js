@@ -30,9 +30,8 @@ async function generateSitemap() {
   // Static routes map (es -> en) with priority and changefreq
   const staticRoutes = [
     { es: '/',             en: '/',              priority: '1.0', changefreq: 'weekly'  },
-    { es: '/destinos',     en: '/destinations',  priority: '0.9', changefreq: 'weekly'  },
+    { es: '/paquetes',     en: '/packages',      priority: '0.9', changefreq: 'weekly'  },
     { es: '/servicios',    en: '/services',      priority: '0.8', changefreq: 'monthly' },
-    { es: '/como-funciona',en: '/how-it-works',  priority: '0.7', changefreq: 'monthly' },
     { es: '/contacto',     en: '/contact',       priority: '0.7', changefreq: 'monthly' },
     { es: '/experiencias', en: '/experiences',   priority: '0.7', changefreq: 'monthly' },
     { es: '/descuentos',   en: '/discounts',     priority: '0.6', changefreq: 'monthly' },
@@ -72,15 +71,14 @@ async function generateSitemap() {
     addUrl(route.es, route.en, today, route.priority, route.changefreq);
   }
 
-  // 2. Fetch and add Destinations (with _updatedAt for lastmod)
-  const destinations = await fetchSanityData('*[_type == "destination"]{slug, slug_en, _updatedAt}');
-  if (destinations) {
-    destinations.forEach(dest => {
-      if (dest.slug?.current) {
-        const esPath = `/destinos/${dest.slug.current}`;
-        const enPath = `/destinations/${dest.slug_en?.current || dest.slug.current}`;
-        const lastmod = dest._updatedAt ? dest._updatedAt.split('T')[0] : today;
-        addUrl(esPath, enPath, lastmod, '0.8', 'monthly');
+  // 2. Add Packages (from local data)
+  const { packagesData } = await import('../src/data/packagesData.js');
+  if (packagesData) {
+    packagesData.forEach(pkg => {
+      if (pkg.id) {
+        const esPath = `/paquetes/${pkg.id}`;
+        const enPath = `/packages/${pkg.id}`;
+        addUrl(esPath, enPath, today, '0.8', 'monthly');
       }
     });
   }
@@ -101,7 +99,7 @@ async function generateSitemap() {
   sitemapXml += `</urlset>`;
 
   fs.writeFileSync(sitemapPath, sitemapXml);
-  const totalEntries = staticRoutes.length + (destinations?.length || 0) + (posts?.length || 0);
+  const totalEntries = staticRoutes.length + (packagesData?.length || 0) + (posts?.length || 0);
   console.log(`Sitemap generated successfully with ${totalEntries} main entries.`);
 }
 
