@@ -75,14 +75,15 @@ async function getRoutes() {
   try {
     console.log("🔌 Fetching slugs from Sanity...");
     
-    // Destinations
-    const destQuery = '*[_type == "destination"]{ "slug": slug.current }';
-    const destinations = await sanityClient.fetch(destQuery);
-    console.log(`✅ Found ${destinations.length} destinations`);
+    // Packages
+    const packageQuery = '*[_type == "package"]{ "slug": slug.current }';
+    const packages = await sanityClient.fetch(packageQuery);
+    console.log(`✅ Found ${packages.length} packages`);
 
-    for (const dest of destinations) {
-      if (dest.slug) {
-        routes.push(`/destinos/${dest.slug}`);
+    for (const pkg of packages) {
+      if (pkg.slug) {
+        routes.push(`/paquetes/${pkg.slug}`);
+        routes.push(`/packages/${pkg.slug}`);
       }
     }
 
