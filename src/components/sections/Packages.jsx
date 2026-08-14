@@ -262,9 +262,14 @@ export default function Packages() {
                           
                           {/* Badges */}
                           <div className="absolute top-4 left-4 flex flex-col gap-2">
-                            <span className="bg-white/90 backdrop-blur-sm text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
-                              {getLabel(group)}
-                            </span>
+                            {pkg.type && (Array.isArray(pkg.type) ? pkg.type : [pkg.type]).map(t => {
+                              const typeObj = packageTypes.find(pt => pt.id === t);
+                              return typeObj ? (
+                                <span key={t} className="bg-white/90 backdrop-blur-sm text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                                  {getLabel(typeObj)}
+                                </span>
+                              ) : null;
+                            })}
                           </div>
                           
                           <div className="absolute bottom-5 left-5 right-5 md:bottom-6 md:left-6 md:right-6 flex flex-col items-start gap-3 md:gap-4">
