@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send } from 'lucide-react';
 
@@ -8,6 +8,16 @@ export default function ChatWidget() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,13 +42,12 @@ export default function ChatWidget() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // We read the response as text for simplicity, since streamText in edge can return plain text chunks or a full string if not streamed properly
       const text = await response.text();
       
       setMessages([...newMessages, { 
         id: (Date.now() + 1).toString(), 
         role: 'assistant', 
-        content: text.replace(/^0:"/, '').replace(/"$/,'').replace(/\\n/g, '\n') // Basic cleanup in case it sends Vercel AI stream format
+        content: text.replace(/^0:"/, '').replace(/"$/,'').replace(/\\n/g, '\n')
       }]);
     } catch (err) {
       console.error('Chat error:', err);
@@ -50,6 +59,31 @@ export default function ChatWidget() {
 
   const handleInputChange = (e) => setInput(e.target.value);
 
+  // Bloquea el scroll del body cuando el chat está abierto en móvil para evitar que la pantalla salte
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 640) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
+
   return (
     <>
       <AnimatePresence>
@@ -59,10 +93,11 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 h-[100dvh] sm:h-[500px] sm:max-h-[80vh] sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-96 bg-white sm:rounded-2xl shadow-2xl border-0 sm:border border-gray-100 flex flex-col z-[100]"
+            className="fixed bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] overflow-hidden"
+            style={{ height: '500px', maxHeight: '70vh' }}
           >
             {/* Header */}
-            <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white sm:rounded-t-2xl">
+            <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <span className="text-xl">🌊</span>
@@ -82,21 +117,20 @@ export default function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50">
-              {messages.length === 0 && (
-                <div className="flex justify-start">
-                  <div className="max-w-[85%] p-3 rounded-2xl text-sm shadow-sm bg-white border border-gray-100 text-gray-800 rounded-tl-sm">
-                    ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
-                  </div>
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 relative scroll-smooth">
+              <div className="flex justify-start">
+                <div className="max-w-[85%] p-3 rounded-2xl text-sm shadow-sm bg-white border border-gray-100 text-gray-800 rounded-tl-sm">
+                  ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
                 </div>
-              )}
+              </div>
+              
               {messages.map((m) => (
                 <div
                   key={m.id}
                   className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${
+                    className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${
                       m.role === 'user'
                         ? 'bg-[#1F2937] text-white rounded-tr-sm'
                         : 'bg-white border border-gray-100 text-gray-800 rounded-tl-sm'
@@ -106,6 +140,7 @@ export default function ChatWidget() {
                   </div>
                 </div>
               ))}
+              
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-white border border-gray-100 p-3 rounded-2xl rounded-tl-sm shadow-sm">
@@ -117,17 +152,19 @@ export default function ChatWidget() {
                   </div>
                 </div>
               )}
+              
               {error && (
                 <div className="text-red-500 text-xs text-center p-2">
                   Error: {error.message}
                 </div>
               )}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input Form */}
-            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center">
+            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center pb-safe">
               <input
-                className="flex-1 px-4 py-2 bg-gray-100 focus:bg-white border border-transparent focus:border-gray-300 rounded-full text-sm outline-none transition-all"
+                className="flex-1 px-4 py-3 sm:py-2 bg-gray-100 focus:bg-white border border-transparent focus:border-gray-300 rounded-full text-sm outline-none transition-all"
                 value={input}
                 placeholder="Escribe tu mensaje..."
                 onChange={handleInputChange}
@@ -135,10 +172,10 @@ export default function ChatWidget() {
               />
               <button
                 type="submit"
-                className="p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors"
+                className="p-3 sm:p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors"
                 aria-label="Enviar mensaje"
               >
-                <Send size={16} className="ml-0.5" />
+                <Send size={18} className="ml-0.5" />
               </button>
             </form>
           </motion.div>
