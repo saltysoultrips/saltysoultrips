@@ -261,7 +261,7 @@ export default function Packages() {
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
                           
                           {/* Badges */}
-                          <div className="absolute top-4 left-4 flex flex-col gap-2">
+                          <div className="absolute top-4 left-4 flex flex-col items-start gap-2">
                             {pkg.type && (Array.isArray(pkg.type) ? pkg.type : [pkg.type]).map(t => {
                               const typeObj = packageTypes.find(pt => pt.id === t);
                               return typeObj ? (
