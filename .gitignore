@@ -23,6 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 /.agents
+
 # Environment variables
 .env
 .env.*
+
+# Cache and temporary files
+.cache
+.cache/
+
