@@ -170,6 +170,8 @@ function HomePage() {
   );
 }
 
+const ChatWidget = lazy(() => import("./components/ChatWidget"));
+
 function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
@@ -251,6 +253,7 @@ function App() {
         />
       </Routes>
       <CookieConsent />
+      <ChatWidget />
     </Suspense>
   );
 }

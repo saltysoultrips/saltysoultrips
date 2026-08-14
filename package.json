@@ -27,9 +27,11 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.44",
     "@portabletext/react": "^6.0.3",
     "@sanity/client": "^7.15.0",
     "@sanity/image-url": "^2.0.3",
+    "ai": "^7.0.65",
     "framer-motion": "^12.23.26",
     "i18next": "^26.3.0",
     "lucide-react": "^0.561.0",
