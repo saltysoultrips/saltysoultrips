@@ -1,10 +1,10 @@
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { createGroq } from '@ai-sdk/groq';
 import { streamText } from 'ai';
 import { createClient } from '@sanity/client';
 
-// Configure the Google Gemini provider
-const google = createGoogleGenerativeAI({
-  apiKey: process.env.GEMINI_API_KEY,
+// Configure the Groq provider
+const groq = createGroq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 // Configure Sanity Client
@@ -53,7 +53,7 @@ Reglas:
 
   try {
     const result = streamText({
-      model: google('gemini-1.5-flash'),
+      model: groq('llama-3.1-8b-instant'),
       system: systemPrompt,
       messages,
     });
