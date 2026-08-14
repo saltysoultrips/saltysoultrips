@@ -14,10 +14,14 @@ export default function ChatWidget() {
         content: '¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?',
       },
     ],
+    onError: (err) => {
+      console.error(err);
+      alert('Error en el chat: ' + err.message);
+    }
   });
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -25,17 +29,16 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 right-0 mb-4 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col"
-            style={{ height: '500px', maxHeight: '80vh' }}
+            className="fixed inset-0 h-[100dvh] sm:h-[500px] sm:max-h-[80vh] sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-96 bg-white sm:rounded-2xl shadow-2xl border-0 sm:border border-gray-100 flex flex-col z-[100]"
           >
             {/* Header */}
-            <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white">
+            <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white sm:rounded-t-2xl">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <span className="text-xl">🌊</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold">Asistente SaltySoul</h3>
+                  <h3 className="font-semibold">Asistente Salty</h3>
                   <p className="text-xs text-gray-300">Responde al instante</p>
                 </div>
               </div>
@@ -106,11 +109,11 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#1F2937] hover:bg-black text-white rounded-full shadow-lg flex items-center justify-center transition-colors relative z-50"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-[#1F2937] hover:bg-black text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
         aria-label="Abrir asistente de viajes"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </motion.button>
-    </div>
+    </>
   );
 }
