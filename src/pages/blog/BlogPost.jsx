@@ -122,6 +122,11 @@ export default function BlogPost() {
   // Use excerpt as meta description — fallback to first 160 chars of title if no excerpt
   const displayExcerpt = pick("excerpt") || `${displayTitle} - Blog de viajes de SaltySoulTrips.`;
 
+  // SEO Fields
+  const seoTitle = pick("seoTitle") || `${displayTitle} | Blog SaltySoulTrips`;
+  const seoDesc = pick("seoDescription") || displayExcerpt;
+  const coverAlt = post.coverImage?.alt || displayTitle;
+
   // Schema.org Article data
   const articleSchema = {
     "@context": "https://schema.org",
@@ -151,8 +156,8 @@ export default function BlogPost() {
   return (
     <>
       <SEOHead
-        title={`${displayTitle} | Blog SaltySoulTrips`}
-        description={displayExcerpt}
+        title={seoTitle}
+        description={seoDesc}
         canonicalUrl={`https://www.saltysoultrips.com/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
         esUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
         enUrl={`https://www.saltysoultrips.com/blog/${post.slug_en ? post.slug_en.current : post.slug.current}`}
@@ -173,7 +178,7 @@ export default function BlogPost() {
           <div className="relative rounded-3xl overflow-hidden aspect-video shadow-lg mb-8">
             <img
               src={post.coverImage ? urlFor(post.coverImage).url() : ""}
-              alt={displayTitle}
+              alt={coverAlt}
               className="w-full h-full object-cover"
             />
           </div>

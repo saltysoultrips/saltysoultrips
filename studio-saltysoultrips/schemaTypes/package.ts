@@ -111,6 +111,14 @@ export const packageSchema = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text (SEO)',
+          description: 'Important for SEO and accessibility (e.g. "Pareja en Maldivas").',
+        }
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -120,6 +128,13 @@ export const packageSchema = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text (SEO)',
+        }
+      ]
     }),
     defineField({
       name: 'seoTitle',

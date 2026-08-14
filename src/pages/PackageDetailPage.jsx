@@ -108,6 +108,32 @@ export default function PackageDetailPage() {
   const seoDesc = getPackageText('seoDescription') || getPackageText('shortDescription');
   const ogImage = getPackageImage();
 
+  const priceString = getPackageText('priceInfo');
+  const priceMatch = priceString ? priceString.match(/\d+([.,]\d+)?/) : null;
+  const priceValue = priceMatch ? priceMatch[0].replace(',', '.') : "0";
+
+  const heroImageAlt = pkg.image?.alt || getPackageText('title');
+  const flyerImageAlt = pkg.flyerImage?.alt || `Flyer de ${getPackageText('title')}`;
+
+  const schemaData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": getPackageText('title'),
+    "image": ogImage,
+    "description": seoDesc,
+    "brand": {
+      "@type": "Brand",
+      "name": "SaltySoulTrips"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://www.saltysoultrips.com/${isEn ? 'packages' : 'paquetes'}/${slug}`,
+      "priceCurrency": "EUR",
+      "price": priceValue,
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 min-h-screen flex flex-col">
       <SEOHead
@@ -117,6 +143,7 @@ export default function PackageDetailPage() {
         esUrl={`https://www.saltysoultrips.com/paquetes/${slug}`}
         enUrl={`https://www.saltysoultrips.com/packages/${slug}`}
         ogImage={ogImage}
+        schemaData={schemaData}
       />
       
       <Header />
@@ -127,7 +154,7 @@ export default function PackageDetailPage() {
           <div className="relative h-[50vh] md:h-[60vh] w-full bg-brand-dark overflow-hidden">
             <img 
               src={getPackageImage()} 
-              alt={getPackageText('title')}
+              alt={heroImageAlt}
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-sand-100 via-transparent to-black/30"></div>
@@ -210,7 +237,7 @@ export default function PackageDetailPage() {
                     >
                       <img 
                         src={getFlyerImage()} 
-                        alt="Flyer del Paquete" 
+                        alt={flyerImageAlt} 
                         className="w-full h-auto object-cover transition-transform duration-700"
                       />
                       {/* Click instruction overlay */}
