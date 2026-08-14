@@ -5,22 +5,20 @@ import { MessageCircle, X, Send } from 'lucide-react';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
     api: '/api/chat',
-    initialMessages: [
-      {
-        id: 'welcome',
-        role: 'assistant',
-        content: '¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?',
-      },
-    ],
     onError: (err) => {
-      console.error(err);
+      console.error('Chat error:', err);
       alert('Error en el chat: ' + err.message);
     }
   });
 
-  console.log('Chat state:', { messageCount: messages.length, input, isLoading });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!input || typeof input !== 'string' || !input.trim()) return;
+    console.log("Enviando mensaje:", input);
+    handleSubmit(e);
+  };
 
   return (
     <>
@@ -55,6 +53,13 @@ export default function ChatWidget() {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50">
+              {messages.length === 0 && (
+                <div className="flex justify-start">
+                  <div className="max-w-[85%] p-3 rounded-2xl text-sm shadow-sm bg-white border border-gray-100 text-gray-800 rounded-tl-sm">
+                    ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
+                  </div>
+                </div>
+              )}
               {messages.map((m) => (
                 <div
                   key={m.id}
@@ -82,10 +87,15 @@ export default function ChatWidget() {
                   </div>
                 </div>
               )}
+              {error && (
+                <div className="text-red-500 text-xs text-center p-2">
+                  Error: {error.message}
+                </div>
+              )}
             </div>
 
             {/* Input Form */}
-            <form onSubmit={handleSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center">
+            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center">
               <input
                 className="flex-1 px-4 py-2 bg-gray-100 focus:bg-white border border-transparent focus:border-gray-300 rounded-full text-sm outline-none transition-all"
                 value={input}
@@ -95,8 +105,7 @@ export default function ChatWidget() {
               />
               <button
                 type="submit"
-                disabled={!input?.trim() || isLoading}
-                className="p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors"
                 aria-label="Enviar mensaje"
               >
                 <Send size={16} className="ml-0.5" />
