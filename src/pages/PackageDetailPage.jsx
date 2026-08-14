@@ -69,12 +69,11 @@ export default function PackageDetailPage() {
 
   const getLabel = (collection, idOrArray) => {
     if (Array.isArray(idOrArray)) {
-       // if it's an array of types, let's just pick the first one or join them
        if (idOrArray.length === 0) return "";
-       const id = idOrArray[0];
-       const item = collection.find(i => i.id === id);
-       if (!item) return "";
-       return isEn ? item.label.en : item.label.es;
+       return idOrArray.map(id => {
+         const item = collection.find(i => i.id === id);
+         return item ? (isEn ? item.label.en : item.label.es) : "";
+       }).filter(Boolean).join(" & ");
     }
     const item = collection.find(i => i.id === idOrArray);
     if (!item) return "";
