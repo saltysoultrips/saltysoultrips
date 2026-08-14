@@ -20,6 +20,8 @@ export default function ChatWidget() {
     }
   });
 
+  console.log('Chat state:', { messageCount: messages.length, input, isLoading });
+
   return (
     <>
       <AnimatePresence>
