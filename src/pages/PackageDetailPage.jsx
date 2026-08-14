@@ -49,6 +49,8 @@ export default function PackageDetailPage() {
     if (field === 'shortDescription') return isEn && pkg.shortDescription_en ? pkg.shortDescription_en : pkg.shortDescription || "";
     if (field === 'longDescription') return isEn && pkg.longDescription_en ? pkg.longDescription_en : pkg.longDescription || "";
     if (field === 'priceInfo') return isEn && pkg.priceInfo_en ? pkg.priceInfo_en : pkg.priceInfo || "";
+    if (field === 'seoTitle') return isEn && pkg.seoTitle_en ? pkg.seoTitle_en : pkg.seoTitle || "";
+    if (field === 'seoDescription') return isEn && pkg.seoDescription_en ? pkg.seoDescription_en : pkg.seoDescription || "";
     return pkg[field] || "";
   };
   
@@ -102,14 +104,19 @@ export default function PackageDetailPage() {
   const continentLabel = getLabel(continents, pkg.continent);
   const typeLabel = getLabel(packageTypes, pkg.type);
 
+  const seoTitle = getPackageText('seoTitle') || `${getPackageText('title')} | SaltySoulTrips`;
+  const seoDesc = getPackageText('seoDescription') || getPackageText('shortDescription');
+  const ogImage = getPackageImage();
+
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 min-h-screen flex flex-col">
       <SEOHead
-        title={`${getPackageText('title')} | SaltySoulTrips`}
-        description={getPackageText('shortDescription')}
+        title={seoTitle}
+        description={seoDesc}
         canonicalUrl={`https://www.saltysoultrips.com/${isEn ? 'packages' : 'paquetes'}/${slug}`}
         esUrl={`https://www.saltysoultrips.com/paquetes/${slug}`}
         enUrl={`https://www.saltysoultrips.com/packages/${slug}`}
+        ogImage={ogImage}
       />
       
       <Header />

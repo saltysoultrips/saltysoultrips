@@ -4,6 +4,13 @@ export const packageSchema = defineType({
   name: 'package',
   title: 'Packages',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'seo',
+      title: 'SEO & Metadata',
+      options: { collapsible: true, collapsed: false }
+    }
+  ],
   fields: [
     defineField({
       name: 'title',
@@ -113,7 +120,32 @@ export const packageSchema = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title (ES)',
+      type: 'string',
+      fieldset: 'seo',
+      description: 'Ideal length: 50-60 characters',
+    }),
+    defineField({
+      name: 'seoTitle_en',
+      title: 'SEO Title (EN)',
+      type: 'string',
+      fieldset: 'seo',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description (ES)',
+      type: 'text',
+      fieldset: 'seo',
+      description: 'Ideal length: 150-160 characters',
+    }),
+    defineField({
+      name: 'seoDescription_en',
+      title: 'SEO Description (EN)',
+      type: 'text',
+      fieldset: 'seo',
     }),
   ],
 })
