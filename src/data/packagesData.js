@@ -270,6 +270,74 @@ export const packagesData = [
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Rockefeller_Christmas_Tree.jpg/960px-Rockefeller_Christmas_Tree.jpg",
     flyerImage: "/paquetes/nuevayork-navidad.jpg",
     priceInfo: { es: "Desde 1.875€ / pers.", en: "From €1.875 / pers." }
+  },
+  {
+    id: "dubai-mauricio",
+    title: { es: "Dubái & Mauricio", en: "Dubai & Mauritius" },
+    continent: "luna-de-miel",
+    type: ["luna-de-miel", "relax"],
+    shortDescription: {
+      es: "Luna de miel de 12 días combinando la modernidad de Dubái con las playas de arena blanca de Mauricio en Todo Incluido.",
+      en: "12-day honeymoon combining the modernity of Dubai with the white sand beaches of Mauritius on All-Inclusive."
+    },
+    longDescription: {
+      es: "Una combinación perfecta de lujo, aventura y relax en **12 Días / 10 Noches**.\n\nEl paquete incluye:\n- **Vuelos de Emirates** con equipaje\n- **4 noches en Dubái** con desayuno en Habitación Deluxe\n- **7 noches en Mauricio** Todo Incluido en Habitación Superior\n- **Desert Safari con cena y espectáculo en Dubái**\n- **Entrada al Burj Khalifa (pisos 124 y 125)**\n- **Excursión a Crystal Rock y Le Morne en Mauricio**\n- **Seguro de viaje y eSIM con datos**",
+      en: "A perfect combination of luxury, adventure and relaxation in **12 Days / 10 Nights**.\n\nThe package includes:\n- **Emirates flights** with baggage\n- **4 nights in Dubai** with breakfast in Deluxe Room\n- **7 nights in Mauritius** All-Inclusive in Superior Room\n- **Desert Safari with dinner and show in Dubai**\n- **Burj Khalifa entry (floors 124 and 125)**\n- **Crystal Rock and Le Morne excursion in Mauritius**\n- **Travel insurance and eSIM with data**"
+    },
+    image: "/paquetes/dubai-mauricio-hero.jpg",
+    flyerImage: "/paquetes/dubai-mauricio.jpg",
+    priceInfo: { es: "Desde 3.300€ / pers.", en: "From €3.300 / pers." }
+  },
+  {
+    id: "laponia",
+    title: { es: "Laponia en Familia", en: "Lapland for Families" },
+    continent: "europa",
+    type: ["invierno", "familia", "aventura"],
+    shortDescription: {
+      es: "Viaje familiar de 5 días a Rovaniemi. Un invierno ártico lleno de nieve, auroras y magia para crear recuerdos inolvidables.",
+      en: "5-day family trip to Rovaniemi. An arctic winter full of snow, auroras, and magic to create unforgettable memories."
+    },
+    longDescription: {
+      es: "Un viaje que recordaréis para siempre de **5 Días / 4 Noches**.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** (con mochila incluida)\n- **4 noches de alojamiento** en apartamento completo\n- **Coche de alquiler** por 4 días con seguro a todo riesgo\n- **Seguro de viaje** para 5 personas",
+      en: "A trip you will remember forever of **5 Days / 4 Nights**.\n\nThe package includes:\n- **Roundtrip flights** (with backpack included)\n- **4 nights accommodation** in a full apartment\n- **Rental car** for 4 days with comprehensive insurance\n- **Travel insurance** for 5 people"
+    },
+    image: "/paquetes/laponia-hero.jpg",
+    flyerImage: "/paquetes/laponia.jpg",
+    priceInfo: { es: "3.999€ total (5 pers)", en: "€3.999 total (5 pax)" }
+  },
+  {
+    id: "maldivas",
+    title: { es: "Maldivas en Familia", en: "Maldives for Families" },
+    continent: "asia",
+    type: ["relax", "familia"],
+    shortDescription: {
+      es: "Viaje familiar de lujo de 11 días en Maldivas. Régimen de pensión completa y excursiones en un auténtico paraíso.",
+      en: "11-day luxury family trip to the Maldives. Full board basis and excursions in a true paradise."
+    },
+    longDescription: {
+      es: "Un viaje para crear recuerdos inolvidables de **11 Días / 9 Noches**.\n\nEl paquete incluye:\n- **Vuelos internacionales con Etihad Airways** y equipaje facturado (25 kg)\n- **4 noches en Maafushi** (Kaani Grand Sea View)\n- **4 noches en resort** (Sun Siyam Olhuveli)\n- **1 noche en Hulhumalé**\n- **Régimen de Pensión Completa** en todo el viaje\n- **2 excursiones incluidas** (Whale Shark + Manta Ray, Turtle & Dolphin Sunset Cruise)\n- **Traslados en speedboat, Seguro de viaje y eSIM**",
+      en: "A trip to create unforgettable memories of **11 Days / 9 Nights**.\n\nThe package includes:\n- **International flights with Etihad Airways** and checked baggage (25 kg)\n- **4 nights in Maafushi** (Kaani Grand Sea View)\n- **4 nights in a resort** (Sun Siyam Olhuveli)\n- **1 night in Hulhumalé**\n- **Full Board** throughout the trip\n- **2 excursions included** (Whale Shark + Manta Ray, Turtle & Dolphin Sunset Cruise)\n- **Speedboat transfers, Travel insurance, and eSIM**"
+    },
+    image: "/paquetes/maldivas-hero.jpg",
+    flyerImage: "/paquetes/maldivas.jpg",
+    priceInfo: { es: "18.000€ total (5 pers)", en: "€18.000 total (5 pax)" }
+  },
+  {
+    id: "tanzania",
+    title: { es: "Tanzania + Zanzíbar", en: "Tanzania + Zanzibar" },
+    continent: "africa",
+    type: ["aventura", "luna-de-miel"],
+    shortDescription: {
+      es: "Luna de miel espectacular de 12 días con safari privado en Tanzania y playas paradisíacas en Zanzíbar.",
+      en: "Spectacular 12-day honeymoon with a private safari in Tanzania and paradise beaches in Zanzibar."
+    },
+    longDescription: {
+      es: "Aventura, naturaleza y relax en un viaje único de **12 Días / 11 Noches**.\n\nEl paquete incluye:\n- **Vuelos internacionales** con equipaje incluido\n- **Safari privado de 4 días / 3 noches** (Tarangire, Lago Manyara, Serengeti, Ngorongoro) con guía en español y pensión completa\n- **3 noches en Arusha** con desayuno\n- **7 noches en Zanzíbar** en pensión completa\n- **Seguro de viaje y Visados de Tanzania**\n- **Seguro obligatorio de entrada a Zanzíbar y eSIM**\n- **Excursión nado con delfines en Zanzíbar** y traslados aeropuerto-hotel",
+      en: "Adventure, nature, and relaxation on a unique trip of **12 Days / 11 Nights**.\n\nThe package includes:\n- **International flights** with baggage included\n- **Private safari for 4 days / 3 nights** (Tarangire, Lake Manyara, Serengeti, Ngorongoro) with Spanish-speaking guide and full board\n- **3 nights in Arusha** with breakfast\n- **7 nights in Zanzibar** on full board\n- **Travel insurance and Tanzania Visas**\n- **Mandatory Zanzibar entry insurance and eSIM**\n- **Dolphin swimming excursion in Zanzibar** and airport-hotel transfers"
+    },
+    image: "/paquetes/tanzania-hero.jpg",
+    flyerImage: "/paquetes/tanzania.jpg",
+    priceInfo: { es: "Desde 4.800€ / pers.", en: "From €4.800 / pers." }
   }
 ];
 
@@ -291,5 +359,6 @@ export const packageTypes = [
   { id: "aventura", label: { es: "Aventura", en: "Adventure" } },
   { id: "relax", label: { es: "Relax", en: "Relax" } },
   { id: "luna-de-miel", label: { es: "Luna de Miel", en: "Honeymoon" } },
-  { id: "cultural", label: { es: "Cultural", en: "Cultural" } }
+  { id: "cultural", label: { es: "Cultural", en: "Cultural" } },
+  { id: "familia", label: { es: "Familia", en: "Family" } }
 ];
