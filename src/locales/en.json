@@ -251,7 +251,7 @@
     "returnDate": "Return Date",
     "returnDateRequired": "Return date is required",
     "returnDateInvalid": "Return date cannot be before departure date",
-    "travelers": "Travelers",
+    "travelers": "Travelers (age at the time of travel)",
     "adults": "Adults",
     "adultsAge": "16 years or older",
     "children": "Children",
