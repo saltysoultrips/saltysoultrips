@@ -1,24 +1,54 @@
 import React, { useState } from 'react';
-import { useChat } from '@ai-sdk/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
-    api: '/api/chat',
-    onError: (err) => {
-      console.error('Chat error:', err);
-      alert('Error en el chat: ' + err.message);
-    }
-  });
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (!input || typeof input !== 'string' || !input.trim()) return;
-    console.log("Enviando mensaje:", input);
-    handleSubmit(e);
+    if (!input || !input.trim()) return;
+    
+    const userMessage = { id: Date.now().toString(), role: 'user', content: input };
+    const newMessages = [...messages, userMessage];
+    
+    setMessages(newMessages);
+    setInput('');
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newMessages })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // We read the response as text for simplicity, since streamText in edge can return plain text chunks or a full string if not streamed properly
+      const text = await response.text();
+      
+      setMessages([...newMessages, { 
+        id: (Date.now() + 1).toString(), 
+        role: 'assistant', 
+        content: text.replace(/^0:"/, '').replace(/"$/,'').replace(/\\n/g, '\n') // Basic cleanup in case it sends Vercel AI stream format
+      }]);
+    } catch (err) {
+      console.error('Chat error:', err);
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const handleInputChange = (e) => setInput(e.target.value);
 
   return (
     <>

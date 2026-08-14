@@ -58,7 +58,7 @@ Reglas:
       messages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
   } catch (error) {
     console.error('AI Stream Error:', error);
     return new Response('Error interno', { status: 500 });

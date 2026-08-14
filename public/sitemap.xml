@@ -109,6 +109,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog"/>
   </url>
   <url>
+    <loc>https://www.saltysoultrips.com/paquetes/ruta-66-de-chicago-a-los-angeles</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/paquetes/ruta-66-de-chicago-a-los-angeles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/packages/ruta-66-de-chicago-a-los-angeles"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/paquetes/ruta-66-de-chicago-a-los-angeles"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/packages/ruta-66-de-chicago-a-los-angeles</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/paquetes/ruta-66-de-chicago-a-los-angeles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/packages/ruta-66-de-chicago-a-los-angeles"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/paquetes/ruta-66-de-chicago-a-los-angeles"/>
+  </url>
+  <url>
     <loc>https://www.saltysoultrips.com/paquetes/brasil</loc>
     <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -125,24 +143,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/paquetes/brasil"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/packages/brasil"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/paquetes/brasil"/>
-  </url>
-  <url>
-    <loc>https://www.saltysoultrips.com/paquetes/cracovia-zakopane</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/paquetes/cracovia-zakopane"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/packages/cracovia-zakopane"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/paquetes/cracovia-zakopane"/>
-  </url>
-  <url>
-    <loc>https://www.saltysoultrips.com/packages/cracovia-zakopane</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/paquetes/cracovia-zakopane"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/packages/cracovia-zakopane"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/paquetes/cracovia-zakopane"/>
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/paquetes/disneyland-paris</loc>
@@ -452,7 +452,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"/>
@@ -461,7 +461,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"/>
@@ -469,8 +469,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"/>
   </url>
   <url>
+    <loc>https://www.saltysoultrips.com/blog/que-hacer-en-cerdena-mejores-actividades-excursiones</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/things-to-do-in-sardinia-best-activities-excursions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"/>
+  </url>
+  <url>
+    <loc>https://www.saltysoultrips.com/blog/things-to-do-in-sardinia-best-activities-excursions</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saltysoultrips.com/blog/things-to-do-in-sardinia-best-activities-excursions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saltysoultrips.com/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"/>
+  </url>
+  <url>
     <loc>https://www.saltysoultrips.com/blog/merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece"/>
@@ -479,7 +497,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/Is a Disney Cruise Worth It? My Opinion After Analyzing Everything It Offers</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece"/>
@@ -488,7 +506,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026"/>
@@ -497,7 +515,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/tailandia-vs-bali</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/tailandia-vs-bali"/>
@@ -506,7 +524,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas"/>
@@ -515,7 +533,7 @@
   </url>
   <url>
     <loc>https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.saltysoultrips.com/blog/curso-de-buceo-en-koh-tao"/>
