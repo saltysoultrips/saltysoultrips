@@ -90,7 +90,7 @@ export default function ChatWidget() {
               />
               <button
                 type="submit"
-                disabled={!input.trim() || isLoading}
+                disabled={!input?.trim() || isLoading}
                 className="p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Enviar mensaje"
               >

@@ -1,9 +1,9 @@
-import { createGoogleGenAI } from '@ai-sdk/google';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { streamText } from 'ai';
 import { createClient } from '@sanity/client';
 
 // Configure the Google Gemini provider
-const google = createGoogleGenAI({
+const google = createGoogleGenerativeAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
