@@ -4,9 +4,7 @@ export const continents = [
   { id: "america", label: { es: "América", en: "America" } },
   { id: "asia", label: { es: "Asia", en: "Asia" } },
   { id: "africa", label: { es: "África", en: "Africa" } },
-  { id: "oceania", label: { es: "Oceanía", en: "Oceania" } },
-  { id: "parques", label: { es: "Parques Temáticos", en: "Theme Parks" } },
-  { id: "luna-de-miel", label: { es: "Luna de Miel", en: "Honeymoon" } }
+  { id: "oceania", label: { es: "Oceanía", en: "Oceania" } }
 ];
 
 export const packageTypes = [
@@ -17,5 +15,6 @@ export const packageTypes = [
   { id: "relax", label: { es: "Relax", en: "Relax" } },
   { id: "luna-de-miel", label: { es: "Luna de Miel", en: "Honeymoon" } },
   { id: "cultural", label: { es: "Cultural", en: "Cultural" } },
-  { id: "familia", label: { es: "Familia", en: "Family" } }
+  { id: "familia", label: { es: "Familia", en: "Family" } },
+  { id: "parques", label: { es: "Parques Temáticos", en: "Theme Parks" } }
 ];
