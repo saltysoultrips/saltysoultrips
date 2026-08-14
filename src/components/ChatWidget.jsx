@@ -93,8 +93,8 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] overflow-hidden"
-            style={{ height: '500px', maxHeight: '70vh' }}
+            className="fixed top-20 left-4 right-4 sm:top-auto sm:bottom-24 sm:left-auto sm:right-6 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] overflow-hidden"
+            style={{ height: 'max-content', maxHeight: '60vh' }}
           >
             {/* Header */}
             <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white">
@@ -117,7 +117,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 relative scroll-smooth">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 relative scroll-smooth h-[300px] sm:h-[400px]">
               <div className="flex justify-start">
                 <div className="max-w-[85%] p-3 rounded-2xl text-sm shadow-sm bg-white border border-gray-100 text-gray-800 rounded-tl-sm">
                   ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
@@ -187,7 +187,7 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#1F2937] hover:bg-black text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
+        className="fixed bottom-28 right-4 sm:bottom-6 sm:right-6 w-14 h-14 bg-[#1F2937] hover:bg-black text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
         aria-label="Abrir asistente de viajes"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
