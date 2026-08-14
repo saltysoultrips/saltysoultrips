@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { packagesData } from "../../data/packagesData";
+import { client } from "../../lib/sanity";
 import Instagram from "lucide-react/dist/esm/icons/instagram";
 import Facebook from "lucide-react/dist/esm/icons/facebook";
 import Mail from "lucide-react/dist/esm/icons/mail";
@@ -31,7 +31,25 @@ const TikTokIcon = ({ size = 24, className }) => (
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState(null);
+  const [footerPackages, setFooterPackages] = useState([]);
   const { t, i18n } = useTranslation();
+
+  React.useEffect(() => {
+    const fetchFooterPackages = async () => {
+      try {
+        const query = `*[_type == "package"] | order(_createdAt asc) [0...8] {
+          "id": slug.current,
+          title,
+          title_en
+        }`;
+        const sanityPackages = await client.fetch(query);
+        setFooterPackages(sanityPackages || []);
+      } catch (error) {
+        console.error("Error fetching footer packages:", error);
+      }
+    };
+    fetchFooterPackages();
+  }, []);
 
   const isEn = i18n.language === 'en';
   
@@ -83,13 +101,13 @@ export default function Footer() {
                   {t("footer.featuredDestinations")}
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sand-800 text-sm font-medium">
-                  {packagesData.slice(0, 8).map((pkg) => (
+                  {footerPackages.map((pkg) => (
                     <li key={pkg.id}>
                       <Link
                         to={`/${isEn ? 'packages' : 'paquetes'}/${pkg.id}`}
                         className="hover:text-sand-600 transition-colors"
                       >
-                        {isEn ? pkg.title.en : pkg.title.es}
+                        {isEn && pkg.title_en ? pkg.title_en : pkg.title}
                       </Link>
                     </li>
                   ))}

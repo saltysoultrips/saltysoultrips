@@ -71,14 +71,15 @@ async function generateSitemap() {
     addUrl(route.es, route.en, today, route.priority, route.changefreq);
   }
 
-  // 2. Add Packages (from local data)
-  const { packagesData } = await import('../src/data/packagesData.js');
-  if (packagesData) {
-    packagesData.forEach(pkg => {
-      if (pkg.id) {
-        const esPath = `/paquetes/${pkg.id}`;
-        const enPath = `/packages/${pkg.id}`;
-        addUrl(esPath, enPath, today, '0.8', 'monthly');
+  // 2. Fetch and add Packages (from Sanity)
+  const packages = await fetchSanityData('*[_type == "package"]{slug, _updatedAt}');
+  if (packages) {
+    packages.forEach(pkg => {
+      if (pkg.slug?.current) {
+        const esPath = `/paquetes/${pkg.slug.current}`;
+        const enPath = `/packages/${pkg.slug.current}`;
+        const lastmod = pkg._updatedAt ? pkg._updatedAt.split('T')[0] : today;
+        addUrl(esPath, enPath, lastmod, '0.8', 'monthly');
       }
     });
   }
@@ -99,7 +100,7 @@ async function generateSitemap() {
   sitemapXml += `</urlset>`;
 
   fs.writeFileSync(sitemapPath, sitemapXml);
-  const totalEntries = staticRoutes.length + (packagesData?.length || 0) + (posts?.length || 0);
+  const totalEntries = staticRoutes.length + (packages?.length || 0) + (posts?.length || 0);
   console.log(`Sitemap generated successfully with ${totalEntries} main entries.`);
 }
 

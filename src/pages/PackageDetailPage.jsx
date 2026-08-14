@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SEOHead from "../components/SEOHead";
-import { packagesData, continents, packageTypes } from "../data/packagesData";
+import { continents, packageTypes } from "../data/constants";
+import { client, urlFor } from "../lib/sanity";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Compass from "lucide-react/dist/esm/icons/compass";
 import X from "lucide-react/dist/esm/icons/x";
+import Loader2 from "lucide-react/dist/esm/icons/loader-2";
 
 export default function PackageDetailPage() {
   const { slug } = useParams();
@@ -17,16 +19,41 @@ export default function PackageDetailPage() {
   const navigate = useNavigate();
   const isEn = i18n.language === 'en';
   const [isImageOpen, setIsImageOpen] = useState(false);
-
-  const pkg = packagesData.find((p) => p.id === slug);
+  
+  const [pkg, setPkg] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!pkg) {
-      navigate('/404', { replace: true });
-    }
-  }, [pkg, navigate]);
+    const fetchPackage = async () => {
+      try {
+        const query = `*[_type == "package" && slug.current == $slug][0]`;
+        const sanityPkg = await client.fetch(query, { slug });
+        if (sanityPkg) {
+          setPkg(sanityPkg);
+        } else {
+          navigate('/404', { replace: true });
+        }
+      } catch (error) {
+        console.error("Error fetching package:", error);
+        navigate('/404', { replace: true });
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPackage();
+  }, [slug, navigate]);
 
-  const getPackageText = (field) => isEn ? pkg[field].en : pkg[field].es;
+  const getPackageText = (field) => {
+    if (!pkg) return "";
+    if (field === 'title') return isEn && pkg.title_en ? pkg.title_en : pkg.title || "";
+    if (field === 'shortDescription') return isEn && pkg.shortDescription_en ? pkg.shortDescription_en : pkg.shortDescription || "";
+    if (field === 'longDescription') return isEn && pkg.longDescription_en ? pkg.longDescription_en : pkg.longDescription || "";
+    if (field === 'priceInfo') return isEn && pkg.priceInfo_en ? pkg.priceInfo_en : pkg.priceInfo || "";
+    return pkg[field] || "";
+  };
+  
+  const getPackageImage = () => pkg?.image ? urlFor(pkg.image).url() : "";
+  const getFlyerImage = () => pkg?.flyerImage ? urlFor(pkg.flyerImage).url() : "";
 
   // Helper to parse bold markdown (**text**)
   const formatText = (text) => {
@@ -40,21 +67,41 @@ export default function PackageDetailPage() {
     });
   };
 
-  const getLabel = (collection, id) => {
-    const item = collection.find(i => i.id === id);
+  const getLabel = (collection, idOrArray) => {
+    if (Array.isArray(idOrArray)) {
+       // if it's an array of types, let's just pick the first one or join them
+       if (idOrArray.length === 0) return "";
+       const id = idOrArray[0];
+       const item = collection.find(i => i.id === id);
+       if (!item) return "";
+       return isEn ? item.label.en : item.label.es;
+    }
+    const item = collection.find(i => i.id === idOrArray);
     if (!item) return "";
     return isEn ? item.label.en : item.label.es;
   };
+
+  const handleQuoteClick = () => {
+    navigate(`/${isEn ? 'contact' : 'contacto'}`);
+  };
+
+  if (loading) {
+    return (
+      <div className="font-sans antialiased text-brand-dark bg-sand-100 min-h-screen flex flex-col items-center justify-center">
+        <Header />
+        <Loader2 className="w-12 h-12 text-brand-dark animate-spin mb-4 mt-20" />
+        <p className="text-brand-dark/60 font-serif text-lg">
+          {isEn ? "Loading package details..." : "Cargando detalles del paquete..."}
+        </p>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!pkg) return null;
 
   const continentLabel = getLabel(continents, pkg.continent);
   const typeLabel = getLabel(packageTypes, pkg.type);
-
-  const handleQuoteClick = () => {
-    // Navigate to contact and maybe pass state or just scroll to form
-    navigate(`/${isEn ? 'contact' : 'contacto'}`);
-  };
 
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 min-h-screen flex flex-col">
@@ -73,7 +120,7 @@ export default function PackageDetailPage() {
           {/* Hero Image Section */}
           <div className="relative h-[50vh] md:h-[60vh] w-full bg-brand-dark overflow-hidden">
             <img 
-              src={pkg.image} 
+              src={getPackageImage()} 
               alt={getPackageText('title')}
               className="w-full h-full object-cover opacity-80"
             />
@@ -156,7 +203,7 @@ export default function PackageDetailPage() {
                       onClick={() => setIsImageOpen(true)}
                     >
                       <img 
-                        src={pkg.flyerImage} 
+                        src={getFlyerImage()} 
                         alt="Flyer del Paquete" 
                         className="w-full h-auto object-cover transition-transform duration-700"
                       />
@@ -170,8 +217,6 @@ export default function PackageDetailPage() {
                   </div>
                 )}
               </div>
-
-
             </motion.div>
           </div>
         </article>
@@ -214,7 +259,7 @@ export default function PackageDetailPage() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              src={pkg.flyerImage || pkg.image}
+              src={getFlyerImage() || getPackageImage()}
               alt={getPackageText('title')}
               className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
