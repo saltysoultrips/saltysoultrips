@@ -93,33 +93,32 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-4 right-4 sm:top-auto sm:bottom-24 sm:left-auto sm:right-6 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col z-[100] overflow-hidden"
-            style={{ height: 'max-content', maxHeight: '60vh' }}
+            className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-96 bg-[#FAF7F2] sm:rounded-2xl shadow-2xl sm:border border-[#E8DCC4] flex flex-col z-[100] overscroll-none"
           >
             {/* Header */}
-            <div className="bg-[#1F2937] p-4 flex justify-between items-center text-white">
+            <div className="bg-[#8A7356] p-4 flex justify-between items-center text-white sm:rounded-t-2xl shadow-sm z-10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="text-xl">🌊</span>
                 </div>
                 <div>
                   <h3 className="font-semibold">Asistente Salty</h3>
-                  <p className="text-xs text-gray-300">Responde al instante</p>
+                  <p className="text-xs text-[#FAF7F2]">Responde al instante</p>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-white/10 rounded-full transition-colors"
+                className="p-1 hover:bg-white/20 rounded-full transition-colors"
                 aria-label="Cerrar chat"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50 relative scroll-smooth h-[300px] sm:h-[400px]">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAF7F2] relative scroll-smooth overscroll-contain">
               <div className="flex justify-start">
-                <div className="max-w-[85%] p-3 rounded-2xl text-sm shadow-sm bg-white border border-gray-100 text-gray-800 rounded-tl-sm">
+                <div className="max-w-[85%] p-3.5 rounded-2xl text-sm shadow-sm bg-white border border-[#E8DCC4] text-gray-800 rounded-tl-sm leading-relaxed">
                   ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
                 </div>
               </div>
@@ -130,10 +129,10 @@ export default function ChatWidget() {
                   className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${
+                    className={`max-w-[85%] p-3.5 rounded-2xl text-sm shadow-sm whitespace-pre-wrap leading-relaxed ${
                       m.role === 'user'
-                        ? 'bg-[#1F2937] text-white rounded-tr-sm'
-                        : 'bg-white border border-gray-100 text-gray-800 rounded-tl-sm'
+                        ? 'bg-[#E8DCC4] text-gray-900 rounded-tr-sm'
+                        : 'bg-white border border-[#E8DCC4] text-gray-800 rounded-tl-sm'
                     }`}
                   >
                     {m.content}
@@ -143,18 +142,18 @@ export default function ChatWidget() {
               
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white border border-gray-100 p-3 rounded-2xl rounded-tl-sm shadow-sm">
-                    <span className="flex gap-1">
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
+                  <div className="bg-white border border-[#E8DCC4] p-4 rounded-2xl rounded-tl-sm shadow-sm">
+                    <span className="flex gap-1.5">
+                      <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce"></span>
+                      <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                      <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
                     </span>
                   </div>
                 </div>
               )}
               
               {error && (
-                <div className="text-red-500 text-xs text-center p-2">
+                <div className="text-red-500 text-xs text-center p-2 bg-red-50 rounded-lg">
                   Error: {error.message}
                 </div>
               )}
@@ -162,9 +161,9 @@ export default function ChatWidget() {
             </div>
 
             {/* Input Form */}
-            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center pb-safe">
+            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-[#E8DCC4] flex gap-2 items-center pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10">
               <input
-                className="flex-1 px-4 py-3 sm:py-2 bg-gray-100 focus:bg-white border border-transparent focus:border-gray-300 rounded-full text-sm outline-none transition-all"
+                className="flex-1 px-5 py-3.5 sm:py-2.5 bg-[#FAF7F2] focus:bg-white border border-transparent focus:border-[#D4C3A3] rounded-full text-sm outline-none transition-all placeholder:text-gray-400"
                 value={input}
                 placeholder="Escribe tu mensaje..."
                 onChange={handleInputChange}
@@ -172,10 +171,10 @@ export default function ChatWidget() {
               />
               <button
                 type="submit"
-                className="p-3 sm:p-2.5 bg-[#1F2937] hover:bg-black text-white rounded-full transition-colors"
+                className="p-3.5 sm:p-2.5 bg-[#8A7356] hover:bg-[#735F46] text-white rounded-full transition-colors shadow-md"
                 aria-label="Enviar mensaje"
               >
-                <Send size={18} className="ml-0.5" />
+                <Send size={20} className="ml-0.5 sm:w-[18px] sm:h-[18px]" />
               </button>
             </form>
           </motion.div>
@@ -187,7 +186,7 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-28 right-4 sm:bottom-6 sm:right-6 w-14 h-14 bg-[#1F2937] hover:bg-black text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
+        className="fixed bottom-28 right-4 sm:bottom-6 sm:right-6 w-14 h-14 bg-[#8A7356] hover:bg-[#735F46] text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
         aria-label="Abrir asistente de viajes"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
