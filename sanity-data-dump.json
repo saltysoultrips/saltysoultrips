@@ -1,0 +1,656 @@
+{
+  "packages": [
+    {
+      "_id": "43f1db54-d770-4d64-a6db-b6b7dfd602d5",
+      "flyerImage": {
+        "_type": "image",
+        "alt": "Couple doing the route 66",
+        "asset": {
+          "_ref": "image-1a1a682b359974dde9984e5fb99752e080f4dacb-1024x1536-png",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "alt": "Pareja en ruta 66",
+        "asset": {
+          "_ref": "image-ba2730a8fd1e8486090dbdb55a91406a74ea42a8-1774x887-png",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Recorre la mítica **Ruta 66 desde Chicago hasta Los Ángeles** en una aventura inolvidable por carretera. 16 noches atravesando algunos de los paisajes y ciudades más emblemáticos de Estados Unidos.",
+      "shortDescription_en": "Drive the legendary Route 66 from Chicago to Los Angeles on an unforgettable American road trip. 16 nights through iconic cities, landscapes and historic stops.",
+      "slug": {
+        "_type": "slug",
+        "current": "ruta-66-de-chicago-a-los-angeles"
+      },
+      "title": "Ruta 66: de Chicago a Los Ángeles",
+      "title_en": "Route 66: Chicago to Los Angeles"
+    },
+    {
+      "_id": "package-brasil",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-b1d14c5eb12e46e4117ebee821b4de6f6f588bad-1024x1536-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-c9368efd4203877954acb5c9286af90f337d493b-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Un viaje increíble para descubrir lo mejor de Brasil: ciudad, playa, naturaleza e historia en un solo recorrido.",
+      "shortDescription_en": "An incredible journey to discover the best of Brazil: city, beach, nature, and history in a single tour.",
+      "slug": {
+        "_type": "slug",
+        "current": "brasil"
+      },
+      "title": "Brasil",
+      "title_en": "Brazil"
+    },
+    {
+      "_id": "package-cracovia-zakopane",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-e36aa10ed1cbe0e044cff4cf244a3cfb86de280c-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-4904b09202104739fd0ae7c4c403db318041c4d4-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "La magia de los montes Tatra en familia. Mercados navideños, montañas y termas.",
+      "shortDescription_en": "The magic of the Tatra mountains with family. Christmas markets, mountains, and thermal baths.",
+      "slug": {
+        "_type": "slug",
+        "current": "cracovia-zakopane"
+      },
+      "title": "Cracovia & Zakopane",
+      "title_en": "Krakow & Zakopane"
+    },
+    {
+      "_id": "package-disneyland-paris",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-8c8ef5e520c521b0cc8ed3ce9857563f74f721f6-1024x1536-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-1cf931d98b196d9e62cea474a394d722960c6cab-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Prepárate para una aventura que recordaréis siempre. Vivid la magia en un viaje lleno de emoción.",
+      "shortDescription_en": "Prepare for an adventure you'll always remember. Live the magic in a trip full of excitement.",
+      "slug": {
+        "_type": "slug",
+        "current": "disneyland-paris"
+      },
+      "title": "Disneyland Paris",
+      "title_en": "Disneyland Paris"
+    },
+    {
+      "_id": "package-dubai-mauricio",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-2ab49eddfe061d10648105baca59ce4e3ec7f56c-1024x1536-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-07ce4c7aa25602b1870ced14fbadaec71293e29e-1122x1402-png",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Luna de miel de 12 días combinando la modernidad de Dubái con las playas de arena blanca de Mauricio en Todo Incluido.",
+      "shortDescription_en": "12-day honeymoon combining the modernity of Dubai with the white sand beaches of Mauritius on All-Inclusive.",
+      "slug": {
+        "_type": "slug",
+        "current": "dubai-mauricio"
+      },
+      "title": "Dubái & Mauricio",
+      "title_en": "Dubai & Mauritius"
+    },
+    {
+      "_id": "package-estambul",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-414f6230c5a3e9b47b0c35855868e5f97af6dadd-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-05f422d38a6395ea893e9e6379bd453443dd7ca4-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "La ciudad donde Oriente y Occidente se encuentran. Descubre lo mejor de Estambul en 8 días.",
+      "shortDescription_en": "The city where East meets West. Discover the best of Istanbul in 8 days.",
+      "slug": {
+        "_type": "slug",
+        "current": "estambul"
+      },
+      "title": "Estambul",
+      "title_en": "Istanbul"
+    },
+    {
+      "_id": "package-este-canadiense",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-3912e4ddca012020f8a9eccde33e5105e2a637be-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-bba29b4f182b12e4c9da1ac3849eb69aec8e00e4-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Un viaje inolvidable por los paisajes, ciudades y maravillas del Este de Canadá.",
+      "shortDescription_en": "An unforgettable journey through the landscapes, cities, and wonders of Eastern Canada.",
+      "slug": {
+        "_type": "slug",
+        "current": "este-canadiense"
+      },
+      "title": "Este Canadiense",
+      "title_en": "Eastern Canada"
+    },
+    {
+      "_id": "package-estrasburgo-alsacia",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-db9d44bb22dae9857c387a401477fb385c068efa-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-d043e7d5cf4669e3dd35af9f6ac07cb3f7e1a6c0-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Descubre la magia de la Navidad en Alsacia, con sus mercados, luces y pueblos de cuento.",
+      "shortDescription_en": "Discover the magic of Christmas in Alsace, with its markets, lights, and fairytale villages.",
+      "slug": {
+        "_type": "slug",
+        "current": "estrasburgo-alsacia"
+      },
+      "title": "Mercados de Alsacia",
+      "title_en": "Alsace Markets"
+    },
+    {
+      "_id": "package-india-triangulo",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-9ab9c2ca3e47f98b6814bfe299c15e0d61688fed-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-aeac72744c6382726c2d8037031e301de4b18c2b-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Un viaje inolvidable entre palacios, templos y naturaleza salvaje en la India.",
+      "shortDescription_en": "An unforgettable journey among palaces, temples, and wild nature in India.",
+      "slug": {
+        "_type": "slug",
+        "current": "india-triangulo"
+      },
+      "title": "India & Safari",
+      "title_en": "India & Safari"
+    },
+    {
+      "_id": "package-japon-bali",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-e52496a9075d336fba40c6642c49f6f11fabc303-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-2c61bb51027bd8f5a51886e5825eec71ba0275ac-1537x1023-png",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Luna de miel espectacular de 14 días uniendo la vibrante ciudad de Tokio y la magia tropical de Bali.",
+      "shortDescription_en": "Spectacular 14-day honeymoon combining the vibrant city of Tokyo and the tropical magic of Bali.",
+      "slug": {
+        "_type": "slug",
+        "current": "japon-bali"
+      },
+      "title": "Japón + Bali",
+      "title_en": "Japan + Bali"
+    },
+    {
+      "_id": "package-laponia",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-2e6a552be342ea27bf3d48056b9e9723277c715e-1024x1536-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-e4914f888e29c031d243e45be5e740fb4d082ad2-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Viaje familiar de 5 días a Rovaniemi. Un invierno ártico lleno de nieve, auroras y magia para crear recuerdos inolvidables.",
+      "shortDescription_en": "5-day family trip to Rovaniemi. An arctic winter full of snow, auroras, and magic to create unforgettable memories.",
+      "slug": {
+        "_type": "slug",
+        "current": "laponia"
+      },
+      "title": "Laponia en Familia",
+      "title_en": "Lapland for Families"
+    },
+    {
+      "_id": "package-madeira",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-87b043ee333b5ac3905e76b0a2d557d067eee8cf-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-43ecf5b7096ff6bc22395eb9662205e1674813cf-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "La isla de la eterna primavera te espera en Navidad con luces y clima suave.",
+      "shortDescription_en": "The island of eternal spring awaits you at Christmas with lights and mild weather.",
+      "slug": {
+        "_type": "slug",
+        "current": "madeira"
+      },
+      "title": "Madeira",
+      "title_en": "Madeira"
+    },
+    {
+      "_id": "package-nueva-york-maldivas",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-722acb1836e3f98a1a51d296423fbbec3738e04f-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-0cda89624ade3796a67e85791ea544b383e3c740-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Dos destinos, un viaje inolvidable. Del asfalto de Nueva York a las playas del paraíso.",
+      "shortDescription_en": "Two destinations, one unforgettable trip. From the asphalt of New York to paradise beaches.",
+      "slug": {
+        "_type": "slug",
+        "current": "nueva-york-maldivas"
+      },
+      "title": "Nueva York & Maldivas",
+      "title_en": "New York & Maldives"
+    },
+    {
+      "_id": "package-nueva-york-navidad",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-08d605d40f2198f7d7cebd17929082e04fbdbe1e-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-2571c9595c5353a3049787dde2a1c80d10176cfc-1536x1024-png",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "La magia te espera en Nueva York. Vive un diciembre de película en la Gran Manzana.",
+      "shortDescription_en": "Magic awaits you in New York. Live a movie-like December in the Big Apple.",
+      "slug": {
+        "_type": "slug",
+        "current": "nueva-york-navidad"
+      },
+      "title": "Nueva York en Navidad",
+      "title_en": "New York at Christmas"
+    },
+    {
+      "_id": "package-ny-orlando",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-c4fe288ae555bd20a30b73dd0668c2efe72ca2a9-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-3021e05542510352e822fadf89dd7d0e320c65eb-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "La ciudad que nunca duerme y la magia de Walt Disney World en un solo viaje.",
+      "shortDescription_en": "The city that never sleeps and the magic of Walt Disney World in one trip.",
+      "slug": {
+        "_type": "slug",
+        "current": "ny-orlando"
+      },
+      "title": "New York & Disney",
+      "title_en": "New York & Disney"
+    },
+    {
+      "_id": "package-paris",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-758cf5abd069880b1b9e98d68cc5dead154d8db4-1024x1536-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-d68a3fa70659e92c2c99323c67f0f705bdc153e8-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Déjate enamorar por la belleza de París: su historia, cultura y rincones llenos de encanto.",
+      "shortDescription_en": "Let yourself fall in love with the beauty of Paris: its history, culture, and charming corners.",
+      "slug": {
+        "_type": "slug",
+        "current": "paris"
+      },
+      "title": "París",
+      "title_en": "Paris"
+    },
+    {
+      "_id": "package-praga",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-dd4d9496bceafb5e7a3e00358cf4097a47c8b7c4-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-c74bf1b76f88745cbde1692b8a45132d9ce842ed-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Escapadas que te hacen feliz. Disfruta de la belleza clásica de Praga en otoño.",
+      "shortDescription_en": "Getaways that make you happy. Enjoy the classical beauty of Prague in autumn.",
+      "slug": {
+        "_type": "slug",
+        "current": "praga"
+      },
+      "title": "Praga",
+      "title_en": "Prague"
+    },
+    {
+      "_id": "package-praga-viena",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-f27c1fbc8f6decd359bc4d918ba2533d9e5dbfa9-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-6f526a6e6111a7d66083a0f798da7dc030a08a7e-2048x2048-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Dos ciudades imperiales, dos países, una experiencia mágica en Navidad.",
+      "shortDescription_en": "Two imperial cities, two countries, a magical Christmas experience.",
+      "slug": {
+        "_type": "slug",
+        "current": "praga-viena"
+      },
+      "title": "Praga + Viena",
+      "title_en": "Prague + Vienna"
+    },
+    {
+      "_id": "package-shanghai-magia-oriente",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-14ce2f42a54845a1d747706c12472973f311af29-1024x1536-png",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-9a0df11de76ba1078f2c55f70d40747e4b4b1948-1024x1024-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Tradición y modernidad en una de las ciudades más vibrantes del mundo. 10 días / 9 noches.",
+      "shortDescription_en": "Tradition and modernity in one of the most vibrant cities in the world. 10 days / 9 nights.",
+      "slug": {
+        "_type": "slug",
+        "current": "shanghai-magia-oriente"
+      },
+      "title": "Shanghái",
+      "title_en": "Shanghai"
+    },
+    {
+      "_id": "package-tanzania",
+      "flyerImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-56ee1398083e7527372b120eeb9cbde9007ca0c7-853x1280-jpg",
+          "_type": "reference"
+        }
+      },
+      "image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-18b3582880f583303dee50c0a146a513db74a38e-1376x768-jpg",
+          "_type": "reference"
+        }
+      },
+      "shortDescription": "Luna de miel espectacular de 12 días con safari privado en Tanzania y playas paradisíacas en Zanzíbar.",
+      "shortDescription_en": "Spectacular 12-day honeymoon with a private safari in Tanzania and paradise beaches in Zanzibar.",
+      "slug": {
+        "_type": "slug",
+        "current": "tanzania"
+      },
+      "title": "Tanzania + Zanzíbar",
+      "title_en": "Tanzania + Zanzibar"
+    }
+  ],
+  "posts": [
+    {
+      "_id": "1f3c5e2f-a852-47d2-a125-5e6bf1c6a9ec",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-b718f3b4415bf9cdca436ae01b9f38a7701ee83b-1081x1081-png",
+          "_type": "reference"
+        }
+      },
+      "excerpt": "¿Realmente merece la pena contratar un seguro de viaje? Descubre las 10 razones por las que viajar protegido puede ahorrarte miles de euros y hacer que disfrutes de tus vacaciones con total tranquilidad.",
+      "excerpt_en": "Is travel insurance really worth it? Discover 10 reasons why traveling with coverage can save you thousands of euros and let you enjoy your vacation with complete peace of mind.",
+      "slug": {
+        "_type": "slug",
+        "current": "merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"
+      },
+      "slug_en": {
+        "_type": "slug",
+        "current": "is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it"
+      },
+      "title": "¿Merece la pena contratar un seguro de viaje? 10 razones por las que nunca deberías viajar sin él",
+      "title_en": "Is travel insurance worth it? 10 reasons why you should never travel without it."
+    },
+    {
+      "_id": "96e55541-3e2d-4d48-9a28-ce77a2cc829b",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-3878201e94319714cc0508e8f902322900ff9e51-1024x540-webp",
+          "_type": "reference"
+        }
+      },
+      "excerpt": "¿Estás pensando en hacer un crucero Disney? Descubre qué incluye realmente, qué gastos extra debes tener en cuenta y si merece la pena su precio. Analizamos todo para ayudarte a decidir si es el viaje perfecto para ti.",
+      "excerpt_en": "Are you thinking about taking a Disney cruise? Find out what’s really included, what extra costs to consider, and whether it’s worth the price. We break it all down to help you decide if it’s the perfect trip for you.",
+      "slug": {
+        "_type": "slug",
+        "current": "merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece"
+      },
+      "slug_en": {
+        "_type": "slug",
+        "current": "Is a Disney Cruise Worth It? My Opinion After Analyzing Everything It Offers"
+      },
+      "title": "¿Merece la pena un crucero Disney? Mi opinión después de analizar todo lo que ofrece",
+      "title_en": "Is a Disney Cruise Worth It? My Honest Review of Everything It Offers"
+    },
+    {
+      "_id": "a39b5bf1-86b6-4bc5-bfad-92b28c1b3222",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-f26a5a643d066e994a836c5a07005408b499b32a-311x162-jpg",
+          "_type": "reference"
+        }
+      },
+      "excerpt": null,
+      "excerpt_en": null,
+      "slug": {
+        "_type": "slug",
+        "current": "libertad-sobre-ruedas-como-ahorrar-en-el-alquiler-de-coche-este-2026"
+      },
+      "slug_en": null,
+      "title": "Libertad sobre Ruedas: Cómo Ahorrar en el Alquiler de Coche este 2026 🚗💨",
+      "title_en": null
+    },
+    {
+      "_id": "b2e722da-f391-47d1-be29-17a3eb9de0cd",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-7715ba647f8e621dc3b9407efc14720d5ed21234-1152x2048-jpg",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0.5287514592750022
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 0.4712485407249978,
+          "width": 1,
+          "x": 0.5,
+          "y": 0.7643757296375011
+        }
+      },
+      "excerpt": null,
+      "excerpt_en": null,
+      "slug": {
+        "_type": "slug",
+        "current": "tailandia-vs-bali"
+      },
+      "slug_en": null,
+      "title": "Tailandia vs Bali",
+      "title_en": null
+    },
+    {
+      "_id": "d05f7e32-9f41-46df-a488-3e6de9030f06",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-26a882d1fbc9328074bd2440986076c283a376ed-1290x1132-png",
+          "_type": "reference"
+        },
+        "crop": {
+          "_type": "sanity.imageCrop",
+          "bottom": 0,
+          "left": 0.07419414929426232,
+          "right": 0,
+          "top": 0
+        },
+        "hotspot": {
+          "_type": "sanity.imageHotspot",
+          "height": 1,
+          "width": 0.9258058507057376,
+          "x": 0.5370970746471311,
+          "y": 0.5
+        }
+      },
+      "excerpt": null,
+      "excerpt_en": null,
+      "slug": {
+        "_type": "slug",
+        "current": "lo-que-me-hubiese-gustado-saber-antes-de-viajar-a-maldivas"
+      },
+      "slug_en": null,
+      "title": "Lo que me hubiese gustado saber antes de viajar a MALDIVAS",
+      "title_en": null
+    },
+    {
+      "_id": "daa39c12-2590-484e-be60-46e4889685d8",
+      "coverImage": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-bc342841e5523747fb9b42623408a0cf4c53f162-1290x1717-jpg",
+          "_type": "reference"
+        }
+      },
+      "excerpt": null,
+      "excerpt_en": null,
+      "slug": {
+        "_type": "slug",
+        "current": "curso-de-buceo-en-koh-tao"
+      },
+      "slug_en": null,
+      "title": "Curso de buceo en Koh Tao",
+      "title_en": null
+    }
+  ]
+}

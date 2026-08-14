@@ -1,0 +1,262 @@
+[
+  {
+    "_id": "43f1db54-d770-4d64-a6db-b6b7dfd602d5",
+    "longDescription": "Vive una de las rutas por carretera más famosas del mundo recorriendo Estados Unidos desde Chicago hasta Los Ángeles.\n\nDurante 16 noches **iIllinois, Missouri, Oklahoma, Texas, Nuevo México, Arizona, Nevada y California**, descubriendo pueblos históricos, carreteras infinitas, paisajes desérticos y algunos de los lugares más emblemáticos del país.\n\nLa ruta pasa por **Chicago, Springfield, St. Louis, Tulsa, Oklahoma City, Amarillo, Santa Fe, Albuquerque, Flagstaff, Williams y la zona del Gran Cañón ** antes de continuar hacia Las Vegas y terminar junto al Pacífico en Los Ángeles y Santa Mónica.\n\nEl paquete incluye vuelos internacionales, alojamientos durante toda la ruta, coche de alquiler One Way, seguro de viaje, autorización ESTA y eSIM para Estados Unidos.\n\nUna aventura diseñada para viajar a tu ritmo y disfrutar de la libertad de recorrer la auténtica América sobre ruedas.",
+    "priceInfo": "Desde 3.000 € por persona",
+    "priceInfo_en": "From €3,000 per person",
+    "shortDescription": "Recorre la mítica **Ruta 66 desde Chicago hasta Los Ángeles** en una aventura inolvidable por carretera. 16 noches atravesando algunos de los paisajes y ciudades más emblemáticos de Estados Unidos.",
+    "slug": {
+      "_type": "slug",
+      "current": "ruta-66-de-chicago-a-los-angeles"
+    },
+    "title": "Ruta 66: de Chicago a Los Ángeles",
+    "title_en": "Route 66: Chicago to Los Angeles"
+  },
+  {
+    "_id": "package-brasil",
+    "longDescription": "Descubre São Paulo, Río de Janeiro, Ilha Grande y Paraty en este paquete de **16 Días / 15 Noches**.\n\nEl paquete incluye:\n- **Vuelos internacionales e internos**\n- **15 noches de alojamiento** en hoteles céntricos\n- **Todos los traslados** (coche y lancha)\n- **Seguro Premium** de viaje\n- **Itinerario personalizado** con asistencia 24/7\n\nNo te preocupes por nada, ¡vive Brasil con nosotros!",
+    "priceInfo": "Desde 1.500€ / pers.",
+    "priceInfo_en": "From €1,500 / pers.",
+    "shortDescription": "Un viaje increíble para descubrir lo mejor de Brasil: ciudad, playa, naturaleza e historia en un solo recorrido.",
+    "slug": {
+      "_type": "slug",
+      "current": "brasil"
+    },
+    "title": "Brasil",
+    "title_en": "Brazil"
+  },
+  {
+    "_id": "package-cracovia-zakopane",
+    "longDescription": "Viaje mágico de **5 Días en Navidad** para 3 adultos y 3 niños.\n\nEl paquete incluye:\n- **Vuelos directos** desde Málaga\n- **1 noche en Cracovia** para disfrutar su espectacular mercado\n- **3 noches en chalet de montaña** en Zakopane\n- **Coche de alquiler (7 plazas)**\n- **Seguro de viaje**\n\nSube al funicular de Gubałówka y relájate en las famosas termas de la zona.",
+    "priceInfo": "Desde 366€ / pers.",
+    "priceInfo_en": "From €366 / pers.",
+    "shortDescription": "La magia de los montes Tatra en familia. Mercados navideños, montañas y termas.",
+    "slug": {
+      "_type": "slug",
+      "current": "cracovia-zakopane"
+    },
+    "title": "Cracovia & Zakopane",
+    "title_en": "Krakow & Zakopane"
+  },
+  {
+    "_id": "package-disneyland-paris",
+    "longDescription": "El viaje que vuestra familia nunca olvidará. **4 Días / 3 Noches** de pura magia Disney.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** desde Sevilla\n- **3 noches en Hotel Santa Fe®** con desayuno\n- **Entradas 2 días / 2 parques**\n- **Seguro de viaje** incluido\n\nHotel temático inspirado en Cars, a solo 20 minutos a pie de los Parques Disney®.",
+    "priceInfo": "Desde 879,22€ / pers.",
+    "priceInfo_en": "From €879.22 / pers.",
+    "shortDescription": "Prepárate para una aventura que recordaréis siempre. Vivid la magia en un viaje lleno de emoción.",
+    "slug": {
+      "_type": "slug",
+      "current": "disneyland-paris"
+    },
+    "title": "Disneyland Paris",
+    "title_en": "Disneyland Paris"
+  },
+  {
+    "_id": "package-dubai-mauricio",
+    "longDescription": "Una combinación perfecta de lujo, aventura y relax en **12 Días / 10 Noches**.\n\nEl paquete incluye:\n- **Vuelos de Emirates** con equipaje\n- **4 noches en Dubái** con desayuno en Habitación Deluxe\n- **7 noches en Mauricio** Todo Incluido en Habitación Superior\n- **Desert Safari con cena y espectáculo en Dubái**\n- **Entrada al Burj Khalifa (pisos 124 y 125)**\n- **Excursión a Crystal Rock y Le Morne en Mauricio**\n- **Seguro de viaje y eSIM con datos**",
+    "priceInfo": "Desde 3.300€ / pers.",
+    "priceInfo_en": "From €3.300 / pers.",
+    "shortDescription": "Luna de miel de 12 días combinando la modernidad de Dubái con las playas de arena blanca de Mauricio en Todo Incluido.",
+    "slug": {
+      "_type": "slug",
+      "current": "dubai-mauricio"
+    },
+    "title": "Dubái & Mauricio",
+    "title_en": "Dubai & Mauritius"
+  },
+  {
+    "_id": "package-estambul",
+    "longDescription": "Un viaje inolvidable entre dos continentes. Disfruta de **8 Días / 7 Noches** en la mágica Estambul.\n\nEl paquete incluye:\n- **Vuelos directos** desde Barcelona (1 mochila de viaje p.p.)\n- **7 noches en hotel de 3 estrellas** con desayuno\n- **Crucero por el Bósforo** y el Cuerno de Oro\n- **eSIM internacional** incluida (3 GB)\n- **Seguro de viaje**\n\nVisita opcional a Santa Sofía, Mezquita Azul, Palacio Topkapi y Gran Bazar.",
+    "priceInfo": "Desde 447€ / pers.",
+    "priceInfo_en": "From €447 / pers.",
+    "shortDescription": "La ciudad donde Oriente y Occidente se encuentran. Descubre lo mejor de Estambul en 8 días.",
+    "slug": {
+      "_type": "slug",
+      "current": "estambul"
+    },
+    "title": "Estambul",
+    "title_en": "Istanbul"
+  },
+  {
+    "_id": "package-este-canadiense",
+    "longDescription": "Viaje en grupo con guía acompañante durante **8 Días / 6 Noches**.\n\nItinerario: Montréal, Quebec, Ottawa, Mil Islas (crucero), Toronto, Cataratas del Niágara.\n\nIncluye:\n- **Vuelos** desde Barcelona (con equipaje)\n- **6 noches en hoteles seleccionados**\n- **Media pensión** (6 desayunos, 1 almuerzo, 5 cenas)\n- **Traslados y autocar** para todo el recorrido\n- **Visitas y entradas** según itinerario\n- **Seguro de viaje**",
+    "priceInfo": "Desde 1.847,50€ / pers.",
+    "priceInfo_en": "From €1,847.50 / pers.",
+    "shortDescription": "Un viaje inolvidable por los paisajes, ciudades y maravillas del Este de Canadá.",
+    "slug": {
+      "_type": "slug",
+      "current": "este-canadiense"
+    },
+    "title": "Este Canadiense",
+    "title_en": "Eastern Canada"
+  },
+  {
+    "_id": "package-estrasburgo-alsacia",
+    "longDescription": "Vive el espíritu navideño en este viaje de **5 Días / 4 Noches** a Estrasburgo.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** desde Barcelona\n- **4 noches de alojamiento** en Estrasburgo (hotel de 2 estrellas céntrico)\n- **Seguro de viaje** incluido\n- **Asesoramiento personalizado**\n\nTiempo libre para recorrer Estrasburgo y vivir la experiencia única de sus famosos mercados navideños.",
+    "priceInfo": "Desde 647,50€ / pers.",
+    "priceInfo_en": "From €647.50 / pers.",
+    "shortDescription": "Descubre la magia de la Navidad en Alsacia, con sus mercados, luces y pueblos de cuento.",
+    "slug": {
+      "_type": "slug",
+      "current": "estrasburgo-alsacia"
+    },
+    "title": "Mercados de Alsacia",
+    "title_en": "Alsace Markets"
+  },
+  {
+    "_id": "package-india-triangulo",
+    "longDescription": "Viaje en grupo de **10 Días / 8 Noches** explorando Delhi, Jaipur, Ranthambore y Agra (Taj Mahal).\n\nEl paquete incluye:\n- **Vuelos** desde Barcelona\n- **8 noches de alojamiento**\n- **Pensión completa** durante todo el viaje\n- **Autocar, traslados y visitas** según programa\n- **Safari en Ranthambore**\n- **Guía de habla hispana**\n- **Seguro básico**",
+    "priceInfo": "Desde 1.847,50€ / pers.",
+    "priceInfo_en": "From €1,847.50 / pers.",
+    "shortDescription": "Un viaje inolvidable entre palacios, templos y naturaleza salvaje en la India.",
+    "slug": {
+      "_type": "slug",
+      "current": "india-triangulo"
+    },
+    "title": "India & Safari",
+    "title_en": "India & Safari"
+  },
+  {
+    "_id": "package-japon-bali",
+    "longDescription": "Dos destinos, un viaje inolvidable de **14 Días**.\n\nEl paquete incluye:\n- **Vuelos multidestino** (Barcelona - Tokio - Bali - Barcelona)\n- **6 noches en Tokio** con desayuno\n- **4 noches en Ubud (Bali)** con desayuno\n- **Tour en 4x4 por el Monte Batur** al amanecer\n- **Tour por las cascadas de Bali**\n- **Traslados y Seguro de viaje**\n\nEquipaje facturado y eSIM incluidos. La luna de miel perfecta.",
+    "priceInfo": "Desde 2.750€ / pers.",
+    "priceInfo_en": "From €2.750 / pers.",
+    "shortDescription": "Luna de miel espectacular de 14 días uniendo la vibrante ciudad de Tokio y la magia tropical de Bali.",
+    "slug": {
+      "_type": "slug",
+      "current": "japon-bali"
+    },
+    "title": "Japón + Bali",
+    "title_en": "Japan + Bali"
+  },
+  {
+    "_id": "package-laponia",
+    "longDescription": "Un viaje que recordaréis para siempre de **5 Días / 4 Noches**.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** (con mochila incluida)\n- **4 noches de alojamiento** en apartamento completo\n- **Coche de alquiler** por 4 días con seguro a todo riesgo\n- **Seguro de viaje** para 5 personas",
+    "priceInfo": "3.999€ total (5 pers)",
+    "priceInfo_en": "€3.999 total (5 pax)",
+    "shortDescription": "Viaje familiar de 5 días a Rovaniemi. Un invierno ártico lleno de nieve, auroras y magia para crear recuerdos inolvidables.",
+    "slug": {
+      "_type": "slug",
+      "current": "laponia"
+    },
+    "title": "Laponia en Familia",
+    "title_en": "Lapland for Families"
+  },
+  {
+    "_id": "package-madeira",
+    "longDescription": "Escapada navideña de **6 Días / 5 Noches**.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** desde Sevilla\n- **5 noches en Muthu Raga Madeira Hotel 4★**\n- **Coche de alquiler** durante toda la estancia\n- **Seguro básico de viaje**\n\nFunchal se ilumina por Navidad. Disfruta del avistamiento de ballenas, naturaleza espectacular y la famosa gastronomía local.",
+    "priceInfo": "Desde 549,50€ / pers.",
+    "priceInfo_en": "From €549.50 / pers.",
+    "shortDescription": "La isla de la eterna primavera te espera en Navidad con luces y clima suave.",
+    "slug": {
+      "_type": "slug",
+      "current": "madeira"
+    },
+    "title": "Madeira",
+    "title_en": "Madeira"
+  },
+  {
+    "_id": "package-nueva-york-maldivas",
+    "longDescription": "El viaje soñado de **14 Días**.\n\nEl paquete incluye:\n- **Vuelos multidestino** (Bcn -> NYC -> Maldivas -> Bcn)\n- **5 noches en Times Square** con desayuno\n- **5 noches en Maldivas** con pensión completa\n- **Excursiones en Maldivas**: Tiburón ballena, mantarrayas, delfines y banco de arena\n- **Entrada al Memorial 11-S** en NYC\n- **Trámite del ESTA, eSIM y seguro de viaje**",
+    "priceInfo": "Desde 3.375€ / pers.",
+    "priceInfo_en": "From €3,375 / pers.",
+    "shortDescription": "Dos destinos, un viaje inolvidable. Del asfalto de Nueva York a las playas del paraíso.",
+    "slug": {
+      "_type": "slug",
+      "current": "nueva-york-maldivas"
+    },
+    "title": "Nueva York & Maldivas",
+    "title_en": "New York & Maldives"
+  },
+  {
+    "_id": "package-nueva-york-navidad",
+    "longDescription": "Escapada inolvidable de **8 Días (del 1 al 8 de diciembre)**.\n\nEl paquete incluye:\n- **Vuelos directos** desde Barcelona\n- **Hotel 3 estrellas** a solo 10 minutos de Times Square\n- **Equipaje de mano** (maleta cabina 10 kg + artículo personal)\n- **Trámite del ESTA, eSIM y seguro completo**\n\nNosotros nos encargamos de todo el proceso. Viaja, descubre, disfruta de la magia de la Navidad en Nueva York.",
+    "priceInfo": "Desde 1.875€ / pers.",
+    "priceInfo_en": "From €1.875 / pers.",
+    "shortDescription": "La magia te espera en Nueva York. Vive un diciembre de película en la Gran Manzana.",
+    "slug": {
+      "_type": "slug",
+      "current": "nueva-york-navidad"
+    },
+    "title": "Nueva York en Navidad",
+    "title_en": "New York at Christmas"
+  },
+  {
+    "_id": "package-ny-orlando",
+    "longDescription": "Un viaje épico de **10 noches** combinando Nueva York y Orlando.\n\nEl paquete incluye:\n- **Vuelos MAD-NYC y vuelo interno NYC-Orlando**\n- **Hotel en Nueva York** (5 noches)\n- **Hotel Disney en Walt Disney World** (4 noches)\n- **Entradas Hopper 2 días** Walt Disney World\n- **Trámite ESTA, eSIM y seguro completo**\n\nDisfruta sin preocupaciones, nosotros nos encargamos de todo.",
+    "priceInfo": "Desde 2.747,50€ / pers.",
+    "priceInfo_en": "From €2,747.50 / pers.",
+    "shortDescription": "La ciudad que nunca duerme y la magia de Walt Disney World en un solo viaje.",
+    "slug": {
+      "_type": "slug",
+      "current": "ny-orlando"
+    },
+    "title": "New York & Disney",
+    "title_en": "New York & Disney"
+  },
+  {
+    "_id": "package-paris",
+    "longDescription": "Escapada a la ville de l'amour de **4 Días / 3 Noches**.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** desde Alicante\n- **Hotel céntrico** a 30 minutos de la Torre Eiffel\n- **Paseo en barco por el Sena** para 2 personas\n- **Seguro de viaje** para los 4 días\n\nViaja, descubre, siente. Nosotras nos encargamos de todo lo demás.",
+    "priceInfo": "Desde 324,84€ / pers.",
+    "priceInfo_en": "From €324.84 / pers.",
+    "shortDescription": "Déjate enamorar por la belleza de París: su historia, cultura y rincones llenos de encanto.",
+    "slug": {
+      "_type": "slug",
+      "current": "paris"
+    },
+    "title": "París",
+    "title_en": "Paris"
+  },
+  {
+    "_id": "package-praga",
+    "longDescription": "Escapada romántica de **4 Días / 3 Noches**.\n\nEl paquete incluye:\n- **Vuelos directos** ida y vuelta desde Barcelona\n- **Mochila incluida** por persona\n- **Hotel céntrico**\n- **Desayuno incluido**\n- **Seguro de viaje**\n\nViaja, descubre, siente. Nosotras nos encargamos de todo lo demás para que disfrutes de Praga al máximo.",
+    "priceInfo": "Desde 349€ / pers.",
+    "priceInfo_en": "From €349 / pers.",
+    "shortDescription": "Escapadas que te hacen feliz. Disfruta de la belleza clásica de Praga en otoño.",
+    "slug": {
+      "_type": "slug",
+      "current": "praga"
+    },
+    "title": "Praga",
+    "title_en": "Prague"
+  },
+  {
+    "_id": "package-praga-viena",
+    "longDescription": "Viaje combinado de **8 Días / 7 Noches**.\n\nEl paquete incluye:\n- **Vuelos ida y vuelta** desde Barcelona\n- **Tren Praga - Viena** en clase estándar\n- **4 noches en Praga** (con desayuno)\n- **3 noches en Viena** (sin desayuno)\n- **Seguro de viaje** para dos personas\n\nVive la magia de la Navidad en los mercados navideños, luces y atmósfera única de Praga y Viena.",
+    "priceInfo": "Desde 797,50€ / pers.",
+    "priceInfo_en": "From €797.50 / pers.",
+    "shortDescription": "Dos ciudades imperiales, dos países, una experiencia mágica en Navidad.",
+    "slug": {
+      "_type": "slug",
+      "current": "praga-viena"
+    },
+    "title": "Praga + Viena",
+    "title_en": "Prague + Vienna"
+  },
+  {
+    "_id": "package-shanghai-magia-oriente",
+    "longDescription": "Descubre Shanghái con nuestro paquete de **10 días y 9 noches**.\n\nEl paquete incluye:\n- **Vuelos directos** desde Barcelona (1 equipaje de mano + 1 maleta de 23kg p.p.)\n- **9 noches de alojamiento** en zona céntrica (cerca de Nanjing Road y People's Square)\n- **Traslados privados** aeropuerto ↔ hotel\n- **Seguro de viaje** con cobertura médica y cancelación\n- **eSIM para China** con internet ilimitado\n\nDisfruta de una ubicación ideal a pocos minutos de The Bund. ¡Añade como opcional un día de magia en Shanghai Disneyland y viaja sin preocupaciones!",
+    "priceInfo": "Desde 1.500€ / pers.",
+    "priceInfo_en": "From €1,500 / pers.",
+    "shortDescription": "Tradición y modernidad en una de las ciudades más vibrantes del mundo. 10 días / 9 noches.",
+    "slug": {
+      "_type": "slug",
+      "current": "shanghai-magia-oriente"
+    },
+    "title": "Shanghái",
+    "title_en": "Shanghai"
+  },
+  {
+    "_id": "package-tanzania",
+    "longDescription": "Aventura, naturaleza y relax en un viaje único de **12 Días / 11 Noches**.\n\nEl paquete incluye:\n- **Vuelos internacionales** con equipaje incluido\n- **Safari privado de 4 días / 3 noches** (Tarangire, Lago Manyara, Serengeti, Ngorongoro) con guía en español y pensión completa\n- **3 noches en Arusha** con desayuno\n- **7 noches en Zanzíbar** en pensión completa\n- **Seguro de viaje y Visados de Tanzania**\n- **Seguro obligatorio de entrada a Zanzíbar y eSIM**\n- **Excursión nado con delfines en Zanzíbar** y traslados aeropuerto-hotel",
+    "priceInfo": "Desde 4.800€ / pers.",
+    "priceInfo_en": "From €4.800 / pers.",
+    "shortDescription": "Luna de miel espectacular de 12 días con safari privado en Tanzania y playas paradisíacas en Zanzíbar.",
+    "slug": {
+      "_type": "slug",
+      "current": "tanzania"
+    },
+    "title": "Tanzania + Zanzíbar",
+    "title_en": "Tanzania + Zanzibar"
+  }
+]
