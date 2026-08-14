@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,10 @@ export default function ChatWidget() {
   const [error, setError] = useState(null);
   
   const messagesEndRef = useRef(null);
+  const location = useLocation();
+
+  const isPackagePage = location.pathname.includes('/paquetes/') || location.pathname.includes('/packages/');
+  const fabBottomClass = isPackagePage ? 'bottom-28' : 'bottom-6';
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -93,10 +98,10 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-96 bg-[#FAF7F2] sm:rounded-2xl shadow-2xl sm:border border-[#E8DCC4] flex flex-col z-[100] overscroll-none"
+            className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-96 sm:h-[500px] bg-[#FAF7F2] sm:rounded-2xl shadow-2xl sm:border border-[#E8DCC4] flex flex-col z-[100] overscroll-none sm:overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[#8A7356] p-4 flex justify-between items-center text-white sm:rounded-t-2xl shadow-sm z-10">
+            <div className="bg-[#8A7356] p-4 flex justify-between items-center text-white sm:rounded-t-2xl shadow-sm z-10 shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="text-xl">🌊</span>
@@ -161,9 +166,9 @@ export default function ChatWidget() {
             </div>
 
             {/* Input Form */}
-            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-[#E8DCC4] flex gap-2 items-center pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10">
+            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-[#E8DCC4] flex gap-2 items-center pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10 shrink-0">
               <input
-                className="flex-1 px-5 py-3.5 sm:py-2.5 bg-[#FAF7F2] focus:bg-white border border-transparent focus:border-[#D4C3A3] rounded-full text-sm outline-none transition-all placeholder:text-gray-400"
+                className="flex-1 px-5 py-3.5 sm:py-2.5 bg-[#FAF7F2] focus:bg-white border border-transparent focus:border-[#D4C3A3] rounded-full text-base sm:text-sm outline-none transition-all placeholder:text-gray-400"
                 value={input}
                 placeholder="Escribe tu mensaje..."
                 onChange={handleInputChange}
@@ -186,7 +191,7 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-28 right-4 sm:bottom-6 sm:right-6 w-14 h-14 bg-[#8A7356] hover:bg-[#735F46] text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]"
+        className={`fixed ${fabBottomClass} right-4 sm:bottom-6 sm:right-6 w-14 h-14 bg-[#8A7356] hover:bg-[#735F46] text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-[60]`}
         aria-label="Abrir asistente de viajes"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
