@@ -306,23 +306,6 @@ export const packagesData = [
     priceInfo: { es: "3.999€ total (5 pers)", en: "€3.999 total (5 pax)" }
   },
   {
-    id: "maldivas",
-    title: { es: "Maldivas en Familia", en: "Maldives for Families" },
-    continent: "asia",
-    type: ["relax", "familia"],
-    shortDescription: {
-      es: "Viaje familiar de lujo de 11 días en Maldivas. Régimen de pensión completa y excursiones en un auténtico paraíso.",
-      en: "11-day luxury family trip to the Maldives. Full board basis and excursions in a true paradise."
-    },
-    longDescription: {
-      es: "Un viaje para crear recuerdos inolvidables de **11 Días / 9 Noches**.\n\nEl paquete incluye:\n- **Vuelos internacionales con Etihad Airways** y equipaje facturado (25 kg)\n- **4 noches en Maafushi** (Kaani Grand Sea View)\n- **4 noches en resort** (Sun Siyam Olhuveli)\n- **1 noche en Hulhumalé**\n- **Régimen de Pensión Completa** en todo el viaje\n- **2 excursiones incluidas** (Whale Shark + Manta Ray, Turtle & Dolphin Sunset Cruise)\n- **Traslados en speedboat, Seguro de viaje y eSIM**",
-      en: "A trip to create unforgettable memories of **11 Days / 9 Nights**.\n\nThe package includes:\n- **International flights with Etihad Airways** and checked baggage (25 kg)\n- **4 nights in Maafushi** (Kaani Grand Sea View)\n- **4 nights in a resort** (Sun Siyam Olhuveli)\n- **1 night in Hulhumalé**\n- **Full Board** throughout the trip\n- **2 excursions included** (Whale Shark + Manta Ray, Turtle & Dolphin Sunset Cruise)\n- **Speedboat transfers, Travel insurance, and eSIM**"
-    },
-    image: "/paquetes/maldivas-hero.jpg",
-    flyerImage: "/paquetes/maldivas.jpg",
-    priceInfo: { es: "18.000€ total (5 pers)", en: "€18.000 total (5 pax)" }
-  },
-  {
     id: "tanzania",
     title: { es: "Tanzania + Zanzíbar", en: "Tanzania + Zanzibar" },
     continent: "africa",
