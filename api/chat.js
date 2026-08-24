@@ -54,7 +54,7 @@ Reglas:
 
   try {
     const result = streamText({
-      model: groq('llama-3.1-8b-instant'),
+      model: groq('openai/gpt-oss-20b'),
       system: systemPrompt,
       messages,
     });
