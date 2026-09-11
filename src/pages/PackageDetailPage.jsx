@@ -119,7 +119,7 @@ export default function PackageDetailPage() {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": getPackageText('title'),
-    "image": ogImage,
+    "image": ogImage || "https://www.saltysoultrips.com/resto/logoGoogle.png",
     "description": seoDesc,
     "brand": {
       "@type": "Brand",
@@ -130,7 +130,39 @@ export default function PackageDetailPage() {
       "url": `https://www.saltysoultrips.com/${isEn ? 'packages' : 'paquetes'}/${slug}`,
       "priceCurrency": "EUR",
       "price": priceValue,
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "ES",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "EUR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "ES"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": "0",
+            "maxValue": "1",
+            "unitCode": "d"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": "1",
+            "maxValue": "5",
+            "unitCode": "d"
+          }
+        }
+      }
     }
   };
 

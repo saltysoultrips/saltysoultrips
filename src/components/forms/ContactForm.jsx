@@ -29,9 +29,10 @@ export default function ContactForm() {
     reset,
   } = useForm({
     defaultValues: {
-      travelers: lang === "en"
-        ? "Adults: 1, Children: 0, Babies: 0"
-        : "Adultos: 1, Niños: 0, Bebés: 0",
+      travelers:
+        lang === "en"
+          ? "Adults: 1, Children: 0, Babies: 0"
+          : "Adultos: 1, Niños: 0, Bebés: 0",
       hasPets: "no",
       orientationPack: false,
     },
@@ -84,13 +85,16 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formspree.io/f/mwvkprwy", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://hook.eu1.make.com/w3ouj1sbg9pv5pre39e2mvmz4ardzpr7",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
       setIsSubmitted(true);
       reset();
       setCounts({ adults: 1, children: 0, babies: 0 });
@@ -112,9 +116,7 @@ export default function ContactForm() {
           <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2">
             {t("contact.title")}
           </h2>
-          <p className="mt-4 text-lg text-stone-600">
-            {t("contact.subtitle")}
-          </p>
+          <p className="mt-4 text-lg text-stone-600">{t("contact.subtitle")}</p>
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
@@ -299,7 +301,8 @@ export default function ContactForm() {
                         <input
                           {...register("dateStart", {
                             required:
-                              !flexibleDates && t("contact.departureDateRequired"),
+                              !flexibleDates &&
+                              t("contact.departureDateRequired"),
                           })}
                           type="date"
                           disabled={flexibleDates}
@@ -358,7 +361,9 @@ export default function ContactForm() {
                       {/* Adults */}
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="font-medium text-stone-800">{t("contact.adults")}</p>
+                          <p className="font-medium text-stone-800">
+                            {t("contact.adults")}
+                          </p>
                           <p className="text-xs text-stone-500">
                             {t("contact.adultsAge")}
                           </p>
@@ -390,8 +395,12 @@ export default function ContactForm() {
                       {/* Children */}
                       <div className="flex items-center justify-between border-t border-stone-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">{t("contact.children")}</p>
-                          <p className="text-xs text-stone-500">{t("contact.childrenAge")}</p>
+                          <p className="font-medium text-stone-800">
+                            {t("contact.children")}
+                          </p>
+                          <p className="text-xs text-stone-500">
+                            {t("contact.childrenAge")}
+                          </p>
                         </div>
                         <div className="flex items-center gap-3">
                           <button
@@ -420,8 +429,12 @@ export default function ContactForm() {
                       {/* Babies */}
                       <div className="flex items-center justify-between border-t border-stone-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">{t("contact.babies")}</p>
-                          <p className="text-xs text-stone-500">{t("contact.babiesAge")}</p>
+                          <p className="font-medium text-stone-800">
+                            {t("contact.babies")}
+                          </p>
+                          <p className="text-xs text-stone-500">
+                            {t("contact.babiesAge")}
+                          </p>
                         </div>
                         <div className="flex items-center gap-3">
                           <button
@@ -496,12 +509,24 @@ export default function ContactForm() {
                         className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
                       >
                         <option value="">{t("contact.tripTypeSelect")}</option>
-                        <option value="luna_miel">{t("contact.tripTypeHoneymoon")}</option>
-                        <option value="aventura">{t("contact.tripTypeAdventure")}</option>
-                        <option value="relax">{t("contact.tripTypeRelax")}</option>
-                        <option value="cultural">{t("contact.tripTypeCultural")}</option>
-                        <option value="familia">{t("contact.tripTypeFamily")}</option>
-                        <option value="sorpresa">{t("contact.tripTypeSurprise")}</option>
+                        <option value="luna_miel">
+                          {t("contact.tripTypeHoneymoon")}
+                        </option>
+                        <option value="aventura">
+                          {t("contact.tripTypeAdventure")}
+                        </option>
+                        <option value="relax">
+                          {t("contact.tripTypeRelax")}
+                        </option>
+                        <option value="cultural">
+                          {t("contact.tripTypeCultural")}
+                        </option>
+                        <option value="familia">
+                          {t("contact.tripTypeFamily")}
+                        </option>
+                        <option value="sorpresa">
+                          {t("contact.tripTypeSurprise")}
+                        </option>
                       </select>
                       {errors.tripType && (
                         <span className="text-red-500 text-sm mt-1">

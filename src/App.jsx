@@ -130,6 +130,7 @@ function HomePage() {
       "@context": "https://schema.org",
       "@type": "Product",
       name: "Paquete Explora - Itinerario de Viaje Personalizado",
+      image: "https://www.saltysoultrips.com/resto/logoGoogle.png",
       description:
         "Itinerario digital completo con transporte, alojamiento y actividades recomendadas.",
       brand: {
@@ -142,6 +143,38 @@ function HomePage() {
         priceCurrency: "EUR",
         price: "50",
         availability: "https://schema.org/InStock",
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "ES",
+          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted"
+        },
+        shippingDetails: {
+          "@type": "OfferShippingDetails",
+          shippingRate: {
+            "@type": "MonetaryAmount",
+            value: "0",
+            currency: "EUR"
+          },
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "ES"
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: "0",
+              maxValue: "1",
+              unitCode: "d"
+            },
+            transitTime: {
+              "@type": "QuantitativeValue",
+              minValue: "1",
+              maxValue: "3",
+              unitCode: "d"
+            }
+          }
+        }
       },
     },
   ];
