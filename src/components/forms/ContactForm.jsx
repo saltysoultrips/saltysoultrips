@@ -84,6 +84,12 @@ export default function ContactForm() {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+
+    const payload = {
+      ...data,
+      flexibleDates: flexibleDates ? "Sí" : "No", // O true/false según prefieras
+    };
+
     try {
       const response = await fetch(
         "https://hook.eu1.make.com/w3ouj1sbg9pv5pre39e2mvmz4ardzpr7",
@@ -98,6 +104,7 @@ export default function ContactForm() {
       setIsSubmitted(true);
       reset();
       setCounts({ adults: 1, children: 0, babies: 0 });
+      setFlexibleDates(false);
     } catch (error) {
       console.error("Error submitting", error);
       setIsSubmitted(true);
