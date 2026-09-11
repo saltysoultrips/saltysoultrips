@@ -95,7 +95,7 @@ export default function ContactForm() {
         "https://hook.eu1.make.com/w3ouj1sbg9pv5pre39e2mvmz4ardzpr7",
         {
           method: "POST",
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
           headers: {
             "Content-Type": "application/json",
           },
