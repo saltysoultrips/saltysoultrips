@@ -1,25 +1,74 @@
 {
   "routes": [
     {
-      "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",
-      "dest": "/410.html",
-      "status": 410,
+      "src": "^/en/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el/?$",
+      "status": 301,
       "headers": {
-        "X-Robots-Tag": "noindex"
+        "Location": "/en/blog/is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it"
       }
     },
     {
       "src": "^/blog/is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it/?$",
       "status": 301,
       "headers": {
-        "Location": "/en/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"
+        "Location": "/en/blog/is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it"
+      }
+    },
+    {
+      "src": "^/en/blog/que-ver-en-londres-en-3-dias-ruta-completa-para-una-primera-escapada/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/what-to-see-in-london-in-3-days-complete-first-time-itinerary"
+      }
+    },
+    {
+      "src": "^/blog/what-to-see-in-london-in-3-days-complete-first-time-itinerary/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/what-to-see-in-london-in-3-days-complete-first-time-itinerary"
+      }
+    },
+    {
+      "src": "^/en/blog/que-hacer-en-cerdena-mejores-actividades-excursiones/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/things-to-do-in-sardinia-best-activities-excursions"
       }
     },
     {
       "src": "^/blog/things-to-do-in-sardinia-best-activities-excursions/?$",
       "status": 301,
       "headers": {
-        "Location": "/en/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"
+        "Location": "/en/blog/things-to-do-in-sardinia-best-activities-excursions"
+      }
+    },
+    {
+      "src": "^/en/blog/merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/is-a-disney-cruise-worth-it-my-opinion-after-analyzing-everything-it-offers"
+      }
+    },
+    {
+      "src": "^/en/blog/nueva-york-en-navidad-cuanto-cuesta-y-que-merece-la-pena/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/christmas-in-new-york-how-much-it-costs-and-what-s-worth-it"
+      }
+    },
+    {
+      "src": "^/blog/christmas-in-new-york-how-much-it-costs-and-what-s-worth-it/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/christmas-in-new-york-how-much-it-costs-and-what-s-worth-it"
+      }
+    },
+    {
+      "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",
+      "dest": "/410.html",
+      "status": 410,
+      "headers": {
+        "X-Robots-Tag": "noindex"
       }
     },
     {

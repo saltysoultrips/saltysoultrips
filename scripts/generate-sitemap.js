@@ -27,3 +27,15 @@ fs.writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries.join("\n")}\n</urlset>\n`,
 );
 console.log(`Sitemap validated: ${manifest.routes.length} URLs`);
+// Generate redirects alongside the sitemap from published Sanity slugs.
+const config = JSON.parse(fs.readFileSync("vercel.json", "utf8"));
+const redirects = (manifest.redirects || []).map(({source, target}) => ({
+  src: "^" + source + "/?$",
+  status: 301,
+  headers: { Location: target },
+}));
+config.routes = [
+  ...redirects,
+  ...config.routes.filter((route) => !route.headers?.Location?.startsWith("/en/blog/")),
+];
+fs.writeFileSync("vercel.json", JSON.stringify(config, null, 2) + "\n");

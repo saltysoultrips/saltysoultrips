@@ -3,6 +3,7 @@ import {
   staticPairs,
   hasEnglishPost,
   postPath,
+  postRedirects,
 } from "../src/lib/routes.js";
 export async function buildManifest() {
   const query =
@@ -37,6 +38,7 @@ export async function buildManifest() {
     }
   return {
     entries,
+    redirects: postRedirects(result.posts),
     routes: [...new Set(entries.flatMap((e) => [e.es, e.en].filter(Boolean)))],
     base: BASE_URL,
   };

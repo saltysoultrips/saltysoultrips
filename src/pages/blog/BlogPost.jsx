@@ -1,12 +1,11 @@
 import React from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, useLocation, Navigate, Link } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import SEOHead from "../../components/SEOHead";
 import { client, urlFor } from "../../lib/sanity";
-import { postPath, hasEnglishPost } from "../../lib/routes";
+import { postPath, hasEnglishPost, englishPostSlug } from "../../lib/routes";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
-import { useTranslation } from "react-i18next";
 
 const components = {
   types: {
@@ -90,28 +89,35 @@ const components = {
 };
 
 export default function BlogPost() {
-  const { slug } = useParams();
-  const { i18n } = useTranslation();
-  const lang = i18n.language; // 'es' or 'en'
+  const { slug, lang: routeLang } = useParams();
+  const location = useLocation();
+  const lang = routeLang === "en" ? "en" : "es";
 
   const [post, setPost] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
+    let active = true;
+    setLoading(true);
     const fetchPost = async () => {
       try {
         const query = `*[_type == "post" && (slug.current == $slug || slug_en.current == $slug)][0]`;
-        const data = await client.fetch(query, { slug });
-        setPost(data);
+        let data = await client.fetch(query, { slug });
+        if (!data && routeLang === "en") {
+          const posts = await client.fetch('*[_type == "post" && defined(slug.current)]');
+          data = posts.find((item) => hasEnglishPost(item) && englishPostSlug(item) === slug);
+        }
+        if (active) setPost(data);
       } catch (error) {
         console.error("Error fetching blog post:", error);
       } finally {
-        setLoading(false);
+        if (active) setLoading(false);
       }
     };
 
     fetchPost();
-  }, [slug]);
+    return () => { active = false; };
+  }, [slug, routeLang]);
 
   if (loading) {
     return (
@@ -130,6 +136,8 @@ export default function BlogPost() {
   if (lang === "en" && !hasEnglishPost(post))
     return <Navigate to={postPath(post, "es")} replace />;
   // Pick the right language field with ES fallback
+  if (location.pathname !== postPath(post, lang))
+    return <Navigate to={postPath(post, lang)} replace />;
   const pick = (field) =>
     post[`${field}_en`] && lang === "en" ? post[`${field}_en`] : post[field];
 

@@ -32,5 +32,22 @@ export function translatedPath(path, language) {
 }
 export const hasEnglishPost = (post) =>
   Boolean(post.title_en?.trim() && post.content_en?.length);
-export const postPath = (post, language) =>
-  `${language === "en" && hasEnglishPost(post) ? "/en" : ""}/blog/${post.slug.current}`;
+export const englishPostSlug = (post) => (post.slug_en?.current || post.slug.current)
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const postPath = (post, language) => {
+  const english = language === "en" && hasEnglishPost(post);
+  const slug = english ? englishPostSlug(post) : post.slug.current;
+  return `${english ? "/en" : ""}/blog/${slug}`;
+};
+export function postRedirects(posts) {
+  return posts.filter(hasEnglishPost).flatMap((post) => {
+    const target = postPath(post, "en");
+    return [...new Set([
+      `/en/blog/${post.slug.current}`,
+      post.slug_en?.current && /^[a-z0-9-]+$/.test(post.slug_en.current) && post.slug_en.current !== post.slug.current
+        ? `/blog/${post.slug_en.current}` : null,
+    ])].filter((source) => source && source !== target)
+      .map((source) => ({ source, target }));
+  });
+}

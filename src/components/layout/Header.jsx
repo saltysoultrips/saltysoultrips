@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { translatedPath } from "../../lib/routes";
+import { postPath, translatedPath, englishPostSlug, hasEnglishPost } from "../../lib/routes";
+import { client } from "../../lib/sanity";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import X from "lucide-react/dist/esm/icons/x";
 import Globe from "lucide-react/dist/esm/icons/globe";
@@ -72,9 +73,25 @@ export default function Header() {
     }
   };
 
-  const toggleLanguage = () => {
+  const toggleLanguage = async () => {
     const newLang = i18n.language === "es" ? "en" : "es";
-    navigate(translatedPath(location.pathname, newLang));
+    const match = location.pathname.match(/^\/(?:en\/)?blog\/([^/]+)\/?$/);
+    if (match) {
+      try {
+        let post = await client.fetch(
+          '*[_type == "post" && (slug.current == $slug || slug_en.current == $slug)][0]{slug,slug_en,title_en,content_en}',
+          { slug: decodeURIComponent(match[1]) },
+        );
+        if (!post) {
+          const posts = await client.fetch('*[_type == "post" && defined(slug.current)]{slug,slug_en,title_en,content_en}');
+          post = posts.find((item) => hasEnglishPost(item) && englishPostSlug(item) === decodeURIComponent(match[1]));
+        }
+        navigate(post ? postPath(post, newLang) : translatedPath(location.pathname, newLang));
+      } catch (error) {
+        console.error("Could not resolve translated article", error);
+        return;
+      }
+    } else navigate(translatedPath(location.pathname, newLang));
     setIsOpen(false);
   };
 
