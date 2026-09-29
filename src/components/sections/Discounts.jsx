@@ -49,7 +49,8 @@ const discountOffers = [
     id: "discovercars",
     logo: "/resto/discovercars.png",
     url: "https://www.discovercars.com/?a_aid=saltysoultrips",
-    trackingPixel: "https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&a_bid=f29909e9",
+    trackingPixel:
+      "https://discover-car-hire.postaffiliatepro.com/scripts/iunyh71e?a_aid=saltysoultrips&a_bid=f29909e9",
     icon: Car,
   },
   {
@@ -57,7 +58,8 @@ const discountOffers = [
     id: "turbopass",
     logo: "/resto/turbopass.png",
     url: "https://www.awin1.com/cread.php?s=4784603&v=126733&q=605539&r=2815824",
-    trackingPixel: "https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824",
+    trackingPixel:
+      "https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824",
     icon: Ticket,
   },
   {
@@ -88,29 +90,32 @@ export default function Discounts() {
       link = document.createElement("link");
       link.id = styleId;
       link.rel = "stylesheet";
-      link.href = "https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.css";
+      link.href =
+        "https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.css";
       link.className = "eg-affiliate-banners-style";
       document.head.appendChild(link);
     }
 
     // 2. Perform elements initialization matching the official script
-    const elements = Array.from(document.querySelectorAll('.eg-affiliate-banners'));
+    const elements = Array.from(
+      document.querySelectorAll(".eg-affiliate-banners"),
+    );
     const bannerElements = {};
 
     elements.forEach((element) => {
       // If already has an iframe, skip to prevent duplicates
-      if (element.querySelector('iframe')) return;
+      if (element.querySelector("iframe")) return;
 
-      const program = element.getAttribute('data-program') || "";
-      const layout = element.getAttribute('data-layout') || "";
-      const image = element.getAttribute('data-image') || "";
-      const message = element.getAttribute('data-message') || "";
-      const linkParam = element.getAttribute('data-link') || "";
-      const networkId = element.getAttribute('data-network') || "";
-      const mdpcid = element.getAttribute('data-mdpcid') || "";
-      const camRef = element.getAttribute('data-camref') || "";
-      const pubRef = element.getAttribute('data-pubref') || "";
-      const adRef = element.getAttribute('data-adref') || "";
+      const program = element.getAttribute("data-program") || "";
+      const layout = element.getAttribute("data-layout") || "";
+      const image = element.getAttribute("data-image") || "";
+      const message = element.getAttribute("data-message") || "";
+      const linkParam = element.getAttribute("data-link") || "";
+      const networkId = element.getAttribute("data-network") || "";
+      const mdpcid = element.getAttribute("data-mdpcid") || "";
+      const camRef = element.getAttribute("data-camref") || "";
+      const pubRef = element.getAttribute("data-pubref") || "";
+      const adRef = element.getAttribute("data-adref") || "";
 
       // Generate instance ID
       const base = 36;
@@ -118,36 +123,36 @@ export default function Discounts() {
       const key = Math.random().toString(base).substring(2);
       const instance = timestamp + key;
 
-      element.setAttribute('data-instance', instance);
+      element.setAttribute("data-instance", instance);
 
       // Build query string matching getUrlSearch of official script
       const params = [
-        ['program', program],
-        ['layout', layout],
-        ['image', image],
-        ['message', message],
-        ['link', linkParam],
-        ['network', networkId],
-        ['mdpcid', mdpcid],
-        ['camref', camRef],
-        ['pubref', pubRef],
-        ['adref', adRef],
-        ['instance', instance],
+        ["program", program],
+        ["layout", layout],
+        ["image", image],
+        ["message", message],
+        ["link", linkParam],
+        ["network", networkId],
+        ["mdpcid", mdpcid],
+        ["camref", camRef],
+        ["pubref", pubRef],
+        ["adref", adRef],
+        ["instance", instance],
       ];
 
       const urlSearch = params
         .map(([k, v]) => (v ? `${k}=${encodeURIComponent(v)}` : ""))
         .filter(Boolean)
-        .join('&');
+        .join("&");
 
-      const frame = document.createElement('iframe');
-      frame.className = 'eg-affiliate-banners-frame mx-auto';
+      const frame = document.createElement("iframe");
+      frame.className = "eg-affiliate-banners-frame mx-auto";
       frame.src = `https://creator.expediagroup.com/products/banners?${urlSearch}`;
-      frame.style.width = '300px'; // default layout width
-      frame.style.height = '250px'; // default layout height
-      frame.style.margin = 'auto';
-      frame.style.border = 'none';
-      frame.style.display = 'block';
+      frame.style.width = "300px"; // default layout width
+      frame.style.height = "250px"; // default layout height
+      frame.style.margin = "auto";
+      frame.style.border = "none";
+      frame.style.display = "block";
 
       element.appendChild(frame);
       bannerElements[instance] = element;
@@ -156,33 +161,40 @@ export default function Discounts() {
     // 3. Listen to messages for iframe resizing matching the official script
     const handleMessage = (event) => {
       const allowedOrigins = [
-        'https://creator.expediagroup.com',
-        'https://creatorexpediagroupcom.staging.exp-test.net',
-        'https://creatorexpediacom.sandbox.exp-test.net:8443/',
-        'https://localhost:8443',
+        "https://creator.expediagroup.com",
+        "https://creatorexpediagroupcom.staging.exp-test.net",
+        "https://creatorexpediacom.sandbox.exp-test.net:8443/",
+        "https://localhost:8443",
       ];
 
       if (!allowedOrigins.includes(event.origin)) return;
-      if (!event.data || event.data.type !== 'eg-affiliate-banners/resize') return;
+      if (!event.data || event.data.type !== "eg-affiliate-banners/resize")
+        return;
 
       const { meta, payload } = event.data;
-      const targetElement = bannerElements[meta.instance] || document.querySelector(`[data-instance="${meta.instance}"]`);
+      const targetElement =
+        bannerElements[meta.instance] ||
+        document.querySelector(`[data-instance="${meta.instance}"]`);
       if (targetElement) {
-        const frame = targetElement.querySelector('.eg-affiliate-banners-frame');
+        const frame = targetElement.querySelector(
+          ".eg-affiliate-banners-frame",
+        );
         if (frame && payload?.frame?.style) {
-          if (payload.frame.style.width) frame.style.width = payload.frame.style.width;
-          if (payload.frame.style.height) frame.style.height = payload.frame.style.height;
+          if (payload.frame.style.width)
+            frame.style.width = payload.frame.style.width;
+          if (payload.frame.style.height)
+            frame.style.height = payload.frame.style.height;
         }
       }
     };
 
-    window.addEventListener('message', handleMessage);
+    window.addEventListener("message", handleMessage);
 
     return () => {
-      window.removeEventListener('message', handleMessage);
+      window.removeEventListener("message", handleMessage);
       // Cleanup iframes to avoid duplication on re-mount
       elements.forEach((element) => {
-        const frame = element.querySelector('.eg-affiliate-banners-frame');
+        const frame = element.querySelector(".eg-affiliate-banners-frame");
         if (frame) frame.remove();
       });
     };
@@ -197,13 +209,13 @@ export default function Discounts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            {t('discounts.label')}
+            {t("discounts.label")}
           </span>
-          <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
-            {t('discounts.title')}
-          </h2>
+          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
+            {t("discounts.title")}
+          </h1>
           <p className="text-stone-600 max-w-2xl mx-auto">
-            {t('discounts.subtitle')}
+            {t("discounts.subtitle")}
           </p>
         </div>
 
@@ -271,7 +283,7 @@ export default function Discounts() {
         <div className="mt-20 pt-12 border-t border-stone-200">
           <div className="text-center">
             <span className="text-brand-sage font-semibold tracking-wider uppercase text-xs">
-              {t('discounts.techPartner')}
+              {t("discounts.techPartner")}
             </span>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-8">
               <img
@@ -281,7 +293,7 @@ export default function Discounts() {
               />
               <div className="h-px w-12 bg-stone-300 hidden md:block"></div>
               <p className="text-stone-600 font-medium text-lg">
-                <b>SiteMinder</b> | {t('discounts.techPartnerDesc')}
+                <b>SiteMinder</b> | {t("discounts.techPartnerDesc")}
               </p>
             </div>
           </div>
@@ -290,7 +302,7 @@ export default function Discounts() {
         {/* Optional Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-stone-500 italic">
-            {t('discounts.affiliateNote')}
+            {t("discounts.affiliateNote")}
           </p>
         </div>
       </div>

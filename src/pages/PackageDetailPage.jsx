@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { packageSeo } from "../lib/packageSeo";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SEOHead from "../components/SEOHead";
@@ -17,9 +18,9 @@ export default function PackageDetailPage() {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const isEn = i18n.language === 'en';
+  const isEn = i18n.language === "en";
   const [isImageOpen, setIsImageOpen] = useState(false);
-  
+
   const [pkg, setPkg] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -31,11 +32,11 @@ export default function PackageDetailPage() {
         if (sanityPkg) {
           setPkg(sanityPkg);
         } else {
-          navigate('/404', { replace: true });
+          navigate("/404", { replace: true });
         }
       } catch (error) {
         console.error("Error fetching package:", error);
-        navigate('/404', { replace: true });
+        navigate("/404", { replace: true });
       } finally {
         setLoading(false);
       }
@@ -45,17 +46,33 @@ export default function PackageDetailPage() {
 
   const getPackageText = (field) => {
     if (!pkg) return "";
-    if (field === 'title') return isEn && pkg.title_en ? pkg.title_en : pkg.title || "";
-    if (field === 'shortDescription') return isEn && pkg.shortDescription_en ? pkg.shortDescription_en : pkg.shortDescription || "";
-    if (field === 'longDescription') return isEn && pkg.longDescription_en ? pkg.longDescription_en : pkg.longDescription || "";
-    if (field === 'priceInfo') return isEn && pkg.priceInfo_en ? pkg.priceInfo_en : pkg.priceInfo || "";
-    if (field === 'seoTitle') return isEn && pkg.seoTitle_en ? pkg.seoTitle_en : pkg.seoTitle || "";
-    if (field === 'seoDescription') return isEn && pkg.seoDescription_en ? pkg.seoDescription_en : pkg.seoDescription || "";
+    if (field === "title")
+      return isEn && pkg.title_en ? pkg.title_en : pkg.title || "";
+    if (field === "shortDescription")
+      return isEn && pkg.shortDescription_en
+        ? pkg.shortDescription_en
+        : pkg.shortDescription || "";
+    if (field === "longDescription")
+      return isEn && pkg.longDescription_en
+        ? pkg.longDescription_en
+        : pkg.longDescription || "";
+    if (field === "priceInfo")
+      return isEn && pkg.priceInfo_en ? pkg.priceInfo_en : pkg.priceInfo || "";
+    if (field === "seoTitle")
+      return isEn && pkg.seoTitle_en ? pkg.seoTitle_en : pkg.seoTitle || "";
+    if (field === "seoDescription")
+      return isEn && pkg.seoDescription_en
+        ? pkg.seoDescription_en
+        : pkg.seoDescription || "";
     return pkg[field] || "";
   };
-  
-  const getPackageImage = () => pkg?.image ? urlFor(pkg.image).url() : "";
-  const getFlyerImage = () => pkg?.flyerImage ? urlFor(pkg.flyerImage).url() : "";
+
+  const getPackageImage = () =>
+    pkg?.image ? urlFor(pkg.image).width(1600).auto("format").url() : "";
+  const getFlyerImage = () =>
+    pkg?.flyerImage
+      ? urlFor(pkg.flyerImage).width(1600).auto("format").url()
+      : "";
 
   // Helper to parse bold markdown (**text**)
   const formatText = (text) => {
@@ -63,7 +80,11 @@ export default function PackageDetailPage() {
     const parts = text.split(/\*\*(.*?)\*\*/g);
     return parts.map((part, index) => {
       if (index % 2 === 1) {
-        return <strong key={index} className="font-semibold text-brand-dark">{part}</strong>;
+        return (
+          <strong key={index} className="font-semibold text-brand-dark">
+            {part}
+          </strong>
+        );
       }
       return <span key={index}>{part}</span>;
     });
@@ -71,19 +92,24 @@ export default function PackageDetailPage() {
 
   const getLabel = (collection, idOrArray) => {
     if (Array.isArray(idOrArray)) {
-       if (idOrArray.length === 0) return "";
-       return idOrArray.map(id => {
-         const item = collection.find(i => i.id === id);
-         return item ? (isEn ? item.label.en : item.label.es) : "";
-       }).filter(Boolean).join(" & ");
+      if (idOrArray.length === 0) return "";
+      return idOrArray
+        .map((id) => {
+          const item = collection.find((i) => i.id === id);
+          return item ? (isEn ? item.label.en : item.label.es) : "";
+        })
+        .filter(Boolean)
+        .join(" & ");
     }
-    const item = collection.find(i => i.id === idOrArray);
+    const item = collection.find((i) => i.id === idOrArray);
     if (!item) return "";
     return isEn ? item.label.en : item.label.es;
   };
 
   const handleQuoteClick = () => {
-    navigate(`/${isEn ? 'contact' : 'contacto'}`);
+    navigate(
+      `/${isEn ? "contact" : "contacto"}?package=${encodeURIComponent(slug)}&destination=${encodeURIComponent(getPackageText("title"))}`,
+    );
   };
 
   if (loading) {
@@ -92,7 +118,9 @@ export default function PackageDetailPage() {
         <Header />
         <Loader2 className="w-12 h-12 text-brand-dark animate-spin mb-4 mt-20" />
         <p className="text-brand-dark/60 font-serif text-lg">
-          {isEn ? "Loading package details..." : "Cargando detalles del paquete..."}
+          {isEn
+            ? "Loading package details..."
+            : "Cargando detalles del paquete..."}
         </p>
         <Footer />
       </div>
@@ -104,66 +132,29 @@ export default function PackageDetailPage() {
   const continentLabel = getLabel(continents, pkg.continent);
   const typeLabel = getLabel(packageTypes, pkg.type);
 
-  const seoTitle = getPackageText('seoTitle') || `${getPackageText('title')} | SaltySoulTrips`;
-  const seoDesc = getPackageText('seoDescription') || getPackageText('shortDescription');
+  const seo = packageSeo(pkg, i18n.language);
+  const seoTitle = seo.title;
+  const seoDesc = seo.description;
   const ogImage = getPackageImage();
-
-  const priceString = getPackageText('priceInfo');
-  const priceMatch = priceString ? priceString.match(/\d+([.,]\d+)?/) : null;
-  const priceValue = priceMatch ? priceMatch[0].replace(',', '.') : "0";
-
-  const heroImageAlt = pkg.image?.alt || getPackageText('title');
-  const flyerImageAlt = pkg.flyerImage?.alt || `Flyer de ${getPackageText('title')}`;
-
+  const heroImageAlt = pkg.image?.alt || getPackageText("title");
+  const flyerImageAlt = pkg.flyerImage?.alt || getPackageText("title");
   const schemaData = {
-    "@context": "https://schema.org/",
+    "@context": "https://schema.org",
     "@type": "Product",
-    "name": getPackageText('title'),
-    "image": ogImage || "https://www.saltysoultrips.com/resto/logoGoogle.png",
-    "description": seoDesc,
-    "brand": {
-      "@type": "Brand",
-      "name": "SaltySoulTrips"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": `https://www.saltysoultrips.com/${isEn ? 'packages' : 'paquetes'}/${slug}`,
-      "priceCurrency": "EUR",
-      "price": priceValue,
-      "availability": "https://schema.org/InStock",
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "ES",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "EUR"
-        },
-        "shippingDestination": {
-          "@type": "DefinedRegion",
-          "addressCountry": "ES"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": "0",
-            "maxValue": "1",
-            "unitCode": "d"
+    name: getPackageText("title"),
+    image: ogImage,
+    description: seoDesc,
+    brand: { "@type": "Brand", name: "SaltySoulTrips" },
+    ...(seo.price
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: seo.price,
+            priceCurrency: "EUR",
+            url: `https://www.saltysoultrips.com/${isEn ? "packages" : "paquetes"}/${slug}`,
           },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": "1",
-            "maxValue": "5",
-            "unitCode": "d"
-          }
         }
-      }
-    }
+      : {}),
   };
 
   return (
@@ -171,31 +162,35 @@ export default function PackageDetailPage() {
       <SEOHead
         title={seoTitle}
         description={seoDesc}
-        canonicalUrl={`https://www.saltysoultrips.com/${isEn ? 'packages' : 'paquetes'}/${slug}`}
+        canonicalUrl={`https://www.saltysoultrips.com/${isEn ? "packages" : "paquetes"}/${slug}`}
         esUrl={`https://www.saltysoultrips.com/paquetes/${slug}`}
-        enUrl={`https://www.saltysoultrips.com/packages/${slug}`}
+        enUrl={
+          pkg.title_en && pkg.longDescription_en
+            ? `https://www.saltysoultrips.com/packages/${slug}`
+            : undefined
+        }
         ogImage={ogImage}
         schemaData={schemaData}
       />
-      
+
       <Header />
-      
+
       <main className="flex-grow pt-20">
         <article>
           {/* Hero Image Section */}
           <div className="relative h-[50vh] md:h-[60vh] w-full bg-brand-dark overflow-hidden">
-            <img 
-              src={getPackageImage()} 
+            <img
+              src={getPackageImage()}
               alt={heroImageAlt}
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-sand-100 via-transparent to-black/30"></div>
-            
+
             <div className="absolute top-8 left-4 md:left-8 z-10">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/${isEn ? 'packages' : 'paquetes'}`);
+                  navigate(`/${isEn ? "packages" : "paquetes"}`);
                 }}
                 className="flex items-center gap-2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all text-sm font-medium"
               >
@@ -207,7 +202,7 @@ export default function PackageDetailPage() {
 
           {/* Content Section */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 -mt-20 md:-mt-32 relative z-10 pb-32 md:pb-20">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-sand-200"
@@ -227,35 +222,57 @@ export default function PackageDetailPage() {
               {/* Title & Price */}
               <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-8 pb-8 border-b border-sand-200">
                 <h1 className="text-4xl md:text-5xl font-serif text-brand-dark leading-tight">
-                  {getPackageText('title')}
+                  {getPackageText("title")}
                 </h1>
                 {pkg.priceInfo && (
                   <div className="flex-shrink-0 bg-sand-200 px-4 py-2.5 rounded-xl">
-                    <p className="text-[10px] sm:text-xs text-brand-dark/70 uppercase tracking-widest mb-0.5 font-bold">{isEn ? "Estimated Price" : "Precio Estimado"}</p>
-                    <p className="text-lg sm:text-xl font-serif text-brand-dark font-bold">{getPackageText('priceInfo')}</p>
+                    <p className="text-[10px] sm:text-xs text-brand-dark/70 uppercase tracking-widest mb-0.5 font-bold">
+                      {isEn ? "Estimated Price" : "Precio Estimado"}
+                    </p>
+                    <p className="text-lg sm:text-xl font-serif text-brand-dark font-bold">
+                      {getPackageText("priceInfo")}
+                    </p>
                   </div>
                 )}
               </div>
 
               {/* Grid Layout for Content and Flyer */}
-              <div className={`grid grid-cols-1 ${pkg.flyerImage ? 'lg:grid-cols-2 gap-12 items-start' : ''} mb-12`}>
+              <div
+                className={`grid grid-cols-1 ${pkg.flyerImage ? "lg:grid-cols-2 gap-12 items-start" : ""} mb-12`}
+              >
                 {/* Description & Inline CTA */}
                 <div className="order-2 lg:order-1 text-brand-dark/80 font-sans flex flex-col h-full">
                   <div className="whitespace-pre-line leading-[1.8] text-[15px] mb-8">
-                    {formatText(getPackageText('longDescription'))}
+                    {formatText(getPackageText("longDescription"))}
                   </div>
-                  
+
                   {/* Inline Call to Action */}
                   <div className="hidden md:block mt-auto pt-8 border-t border-sand-200">
-                    <button 
+                    <button
                       onClick={handleQuoteClick}
                       className="w-full sm:w-auto bg-sand-200 hover:bg-sand-300 text-brand-dark px-8 py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-xl active:scale-95 flex items-center justify-center gap-3 group"
                     >
                       {isEn ? "Book Now" : "Reservar Paquete"}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="group-hover:translate-x-1 transition-transform"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
                     </button>
                     <p className="text-xs text-brand-dark/50 mt-4 font-medium tracking-wide text-center sm:text-left">
-                      {isEn ? "No commitment required. We customize this package to your liking." : "Sin compromiso. Personalizaremos este paquete a tu gusto."}
+                      {isEn
+                        ? "No commitment required. We customize this package to your liking."
+                        : "Sin compromiso. Personalizaremos este paquete a tu gusto."}
                     </p>
                   </div>
                 </div>
@@ -263,19 +280,22 @@ export default function PackageDetailPage() {
                 {/* Flyer Image (if available) */}
                 {pkg.flyerImage && (
                   <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <div 
+                    <div
                       className="relative max-w-md w-full rounded-2xl overflow-hidden shadow-lg border border-sand-200 cursor-zoom-in group"
                       onClick={() => setIsImageOpen(true)}
                     >
-                      <img 
-                        src={getFlyerImage()} 
-                        alt={flyerImageAlt} 
+                      <img
+                        src={getFlyerImage()}
+                        loading="lazy"
+                        alt={flyerImageAlt}
                         className="w-full h-auto object-cover transition-transform duration-700"
                       />
                       {/* Click instruction overlay */}
                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                         <span className="bg-black/60 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                          {isEn ? "Click to enlarge flyer" : "Clic para ampliar detalle"}
+                          {isEn
+                            ? "Click to enlarge flyer"
+                            : "Clic para ampliar detalle"}
                         </span>
                       </div>
                     </div>
@@ -286,14 +306,18 @@ export default function PackageDetailPage() {
           </div>
         </article>
       </main>
-      
+
       <Footer />
 
       {/* Mobile Sticky CTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-sand-200 p-4 z-40 flex justify-between items-center shadow-[0_-4px_15px_rgba(0,0,0,0.05)]">
         <div>
-          <p className="text-xs text-brand-dark/70 uppercase tracking-widest font-medium">{isEn ? "Price" : "Precio"}</p>
-          <p className="text-lg font-serif text-brand-dark font-bold">{getPackageText('priceInfo')}</p>
+          <p className="text-xs text-brand-dark/70 uppercase tracking-widest font-medium">
+            {isEn ? "Price" : "Precio"}
+          </p>
+          <p className="text-lg font-serif text-brand-dark font-bold">
+            {getPackageText("priceInfo")}
+          </p>
         </div>
         <button
           onClick={handleQuoteClick}
@@ -313,7 +337,7 @@ export default function PackageDetailPage() {
             onClick={() => setIsImageOpen(false)}
             className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 md:p-8 cursor-zoom-out"
           >
-            <button 
+            <button
               onClick={() => setIsImageOpen(false)}
               className="absolute top-6 right-6 text-white hover:text-sand-300 transition-colors bg-black/50 rounded-full p-2"
             >
@@ -325,7 +349,7 @@ export default function PackageDetailPage() {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               src={getFlyerImage() || getPackageImage()}
-              alt={getPackageText('title')}
+              alt={getPackageText("title")}
               className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
             />

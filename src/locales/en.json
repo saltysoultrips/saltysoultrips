@@ -101,8 +101,8 @@
     "disclaimer": "* This pack is optional and is added to the full management service of your trip."
   },
   "hero": {
-    "title": "Discover the world",
-    "titleItalic": "your way",
+    "title": "Tailor-made trips",
+    "titleItalic": "planned around you",
     "subtitle": "We manage your trip from start to finish — flights, hotel and activities — so you only have to enjoy.",
     "startTrip": "Start my trip",
     "seeExperiences": "See Experiences"
@@ -111,11 +111,11 @@
     "label": "Our Philosophy",
     "title": "Travel with purpose,",
     "titleItalic": "travel with soul.",
-    "description": "At SaltySoulTrips we believe a trip is not just a destination, it is a transformative experience. We organize fully managed trips at the best price, so you don't have to worry about a thing.",
+    "description": "At SaltySoulTrips we design your trip around your dates, budget and interests. We manage the agreed bookings so you can focus on enjoying the journey.",
     "point1": "We manage flights, hotel, and activities",
-    "point2": "Fixed price, no surprises",
+    "point2": "A clear proposal before booking",
     "point3": "You just have to pack your bags",
-    "tagline": "NO FILTERS, NO COMMISSIONS",
+    "tagline": "PERSONAL SERVICE, EVERY STEP",
     "taglineText1": "We manage every detail of your trip so that you only have to worry about enjoying it.",
     "taglineText2": "We want you to come back because you trust our knowledge, our dedication, and our personalized service.",
     "taglineText3": "",
@@ -306,16 +306,16 @@
   },
   "seo": {
     "home": {
-      "title": "Personalized Travel Itineraries | SaltySoulTrips - Custom Trips",
-      "description": "We design your 100% personalized travel itinerary. Japan, Maldives, Tanzania, Thailand and any destination worldwide. Unique itineraries with no hidden fees. 5 stars."
+      "title": "Tailor-made Travel & Booking | SaltySoulTrips",
+      "description": "We plan your tailor-made trip and manage flights, accommodation and activities. Tell us your dates and budget and request your proposal."
     },
     "packages": {
       "title": "Travel Packages | SaltySoulTrips",
       "description": "Explore all our travel packages and start planning your tailor-made trip."
     },
     "services": {
-      "title": "Travel Packs & Services | SaltySoulTrips",
-      "description": "Discover our personalized travel design packs. From essential itineraries to full trip planning. Transparent pricing and no hidden commissions."
+      "title": "Travel Planning and Booking Services | SaltySoulTrips",
+      "description": "We plan your trip and manage the agreed bookings. Discover how we work and our optional orientation pack."
     },
     "howItWorks": {
       "title": "How It Works | Custom Travel Planning | SaltySoulTrips",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { applyAnalyticsConsent } from "../../lib/analytics";
 
 import X from "lucide-react/dist/esm/icons/x";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
@@ -22,6 +23,16 @@ export default function CookieConsent() {
   });
 
   useEffect(() => {
+    const open = () => {
+      setIsVisible(true);
+      setShowDetails(true);
+    };
+    window.addEventListener("open-cookie-settings", open);
+    return () => window.removeEventListener("open-cookie-settings", open);
+  }, []);
+
+  useEffect(() => {
+    if (window.__PRERENDER__) return;
     const storedConsent = localStorage.getItem(COOKIE_STORAGE_KEY);
     if (!storedConsent) {
       // Small delay to not overwhelm the user immediately
@@ -43,8 +54,7 @@ export default function CookieConsent() {
     setPreferences(newPreferences);
     setIsVisible(false);
 
-    // Here you would trigger any callbacks to initialize scripts based on consent
-    // e.g. initializeAnalytics(newPreferences.analytics);
+    applyAnalyticsConsent(newPreferences.analytics);
   };
 
   const handleAcceptAll = () => {

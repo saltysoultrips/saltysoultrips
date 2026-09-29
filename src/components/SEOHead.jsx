@@ -10,8 +10,8 @@ export default function SEOHead({
   description,
   canonicalUrl,
   ogImage = "https://www.saltysoultrips.com/resto/logoGoogle.png",
-  ogImageWidth = "1200",
-  ogImageHeight = "630",
+  ogImageWidth,
+  ogImageHeight,
   ogType = "website",
   schemaData = null,
   esUrl,
@@ -32,7 +32,7 @@ export default function SEOHead({
 
       {/* Robots — noindex for 404 and other non-indexable pages */}
       {noIndex ? (
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="noindex, follow" />
       ) : (
         <meta
           name="robots"
@@ -45,18 +45,28 @@ export default function SEOHead({
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Hreflang Tags for International SEO */}
-      <link rel="alternate" hreflang="es" href={esUrl || canonicalUrl} />
-      <link rel="alternate" hreflang="en" href={enUrl || canonicalUrl} />
+      {!noIndex && esUrl && <link rel="alternate" hreflang="es" href={esUrl} />}
+      {!noIndex && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
       {/* x-default is recommended by Google to point to the default language */}
-      <link rel="alternate" hreflang="x-default" href={esUrl || canonicalUrl} />
+      {!noIndex && enUrl && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={esUrl || canonicalUrl}
+        />
+      )}
 
       {/* Open Graph / Facebook */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content={ogImageWidth} />
-      <meta property="og:image:height" content={ogImageHeight} />
+      {ogImageWidth && (
+        <meta property="og:image:width" content={ogImageWidth} />
+      )}
+      {ogImageHeight && (
+        <meta property="og:image:height" content={ogImageHeight} />
+      )}
       <meta property="og:image:alt" content={title} />
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content={locale} />

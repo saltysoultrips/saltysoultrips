@@ -3,6 +3,7 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import SEOHead from "../../components/SEOHead";
 import { client, urlFor } from "../../lib/sanity";
+import { postPath, hasEnglishPost } from "../../lib/routes";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
 import { useTranslation } from "react-i18next";
@@ -14,8 +15,14 @@ const components = {
       return (
         <figure className="my-10 flex flex-col items-center">
           <img
-            src={urlFor(value).width(1000).height(562).fit("crop").auto("format").url()}
+            src={urlFor(value)
+              .width(1000)
+              .height(562)
+              .fit("crop")
+              .auto("format")
+              .url()}
             alt={value.alt || "Imagen del blog"}
+            loading="lazy"
             className="rounded-2xl w-full max-w-3xl aspect-video object-cover shadow-sm"
           />
           {value.caption && (
@@ -54,15 +61,21 @@ const components = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-6 mb-8 space-y-2 text-stone-700">{children}</ul>
+      <ul className="list-disc pl-6 mb-8 space-y-2 text-stone-700">
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-6 mb-8 space-y-2 text-stone-700">{children}</ol>
+      <ol className="list-decimal pl-6 mb-8 space-y-2 text-stone-700">
+        {children}
+      </ol>
     ),
   },
   marks: {
     link: ({ children, value }) => {
-      const rel = !value.href.startsWith("/") ? "noreferrer noopener" : undefined;
+      const rel = !value.href.startsWith("/")
+        ? "noreferrer noopener"
+        : undefined;
       return (
         <a
           href={value.href}
@@ -103,7 +116,9 @@ export default function BlogPost() {
   if (loading) {
     return (
       <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
-        <div className="text-stone-400">{lang === "en" ? "Loading article..." : "Cargando artículo..."}</div>
+        <div className="text-stone-400">
+          {lang === "en" ? "Loading article..." : "Cargando artículo..."}
+        </div>
       </div>
     );
   }
@@ -112,15 +127,17 @@ export default function BlogPost() {
     return <Navigate to="/404" replace />;
   }
 
+  if (lang === "en" && !hasEnglishPost(post))
+    return <Navigate to={postPath(post, "es")} replace />;
   // Pick the right language field with ES fallback
-  const pick = (field) => post[`${field}_en`] && lang === "en"
-    ? post[`${field}_en`]
-    : post[field];
+  const pick = (field) =>
+    post[`${field}_en`] && lang === "en" ? post[`${field}_en`] : post[field];
 
   const displayTitle = pick("title");
   const displayContent = pick("content");
   // Use excerpt as meta description — fallback to first 160 chars of title if no excerpt
-  const displayExcerpt = pick("excerpt") || `${displayTitle} - Blog de viajes de SaltySoulTrips.`;
+  const displayExcerpt =
+    pick("excerpt") || `${displayTitle} - Blog de viajes de SaltySoulTrips.`;
 
   // SEO Fields
   const seoTitle = pick("seoTitle") || `${displayTitle} | Blog SaltySoulTrips`;
@@ -132,9 +149,13 @@ export default function BlogPost() {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: displayTitle,
-    image: [post.coverImage ? urlFor(post.coverImage).url() : ""],
+    image: [
+      post.coverImage
+        ? urlFor(post.coverImage).width(1200).auto("format").url()
+        : "",
+    ],
     datePublished: post.date,
-    dateModified: post.updatedAt || post.date,
+    dateModified: post._updatedAt || post.date,
     author: [
       {
         "@type": "Person",
@@ -158,17 +179,25 @@ export default function BlogPost() {
       <SEOHead
         title={seoTitle}
         description={seoDesc}
-        canonicalUrl={`https://www.saltysoultrips.com/blog/${lang === 'en' && post.slug_en ? post.slug_en.current : post.slug.current}`}
+        canonicalUrl={`https://www.saltysoultrips.com${postPath(post, lang)}`}
         esUrl={`https://www.saltysoultrips.com/blog/${post.slug.current}`}
-        enUrl={`https://www.saltysoultrips.com/blog/${post.slug_en ? post.slug_en.current : post.slug.current}`}
-        ogImage={post.coverImage ? urlFor(post.coverImage).url() : ""}
+        enUrl={
+          hasEnglishPost(post)
+            ? `https://www.saltysoultrips.com${postPath(post, "en")}`
+            : undefined
+        }
+        ogImage={
+          post.coverImage
+            ? urlFor(post.coverImage).width(1200).auto("format").url()
+            : ""
+        }
         schemaData={articleSchema}
       />
 
       <article className="pt-24 pb-16 min-h-screen bg-stone-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <Link
-            to="/blog"
+            to={lang === "en" ? "/en/blog" : "/blog"}
             className="inline-flex items-center text-stone-500 hover:text-brand-sage transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -177,7 +206,11 @@ export default function BlogPost() {
 
           <div className="relative rounded-3xl overflow-hidden aspect-video shadow-lg mb-8">
             <img
-              src={post.coverImage ? urlFor(post.coverImage).url() : ""}
+              src={
+                post.coverImage
+                  ? urlFor(post.coverImage).width(1200).auto("format").url()
+                  : ""
+              }
               alt={coverAlt}
               className="w-full h-full object-cover"
             />
@@ -196,6 +229,11 @@ export default function BlogPost() {
               )}
             </div>
 
+            <p className="text-sm text-stone-500 mb-4">
+              {lang === "en"
+                ? "By Ángela · SaltySoulTrips"
+                : "Por Ángela · SaltySoulTrips"}
+            </p>
             <h1 className="text-3xl md:text-5xl font-display font-bold text-brand-sage mb-8 leading-tight">
               {displayTitle}
             </h1>
@@ -203,6 +241,28 @@ export default function BlogPost() {
             <div className="prose-custom font-serif text-lg">
               <PortableText value={displayContent} components={components} />
             </div>
+            <aside className="mt-10 border-t border-sand-200 pt-8">
+              <h2 className="text-2xl font-serif mb-3">
+                {lang === "en"
+                  ? "Shall we plan your trip?"
+                  : "¿Organizamos tu viaje?"}
+              </h2>
+              <p className="mb-4">
+                {lang === "en"
+                  ? "Tell us your dates and budget. We will prepare a proposal and manage the agreed bookings."
+                  : "Cuéntanos tus fechas y presupuesto. Preparamos una propuesta y gestionamos las reservas acordadas."}
+              </p>
+              <div className="flex flex-wrap gap-6 underline">
+                <Link to={lang === "en" ? "/packages" : "/paquetes"}>
+                  {lang === "en" ? "Explore our trips" : "Ver nuestros viajes"}
+                </Link>
+                <Link to={lang === "en" ? "/contact" : "/contacto"}>
+                  {lang === "en"
+                    ? "Request a proposal"
+                    : "Solicitar una propuesta"}
+                </Link>
+              </div>
+            </aside>
           </div>
         </div>
       </article>

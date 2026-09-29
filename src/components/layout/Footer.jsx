@@ -51,8 +51,13 @@ export default function Footer() {
     fetchFooterPackages();
   }, []);
 
-  const isEn = i18n.language === 'en';
-  
+  React.useEffect(() => {
+    const open = () => setActiveModal("privacy");
+    window.addEventListener("open-privacy-policy", open);
+    return () => window.removeEventListener("open-privacy-policy", open);
+  }, []);
+  const isEn = i18n.language === "en";
+
   const legalContent = {
     terms: isEn ? <TermsEN /> : <TermsES />,
     privacy: isEn ? <PrivacyEN /> : <PrivacyES />,
@@ -104,7 +109,7 @@ export default function Footer() {
                   {footerPackages.map((pkg) => (
                     <li key={pkg.id}>
                       <Link
-                        to={`/${isEn ? 'packages' : 'paquetes'}/${pkg.id}`}
+                        to={`/${isEn ? "packages" : "paquetes"}/${pkg.id}`}
                         className="hover:text-sand-600 transition-colors"
                       >
                         {isEn && pkg.title_en ? pkg.title_en : pkg.title}
@@ -144,7 +149,7 @@ export default function Footer() {
                 <a
                   href="https://holafly.sjv.io/YROPnq"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -159,7 +164,7 @@ export default function Footer() {
                 <a
                   href="https://heymondo.es/?utm_medium=Afiliado&utm_source=SALTYSOULTRIPS&utm_campaign=PRINCIPAL&cod_descuento=SALTYSOULTRIPS&ag_campaign=WEB&agencia=ABWmUCzTeUoAOchm5JnRMQLaoEQzCpUNGrl5Ty4s"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -189,7 +194,7 @@ export default function Footer() {
                 <a
                   href="https://static.airhelp.com/affiliate/affiliate_form_es_air21965.html?utm_source=pap&utm_medium=affiliate&utm_campaign=aff-6952a80eaa308&a_aid=6952a80eaa308&a_bid=588e3a14&partner_id=6952a80eaa308"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -204,7 +209,7 @@ export default function Footer() {
                 <a
                   href="https://www.tkqlhce.com/click-101693924-12119568"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -219,7 +224,7 @@ export default function Footer() {
                 <a
                   href="https://www.discovercars.com/?a_aid=saltysoultrips"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -234,7 +239,7 @@ export default function Footer() {
                 <a
                   href="https://www.agoda.com/partners/partnersearch.aspx?pcs=10&cid=1966059&hid=567167"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -290,13 +295,6 @@ export default function Footer() {
                     width="120"
                     height="40"
                   />
-                  {/* Tracking Pixel */}
-                  <img 
-                    src="https://www.awin1.com/cshow.php?s=4784603&v=126733&q=605539&r=2815824" 
-                    className="hidden" 
-                    alt="" 
-                    aria-hidden="true" 
-                  />
                 </a>
               </div>
             </div>
@@ -306,7 +304,14 @@ export default function Footer() {
             <p>
               &copy; {new Date().getFullYear()} {t("footer.rights")}
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
+              <button
+                onClick={() =>
+                  window.dispatchEvent(new Event("open-cookie-settings"))
+                }
+              >
+                {isEn ? "Cookie settings" : "Configurar cookies"}
+              </button>
               <button
                 onClick={() => setActiveModal("privacy")}
                 className="hover:text-brand-dark transition-colors"

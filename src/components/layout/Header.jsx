@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { translatedPath } from "../../lib/routes";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import X from "lucide-react/dist/esm/icons/x";
 import Globe from "lucide-react/dist/esm/icons/globe";
@@ -21,13 +22,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isEn = i18n.language === 'en';
+  const isEn = i18n.language === "en";
 
   const navLinks = [
     { name: t("header.nav.paquetes"), href: isEn ? "/packages" : "/paquetes" },
-    { name: t("header.nav.experiencias"), href: isEn ? "/experiences" : "/experiencias" },
-    { name: t("header.nav.descuentos"), href: isEn ? "/discounts" : "/descuentos" },
-    { name: t("header.nav.blog"), href: "/blog" },
+    {
+      name: t("header.nav.experiencias"),
+      href: isEn ? "/experiences" : "/experiencias",
+    },
+    {
+      name: t("header.nav.descuentos"),
+      href: isEn ? "/discounts" : "/descuentos",
+    },
+    { name: t("header.nav.blog"), href: isEn ? "/en/blog" : "/blog" },
     { name: t("header.nav.contacto"), href: isEn ? "/contact" : "/contacto" },
   ];
 
@@ -38,13 +45,14 @@ export default function Header() {
     if (href.startsWith("/#")) {
       const targetId = href.replace("/#", "");
       if (location.pathname !== "/") {
-        navigate("/");
+        navigate(isEn ? "/en" : "/");
         setTimeout(() => {
           const element = document.getElementById(targetId);
           if (element) {
             const headerOffset = 85;
             const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            const offsetPosition =
+              elementPosition + window.scrollY - headerOffset;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
           }
         }, 500);
@@ -53,7 +61,8 @@ export default function Header() {
         if (element) {
           const headerOffset = 85;
           const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          const offsetPosition =
+            elementPosition + window.scrollY - headerOffset;
           window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       }
@@ -64,36 +73,12 @@ export default function Header() {
   };
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'es' ? 'en' : 'es';
-    i18n.changeLanguage(newLang);
-
-    // Auto-redirect to the translated URL path for static pages
-    const currentPath = location.pathname;
-    
-    const esToEn = {
-      '/paquetes': '/packages',
-      '/servicios': '/services',
-      '/experiencias': '/experiences',
-      '/descuentos': '/discounts',
-      '/contacto': '/contact'
-    };
-    
-    const enToEs = {
-      '/packages': '/paquetes',
-      '/services': '/servicios',
-      '/experiences': '/experiencias',
-      '/discounts': '/descuentos',
-      '/contact': '/contacto'
-    };
-    
-    if (newLang === 'en' && esToEn[currentPath]) {
-      navigate(esToEn[currentPath], { replace: true });
-    } else if (newLang === 'es' && enToEs[currentPath]) {
-      navigate(enToEs[currentPath], { replace: true });
-    }
+    const newLang = i18n.language === "es" ? "en" : "es";
+    navigate(translatedPath(location.pathname, newLang));
+    setIsOpen(false);
   };
 
-  const isHome = location.pathname === "/";
+  const isHome = ["/", "/en"].includes(location.pathname);
   const isTransparent = isHome && !isScrolled;
 
   const headerBgClass = isTransparent
@@ -109,10 +94,15 @@ export default function Header() {
     : "filter drop-shadow-sm sepia-[.2] hue-rotate-[-10deg]";
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${headerBgClass}`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${headerBgClass}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate("/")}>
+          <div
+            className="flex-shrink-0 flex items-center cursor-pointer"
+            onClick={() => navigate(isEn ? "/en" : "/")}
+          >
             <img
               src="/resto/logoHorizontal.png"
               alt="SaltySoulTrips"
@@ -132,7 +122,7 @@ export default function Header() {
                 {link.name}
               </a>
             ))}
-            
+
             {/* Desktop Language Switcher */}
             <button
               onClick={toggleLanguage}
@@ -140,7 +130,9 @@ export default function Header() {
               aria-label="Change language"
             >
               <Globe size={16} />
-              <span className="text-sm font-bold">{t("header.langSwitcher")}</span>
+              <span className="text-sm font-bold">
+                {t("header.langSwitcher")}
+              </span>
             </button>
           </div>
 
@@ -152,7 +144,9 @@ export default function Header() {
               aria-label="Change language"
             >
               <Globe size={20} />
-              <span className="text-sm font-bold">{t("header.langSwitcher")}</span>
+              <span className="text-sm font-bold">
+                {t("header.langSwitcher")}
+              </span>
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -187,7 +181,9 @@ export default function Header() {
               ))}
               <a
                 href={isEn ? "/contact" : "/contacto"}
-                onClick={(e) => handleNavigation(e, isEn ? "/contact" : "/contacto")}
+                onClick={(e) =>
+                  handleNavigation(e, isEn ? "/contact" : "/contacto")
+                }
                 className="block mt-6 text-center bg-brand-dark text-sand-100 px-3 py-4 rounded-xl font-medium shadow-md active:scale-95 transition-transform"
               >
                 {t("header.empiezaViaje")}

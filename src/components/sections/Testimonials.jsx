@@ -132,14 +132,16 @@ export default function Testimonials() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(circle at center, rgba(141, 201, 219, 0.4) 0%, transparent 70%)",
+            backgroundImage:
+              "radial-gradient(circle at center, rgba(141, 201, 219, 0.4) 0%, transparent 70%)",
             opacity: 0.6,
           }}
         />
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(circle at top right, rgba(186, 230, 253, 0.5), transparent 70%)",
+            backgroundImage:
+              "radial-gradient(circle at top right, rgba(186, 230, 253, 0.5), transparent 70%)",
             filter: "blur(80px)",
           }}
         />
@@ -148,25 +150,21 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
-            {t('testimonials.label')}
+            {t("testimonials.label")}
           </span>
-          <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
-            {t('testimonials.title')}
-          </h2>
+          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
+            {t("testimonials.title")}
+          </h1>
           <p className="text-stone-600 max-w-2xl mx-auto">
-            {t('testimonials.subtitle')}
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
         {/* Masonry Grid Layout */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {experiences.map((experience, index) => (
-            <div
-              key={index}
-              className="break-inside-avoid inline-block w-full"
-            >
+            <div key={index} className="break-inside-avoid inline-block w-full">
               <div className="bg-white/80 backdrop-blur-md rounded-[2rem] border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 overflow-hidden relative group">
-                
                 {/* Decorative Giant Quote Mark */}
                 <div className="absolute top-4 right-6 text-9xl text-brand-sky/10 font-serif leading-none select-none z-0">
                   «

@@ -1,262 +1,125 @@
+import { publicCmsResponse } from "./cms-render-data.mjs";
 import puppeteer from "puppeteer";
 import chromium from "@sparticuz/chromium";
-import { createServer } from "http";
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { createClient } from "@sanity/client";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const DIST_DIR = join(__dirname, "../dist");
-
-// Sanity client for fetching destination slugs
-const sanityClient = createClient({
-  projectId: "wzn5s2a9",
-  dataset: "production",
-  useCdn: true,
-  apiVersion: "2024-02-18",
-});
-
-// Simple static file server for the dist directory
-function startServer(port) {
-  return new Promise((resolve) => {
-    const mimeTypes = {
-      ".html": "text/html",
-      ".js": "application/javascript",
-      ".css": "text/css",
-      ".json": "application/json",
-      ".png": "image/png",
-      ".jpg": "image/jpeg",
-      ".svg": "image/svg+xml",
-      ".woff2": "font/woff2",
-      ".woff": "font/woff",
-      ".webmanifest": "application/manifest+json",
-    };
-
-    const server = createServer((req, res) => {
-      let filePath = join(DIST_DIR, req.url === "/" ? "/index.html" : req.url);
-      const ext = filePath.match(/\.[^.]+$/)?.[0] || "";
-
-      // For SPA: if file doesn't exist and no extension, serve index.html
-      if (!existsSync(filePath) || (!ext && !existsSync(filePath))) {
-        filePath = join(DIST_DIR, "index.html");
-      }
-
-      try {
-        const content = readFileSync(filePath);
-        const contentType = mimeTypes[ext] || "text/html";
-        res.writeHead(200, { "Content-Type": contentType });
-        res.end(content);
-      } catch {
-        // Fallback to index.html for SPA routing
-        try {
-          const content = readFileSync(join(DIST_DIR, "index.html"));
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.end(content);
-        } catch {
-          res.writeHead(404);
-          res.end("Not Found");
-        }
-      }
-    });
-
-    server.listen(port, () => {
-      console.log(`📡 Preview server running on http://localhost:${port}`);
-      resolve(server);
-    });
-  });
-}
-
-async function getRoutes() {
-  const routes = ["/", "/blog"];
-
-  // Fetch slugs from Sanity
-  try {
-    console.log("🔌 Fetching slugs from Sanity...");
-    
-    // Packages
-    const packageQuery = '*[_type == "package"]{ "slug": slug.current }';
-    const packages = await sanityClient.fetch(packageQuery);
-    console.log(`✅ Found ${packages.length} packages`);
-
-    for (const pkg of packages) {
-      if (pkg.slug) {
-        routes.push(`/paquetes/${pkg.slug}`);
-        routes.push(`/packages/${pkg.slug}`);
-      }
-    }
-
-    // Blog Posts
-    const postQuery = '*[_type == "post"]{ "slug": slug.current }';
-    const posts = await sanityClient.fetch(postQuery);
-    console.log(`✅ Found ${posts.length} blog posts`);
-
-    for (const post of posts) {
-      if (post.slug) {
-        routes.push(`/blog/${post.slug}`);
-      }
-    }
-  } catch (error) {
-    console.error("❌ Error fetching from Sanity:", error.message);
+import { createServer } from "node:http";
+import fs from "node:fs";
+import path from "node:path";
+const dist = path.resolve("dist");
+const shell = fs.readFileSync(path.join(dist, "index.html"));
+const { routes, base } = JSON.parse(
+  fs.readFileSync(".cache/seo-routes.json", "utf8"),
+);
+const mime = {
+  ".js": "application/javascript",
+  ".css": "text/css",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".webmanifest": "application/manifest+json",
+};
+const server = createServer((req, res) => {
+  const pathname = decodeURIComponent(
+    new URL(req.url, "http://localhost").pathname,
+  );
+  const file = path.resolve(dist, "." + pathname);
+  if (!file.startsWith(dist + path.sep) && file !== dist) {
+    res.writeHead(403);
+    return res.end();
   }
-
-  return routes;
-}
-
-async function prerender() {
-  console.log("🚀 Starting pre-rendering...\n");
-
-  // 1. Start local server
-  const PORT = 4173;
-  const server = await startServer(PORT);
-
-  // 2. Launch Puppeteer
-  let browser;
-  if (process.env.VERCEL) {
-    console.log("☁️  Using Sparticuz Chromium for Vercel environment...");
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
+  if (fs.existsSync(file) && fs.statSync(file).isFile()) {
+    res.writeHead(200, {
+      "Content-Type": mime[path.extname(file)] || "text/html",
     });
+    res.end(fs.readFileSync(file));
   } else {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-web-security",
-        "--disable-features=IsolateOrigins,site-per-process",
-      ],
-    });
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(shell);
   }
-
-  // 3. Get all routes to pre-render
-  const routes = await getRoutes();
-  console.log(`\n📋 Pre-rendering ${routes.length} routes:\n`);
-
-  let success = 0;
-  let failed = 0;
-
-  for (const route of routes) {
+});
+await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+let browser;
+try {
+  browser = await puppeteer.launch(
+    process.env.VERCEL
+      ? {
+          args: chromium.args,
+          executablePath: await chromium.executablePath(),
+          headless: true,
+        }
+      : { headless: true },
+  );
+  for (const route of process.env.PRERENDER_ROUTES
+    ? process.env.PRERENDER_ROUTES.split(",")
+    : [...routes, "/404"]) {
     const page = await browser.newPage();
-    const url = `http://localhost:${PORT}${route}`;
-
-    // Capture browser console errors for debugging
-    const consoleErrors = [];
-    page.on("console", (msg) => {
-      if (msg.type() === "error") {
-        consoleErrors.push(msg.text());
-      }
-    });
-    page.on("requestfailed", (req) => {
-      consoleErrors.push(
-        `REQUEST FAILED: ${req.url()} - ${req.failure()?.errorText}`,
-      );
-    });
-
     try {
-      // Navigate and wait for React to render
-      await page.goto(url, {
-        waitUntil: "networkidle0",
-        timeout: 30000,
+      const cmsErrors = [];
+      await page.setRequestInterception(true);
+      page.on("request", async (req) => {
+        try {
+          const data = await publicCmsResponse(req.url());
+          if (data) await req.respond(data);
+          else await req.continue();
+        } catch (error) {
+          cmsErrors.push(error.message);
+          await req.abort();
+        }
       });
-
-      // Wait for actual meaningful content to render
-      // This is critical for destination pages that fetch from Sanity
-      await page.waitForFunction(
-        (isHome) => {
-          const root = document.querySelector("#root");
-          if (isHome) {
-            // For homepage, check if the main logo or footer is rendered
-            return root?.querySelector("img[alt='Saltysoultrips']") || root?.querySelector("footer");
-          }
-          const h1 = root?.querySelector("h1");
-          return h1 && h1.textContent.trim().length > 0;
-        },
-        { timeout: 15000 },
-        route === "/"
+      page.on("pageerror", (error) =>
+        console.error(`${route}: ${error.message}`),
       );
-
-      // Wait for react-helmet-async to update the <head> meta tags
-      await page
-        .waitForFunction(
-          (defaultTitle) => {
-            const title = document.title;
-            // For the homepage, the default title IS the correct title
-            if (window.location.pathname === "/") return true;
-            // For other pages, wait until title changes from default
-            return title !== defaultTitle;
-          },
-          { timeout: 10000 },
-          "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos",
-        )
-        .catch(() => {
-          // If title doesn't change in time, continue anyway (content is still pre-rendered)
-          console.log(`     ⚠️  Title may not have updated for ${route}`);
-        });
-
-      // Small extra delay for any remaining async updates
-      await new Promise((r) => setTimeout(r, 800));
-
-      // Get the full rendered HTML
+      page.on("console", (msg) => {
+        if (msg.type() === "error") console.error(route, msg.text());
+      });
+      await page.evaluateOnNewDocument(() => {
+        window.__PRERENDER__ = true;
+      });
+      await page.goto(`http://127.0.0.1:${server.address().port}${route}`, {
+        waitUntil: "networkidle0",
+        timeout: 45000,
+      });
+      await page.waitForFunction(
+        (expected) =>
+          document.querySelector('link[rel="canonical"]')?.href === expected &&
+          document.querySelector("#root h1") &&
+          !document.querySelector('[data-loading="true"]'),
+        { timeout: 20000 },
+        base + route,
+      );
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += 700) {
+          window.scrollTo(0, y);
+          await new Promise((r) => setTimeout(r, 35));
+        }
+        window.scrollTo(0, 0);
+      });
+      await new Promise((r) => setTimeout(r, 400));
+      if (cmsErrors.length) throw new Error(cmsErrors.join("; "));
       const html = await page.content();
-
-      // Determine the output file path
-      let outputPath;
-      if (route === "/") {
-        outputPath = join(DIST_DIR, "index.html");
-      } else {
-        outputPath = join(DIST_DIR, route, "index.html");
-      }
-
-      // Create directory if it doesn't exist
-      const dir = dirname(outputPath);
-      if (!existsSync(dir)) {
-        mkdirSync(dir, { recursive: true });
-      }
-
-      // Write the pre-rendered HTML
-      writeFileSync(outputPath, html);
-
-      // Verify the title was set correctly
-      const title = await page.title();
-      console.log(`  ✅ ${route}`);
-      console.log(`     → title: "${title}"`);
-      if (consoleErrors.length > 0) {
-        console.log(`     ⚠️  Console errors:`);
-        consoleErrors.forEach((e) => console.log(`        - ${e}`));
-      }
-      success++;
+      const file =
+        route === "/404"
+          ? path.join(dist, "404.html")
+          : path.join(dist, route, "index.html");
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      fs.writeFileSync(file, html);
+      console.log(`Rendered ${route}`);
     } catch (error) {
-      console.error(`  ❌ ${route} — ${error.message}`);
-      failed++;
+      console.error(
+        "Failed route:",
+        route,
+        await page.evaluate(() => ({
+          url: location.href,
+          title: document.title,
+          canonical: document.querySelector("link[rel=canonical]")?.href,
+          text: document.querySelector("#root")?.innerText.slice(0, 400),
+        })),
+      );
+      throw error;
     } finally {
       await page.close();
     }
   }
-
-  // 4. Cleanup
-  await browser.close();
-  server.close();
-
-  console.log(`\n${"=".repeat(50)}`);
-  console.log(`📊 Pre-rendering complete!`);
-  console.log(`   ✅ Success: ${success}/${routes.length}`);
-  if (failed > 0) {
-    console.log(`   ❌ Failed:  ${failed}/${routes.length}`);
-  }
-  console.log(`${"=".repeat(50)}\n`);
-
-  if (failed > 0) {
-    process.exit(1);
-  }
+} finally {
+  await browser?.close();
+  await new Promise((resolve) => server.close(resolve));
 }
-
-prerender().catch((error) => {
-  console.error("❌ Pre-rendering failed:", error);
-  process.exit(1);
-});

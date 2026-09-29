@@ -1,23 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, X, Send } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
-export default function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function ChatWidget({ initiallyOpen = false }) {
+  const [isOpen, setIsOpen] = useState(initiallyOpen);
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const messagesEndRef = useRef(null);
   const location = useLocation();
 
-  const isPackagePage = location.pathname.includes('/paquetes/') || location.pathname.includes('/packages/');
-  const fabBottomClass = isPackagePage ? 'bottom-28' : 'bottom-6';
+  const isPackagePage =
+    location.pathname.includes("/paquetes/") ||
+    location.pathname.includes("/packages/");
+  const fabBottomClass = isPackagePage ? "bottom-28" : "bottom-6";
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -27,20 +29,24 @@ export default function ChatWidget() {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!input || !input.trim()) return;
-    
-    const userMessage = { id: Date.now().toString(), role: 'user', content: input };
+
+    const userMessage = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    };
     const newMessages = [...messages, userMessage];
-    
+
     setMessages(newMessages);
-    setInput('');
+    setInput("");
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages })
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: newMessages }),
       });
 
       if (!response.ok) {
@@ -48,14 +54,20 @@ export default function ChatWidget() {
       }
 
       const text = await response.text();
-      
-      setMessages([...newMessages, { 
-        id: (Date.now() + 1).toString(), 
-        role: 'assistant', 
-        content: text.replace(/^0:"/, '').replace(/"$/,'').replace(/\\n/g, '\n')
-      }]);
+
+      setMessages([
+        ...newMessages,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: text
+            .replace(/^0:"/, "")
+            .replace(/"$/, "")
+            .replace(/\\n/g, "\n"),
+        },
+      ]);
     } catch (err) {
-      console.error('Chat error:', err);
+      console.error("Chat error:", err);
       setError(err);
     } finally {
       setIsLoading(false);
@@ -67,25 +79,25 @@ export default function ChatWidget() {
   // Bloquea el scroll del body cuando el chat está abierto en móvil para evitar que la pantalla salte
   useEffect(() => {
     if (isOpen && window.innerWidth < 640) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
       document.body.style.top = `-${window.scrollY}px`;
     } else {
       const scrollY = document.body.style.top;
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
       if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
       }
     }
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
     };
   }, [isOpen]);
 
@@ -111,7 +123,7 @@ export default function ChatWidget() {
                   <p className="text-xs text-[#FAF7F2]">Responde al instante</p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 hover:bg-white/20 rounded-full transition-colors"
                 aria-label="Cerrar chat"
@@ -124,39 +136,46 @@ export default function ChatWidget() {
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAF7F2] relative scroll-smooth overscroll-contain">
               <div className="flex justify-start">
                 <div className="max-w-[85%] p-3.5 rounded-2xl text-sm shadow-sm bg-white border border-[#E8DCC4] text-gray-800 rounded-tl-sm leading-relaxed">
-                  ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo ayudar hoy? ¿Buscas algún destino en concreto?
+                  ¡Hola! Soy tu asistente de SaltySoulTrips 🌊. ¿En qué te puedo
+                  ayudar hoy? ¿Buscas algún destino en concreto?
                 </div>
               </div>
-              
+
               {messages.map((m) => (
                 <div
                   key={m.id}
-                  className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
                     className={`max-w-[85%] p-3.5 rounded-2xl text-sm shadow-sm whitespace-pre-wrap leading-relaxed ${
-                      m.role === 'user'
-                        ? 'bg-[#E8DCC4] text-gray-900 rounded-tr-sm'
-                        : 'bg-white border border-[#E8DCC4] text-gray-800 rounded-tl-sm'
+                      m.role === "user"
+                        ? "bg-[#E8DCC4] text-gray-900 rounded-tr-sm"
+                        : "bg-white border border-[#E8DCC4] text-gray-800 rounded-tl-sm"
                     }`}
                   >
                     {m.content}
                   </div>
                 </div>
               ))}
-              
+
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-white border border-[#E8DCC4] p-4 rounded-2xl rounded-tl-sm shadow-sm">
                     <span className="flex gap-1.5">
                       <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce"></span>
-                      <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
-                      <span className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
+                      <span
+                        className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      ></span>
+                      <span
+                        className="w-2 h-2 bg-[#D4C3A3] rounded-full animate-bounce"
+                        style={{ animationDelay: "0.4s" }}
+                      ></span>
                     </span>
                   </div>
                 </div>
               )}
-              
+
               {error && (
                 <div className="text-red-500 text-xs text-center p-2 bg-red-50 rounded-lg">
                   Error: {error.message}
@@ -166,7 +185,10 @@ export default function ChatWidget() {
             </div>
 
             {/* Input Form */}
-            <form onSubmit={onSubmit} className="p-3 bg-white border-t border-[#E8DCC4] flex gap-2 items-center pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10 shrink-0">
+            <form
+              onSubmit={onSubmit}
+              className="p-3 bg-white border-t border-[#E8DCC4] flex gap-2 items-center pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10 shrink-0"
+            >
               <input
                 className="flex-1 px-5 py-3.5 sm:py-2.5 bg-[#FAF7F2] focus:bg-white border border-transparent focus:border-[#D4C3A3] rounded-full text-base sm:text-sm outline-none transition-all placeholder:text-gray-400"
                 value={input}

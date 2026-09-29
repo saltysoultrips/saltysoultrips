@@ -1,8 +1,37 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",
+      "dest": "/410.html",
+      "status": 410,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "src": "^/blog/is-travel-insurance-worth-it-10-reasons-why-you-should-never-travel-without-it/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el"
+      }
+    },
+    {
+      "src": "^/blog/things-to-do-in-sardinia-best-activities-excursions/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/que-hacer-en-cerdena-mejores-actividades-excursiones"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/404.html",
+      "status": 404,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
     }
   ]
 }

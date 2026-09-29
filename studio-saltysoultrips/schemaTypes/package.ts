@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export const packageSchema = defineType({
   name: 'package',
@@ -8,10 +8,29 @@ export const packageSchema = defineType({
     {
       name: 'seo',
       title: 'SEO & Metadata',
-      options: { collapsible: true, collapsed: false }
-    }
+      options: {collapsible: true, collapsed: false},
+    },
   ],
   fields: [
+    defineField({
+      name: 'priceAmount',
+      title: 'Precio numérico (EUR)',
+      type: 'number',
+      description:
+        'Sin separador de miles. Ejemplo: 1847.50. Debe coincidir con el precio visible.',
+      validation: (Rule) => Rule.positive(),
+    }),
+    defineField({
+      name: 'priceBasis',
+      title: 'Base del precio',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Por persona', value: 'person'},
+          {title: 'Por grupo', value: 'group'},
+        ],
+      },
+    }),
     defineField({
       name: 'title',
       title: 'Title (ES)',
@@ -40,11 +59,11 @@ export const packageSchema = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Europa', value: 'europa' },
-          { title: 'América', value: 'america' },
-          { title: 'Asia', value: 'asia' },
-          { title: 'África', value: 'africa' },
-          { title: 'Oceanía', value: 'oceania' },
+          {title: 'Europa', value: 'europa'},
+          {title: 'América', value: 'america'},
+          {title: 'Asia', value: 'asia'},
+          {title: 'África', value: 'africa'},
+          {title: 'Oceanía', value: 'oceania'},
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -53,17 +72,17 @@ export const packageSchema = defineType({
       name: 'type',
       title: 'Type',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
       options: {
         list: [
-          { title: 'Verano', value: 'verano' },
-          { title: 'Invierno', value: 'invierno' },
-          { title: 'Aventura', value: 'aventura' },
-          { title: 'Relax', value: 'relax' },
-          { title: 'Luna de Miel', value: 'luna-de-miel' },
-          { title: 'Cultural', value: 'cultural' },
-          { title: 'Familia', value: 'familia' },
-          { title: 'Parques Temáticos', value: 'parques' },
+          {title: 'Verano', value: 'verano'},
+          {title: 'Invierno', value: 'invierno'},
+          {title: 'Aventura', value: 'aventura'},
+          {title: 'Relax', value: 'relax'},
+          {title: 'Luna de Miel', value: 'luna-de-miel'},
+          {title: 'Cultural', value: 'cultural'},
+          {title: 'Familia', value: 'familia'},
+          {title: 'Parques Temáticos', value: 'parques'},
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -117,7 +136,7 @@ export const packageSchema = defineType({
           type: 'string',
           title: 'Alternative Text (SEO)',
           description: 'Important for SEO and accessibility (e.g. "Pareja en Maldivas").',
-        }
+        },
       ],
       validation: (Rule) => Rule.required(),
     }),
@@ -133,8 +152,8 @@ export const packageSchema = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text (SEO)',
-        }
-      ]
+        },
+      ],
     }),
     defineField({
       name: 'seoTitle',

@@ -5,12 +5,15 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import "./index.css";
 import "./i18n";
+import RouteLanguage from "./components/RouteLanguage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        <RouteLanguage>
+          <App />
+        </RouteLanguage>
       </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>,

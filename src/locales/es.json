@@ -101,8 +101,8 @@
     "disclaimer": "* Este pack es opcional y se añade al servicio de gestión integral de tu viaje."
   },
   "hero": {
-    "title": "Descubre el mundo",
-    "titleItalic": "a tu manera",
+    "title": "Viajes a medida",
+    "titleItalic": "pensados para ti",
     "subtitle": "Gestionamos tu viaje de principio a fin — vuelos, hotel y actividades — para que tú solo tengas que disfrutar.",
     "startTrip": "Empezar viaje",
     "seeExperiences": "Ver Experiencias"
@@ -111,11 +111,11 @@
     "label": "Nuestra Filosofía",
     "title": "Viajar con propósito,",
     "titleItalic": "viajar con alma.",
-    "description": "En SaltySoulTrips creemos que un viaje no es solo un destino, es una experiencia que transforma. Te organizamos viajes gestionados al completo, con el mejor precio y sin que tengas que preocuparte por nada.",
+    "description": "En SaltySoulTrips diseñamos tu viaje según tus fechas, presupuesto e intereses. Gestionamos las reservas acordadas para que puedas centrarte en disfrutar.",
     "point1": "Nosotros gestionamos vuelos, hotel y actividades",
-    "point2": "Precio cerrado, sin sorpresas",
+    "point2": "Propuesta clara antes de reservar",
     "point3": "Tú solo tienes que hacer las maletas",
-    "tagline": "SIN FILTROS, SIN COMISIONES",
+    "tagline": "ATENCIÓN PERSONAL EN CADA PASO",
     "taglineText1": "Gestionamos cada detalle de tu viaje para que tú solo te preocupes de disfrutarlo.",
     "taglineText2": "Queremos que vuelvas porque confías en nuestro conocimiento, nuestra dedicación y el trato personalizado.",
     "taglineText3": "",
@@ -306,16 +306,16 @@
   },
   "seo": {
     "home": {
-      "title": "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos",
-      "description": "Diseñamos tu viaje personalizado 100% a medida. Japón, Maldivas, Tanzania, Tailandia y cualquier destino del mundo. Itinerarios únicos sin comisiones ocultas. 5 estrellas."
+      "title": "Viajes a medida y gestión de reservas | SaltySoulTrips",
+      "description": "Diseñamos tu viaje a medida y gestionamos vuelos, alojamientos y actividades. Cuéntanos tus fechas y presupuesto y solicita tu propuesta personalizada."
     },
     "packages": {
       "title": "Paquetes de Viaje | SaltySoulTrips",
       "description": "Explora todos nuestros paquetes de viaje y empieza a diseñar tu viaje a medida."
     },
     "services": {
-      "title": "Packs y Servicios de Viaje a Medida | SaltySoulTrips",
-      "description": "Descubre nuestros packs de diseño de viajes personalizados. Desde itinerarios esenciales hasta planificación completa. Precios transparentes y sin comisiones ocultas."
+      "title": "Organización de viajes y reservas | SaltySoulTrips",
+      "description": "Diseñamos tu viaje y gestionamos las reservas acordadas. Descubre cómo trabajamos y nuestro pack de orientación opcional."
     },
     "howItWorks": {
       "title": "Cómo Funciona | Diseño de Viajes a Medida | SaltySoulTrips",

@@ -11,7 +11,9 @@
     "prebuild": "node scripts/generate-sitemap.js",
     "build": "vite build",
     "postbuild": "node scripts/prerender.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:seo": "node scripts/test-seo.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^149.0.0",

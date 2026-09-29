@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
+import { trackEvent } from "../../lib/analytics";
 import Send from "lucide-react/dist/esm/icons/send";
 import CheckCircle from "lucide-react/dist/esm/icons/check-circle";
 import Calendar from "lucide-react/dist/esm/icons/calendar";
@@ -16,9 +18,80 @@ import Minus from "lucide-react/dist/esm/icons/minus";
 import PawPrint from "lucide-react/dist/esm/icons/paw-print";
 import { motion, AnimatePresence } from "framer-motion";
 
+const COUNTRY_CODES = [
+  { code: "+93", flag: "🇦🇫", name: "Afganistán" },
+  { code: "+355", flag: "🇦🇱", name: "Albania" },
+  { code: "+49", flag: "🇩🇪", name: "Alemania" },
+  { code: "+376", flag: "🇦🇩", name: "Andorra" },
+  { code: "+54", flag: "🇦🇷", name: "Argentina" },
+  { code: "+61", flag: "🇦🇺", name: "Australia" },
+  { code: "+43", flag: "🇦🇹", name: "Austria" },
+  { code: "+32", flag: "🇧🇪", name: "Bélgica" },
+  { code: "+591", flag: "🇧🇴", name: "Bolivia" },
+  { code: "+55", flag: "🇧🇷", name: "Brasil" },
+  { code: "+359", flag: "🇧🇬", name: "Bulgaria" },
+  { code: "+1", flag: "🇨🇦", name: "Canadá" },
+  { code: "+56", flag: "🇨🇱", name: "Chile" },
+  { code: "+86", flag: "🇨🇳", name: "China" },
+  { code: "+57", flag: "🇨🇴", name: "Colombia" },
+  { code: "+506", flag: "🇨🇷", name: "Costa Rica" },
+  { code: "+385", flag: "🇭🇷", name: "Croacia" },
+  { code: "+53", flag: "🇨🇺", name: "Cuba" },
+  { code: "+45", flag: "🇩🇰", name: "Dinamarca" },
+  { code: "+593", flag: "🇪🇨", name: "Ecuador" },
+  { code: "+20", flag: "🇪🇬", name: "Egipto" },
+  { code: "+503", flag: "🇸🇻", name: "El Salvador" },
+  { code: "+971", flag: "🇦🇪", name: "Emiratos Árabes Unidos" },
+  { code: "+421", flag: "🇸🇰", name: "Eslovaquia" },
+  { code: "+386", flag: "🇸🇮", name: "Eslovenia" },
+  { code: "+34", flag: "🇪🇸", name: "España" },
+  { code: "+1", flag: "🇺🇸", name: "Estados Unidos" },
+  { code: "+372", flag: "🇪🇪", name: "Estonia" },
+  { code: "+63", flag: "🇵🇭", name: "Filipinas" },
+  { code: "+358", flag: "🇫🇮", name: "Finlandia" },
+  { code: "+33", flag: "🇫🇷", name: "Francia" },
+  { code: "+30", flag: "🇬🇷", name: "Grecia" },
+  { code: "+502", flag: "🇬🇹", name: "Guatemala" },
+  { code: "+504", flag: "🇭🇳", name: "Honduras" },
+  { code: "+36", flag: "🇭🇺", name: "Hungría" },
+  { code: "+91", flag: "🇮🇳", name: "India" },
+  { code: "+62", flag: "🇮🇩", name: "Indonesia" },
+  { code: "+353", flag: "🇮🇪", name: "Irlanda" },
+  { code: "+354", flag: "🇮🇸", name: "Islandia" },
+  { code: "+972", flag: "🇮🇱", name: "Israel" },
+  { code: "+39", flag: "🇮🇹", name: "Italia" },
+  { code: "+81", flag: "🇯🇵", name: "Japón" },
+  { code: "+52", flag: "🇲🇽", name: "México" },
+  { code: "+505", flag: "🇳🇮", name: "Nicaragua" },
+  { code: "+47", flag: "🇳🇴", name: "Noruega" },
+  { code: "+64", flag: "🇳🇿", name: "Nueva Zelanda" },
+  { code: "+31", flag: "🇳🇱", name: "Países Bajos" },
+  { code: "+507", flag: "🇵🇦", name: "Panamá" },
+  { code: "+595", flag: "🇵🇾", name: "Paraguay" },
+  { code: "+51", flag: "🇵🇪", name: "Perú" },
+  { code: "+48", flag: "🇵🇱", name: "Polonia" },
+  { code: "+351", flag: "🇵🇹", name: "Portugal" },
+  { code: "+1", flag: "🇵🇷", name: "Puerto Rico" },
+  { code: "+44", flag: "🇬🇧", name: "Reino Unido" },
+  { code: "+420", flag: "🇨🇿", name: "República Checa" },
+  { code: "+1", flag: "🇩🇴", name: "República Dominicana" },
+  { code: "+40", flag: "🇷🇴", name: "Rumanía" },
+  { code: "+7", flag: "🇷🇺", name: "Rusia" },
+  { code: "+46", flag: "🇸🇪", name: "Suecia" },
+  { code: "+41", flag: "🇨🇭", name: "Suiza" },
+  { code: "+66", flag: "🇹🇭", name: "Tailandia" },
+  { code: "+90", flag: "🇹🇷", name: "Turquía" },
+  { code: "+380", flag: "🇺🇦", name: "Ucrania" },
+  { code: "+598", flag: "🇺🇾", name: "Uruguay" },
+  { code: "+58", flag: "🇻🇪", name: "Venezuela" },
+];
+
 export default function ContactForm() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const [searchParams] = useSearchParams();
+  const selectedPackage = searchParams.get("package") || "";
+  const [submitError, setSubmitError] = useState("");
 
   const {
     register,
@@ -29,6 +102,7 @@ export default function ContactForm() {
     reset,
   } = useForm({
     defaultValues: {
+      destination: searchParams.get("destination") || "",
       travelers:
         lang === "en"
           ? "Adults: 1, Children: 0, Babies: 0"
@@ -51,22 +125,37 @@ export default function ContactForm() {
   const watchDateStart = watch("dateStart");
   const watchHasPets = watch("hasPets");
 
-  // Update hidden form field whenever counts or lang change
+  const [childrenAges, setChildrenAges] = useState([]);
+
+  // Update hidden form field whenever counts, childrenAges, or lang change
   useEffect(() => {
+    const agesStr =
+      childrenAges.length > 0
+        ? ` (${lang === "en" ? "Ages" : "Edades"}: ${childrenAges.filter((a) => a).join(", ")})`
+        : "";
+
     if (lang === "en") {
       setValue(
         "travelers",
-        `Adults: ${counts.adults}, Children: ${counts.children}, Babies: ${counts.babies}`,
+        `Adults: ${counts.adults}, Children: ${counts.children}${agesStr}, Babies: ${counts.babies}`,
       );
     } else {
       setValue(
         "travelers",
-        `Adultos: ${counts.adults}, Niños: ${counts.children}, Bebés: ${counts.babies}`,
+        `Adultos: ${counts.adults}, Niños: ${counts.children}${agesStr}, Bebés: ${counts.babies}`,
       );
     }
-  }, [counts, setValue, lang]);
+  }, [counts, childrenAges, setValue, lang]);
 
   const updateCount = (type, operation) => {
+    if (type === "children") {
+      if (operation === "add") {
+        setChildrenAges((prevAges) => [...prevAges, ""]);
+      } else if (counts.children > 0) {
+        setChildrenAges((prevAges) => prevAges.slice(0, -1));
+      }
+    }
+
     setCounts((prev) => {
       const current = prev[type];
       let newValue = current;
@@ -75,20 +164,34 @@ export default function ContactForm() {
         newValue = current + 1;
       } else {
         if (type === "adults" && current > 1) newValue = current - 1;
-        if (type !== "adults" && current > 0) newValue = current - 1;
+        if (type !== "adults" && current > 0) {
+          newValue = current - 1;
+        }
       }
 
       return { ...prev, [type]: newValue };
     });
   };
 
+  const handleAgeChange = (index, value) => {
+    setChildrenAges((prev) => {
+      const newAges = [...prev];
+      newAges[index] = value;
+      return newAges;
+    });
+  };
+
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+    setSubmitError("");
 
     const payload = {
       ...data,
+      selectedPackage,
+      phone: `${data.phoneCode || "+34"} ${data.phone}`,
       flexibleDates: flexibleDates ? "Sí" : "No", // O true/false según prefieras
     };
+    delete payload.phoneCode;
 
     try {
       const response = await fetch(
@@ -101,13 +204,21 @@ export default function ContactForm() {
           },
         },
       );
+      if (!response.ok)
+        throw new Error(`Submission failed: ${response.status}`);
       setIsSubmitted(true);
+      trackEvent("generate_lead", { method: "form" });
       reset();
       setCounts({ adults: 1, children: 0, babies: 0 });
+      setChildrenAges([]);
       setFlexibleDates(false);
     } catch (error) {
       console.error("Error submitting", error);
-      setIsSubmitted(true);
+      setSubmitError(
+        lang === "en"
+          ? "Your request could not be sent. Your details are still here: please try again or contact us by WhatsApp."
+          : "No hemos podido enviar tu solicitud. Conservamos tus datos: vuelve a intentarlo o contáctanos por WhatsApp.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -120,9 +231,9 @@ export default function ContactForm() {
           <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
             {t("contact.label")}
           </span>
-          <h2 className="text-4xl font-serif font-bold text-stone-800 mt-2">
+          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2">
             {t("contact.title")}
-          </h2>
+          </h1>
           <p className="mt-4 text-lg text-stone-600">{t("contact.subtitle")}</p>
         </div>
 
@@ -152,6 +263,14 @@ export default function ContactForm() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+              {submitError && (
+                <p
+                  role="alert"
+                  className="rounded-xl bg-red-50 p-4 text-red-800"
+                >
+                  {submitError}
+                </p>
+              )}
               {/* Personal Info */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
@@ -198,14 +317,27 @@ export default function ContactForm() {
                   <label className="block text-sm font-medium text-stone-700 mb-2">
                     {t("contact.phone")}
                   </label>
-                  <input
-                    {...register("phone", {
-                      required: t("contact.phoneRequired"),
-                    })}
-                    type="tel"
-                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
-                    placeholder="+34 600..."
-                  />
+                  <div className="flex gap-2">
+                    <select
+                      {...register("phoneCode")}
+                      className="w-1/3 px-2 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all cursor-pointer text-sm"
+                      defaultValue="+34"
+                    >
+                      {COUNTRY_CODES.map((country, idx) => (
+                        <option key={idx} value={country.code}>
+                          {country.flag} {country.code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      {...register("phone", {
+                        required: t("contact.phoneRequired"),
+                      })}
+                      type="tel"
+                      className="w-2/3 px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                      placeholder="600..."
+                    />
+                  </div>
                   {errors.phone && (
                     <span className="text-red-500 text-sm mt-1">
                       {errors.phone.message}
@@ -433,6 +565,42 @@ export default function ContactForm() {
                         </div>
                       </div>
 
+                      <AnimatePresence>
+                        {counts.children > 0 && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-2 pb-1 space-y-3 border-t border-stone-100 mt-2">
+                              <p className="text-sm font-medium text-stone-700">
+                                {lang === "en"
+                                  ? "Ages of the children:"
+                                  : "Edades de los niños:"}
+                              </p>
+                              <div className="grid grid-cols-2 gap-3">
+                                {childrenAges.map((age, i) => (
+                                  <input
+                                    key={`child-age-${i}`}
+                                    type="number"
+                                    min="2"
+                                    max="12"
+                                    placeholder={`${lang === "en" ? "Child" : "Niño"} ${i + 1}`}
+                                    value={age}
+                                    onChange={(e) =>
+                                      handleAgeChange(i, e.target.value)
+                                    }
+                                    className="w-full px-3 py-2 text-sm rounded-lg border border-stone-200 bg-white focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                                    required
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
                       {/* Babies */}
                       <div className="flex items-center justify-between border-t border-stone-200 pt-3">
                         <div>
@@ -653,7 +821,7 @@ export default function ContactForm() {
                         type="button"
                         className="text-brand-sage hover:underline"
                         onClick={() =>
-                          window.scrollTo(0, document.body.scrollHeight)
+                          window.dispatchEvent(new Event("open-privacy-policy"))
                         }
                         aria-label={t("contact.privacyLink")}
                       >

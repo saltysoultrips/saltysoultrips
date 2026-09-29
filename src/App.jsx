@@ -11,9 +11,10 @@ import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import SEOHead from "./components/SEOHead";
+import Analytics from "./components/Analytics";
+import DeferredChat from "./components/DeferredChat";
 
 // Lazy load new pages
-const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const PackagesPage = lazy(() => import("./pages/PackagesPage"));
 const PackageDetailPage = lazy(() => import("./pages/PackageDetailPage"));
@@ -54,7 +55,7 @@ let isInitialLoad = true;
 function HomePage() {
   const { hash } = useLocation();
   const navType = useNavigationType(); // "POP", "PUSH", "REPLACE"
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   React.useEffect(() => {
     // Check if it's a browser reload
@@ -93,31 +94,6 @@ function HomePage() {
     "@id": "https://www.saltysoultrips.com",
     url: "https://www.saltysoultrips.com",
     telephone: "+34611794842",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Barcelona",
-      addressRegion: "Barcelona",
-      addressCountry: "ES",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 41.3851,
-      longitude: 2.1734,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "00:00",
-      closes: "23:59",
-    },
     sameAs: [
       "https://www.instagram.com/saltysoultrips/",
       "https://www.tiktok.com/@saltysoultrips",
@@ -125,70 +101,22 @@ function HomePage() {
     priceRange: "$$",
   };
 
-  const productSchema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "Paquete Explora - Itinerario de Viaje Personalizado",
-      image: "https://www.saltysoultrips.com/resto/logoGoogle.png",
-      description:
-        "Itinerario digital completo con transporte, alojamiento y actividades recomendadas.",
-      brand: {
-        "@type": "Brand",
-        name: "SaltySoulTrips",
-      },
-      offers: {
-        "@type": "Offer",
-        url: "https://www.saltysoultrips.com/servicios",
-        priceCurrency: "EUR",
-        price: "50",
-        availability: "https://schema.org/InStock",
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          applicableCountry: "ES",
-          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted"
-        },
-        shippingDetails: {
-          "@type": "OfferShippingDetails",
-          shippingRate: {
-            "@type": "MonetaryAmount",
-            value: "0",
-            currency: "EUR"
-          },
-          shippingDestination: {
-            "@type": "DefinedRegion",
-            addressCountry: "ES"
-          },
-          deliveryTime: {
-            "@type": "ShippingDeliveryTime",
-            handlingTime: {
-              "@type": "QuantitativeValue",
-              minValue: "0",
-              maxValue: "1",
-              unitCode: "d"
-            },
-            transitTime: {
-              "@type": "QuantitativeValue",
-              minValue: "1",
-              maxValue: "3",
-              unitCode: "d"
-            }
-          }
-        }
-      },
-    },
-  ];
-
-  const homeSchema = [travelAgencySchema, ...productSchema];
+  const homeSchema = travelAgencySchema;
 
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
       <SEOHead
-        title={t("seo.home.title", "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos")}
-        description={t("seo.home.description", "Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!")}
-        canonicalUrl="https://www.saltysoultrips.com/"
+        title={t(
+          "seo.home.title",
+          "Viajes Personalizados a Medida | SaltySoulTrips - Itinerarios Únicos",
+        )}
+        description={t(
+          "seo.home.description",
+          "Viajes personalizados a cualquier destino: Japón, Italia, Tailandia, Maldivas, Grecia, Tanzania y más. Itinerarios 100% a medida a precios asequibles. ⭐ 5 estrellas. ¡Diseñamos tu viaje soñado!",
+        )}
+        canonicalUrl={`https://www.saltysoultrips.com${i18n.language === "en" ? "/en" : "/"}`}
         esUrl="https://www.saltysoultrips.com/"
-        enUrl="https://www.saltysoultrips.com/"
+        enUrl="https://www.saltysoultrips.com/en"
         schemaData={homeSchema}
       />
       <Header />
@@ -203,33 +131,86 @@ function HomePage() {
   );
 }
 
-const ChatWidget = lazy(() => import("./components/ChatWidget"));
-
 function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        
+        <Route path="/en" element={<HomePage />} />
+
         {/* New Multi-page Routes */}
-        <Route path="/servicios" element={<ScrollToTopWrapper><ServicesPage /></ScrollToTopWrapper>} />
-        <Route path="/services" element={<ScrollToTopWrapper><ServicesPage /></ScrollToTopWrapper>} />
-        
-        <Route path="/descuentos" element={<ScrollToTopWrapper><DiscountsPage /></ScrollToTopWrapper>} />
-        <Route path="/discounts" element={<ScrollToTopWrapper><DiscountsPage /></ScrollToTopWrapper>} />
-        
-        <Route path="/contacto" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
-        <Route path="/contact" element={<ScrollToTopWrapper><ContactPage /></ScrollToTopWrapper>} />
-        
-        <Route path="/paquetes" element={<ScrollToTopWrapper><PackagesPage /></ScrollToTopWrapper>} />
-        <Route path="/packages" element={<ScrollToTopWrapper><PackagesPage /></ScrollToTopWrapper>} />
-        
-        <Route path="/experiencias" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
-        <Route path="/experiences" element={<ScrollToTopWrapper><TestimonialsPage /></ScrollToTopWrapper>} />
+
+        <Route
+          path="/descuentos"
+          element={
+            <ScrollToTopWrapper>
+              <DiscountsPage />
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/discounts"
+          element={
+            <ScrollToTopWrapper>
+              <DiscountsPage />
+            </ScrollToTopWrapper>
+          }
+        />
+
+        <Route
+          path="/contacto"
+          element={
+            <ScrollToTopWrapper>
+              <ContactPage />
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ScrollToTopWrapper>
+              <ContactPage />
+            </ScrollToTopWrapper>
+          }
+        />
+
+        <Route
+          path="/paquetes"
+          element={
+            <ScrollToTopWrapper>
+              <PackagesPage />
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/packages"
+          element={
+            <ScrollToTopWrapper>
+              <PackagesPage />
+            </ScrollToTopWrapper>
+          }
+        />
+
+        <Route
+          path="/experiencias"
+          element={
+            <ScrollToTopWrapper>
+              <TestimonialsPage />
+            </ScrollToTopWrapper>
+          }
+        />
+        <Route
+          path="/experiences"
+          element={
+            <ScrollToTopWrapper>
+              <TestimonialsPage />
+            </ScrollToTopWrapper>
+          }
+        />
 
         {/* Blog Routes */}
         <Route
-          path="/blog"
+          path="/:lang?/blog"
           element={
             <ScrollToTopWrapper>
               <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
@@ -241,7 +222,7 @@ function App() {
           }
         />
         <Route
-          path="/blog/:slug"
+          path="/:lang?/blog/:slug"
           element={
             <ScrollToTopWrapper>
               <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">
@@ -285,8 +266,9 @@ function App() {
           }
         />
       </Routes>
+      <Analytics />
       <CookieConsent />
-      <ChatWidget />
+      <DeferredChat />
     </Suspense>
   );
 }
