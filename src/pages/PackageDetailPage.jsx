@@ -151,6 +151,7 @@ export default function PackageDetailPage() {
             "@type": "Offer",
             price: seo.price,
             priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
             url: `https://www.saltysoultrips.com/${isEn ? "packages" : "paquetes"}/${slug}`,
           },
         }

@@ -585,7 +585,7 @@ export default function ContactForm() {
                                     key={`child-age-${i}`}
                                     type="number"
                                     min="2"
-                                    max="12"
+                                    max="15"
                                     placeholder={`${lang === "en" ? "Child" : "Niño"} ${i + 1}`}
                                     value={age}
                                     onChange={(e) =>

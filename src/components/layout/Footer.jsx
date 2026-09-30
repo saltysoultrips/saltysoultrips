@@ -10,6 +10,8 @@ import TermsES from "../legal/TermsES";
 import TermsEN from "../legal/TermsEN";
 import PrivacyES from "../legal/PrivacyES";
 import PrivacyEN from "../legal/PrivacyEN";
+import CookiesES from "../legal/CookiesES";
+import CookiesEN from "../legal/CookiesEN";
 
 // Custom TikTok Icon
 const TikTokIcon = ({ size = 24, className }) => (
@@ -61,6 +63,7 @@ export default function Footer() {
   const legalContent = {
     terms: isEn ? <TermsEN /> : <TermsES />,
     privacy: isEn ? <PrivacyEN /> : <PrivacyES />,
+    cookies_policy: isEn ? <CookiesEN /> : <CookiesES />,
   };
 
   return (
@@ -309,8 +312,15 @@ export default function Footer() {
                 onClick={() =>
                   window.dispatchEvent(new Event("open-cookie-settings"))
                 }
+                className="hover:text-brand-dark transition-colors"
               >
                 {isEn ? "Cookie settings" : "Configurar cookies"}
+              </button>
+              <button
+                onClick={() => setActiveModal("cookies_policy")}
+                className="hover:text-brand-dark transition-colors"
+              >
+                {isEn ? "Cookies Policy" : "Política de Cookies"}
               </button>
               <button
                 onClick={() => setActiveModal("privacy")}
@@ -334,6 +344,12 @@ export default function Footer() {
         onClose={() => setActiveModal(null)}
         title={t("footer.privacyModalTitle")}
         content={legalContent.privacy}
+      />
+      <LegalModal
+        isOpen={activeModal === "cookies_policy"}
+        onClose={() => setActiveModal(null)}
+        title={isEn ? "Cookies Policy" : "Política de Cookies"}
+        content={legalContent.cookies_policy}
       />
       <LegalModal
         isOpen={activeModal === "terms"}
