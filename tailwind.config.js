@@ -20,7 +20,7 @@ export default {
         "brand-dark": "#2c2c2c",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Outfit", "sans-serif"],
         serif: ["Playfair Display", "serif"],
       },
       animation: {

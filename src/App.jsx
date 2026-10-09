@@ -43,7 +43,13 @@ if ("scrollRestoration" in window.history) {
 function ScrollToTopWrapper({ children }) {
   const location = useLocation();
   React.useLayoutEffect(() => {
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
     window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = prev || '';
+    });
   }, [location.key]);
   return children;
 }

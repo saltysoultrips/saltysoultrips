@@ -23,7 +23,7 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
       >
-        <h3 className="text-[15px] sm:text-[16px] font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
+        <h3 className="text-base sm:text-lg font-serif font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
           {title}
         </h3>
         <div className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-brand-sage' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
@@ -39,7 +39,7 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="pb-6 text-[15px] text-brand-dark/80 whitespace-pre-line leading-[1.8]">
+            <div className="pb-6 text-base font-sans text-brand-dark/80 whitespace-pre-line leading-[1.8]">
               {children}
             </div>
           </motion.div>
@@ -152,7 +152,8 @@ export default function PackageDetailPage() {
         if (currentSection.content.length > 0 || currentSection.title) {
           sections.push(currentSection);
         }
-        currentSection = { title: trimmed, content: [] };
+        const titleWithoutEmoji = trimmed.replace(/^(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])\s*/, '');
+        currentSection = { title: titleWithoutEmoji, content: [] };
       } else {
         currentSection.content.push(line);
       }
@@ -172,7 +173,7 @@ export default function PackageDetailPage() {
           
           if (!section.title) {
             return (
-              <div key={idx} className="whitespace-pre-line leading-[1.8] text-[15px] mb-8">
+              <div key={idx} className="whitespace-pre-line leading-[1.8] text-base font-sans text-brand-dark/80 mb-8">
                 {formatText(cleanContent)}
               </div>
             );
