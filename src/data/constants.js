@@ -16,5 +16,7 @@ export const packageTypes = [
   { id: "luna-de-miel", label: { es: "Luna de Miel", en: "Honeymoon" } },
   { id: "cultural", label: { es: "Cultural", en: "Cultural" } },
   { id: "familia", label: { es: "Familia", en: "Family" } },
-  { id: "parques", label: { es: "Parques Temáticos", en: "Theme Parks" } }
+  { id: "parques", label: { es: "Parques Temáticos", en: "Theme Parks" } },
+  { id: "escapada-navidena", label: { es: "Escapada Navideña", en: "Christmas Getaway" } },
+  { id: "crucero", label: { es: "Crucero", en: "Cruise" } }
 ];

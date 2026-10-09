@@ -13,6 +13,41 @@ import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Compass from "lucide-react/dist/esm/icons/compass";
 import X from "lucide-react/dist/esm/icons/x";
 import Loader2 from "lucide-react/dist/esm/icons/loader-2";
+import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
+
+const Accordion = ({ title, children, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  return (
+    <div className="border-b border-sand-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
+      >
+        <h3 className="text-[15px] sm:text-[16px] font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
+          {title}
+        </h3>
+        <div className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-brand-sage' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
+          <ChevronDown size={20} />
+        </div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="pb-6 text-[15px] text-brand-dark/80 whitespace-pre-line leading-[1.8]">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function PackageDetailPage() {
   const { slug } = useParams();
@@ -67,27 +102,90 @@ export default function PackageDetailPage() {
     return pkg[field] || "";
   };
 
-  const getPackageImage = () =>
-    pkg?.image ? urlFor(pkg.image).width(1600).auto("format").url() : "";
-  const getFlyerImage = () =>
+  const getPackageImage = (w = 2400) =>
+    pkg?.image ? urlFor(pkg.image).width(w).quality(90).auto("format").url() : "";
+  const getFlyerImage = (w = 2400) =>
     pkg?.flyerImage
-      ? urlFor(pkg.flyerImage).width(1600).auto("format").url()
+      ? urlFor(pkg.flyerImage).width(w).quality(90).auto("format").url()
       : "";
 
-  // Helper to parse bold markdown (**text**)
-  const formatText = (text) => {
+  const parseDescription = (text) => {
     if (!text) return null;
-    const parts = text.split(/\*\*(.*?)\*\*/g);
-    return parts.map((part, index) => {
-      if (index % 2 === 1) {
-        return (
-          <strong key={index} className="font-semibold text-brand-dark">
-            {part}
-          </strong>
-        );
+
+    const formatText = (content) => {
+      if (!content) return null;
+      const parts = content.split(/\*\*(.*?)\*\*/g);
+      return parts.map((part, index) => {
+        if (index % 2 === 1) {
+          return (
+            <strong key={index} className="font-semibold text-brand-dark">
+              {part}
+            </strong>
+          );
+        }
+        return <span key={index}>{part}</span>;
+      });
+    };
+
+    const lines = text.split('\n');
+    let sections = [];
+    let currentSection = { title: null, content: [] };
+
+    lines.forEach((line) => {
+      const trimmed = line.trim();
+      if (trimmed === '') {
+        if (currentSection.content.length > 0) currentSection.content.push(line);
+        return;
       }
-      return <span key={index}>{part}</span>;
+
+      const letters = trimmed.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '');
+      const uppers = letters.replace(/[^A-ZÁÉÍÓÚÑ]/g, '');
+      
+      const isMostlyUpper = letters.length >= 3 && (uppers.length / letters.length) > 0.6;
+      const startsWithEmoji = /^(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/.test(trimmed);
+      const isShort = trimmed.length < 100 && trimmed.length > 3;
+      const doesNotEndWithPeriod = !trimmed.endsWith('.');
+
+      const isHeader = isShort && doesNotEndWithPeriod && (isMostlyUpper || startsWithEmoji);
+
+      if (isHeader) {
+        if (currentSection.content.length > 0 || currentSection.title) {
+          sections.push(currentSection);
+        }
+        currentSection = { title: trimmed, content: [] };
+      } else {
+        currentSection.content.push(line);
+      }
     });
+
+    if (currentSection.content.length > 0 || currentSection.title) {
+      sections.push(currentSection);
+    }
+
+    const firstAccordionIdx = sections.findIndex(s => s.title !== null);
+
+    return (
+      <div className="flex flex-col gap-2">
+        {sections.map((section, idx) => {
+          const cleanContent = section.content.join('\n').trim();
+          if (!cleanContent) return null;
+          
+          if (!section.title) {
+            return (
+              <div key={idx} className="whitespace-pre-line leading-[1.8] text-[15px] mb-8">
+                {formatText(cleanContent)}
+              </div>
+            );
+          }
+          
+          return (
+            <Accordion key={idx} title={formatText(section.title)} defaultOpen={idx === firstAccordionIdx}>
+              {formatText(cleanContent)}
+            </Accordion>
+          );
+        })}
+      </div>
+    );
   };
 
   const getLabel = (collection, idOrArray) => {
@@ -135,7 +233,7 @@ export default function PackageDetailPage() {
   const seo = packageSeo(pkg, i18n.language);
   const seoTitle = seo.title;
   const seoDesc = seo.description;
-  const ogImage = getPackageImage();
+  const ogImage = getPackageImage(1200);
   const heroImageAlt = pkg.image?.alt || getPackageText("title");
   const flyerImageAlt = pkg.flyerImage?.alt || getPackageText("title");
   const schemaData = {
@@ -243,12 +341,12 @@ export default function PackageDetailPage() {
               >
                 {/* Description & Inline CTA */}
                 <div className="order-2 lg:order-1 text-brand-dark/80 font-sans flex flex-col h-full">
-                  <div className="whitespace-pre-line leading-[1.8] text-[15px] mb-8">
-                    {formatText(getPackageText("longDescription"))}
+                  <div className="w-full mb-8">
+                    {parseDescription(getPackageText("longDescription"))}
                   </div>
 
                   {/* Inline Call to Action */}
-                  <div className="hidden md:block mt-auto pt-8 border-t border-sand-200">
+                  <div className="hidden md:block">
                     <button
                       onClick={handleQuoteClick}
                       className="w-full sm:w-auto bg-sand-200 hover:bg-sand-300 text-brand-dark px-8 py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-xl active:scale-95 flex items-center justify-center gap-3 group"

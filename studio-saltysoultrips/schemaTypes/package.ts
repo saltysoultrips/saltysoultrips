@@ -83,6 +83,8 @@ export const packageSchema = defineType({
           {title: 'Cultural', value: 'cultural'},
           {title: 'Familia', value: 'familia'},
           {title: 'Parques Temáticos', value: 'parques'},
+          {title: 'Escapada Navideña', value: 'escapada-navidena'},
+          {title: 'Crucero', value: 'crucero'},
         ],
       },
       validation: (Rule) => Rule.required(),

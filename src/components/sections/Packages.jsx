@@ -75,7 +75,7 @@ export default function Packages() {
     return pkg[field] || "";
   };
   const getPackageImage = (pkg) =>
-    pkg.image ? urlFor(pkg.image).width(760).auto("format").url() : "";
+    pkg.image ? urlFor(pkg.image).width(1200).quality(90).auto("format").url() : "";
 
   const filteredPackages = packagesData.filter((pkg) => {
     const matchContinent =
