@@ -64,6 +64,20 @@
       }
     },
     {
+      "src": "^/en/blog/maldivas-sin-gastar-una-fortuna-el-secreto-de-las-islas-locales/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/maldives-without-breaking-the-bank-the-secret-of-local-islands"
+      }
+    },
+    {
+      "src": "^/blog/maldives-without-breaking-the-bank-the-secret-of-local-islands/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/maldives-without-breaking-the-bank-the-secret-of-local-islands"
+      }
+    },
+    {
       "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",
       "dest": "/410.html",
       "status": 410,

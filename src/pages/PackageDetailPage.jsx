@@ -6,9 +6,11 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SEOHead from "../components/SEOHead";
 import { continents, packageTypes } from "../data/constants";
+import { getPackageCountry, getPackageCountries } from "../data/countryMap";
 import { client, urlFor } from "../lib/sanity";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
+import Globe from "lucide-react/dist/esm/icons/globe";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Compass from "lucide-react/dist/esm/icons/compass";
 import X from "lucide-react/dist/esm/icons/x";
@@ -230,6 +232,7 @@ export default function PackageDetailPage() {
 
   const continentLabel = getLabel(continents, pkg.continent);
   const typeLabel = getLabel(packageTypes, pkg.type);
+  const packageCountries = getPackageCountries(pkg, isEn);
 
   const seo = packageSeo(pkg, i18n.language);
   const seoTitle = seo.title;
@@ -309,8 +312,17 @@ export default function PackageDetailPage() {
             >
               {/* Badges */}
               <div className="flex flex-wrap gap-3 mb-6">
+                {packageCountries.map((c) => (
+                  <span
+                    key={c}
+                    className="flex items-center gap-1.5 bg-brand-dark text-white px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm"
+                  >
+                    <MapPin size={14} className="text-sand-300" />
+                    {c}
+                  </span>
+                ))}
                 <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">
-                  <MapPin size={14} />
+                  <Globe size={14} />
                   {continentLabel}
                 </span>
                 <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">
