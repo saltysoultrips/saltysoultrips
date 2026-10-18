@@ -10,11 +10,18 @@
   --color-brand-sky: #D8E8E8;
   --color-brand-accent: #E8E1D8;
   --color-brand-light: #F5F5F0;
+  --color-brand-dark: #2c2c2c;
+  --color-brand-sage: #8fa89b;
   
   --color-sand-100: #fcfaf8;
   --color-sand-200: #f5f0e6;
   --color-sand-300: #eaddc5;
   --color-sand-400: #dcb78e;
+  --color-sand-500: #ce965e;
+  --color-sand-600: #b17446;
+  --color-sand-700: #93583a;
+  --color-sand-800: #784733;
+  --color-sand-900: #613a2a;
   
   --font-sans: "Outfit", sans-serif;
   --font-serif: "Playfair Display", serif;

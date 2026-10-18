@@ -315,18 +315,18 @@ export default function PackageDetailPage() {
                 {packageCountries.map((c) => (
                   <span
                     key={c}
-                    className="flex items-center gap-1.5 bg-brand-dark text-white px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm"
+                    className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider border border-sand-200"
                   >
-                    <MapPin size={14} className="text-sand-300" />
+                    <MapPin size={14} className="text-sand-600" />
                     {c}
                   </span>
                 ))}
-                <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">
-                  <Globe size={14} />
+                <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider border border-sand-200">
+                  <Globe size={14} className="text-sand-600" />
                   {continentLabel}
                 </span>
-                <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">
-                  <Compass size={14} />
+                <span className="flex items-center gap-1.5 bg-sand-100 text-brand-dark px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider border border-sand-200">
+                  <Compass size={14} className="text-sand-600" />
                   {typeLabel}
                 </span>
               </div>
@@ -364,7 +364,7 @@ export default function PackageDetailPage() {
                       onClick={handleQuoteClick}
                       className="w-full sm:w-auto bg-sand-200 hover:bg-sand-300 text-brand-dark px-8 py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-xl active:scale-95 flex items-center justify-center gap-3 group"
                     >
-                      {isEn ? "Book Now" : "Reservar Paquete"}
+                      {isEn ? "Request Free Quote" : "Pedir Presupuesto Gratis"}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
@@ -383,8 +383,8 @@ export default function PackageDetailPage() {
                     </button>
                     <p className="text-xs text-brand-dark/50 mt-4 font-medium tracking-wide text-center sm:text-left">
                       {isEn
-                        ? "No commitment required. We customize this package to your liking."
-                        : "Sin compromiso. Personalizaremos este paquete a tu gusto."}
+                        ? "100% customized & no commitment. We adapt this package to your taste and budget."
+                        : "100% personalizado y sin compromiso. Adaptamos este paquete a tus gustos y presupuesto."}
                     </p>
                   </div>
                 </div>
@@ -435,7 +435,7 @@ export default function PackageDetailPage() {
           onClick={handleQuoteClick}
           className="bg-sand-200 text-brand-dark px-6 py-3 rounded-xl text-sm font-bold shadow-md active:scale-95 transition-transform"
         >
-          {isEn ? "Book" : "Reservar"}
+          {isEn ? "Free Quote" : "Pedir Presupuesto"}
         </button>
       </div>
 

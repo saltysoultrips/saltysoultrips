@@ -64,15 +64,18 @@
     }
   },
   "howItWorks": {
-    "title": "Cómo Funciona",
-    "step1Title": "1. Cuéntame tu viaje",
-    "step1Desc": "Rellena el formulario con tu destino, fechas, número de viajeros y presupuesto aproximado. Con esa información busco las mejores opciones adaptadas a lo que necesitas.",
+    "label": "Cómo Trabajamos",
+    "title": "Tu viaje a medida en 3 sencillos pasos",
+    "subtitle": "Nos encargamos de toda la complejidad para que tú solo tengas que ilusionarte con tu próxima aventura.",
+    "step1Title": "1. Cuéntanos tu viaje",
+    "step1Desc": "Rellena el formulario con tus fechas, destino soñado, viajeros y presupuesto. En solo 2 minutos tenemos la base para empezar.",
     "step1Detail": "",
     "step2Title": "2. Recibe tu propuesta gratuita",
-    "step2Desc": "Te presento una propuesta personalizada con vuelos, alojamiento.. La revisamos juntos y ajustamos lo que haga falta hasta que encaje perfectamente contigo.",
+    "step2Desc": "Diseñamos una propuesta personalizada con vuelos, hoteles y actividades. La revisamos juntos y la adaptamos sin compromiso hasta que sea perfecta para ti.",
     "step2Detail": "",
-    "step3Title": "3. Confirmas y nosotros gestionamos todo",
-    "step3Desc": "Una vez que apruebas la propuesta, nos encargamos de gestionar y reservar vuelos, hotel y actividades en tu nombre. Tú no tienes que hacer nada.",
+    "step3Title": "3. Viaja sin preocupaciones",
+    "step3Desc": "Gestionamos todas las reservas directamente en tu nombre. Recibes toda la documentación clara y organizada en tu móvil. ¡Tú solo prepara las maletas!",
+    "step3Detail": "",
     "step4Title": "4. Reservamos todo por ti",
     "step4Desc": "Gestionamos cada reserva directamente con aerolíneas, alojamientos y proveedores. Tú recibes todas las confirmaciones y documentación lista para viajar.",
     "step4Detail": "",
@@ -104,8 +107,9 @@
     "title": "Viajes a medida",
     "titleItalic": "pensados para ti",
     "subtitle": "Gestionamos tu viaje de principio a fin — vuelos, hotel y actividades — para que tú solo tengas que disfrutar.",
-    "startTrip": "Empezar viaje",
-    "seeExperiences": "Ver Experiencias"
+    "startTrip": "Pedir Presupuesto Gratis",
+    "seeExperiences": "Ver Experiencias",
+    "explorePackages": "Explorar Paquetes"
   },
   "about": {
     "label": "Nuestra Filosofía",
@@ -302,7 +306,23 @@
       "type": "Tipo de Viaje"
     },
     "requestQuote": "Pedir Presupuesto",
-    "back": "Volver a Paquetes"
+    "back": "Volver a Paquetes",
+    "featured": {
+      "label": "Inspiración Viajera",
+      "title": "Paquetes Destacados",
+      "subtitle": "Una selección de nuestros itinerarios más solicitados. Listos para viajar o 100% adaptables a tus gustos.",
+      "exploreAll": "Ver todos los paquetes",
+      "viewPackage": "Ver paquete"
+    }
+  },
+  "homeCta": {
+    "label": "Empieza Tu Aventura",
+    "title": "¿Tienes un destino soñado en mente?",
+    "subtitle": "Diseñamos tu viaje a medida según tus gustos, fechas y presupuesto. Rellena el formulario y recibe tu propuesta personalizada gratis y sin compromiso.",
+    "button": "Pedir Presupuesto Gratis",
+    "badge1": "100% a medida",
+    "badge2": "Presupuesto gratuito",
+    "badge3": "Sin compromiso"
   },
   "seo": {
     "home": {

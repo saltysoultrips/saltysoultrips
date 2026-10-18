@@ -11,6 +11,7 @@ import Compass from "lucide-react/dist/esm/icons/compass";
 import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import ChevronLeft from "lucide-react/dist/esm/icons/chevron-left";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
 import Search from "lucide-react/dist/esm/icons/search";
 import Loader2 from "lucide-react/dist/esm/icons/loader-2";
 
@@ -99,6 +100,17 @@ export default function Packages() {
   };
   const getPackageImage = (pkg) =>
     pkg.image ? urlFor(pkg.image).width(1200).quality(90).auto("format").url() : "";
+
+  const getPackageTypes = (pkg) => {
+    if (!pkg || !pkg.type) return [];
+    const types = Array.isArray(pkg.type) ? pkg.type : [pkg.type];
+    return types
+      .map((t) => {
+        const typeObj = packageTypes.find((pt) => pt.id === t);
+        return typeObj ? getLabel(typeObj) : t;
+      })
+      .filter(Boolean);
+  };
 
   // Dynamic available countries based on selected continent
   const availableCountries = useMemo(() => {
@@ -406,73 +418,94 @@ export default function Packages() {
                   id={`packages-slider-${group.id}`}
                   className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full pl-[max(1rem,calc(50vw-40rem+1rem))] sm:pl-[max(1.5rem,calc(50vw-40rem+1.5rem))] lg:pl-[max(2rem,calc(50vw-40rem+2rem))] scroll-pl-[max(1rem,calc(50vw-40rem+1rem))] sm:scroll-pl-[max(1.5rem,calc(50vw-40rem+1.5rem))] lg:scroll-pl-[max(2rem,calc(50vw-40rem+2rem))]"
                 >
-                  <AnimatePresence mode="popLayout">
                     {group.packages.map((pkg) => {
                       const countryName = getPackageCountry(pkg, isEn);
+                      const types = getPackageTypes(pkg);
                       return (
-                        <MotionLink
-                          layout
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.3 }}
+                        <Link
                           key={pkg.id}
                           to={`/${isEn ? "packages" : "paquetes"}/${pkg.id}`}
-                          className="snap-start shrink-0 w-[80vw] sm:w-[320px] md:w-[380px] cursor-pointer bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-sand-200 flex flex-col group"
+                          className="snap-start shrink-0 w-[82vw] sm:w-[330px] md:w-[370px] cursor-pointer bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-300 border border-sand-200 flex flex-col group"
                         >
-                          <div className="relative h-[420px] md:h-[480px] overflow-hidden">
+                          {/* Image Block */}
+                          <div className="relative h-60 sm:h-64 md:h-72 w-full overflow-hidden bg-sand-200">
                             <img
                               src={getPackageImage(pkg)}
                               loading="lazy"
                               alt={getPackageText(pkg, "title")}
-                              className="w-full h-full object-cover transition-transform duration-700"
+                              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 opacity-60 group-hover:opacity-30 transition-opacity"></div>
 
-                            {/* Badges */}
-                            <div className="absolute top-4 left-4 flex flex-col items-start gap-2">
-                              {countryName && (
-                                <span className="bg-sand-100/95 backdrop-blur-sm text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5">
-                                  <MapPin size={11} className="text-sand-600" />
+                            {/* Floating Top Badge */}
+                            {countryName && (
+                              <div className="absolute top-4 left-4 pointer-events-none">
+                                <span className="bg-white/95 backdrop-blur-md text-brand-dark px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 border border-white/60">
+                                  <MapPin size={12} className="text-sand-600" />
                                   {countryName}
                                 </span>
-                              )}
-                              {pkg.type &&
-                                (Array.isArray(pkg.type)
-                                  ? pkg.type
-                                  : [pkg.type]
-                                ).map((t) => {
-                                  const typeObj = packageTypes.find(
-                                    (pt) => pt.id === t,
-                                  );
-                                  return typeObj ? (
-                                    <span
-                                      key={t}
-                                      className="bg-white/90 backdrop-blur-sm text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm"
-                                    >
-                                      {getLabel(typeObj)}
-                                    </span>
-                                  ) : null;
-                                })}
-                            </div>
+                              </div>
+                            )}
+                          </div>
 
-                            <div className="absolute bottom-5 left-5 right-5 md:bottom-6 md:left-6 md:right-6 flex flex-col items-start gap-3 md:gap-4">
-                              <h3 className="text-3xl md:text-4xl font-serif text-white drop-shadow-md leading-tight">
-                                {getPackageText(pkg, "title")}
-                              </h3>
-                              {pkg.priceInfo && (
-                                <div className="flex-shrink-0">
-                                  <span className="text-[13px] md:text-sm font-bold bg-white text-brand-dark px-3 py-1.5 md:px-4 md:py-2 rounded-xl shadow-lg whitespace-nowrap">
-                                    {getPackageText(pkg, "priceInfo")}
-                                  </span>
+                          {/* Editorial Content Block */}
+                          <div className="p-6 md:p-7 flex flex-col flex-grow justify-between bg-white">
+                            <div>
+                              {/* Trip Types: Always shown for every trip */}
+                              {types.length > 0 && (
+                                <div className="flex items-center gap-1.5 mb-2.5 flex-wrap">
+                                  {types.slice(0, 3).map((typeLabel, idx) => (
+                                    <span
+                                      key={typeLabel}
+                                      className="text-[11px] font-bold tracking-widest text-sand-600 uppercase"
+                                    >
+                                      {idx > 0 && (
+                                        <span className="text-sand-400 mr-1.5">
+                                          •
+                                        </span>
+                                      )}
+                                      {typeLabel}
+                                    </span>
+                                  ))}
                                 </div>
                               )}
+
+                              {/* Title */}
+                              <h3 className="text-2xl font-serif text-brand-dark group-hover:text-sand-700 transition-colors leading-snug line-clamp-2 mb-3">
+                                {getPackageText(pkg, "title")}
+                              </h3>
+
+                              {/* Short Description */}
+                              {getPackageText(pkg, "shortDescription") && (
+                                <p className="text-sm font-sans text-brand-dark/65 line-clamp-2 leading-relaxed mb-6">
+                                  {getPackageText(pkg, "shortDescription")}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Card Footer */}
+                            <div className="pt-4 border-t border-sand-200/70 flex items-center justify-between mt-auto">
+                              <div>
+                                <span className="block text-[10px] uppercase tracking-widest font-bold text-brand-dark/45">
+                                  {isEn ? "Estimated price" : "Precio estimado"}
+                                </span>
+                                <span className="text-base sm:text-lg font-serif font-bold text-brand-dark">
+                                  {getPackageText(pkg, "priceInfo") ||
+                                    (isEn ? "On request" : "A consultar")}
+                                </span>
+                              </div>
+
+                              <div className="w-10 h-10 rounded-full bg-sand-100 group-hover:bg-[#2c2c2c] text-brand-dark group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                                <ArrowRight
+                                  size={16}
+                                  className="group-hover:translate-x-0.5 transition-transform"
+                                />
+                              </div>
                             </div>
                           </div>
-                        </MotionLink>
+                        </Link>
                       );
                     })}
-                  </AnimatePresence>
 
                   {/* Right Spacer */}
                   <div className="shrink-0 w-[max(1rem,calc(50vw-40rem+1rem))] sm:w-[max(1.5rem,calc(50vw-40rem+1.5rem))] lg:w-[max(2rem,calc(50vw-40rem+2rem))]"></div>

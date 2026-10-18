@@ -64,15 +64,18 @@
     }
   },
   "howItWorks": {
-    "title": "How It Works",
-    "step1Title": "1. Tell me about your trip",
-    "step1Desc": "Fill out the form with your destination, dates, number of travelers, and approximate budget. With that information I look for the best options adapted to what you need.",
+    "label": "How It Works",
+    "title": "Your tailor-made trip in 3 simple steps",
+    "subtitle": "We handle all the complexity so you only have to look forward to your next adventure.",
+    "step1Title": "1. Tell us about your trip",
+    "step1Desc": "Fill out the form with your dates, dream destination, travelers, and budget. In just 2 minutes we have the foundation to start.",
     "step1Detail": "",
     "step2Title": "2. Receive your free proposal",
-    "step2Desc": "I present a personalized proposal with flights, accommodation... We review it together and adjust whatever is necessary until it fits perfectly with you.",
+    "step2Desc": "We craft a personalized proposal with flights, accommodation, and activities. We review it together and adapt it with no commitment until it's perfect for you.",
     "step2Detail": "",
-    "step3Title": "3. You confirm and we manage everything",
-    "step3Desc": "Once you approve the proposal, we take care of managing and booking flights, hotel and activities on your behalf. You don't have to do anything.",
+    "step3Title": "3. Travel with total peace of mind",
+    "step3Desc": "We manage all reservations directly on your behalf. You receive all clear and organized documentation ready on your mobile. Just pack your bags!",
+    "step3Detail": "",
     "step4Title": "4. We book everything for you",
     "step4Desc": "We manage each booking directly with airlines, accommodations and suppliers. You receive all the confirmations and documentation ready to travel.",
     "step4Detail": "",
@@ -104,8 +107,9 @@
     "title": "Tailor-made trips",
     "titleItalic": "planned around you",
     "subtitle": "We manage your trip from start to finish — flights, hotel and activities — so you only have to enjoy.",
-    "startTrip": "Start my trip",
-    "seeExperiences": "See Experiences"
+    "startTrip": "Request Free Quote",
+    "seeExperiences": "See Experiences",
+    "explorePackages": "Explore Packages"
   },
   "about": {
     "label": "Our Philosophy",
@@ -302,7 +306,23 @@
       "type": "Trip Type"
     },
     "requestQuote": "Request a Quote",
-    "back": "Back to Packages"
+    "back": "Back to Packages",
+    "featured": {
+      "label": "Travel Inspiration",
+      "title": "Featured Packages",
+      "subtitle": "A curated selection of our most popular itineraries. Ready to travel or 100% customizable to your preferences.",
+      "exploreAll": "Explore all packages",
+      "viewPackage": "View package"
+    }
+  },
+  "homeCta": {
+    "label": "Start Your Adventure",
+    "title": "Have a dream destination in mind?",
+    "subtitle": "We design your tailor-made trip according to your preferences, dates, and budget. Fill out the form and receive your custom proposal with no commitment.",
+    "button": "Request Free Quote",
+    "badge1": "100% Tailor-made",
+    "badge2": "Free Proposal",
+    "badge3": "No Commitment"
   },
   "seo": {
     "home": {

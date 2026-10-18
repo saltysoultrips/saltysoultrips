@@ -9,7 +9,10 @@ import { useTranslation } from "react-i18next";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
+import FeaturedPackages from "./components/sections/FeaturedPackages";
+import HowItWorks from "./components/sections/HowItWorks";
 import About from "./components/sections/About";
+import HomeReviews from "./components/sections/HomeReviews";
 import SEOHead from "./components/SEOHead";
 import Analytics from "./components/Analytics";
 import DeferredChat from "./components/DeferredChat";
@@ -131,6 +134,9 @@ function HomePage() {
         <div id="filosofia">
           <About />
         </div>
+        <FeaturedPackages />
+        <HowItWorks />
+        <HomeReviews />
       </main>
       <Footer />
     </div>

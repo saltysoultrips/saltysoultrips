@@ -489,8 +489,8 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                {/* Travelers & Budget */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Travelers & Trip Details (Budget, Type, Pets) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                   {/* Custom Traveler Counter */}
                   <div>
                     <label className="block text-sm font-medium text-stone-700 mb-2">
@@ -640,128 +640,129 @@ export default function ContactForm() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      {t("contact.budget")}
-                    </label>
-                    <div className="relative">
-                      <Euro
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <input
-                        {...register("budget", {
-                          required: t("contact.budgetRequired"),
-                        })}
-                        type="text"
-                        placeholder={t("contact.budgetPlaceholder")}
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                      />
-                      {errors.budget && (
-                        <span className="text-red-500 text-sm mt-1">
-                          {errors.budget.message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Trip Type */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      {t("contact.tripType")}
-                    </label>
-                    <div className="relative">
-                      <Briefcase
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <select
-                        {...register("tripType", {
-                          required: t("contact.tripTypeRequired"),
-                        })}
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
-                      >
-                        <option value="">{t("contact.tripTypeSelect")}</option>
-                        <option value="luna_miel">
-                          {t("contact.tripTypeHoneymoon")}
-                        </option>
-                        <option value="aventura">
-                          {t("contact.tripTypeAdventure")}
-                        </option>
-                        <option value="relax">
-                          {t("contact.tripTypeRelax")}
-                        </option>
-                        <option value="cultural">
-                          {t("contact.tripTypeCultural")}
-                        </option>
-                        <option value="familia">
-                          {t("contact.tripTypeFamily")}
-                        </option>
-                        <option value="sorpresa">
-                          {t("contact.tripTypeSurprise")}
-                        </option>
-                      </select>
-                      {errors.tripType && (
-                        <span className="text-red-500 text-sm mt-1">
-                          {errors.tripType.message}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Pets */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      {t("contact.hasPets")}
-                    </label>
-                    <div className="relative">
-                      <PawPrint
-                        className="absolute left-4 top-3.5 text-stone-400"
-                        size={18}
-                      />
-                      <select
-                        {...register("hasPets")}
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
-                      >
-                        <option value="no">{t("contact.hasPetsNo")}</option>
-                        <option value="yes">{t("contact.hasPetsYes")}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <AnimatePresence>
-                    {watchHasPets === "yes" && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <label className="block text-sm font-medium text-stone-700 mb-2">
-                          {t("contact.petsDetails")}
-                        </label>
+                  {/* Right Column: Budget, Trip Type & Pets */}
+                  <div className="space-y-5">
+                    {/* Budget */}
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                        {t("contact.budget")}
+                      </label>
+                      <div className="relative">
+                        <Euro
+                          className="absolute left-4 top-3.5 text-stone-400"
+                          size={18}
+                        />
                         <input
-                          {...register("petsDetails", {
-                            required:
-                              watchHasPets === "yes"
-                                ? t("contact.petsDetailsRequired")
-                                : false,
+                          {...register("budget", {
+                            required: t("contact.budgetRequired"),
                           })}
                           type="text"
-                          className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
-                          placeholder={t("contact.petsDetailsPlaceholder")}
+                          placeholder={t("contact.budgetPlaceholder")}
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                         />
-                        {errors.petsDetails && (
+                        {errors.budget && (
                           <span className="text-red-500 text-sm mt-1">
-                            {errors.petsDetails.message}
+                            {errors.budget.message}
                           </span>
                         )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      </div>
+                    </div>
+
+                    {/* Trip Type */}
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                        {t("contact.tripType")}
+                      </label>
+                      <div className="relative">
+                        <Briefcase
+                          className="absolute left-4 top-3.5 text-stone-400"
+                          size={18}
+                        />
+                        <select
+                          {...register("tripType", {
+                            required: t("contact.tripTypeRequired"),
+                          })}
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
+                        >
+                          <option value="">{t("contact.tripTypeSelect")}</option>
+                          <option value="luna_miel">
+                            {t("contact.tripTypeHoneymoon")}
+                          </option>
+                          <option value="aventura">
+                            {t("contact.tripTypeAdventure")}
+                          </option>
+                          <option value="relax">
+                            {t("contact.tripTypeRelax")}
+                          </option>
+                          <option value="cultural">
+                            {t("contact.tripTypeCultural")}
+                          </option>
+                          <option value="familia">
+                            {t("contact.tripTypeFamily")}
+                          </option>
+                          <option value="sorpresa">
+                            {t("contact.tripTypeSurprise")}
+                          </option>
+                        </select>
+                        {errors.tripType && (
+                          <span className="text-red-500 text-sm mt-1">
+                            {errors.tripType.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Pets */}
+                    <div>
+                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                        {t("contact.hasPets")}
+                      </label>
+                      <div className="relative">
+                        <PawPrint
+                          className="absolute left-4 top-3.5 text-stone-400"
+                          size={18}
+                        />
+                        <select
+                          {...register("hasPets")}
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
+                        >
+                          <option value="no">{t("contact.hasPetsNo")}</option>
+                          <option value="yes">{t("contact.hasPetsYes")}</option>
+                        </select>
+                      </div>
+
+                      <AnimatePresence>
+                        {watchHasPets === "yes" && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden mt-3"
+                          >
+                            <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                              {t("contact.petsDetails")}
+                            </label>
+                            <input
+                              {...register("petsDetails", {
+                                required:
+                                  watchHasPets === "yes"
+                                    ? t("contact.petsDetailsRequired")
+                                    : false,
+                              })}
+                              type="text"
+                              className="w-full px-4 py-2.5 text-sm rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                              placeholder={t("contact.petsDetailsPlaceholder")}
+                            />
+                            {errors.petsDetails && (
+                              <span className="text-red-500 text-xs mt-1">
+                                {errors.petsDetails.message}
+                              </span>
+                            )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Extras & Message */}
