@@ -42,6 +42,23 @@ if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
+// Global scroll to top on any route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  React.useLayoutEffect(() => {
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = prev || '';
+    });
+  }, [pathname]);
+  return null;
+}
+
 // Wrapper that scrolls to top instantly before rendering children
 function ScrollToTopWrapper({ children }) {
   const location = useLocation();
@@ -49,11 +66,13 @@ function ScrollToTopWrapper({ children }) {
     const html = document.documentElement;
     const prev = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     requestAnimationFrame(() => {
       html.style.scrollBehavior = prev || '';
     });
-  }, [location.key]);
+  }, [location.pathname]);
   return children;
 }
 
@@ -146,6 +165,7 @@ function HomePage() {
 function App() {
   return (
     <Suspense fallback={<LoadingFallback />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/en" element={<HomePage />} />

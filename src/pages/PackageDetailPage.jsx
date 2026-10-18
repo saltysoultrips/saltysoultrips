@@ -61,6 +61,27 @@ export default function PackageDetailPage() {
   const [pkg, setPkg] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Scroll to top instantly when package slug changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [slug]);
+
+  // Ensure scroll is at top once async content finishes loading and mounts
+  useEffect(() => {
+    if (!loading && pkg) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      });
+    }
+  }, [loading, pkg, slug]);
+
   useEffect(() => {
     const fetchPackage = async () => {
       try {
