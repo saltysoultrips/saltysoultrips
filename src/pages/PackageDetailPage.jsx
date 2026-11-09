@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { packageSeo } from "../lib/packageSeo";
+import {
+  Breadcrumbs,
+  breadcrumbSchema,
+  homeCrumb,
+  ORG_ID,
+} from "../lib/schema";
+import RelatedPackages from "../components/sections/RelatedPackages";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SEOHead from "../components/SEOHead";
@@ -21,32 +28,31 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-sand-200">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
+      <h2 className="m-0">
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
+        >
+          <span className="text-base sm:text-lg font-serif font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
+            {title}
+          </span>
+          <span className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-brand-sage' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
+            <ChevronDown size={20} />
+          </span>
+        </button>
+      </h2>
+      {/* Content stays in the DOM (indexable); collapsed visually via grid rows */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
-        <h3 className="text-base sm:text-lg font-serif font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
-          {title}
-        </h3>
-        <div className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-brand-sage' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
-          <ChevronDown size={20} />
+        <div className="overflow-hidden" inert={!isOpen ? true : undefined}>
+          <div className="pb-6 text-base font-sans text-brand-dark/80 whitespace-pre-line leading-[1.8]">
+            {children}
+          </div>
         </div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="pb-6 text-base font-sans text-brand-dark/80 whitespace-pre-line leading-[1.8]">
-              {children}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </div>
   );
 };
@@ -125,12 +131,14 @@ export default function PackageDetailPage() {
     return pkg[field] || "";
   };
 
-  const getPackageImage = (w = 2400) =>
-    pkg?.image ? urlFor(pkg.image).width(w).quality(90).auto("format").url() : "";
-  const getFlyerImage = (w = 2400) =>
+  const getPackageImage = (w = 2400, q = 80) =>
+    pkg?.image ? urlFor(pkg.image).width(w).quality(q).auto("format").url() : "";
+  const getFlyerImage = (w = 2400, q = 80) =>
     pkg?.flyerImage
-      ? urlFor(pkg.flyerImage).width(w).quality(90).auto("format").url()
+      ? urlFor(pkg.flyerImage).width(w).quality(q).auto("format").url()
       : "";
+  const srcSetFor = (getter, widths) =>
+    widths.map((w) => `${getter(w)} ${w}w`).join(", ");
 
   const parseDescription = (text) => {
     if (!text) return null;
@@ -261,7 +269,18 @@ export default function PackageDetailPage() {
   const ogImage = getPackageImage(1200);
   const heroImageAlt = pkg.image?.alt || getPackageText("title");
   const flyerImageAlt = pkg.flyerImage?.alt || getPackageText("title");
-  const schemaData = {
+  const crumbs = [
+    homeCrumb(i18n.language),
+    {
+      name: isEn ? "Packages" : "Paquetes",
+      path: isEn ? "/packages" : "/paquetes",
+    },
+    {
+      name: getPackageText("title"),
+      path: `/${isEn ? "packages" : "paquetes"}/${slug}`,
+    },
+  ];
+  const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: getPackageText("title"),
@@ -276,10 +295,12 @@ export default function PackageDetailPage() {
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
             url: `https://www.saltysoultrips.com/${isEn ? "packages" : "paquetes"}/${slug}`,
+            seller: { "@id": ORG_ID },
           },
         }
       : {}),
   };
+  const schemaData = [productSchema, breadcrumbSchema(crumbs)];
 
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 min-h-screen flex flex-col">
@@ -304,23 +325,23 @@ export default function PackageDetailPage() {
           {/* Hero Image Section */}
           <div className="relative h-[50vh] md:h-[60vh] w-full bg-brand-dark overflow-hidden">
             <img
-              src={getPackageImage()}
+              src={getPackageImage(1600)}
+              srcSet={srcSetFor(getPackageImage, [640, 1024, 1600, 2400])}
+              sizes="100vw"
+              fetchPriority="high"
               alt={heroImageAlt}
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-sand-100 via-transparent to-black/30"></div>
 
             <div className="absolute top-8 left-4 md:left-8 z-10">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/${isEn ? "packages" : "paquetes"}`);
-                }}
+              <Link
+                to={`/${isEn ? "packages" : "paquetes"}`}
                 className="flex items-center gap-2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all text-sm font-medium"
               >
                 <ArrowLeft size={16} />
                 {t("packages.back", "Volver a Paquetes")}
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -331,6 +352,8 @@ export default function PackageDetailPage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-sand-200"
             >
+              <Breadcrumbs items={crumbs} className="mb-5" />
+
               {/* Badges */}
               <div className="flex flex-wrap gap-3 mb-6">
                 {packageCountries.map((c) => (
@@ -418,7 +441,9 @@ export default function PackageDetailPage() {
                       onClick={() => setIsImageOpen(true)}
                     >
                       <img
-                        src={getFlyerImage()}
+                        src={getFlyerImage(900)}
+                        srcSet={srcSetFor(getFlyerImage, [450, 900, 1350])}
+                        sizes="(min-width: 1024px) 448px, 100vw"
                         loading="lazy"
                         alt={flyerImageAlt}
                         className="w-full h-auto object-cover transition-transform duration-700"
@@ -438,6 +463,7 @@ export default function PackageDetailPage() {
             </motion.div>
           </div>
         </article>
+        <RelatedPackages pkg={pkg} isEn={isEn} />
       </main>
 
       <Footer />

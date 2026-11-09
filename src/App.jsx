@@ -14,6 +14,7 @@ import HowItWorks from "./components/sections/HowItWorks";
 import About from "./components/sections/About";
 import HomeReviews from "./components/sections/HomeReviews";
 import SEOHead from "./components/SEOHead";
+import { organizationSchema, websiteSchema } from "./lib/schema";
 import Analytics from "./components/Analytics";
 import DeferredChat from "./components/DeferredChat";
 
@@ -114,22 +115,10 @@ function HomePage() {
     }
   }, [hash, navType]);
 
-  const travelAgencySchema = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    name: "SaltySoulTrips",
-    image: "https://www.saltysoultrips.com/resto/logo.png",
-    "@id": "https://www.saltysoultrips.com",
-    url: "https://www.saltysoultrips.com",
-    telephone: "+34611794842",
-    sameAs: [
-      "https://www.instagram.com/saltysoultrips/",
-      "https://www.tiktok.com/@saltysoultrips",
-    ],
-    priceRange: "$$",
-  };
-
-  const homeSchema = travelAgencySchema;
+  const homeSchema = [
+    organizationSchema(i18n.language),
+    websiteSchema(i18n.language),
+  ];
 
   return (
     <div className="font-sans antialiased text-brand-dark bg-sand-100 selection:bg-sand-400 selection:text-white">

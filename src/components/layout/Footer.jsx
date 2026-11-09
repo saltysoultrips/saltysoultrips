@@ -182,7 +182,7 @@ export default function Footer() {
                 <a
                   href="https://www.getyourguide.es?partner_id=QLUQS6L&cmp=share_to_earn"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -257,7 +257,7 @@ export default function Footer() {
                 <a
                   href="https://www.expedia.es/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img
@@ -272,7 +272,7 @@ export default function Footer() {
                 <a
                   href="https://www.siteminder.com/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"
                 >
                   <img

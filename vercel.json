@@ -1,6 +1,20 @@
 {
   "routes": [
     {
+      "src": "^/en/blog/alquilar-coche-sin-deposito-sin-tarjeta-credito/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/rent-car-without-deposit-credit-card"
+      }
+    },
+    {
+      "src": "^/blog/rent-car-without-deposit-credit-card/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/rent-car-without-deposit-credit-card"
+      }
+    },
+    {
       "src": "^/en/blog/merece-la-pena-contratar-un-seguro-de-viaje-10-razones-por-las-que-nunca-deberias-viajar-sin-el/?$",
       "status": 301,
       "headers": {
@@ -26,6 +40,20 @@
       "status": 301,
       "headers": {
         "Location": "/en/blog/what-to-see-in-london-in-3-days-complete-first-time-itinerary"
+      }
+    },
+    {
+      "src": "^/en/blog/alquilar-coche-sin-deposito-ni-tarjeta-madeira/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/madeira-car-rental-no-deposit-no-credit-card"
+      }
+    },
+    {
+      "src": "^/blog/madeira-car-rental-no-deposit-no-credit-card/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/madeira-car-rental-no-deposit-no-credit-card"
       }
     },
     {
@@ -76,6 +104,20 @@
       "headers": {
         "Location": "/en/blog/maldives-without-breaking-the-bank-the-secret-of-local-islands"
       }
+    },
+    {
+      "src": "^/(.+)/$",
+      "status": 308,
+      "headers": {
+        "Location": "/$1"
+      }
+    },
+    {
+      "src": "^/assets/(.*)$",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
     },
     {
       "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",

@@ -257,7 +257,7 @@ export default function Discounts() {
                   <a
                     href={offer.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="sponsored noopener noreferrer"
                     className="w-full py-3 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-white font-medium text-center transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     {t(`discounts.${offer.id}.btn`)}

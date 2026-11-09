@@ -123,7 +123,14 @@ export default function BlogList() {
                     <div className="flex items-center gap-4 text-xs text-stone-500 mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
-                        {post.date}
+                        <time dateTime={post.date}>
+                          {post.date
+                            ? new Date(`${String(post.date).slice(0, 10)}T12:00:00Z`).toLocaleDateString(
+                                lang === "en" ? "en-GB" : "es-ES",
+                                { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" },
+                              )
+                            : ""}
+                        </time>
                       </span>
                     </div>
 
