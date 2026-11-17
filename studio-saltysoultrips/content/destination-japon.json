@@ -1,0 +1,139 @@
+{
+  "_id": "destination-japon",
+  "_type": "destination",
+  "showOnWeb": true,
+  "name": "Japón",
+  "slug": { "_type": "slug", "current": "viajes-a-japon" },
+  "title": "Templos, cerezos y ciudades del futuro",
+  "region": "Asia",
+  "matchTerms": ["Japón", "Japan", "Tokio", "Tokyo", "Kioto", "Kyoto", "Osaka"],
+  "heroImage": {
+    "_type": "image",
+    "asset": { "_type": "reference", "_ref": "image-a2ceb0942f0d4ab5241db3acb7b91e1e576c2593-960x640-jpg" },
+    "alt": "Cerezos en flor junto a una casa tradicional en Kioto, Japón"
+  },
+
+  "intro": "Japón es uno de esos destinos que superan cualquier expectativa: templos milenarios junto a rascacielos, una gastronomía que por sí sola justifica el viaje y una organización que hace que todo funcione. En esta guía te contamos cuándo ir, cuánto cuesta y cómo organizar tu primera ruta.",
+  "about": [
+    "Lo que más sorprende de Japón es el contraste. En Tokio puedes pasar en pocos minutos de la calma del santuario Meiji, rodeado de bosque, al famoso cruce de Shibuya. En Kioto, los templos y las casas de madera de Gion conviven con una de las estaciones de tren más modernas del país.",
+    "Para una primera vez, la ruta clásica une Tokio, la zona del monte Fuji, Kioto, Nara y Osaka, conectadas en tren bala en pocas horas. Con más días puedes añadir los Alpes japoneses (Takayama y Shirakawa-go), Kanazawa, Hiroshima y la isla de Miyajima.",
+    "La comida es otro gran motivo para ir: desde el sushi de mercado y el ramen de barrio hasta las izakayas, las tiendas 24 horas o la cocina kaiseki de un ryokan. Se puede comer muy bien sin gastar demasiado.",
+    "Además, es un país muy seguro, limpio y fácil de recorrer aunque no hables japonés: la señalización del transporte suele estar también en inglés y los trenes son puntuales. Lo que sí conviene es planificar bien la ruta y reservar con antelación en las épocas de cerezos y de otoño."
+  ],
+  "highlights": [
+    { "_key": "h1", "icon": "⛩️", "title": "Fushimi Inari", "desc": "Miles de toriis rojos subiendo por la montaña, en Kioto", "title_en": "Fushimi Inari", "desc_en": "Thousands of red torii gates climbing the mountain in Kyoto" },
+    { "_key": "h2", "icon": "🗼", "title": "Tokio", "desc": "Shibuya, Asakusa, Shinjuku y barrios con personalidad propia", "title_en": "Tokyo", "desc_en": "Shibuya, Asakusa, Shinjuku and neighbourhoods full of character" },
+    { "_key": "h3", "icon": "🗻", "title": "Monte Fuji y Hakone", "desc": "Lagos, aguas termales (onsen) y vistas al Fuji en días despejados", "title_en": "Mount Fuji & Hakone", "desc_en": "Lakes, hot springs (onsen) and Fuji views on clear days" },
+    { "_key": "h4", "icon": "🦌", "title": "Nara", "desc": "El gran Buda del Todai-ji y sus ciervos en libertad", "title_en": "Nara", "desc_en": "The Great Buddha of Todai-ji and its free-roaming deer" },
+    { "_key": "h5", "icon": "🎋", "title": "Arashiyama", "desc": "El bosque de bambú y los templos del oeste de Kioto", "title_en": "Arashiyama", "desc_en": "The bamboo grove and temples of western Kyoto" },
+    { "_key": "h6", "icon": "🕊️", "title": "Hiroshima y Miyajima", "desc": "El Memorial de la Paz y el torii flotante de Itsukushima", "title_en": "Hiroshima & Miyajima", "desc_en": "The Peace Memorial and the floating torii of Itsukushima" },
+    { "_key": "h7", "icon": "🏘️", "title": "Shirakawa-go", "desc": "Aldea de casas gassho, Patrimonio de la Humanidad", "title_en": "Shirakawa-go", "desc_en": "A UNESCO World Heritage village of gassho-style farmhouses" },
+    { "_key": "h8", "icon": "🍜", "title": "Osaka", "desc": "Dotonbori y la mejor comida callejera del país", "title_en": "Osaka", "desc_en": "Dotonbori and the country's best street food" }
+  ],
+  "tips": [
+    "Reserva con meses de antelación si viajas en época de cerezos o en otoño: los hoteles de Kioto son los primeros en llenarse.",
+    "Usa una tarjeta IC (Suica, Pasmo o ICOCA), también disponible en el móvil, para metro, autobuses e incluso tiendas: te ahorra comprar billetes sueltos.",
+    "Envía la maleta de hotel a hotel con el servicio de mensajería (takkyubin) y viaja ligero en el tren bala: es económico y muy habitual.",
+    "Lleva algo de efectivo: cada vez se acepta más la tarjeta, pero algunos templos, restaurantes pequeños y mercados solo aceptan yenes.",
+    "Necesitarás un adaptador de enchufe: en Japón son de tipo A (dos clavijas planas) y el voltaje es de 100 V.",
+    "Madruga en los lugares más famosos, como Fushimi Inari o el bosque de bambú de Arashiyama: a primera hora se disfrutan sin multitudes.",
+    "En Japón no se deja propina, y en muchos templos, ryokans y restaurantes tendrás que descalzarte."
+  ],
+
+  "bestTime": {
+    "months": "Marzo-mayo y octubre-noviembre",
+    "reason": "La primavera es la época de los cerezos en flor (sakura), que en Tokio y Kioto suele llegar a finales de marzo o principios de abril. En otoño los arces (momiji) se tiñen de rojo, con su mejor momento en Kioto hacia mediados o finales de noviembre. Son las mejores épocas por clima y paisaje, pero también las más demandadas: conviene reservar con mucha antelación.\n\nSi puedes, evita la Golden Week (finales de abril y principios de mayo), cuando viajan los propios japoneses y suben los precios. En junio y principios de julio llega la temporada de lluvias, y el verano es muy caluroso y húmedo, con riesgo de tifones entre agosto y septiembre. El invierno es frío pero seco y despejado, con menos turistas y buenas opciones para ver nieve en los Alpes japoneses o en Hokkaido.",
+    "months_en": "March-May and October-November",
+    "reason_en": "Spring is cherry blossom season (sakura), which usually reaches Tokyo and Kyoto in late March or early April. In autumn the maple trees (momiji) turn red, peaking in Kyoto around mid to late November. These are the best times for weather and scenery, but also the busiest, so book well in advance.\n\nIf you can, avoid Golden Week (late April to early May), when Japanese people travel and prices rise. June and early July bring the rainy season, and summer is very hot and humid, with a risk of typhoons in August and September. Winter is cold but dry and clear, with fewer tourists and good chances of snow in the Japanese Alps or Hokkaido."
+  },
+  "idealDays": "12-15 días para una primera vez",
+  "idealDays_en": "12-15 days for a first trip",
+  "budget": "Como referencia orientativa por persona (viajando en pareja), un viaje de 12-15 días a Japón suele costar entre 2.500 y 4.000 €, según la temporada y el tipo de alojamiento:\n\n• Vuelos de ida y vuelta desde España: entre 800 y 1.300 €, normalmente con una escala.\n• Alojamiento: un hotel céntrico de categoría media cuesta aproximadamente entre 80 y 150 € la noche en habitación doble. Una noche en ryokan con cena y desayuno, desde unos 150-200 € por persona.\n• Comida: con 30-50 € al día se come muy bien combinando restaurantes locales, ramen y tiendas 24 horas.\n• Transporte: los trenes bala son la partida más importante. Según la ruta compensa el Japan Rail Pass o los billetes sueltos; lo calculamos en cada propuesta.\n\nEn temporada de cerezos y en otoño suben los precios de vuelos y hoteles. Si prefieres un circuito organizado, nuestro viaje a Japón en Semana Santa 2027 parte de 5.475 € por persona con vuelos, hoteles y visitas incluidos.",
+  "budget_en": "As a rough guide per person (travelling as a couple), a 12-15 day trip to Japan usually costs between €2,500 and €4,000, depending on the season and type of accommodation:\n\n• Return flights from Spain: between €800 and €1,300, usually with one stop.\n• Accommodation: a central mid-range hotel costs roughly €80-150 per night for a double room. A night in a ryokan with dinner and breakfast starts at around €150-200 per person.\n• Food: €30-50 a day is enough to eat very well, mixing local restaurants, ramen and convenience stores.\n• Transport: bullet trains are the biggest expense. Depending on the route, either the Japan Rail Pass or individual tickets work out cheaper; we calculate it for every proposal.\n\nFlight and hotel prices rise during cherry blossom season and in autumn. If you prefer an organised tour, our Japan Easter 2027 trip starts at €5,475 per person including flights, hotels and visits.",
+
+  "routes": [
+    {
+      "_key": "r1",
+      "title": "Japón esencial en 12 días",
+      "description": "Días 1-4: Tokio (Asakusa, Shibuya, Shinjuku, Harajuku y excursión opcional a Nikko o Kamakura)\nDía 5: Hakone o lago Kawaguchiko, con vistas al monte Fuji y noche en ryokan con onsen\nDías 6-9: Kioto (Fushimi Inari, Kiyomizu-dera, Arashiyama, Gion) con excursión de un día a Nara\nDía 10: Hiroshima y la isla de Miyajima\nDías 11-12: Osaka (Dotonbori y el castillo) y vuelo de regreso desde Kansai",
+      "title_en": "Essential Japan in 12 days",
+      "description_en": "Days 1-4: Tokyo (Asakusa, Shibuya, Shinjuku, Harajuku and an optional day trip to Nikko or Kamakura)\nDay 5: Hakone or Lake Kawaguchiko, with Mount Fuji views and a night in a ryokan with onsen\nDays 6-9: Kyoto (Fushimi Inari, Kiyomizu-dera, Arashiyama, Gion) with a day trip to Nara\nDay 10: Hiroshima and Miyajima island\nDays 11-12: Osaka (Dotonbori and the castle) and flight home from Kansai"
+    },
+    {
+      "_key": "r2",
+      "title": "Japón completo en 15 días, con los Alpes japoneses",
+      "description": "Días 1-4: Tokio\nDía 5: Hakone o la zona del monte Fuji\nDías 6-7: Takayama y la aldea de Shirakawa-go\nDía 8: Kanazawa (jardín Kenroku-en y barrio de Higashi Chaya)\nDías 9-12: Kioto y excursión a Nara\nDía 13: Hiroshima y Miyajima\nDías 14-15: Osaka y vuelo de regreso",
+      "title_en": "Complete Japan in 15 days, with the Japanese Alps",
+      "description_en": "Days 1-4: Tokyo\nDay 5: Hakone or the Mount Fuji area\nDays 6-7: Takayama and Shirakawa-go village\nDay 8: Kanazawa (Kenroku-en garden and Higashi Chaya district)\nDays 9-12: Kyoto and a day trip to Nara\nDay 13: Hiroshima and Miyajima\nDays 14-15: Osaka and flight home"
+    }
+  ],
+  "faqs": [
+    {
+      "_key": "f1",
+      "question": "¿Necesito visado para viajar a Japón desde España?",
+      "answer": "No. Con pasaporte español puedes entrar como turista hasta 90 días sin visado, con el pasaporte en vigor durante toda la estancia. Antes de viajar, revisa siempre los requisitos oficiales vigentes por si hay cambios.",
+      "question_en": "Do I need a visa to travel to Japan from Spain?",
+      "answer_en": "No. With a Spanish passport you can enter as a tourist for up to 90 days without a visa, as long as your passport is valid for the whole stay. Always check the current official requirements before travelling in case they change."
+    },
+    {
+      "_key": "f2",
+      "question": "¿Cuántos días hacen falta para ver Japón?",
+      "answer": "Para una primera vez recomendamos entre 12 y 15 días: suficientes para Tokio, el monte Fuji, Kioto, Nara, Hiroshima y Osaka sin ir con prisas. Con 10 días se puede hacer una ruta más corta centrada en Tokio y Kioto.",
+      "question_en": "How many days do I need to see Japan?",
+      "answer_en": "For a first trip we recommend 12 to 15 days: enough for Tokyo, Mount Fuji, Kyoto, Nara, Hiroshima and Osaka without rushing. With 10 days you can do a shorter route focused on Tokyo and Kyoto."
+    },
+    {
+      "_key": "f3",
+      "question": "¿Cuál es la mejor época para viajar a Japón?",
+      "answer": "La primavera (marzo-mayo) y el otoño (octubre-noviembre), por el clima y por los paisajes de cerezos y arces. Son también las épocas más caras y concurridas, así que conviene reservar con tiempo.",
+      "question_en": "When is the best time to visit Japan?",
+      "answer_en": "Spring (March-May) and autumn (October-November), for the weather and the cherry blossom and maple scenery. They are also the most expensive and crowded times, so book early."
+    },
+    {
+      "_key": "f4",
+      "question": "¿Merece la pena el Japan Rail Pass?",
+      "answer": "Depende de la ruta. Desde la subida de precio de octubre de 2023 ya no compensa siempre: suele salir a cuenta si haces varios trayectos largos en tren bala en pocos días. Al diseñar tu viaje comparamos el pase con los billetes sueltos.",
+      "question_en": "Is the Japan Rail Pass worth it?",
+      "answer_en": "It depends on your route. Since the price increase in October 2023 it is not always worth it: it usually pays off if you take several long bullet train journeys within a few days. When we design your trip we compare the pass with individual tickets."
+    },
+    {
+      "_key": "f5",
+      "question": "¿Cuánto cuesta un viaje a Japón?",
+      "answer": "De forma orientativa, entre 2.500 y 4.000 € por persona para 12-15 días con vuelos desde España, según la temporada y el alojamiento. Te preparamos un presupuesto a medida sin compromiso.",
+      "question_en": "How much does a trip to Japan cost?",
+      "answer_en": "As a rough guide, between €2,500 and €4,000 per person for 12-15 days including flights from Spain, depending on the season and accommodation. We will prepare a tailor-made quote with no commitment."
+    },
+    {
+      "_key": "f6",
+      "question": "¿Es fácil moverse por Japón sin hablar japonés?",
+      "answer": "Sí. El transporte es muy puntual, la señalización de trenes y metro suele estar también en inglés y las aplicaciones de traducción ayudan en los restaurantes. Es uno de los países más seguros y cómodos para viajar.",
+      "question_en": "Is it easy to get around Japan without speaking Japanese?",
+      "answer_en": "Yes. Public transport is very punctual, train and metro signs are usually in English too, and translation apps help in restaurants. It is one of the safest and easiest countries to travel in."
+    }
+  ],
+
+  "name_en": "Japan",
+  "slug_en": { "_type": "slug", "current": "travel-to-japan" },
+  "title_en": "Temples, cherry blossoms and cities of the future",
+  "intro_en": "Japan is one of those destinations that exceeds every expectation: ancient temples next to skyscrapers, food that alone is worth the trip and an efficiency that makes everything work. In this guide we explain when to go, how much it costs and how to plan your first route.",
+  "about_en": [
+    "What surprises most about Japan is the contrast. In Tokyo you can go in minutes from the calm of the forest-wrapped Meiji Shrine to the famous Shibuya crossing. In Kyoto, temples and the wooden houses of Gion sit alongside one of the most modern railway stations in the country.",
+    "For a first trip, the classic route links Tokyo, the Mount Fuji area, Kyoto, Nara and Osaka, all connected by bullet train within a few hours. With more days you can add the Japanese Alps (Takayama and Shirakawa-go), Kanazawa, Hiroshima and Miyajima island.",
+    "Food is another great reason to go: from market sushi and neighbourhood ramen to izakayas, convenience stores or kaiseki dinners in a ryokan. You can eat extremely well without spending too much.",
+    "It is also a very safe, clean and easy country to travel around even if you don't speak Japanese: transport signs are usually in English too and trains run on time. What you do need is a well-planned route and early bookings during the cherry blossom and autumn seasons."
+  ],
+  "tips_en": [
+    "Book months ahead if you travel during cherry blossom season or in autumn: Kyoto hotels are the first to fill up.",
+    "Use an IC card (Suica, Pasmo or ICOCA), also available on your phone, for metro, buses and even shops, so you don't need to buy single tickets.",
+    "Send your suitcase from hotel to hotel with the luggage delivery service (takkyubin) and travel light on the bullet train: it's affordable and very common.",
+    "Carry some cash: cards are increasingly accepted, but some temples, small restaurants and markets only take yen.",
+    "You'll need a plug adapter: Japan uses type A sockets (two flat pins) and 100 V.",
+    "Get up early for the most famous sights, such as Fushimi Inari or the Arashiyama bamboo grove, to enjoy them without the crowds.",
+    "Tipping is not customary in Japan, and you'll need to take your shoes off in many temples, ryokans and restaurants."
+  ],
+
+  "seoTitle": "Viajes a Japón a medida: época, precios y rutas | SaltySoulTrips",
+  "metaDescription": "Guía para viajar a Japón: mejor época, cuánto cuesta, rutas de 12 y 15 días y consejos prácticos. Diseñamos tu viaje a Japón a medida desde España.",
+  "seoTitle_en": "Japan Travel Guide: Best Time, Costs & Routes | SaltySoulTrips",
+  "metaDescription_en": "Japan travel guide: best time to visit, trip costs, 12 and 15-day routes and practical tips. We design your tailor-made trip to Japan."
+}

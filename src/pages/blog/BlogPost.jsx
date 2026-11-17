@@ -3,7 +3,14 @@ import { useParams, useLocation, Navigate, Link } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import SEOHead from "../../components/SEOHead";
 import { client, urlFor } from "../../lib/sanity";
-import { postPath, hasEnglishPost, englishPostSlug } from "../../lib/routes";
+import {
+  postPath,
+  hasEnglishPost,
+  englishPostSlug,
+  destinationPath,
+  hasEnglishDestination,
+} from "../../lib/routes";
+import { findDestinationsFor } from "../../lib/destinations";
 import { clampText } from "../../lib/packageSeo";
 import { getPackageCountries } from "../../data/countryMap";
 import {
@@ -134,6 +141,23 @@ export default function BlogPost() {
   const [post, setPost] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [relatedTrips, setRelatedTrips] = React.useState(null);
+  const [guides, setGuides] = React.useState(null);
+
+  React.useEffect(() => {
+    if (!post) return;
+    let active = true;
+    findDestinationsFor(`${post.title} ${post.title_en || ""}`).then((list) => {
+      if (active)
+        setGuides(
+          list
+            .filter((d) => (lang === "en" ? hasEnglishDestination(d) : true))
+            .slice(0, 2),
+        );
+    });
+    return () => {
+      active = false;
+    };
+  }, [post, lang]);
 
   // Packages whose country appears in the post title (contextual internal links)
   React.useEffect(() => {
@@ -358,7 +382,24 @@ export default function BlogPost() {
                   ? "Tell us your dates and budget. We will prepare a proposal and manage the agreed bookings."
                   : "Cuéntanos tus fechas y presupuesto. Preparamos una propuesta y gestionamos las reservas acordadas."}
               </p>
-              {relatedTrips === null && <div data-loading="true" />}
+              {(relatedTrips === null || guides === null) && <div data-loading="true" />}
+              {guides?.length > 0 && (
+                <div className="mb-6 flex flex-wrap gap-3">
+                  {guides.map((d) => (
+                    <Link
+                      key={d._id}
+                      to={destinationPath(d, lang)}
+                      className="inline-flex items-center gap-2 border border-sand-200 rounded-full px-4 py-2 font-medium hover:bg-sand-100"
+                    >
+                      🧭{" "}
+                      {lang === "en"
+                        ? `Travel guide: ${d.name_en || d.name}`
+                        : `Guía de viaje: ${d.name}`}{" "}
+                      →
+                    </Link>
+                  ))}
+                </div>
+              )}
               {relatedTrips?.length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-lg font-serif mb-2">

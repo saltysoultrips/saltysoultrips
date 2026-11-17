@@ -34,8 +34,20 @@ const redirects = (manifest.redirects || []).map(({source, target}) => ({
   status: 301,
   headers: { Location: target },
 }));
+// A manual redirect must never hide a page that now exists (e.g. an old
+// /destinos/... URL redirected to a package until the destination is published).
+const shadowsLiveRoute = (route) => {
+  if (!route.headers?.Location || route.src === "^/(.+)/$") return false;
+  const pattern = new RegExp(route.src);
+  const hit = manifest.routes.find((path) => pattern.test(path));
+  if (hit) console.log(`Dropping redirect ${route.src}: ${hit} is now a live page`);
+  return Boolean(hit);
+};
 config.routes = [
   ...redirects,
-  ...config.routes.filter((route) => !route.headers?.Location?.startsWith("/en/blog/")),
+  ...config.routes.filter(
+    (route) =>
+      !route.headers?.Location?.startsWith("/en/blog/") && !shadowsLiveRoute(route),
+  ),
 ];
 fs.writeFileSync("vercel.json", JSON.stringify(config, null, 2) + "\n");

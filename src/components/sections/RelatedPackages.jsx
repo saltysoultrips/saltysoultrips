@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { client, urlFor } from "../../lib/sanity";
 import { getPackageCountries } from "../../data/countryMap";
-import { postPath, hasEnglishPost } from "../../lib/routes";
+import { postPath, hasEnglishPost, destinationPath, hasEnglishDestination } from "../../lib/routes";
+import { findDestinationsFor, pickLang } from "../../lib/destinations";
 
 const asArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 const norm = (s) =>
@@ -18,6 +19,18 @@ const norm = (s) =>
 export default function RelatedPackages({ pkg, isEn }) {
   const [related, setRelated] = useState(null);
   const [posts, setPosts] = useState([]);
+  const [guides, setGuides] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    const text = [pkg.title, pkg.title_en, ...getPackageCountries(pkg, false), ...getPackageCountries(pkg, true)].join(" ");
+    findDestinationsFor(text).then((list) => {
+      if (active) setGuides(list.filter((d) => (isEn ? hasEnglishDestination(d) : true)).slice(0, 2));
+    });
+    return () => {
+      active = false;
+    };
+  }, [pkg, isEn]);
 
   useEffect(() => {
     let active = true;
@@ -73,8 +86,8 @@ export default function RelatedPackages({ pkg, isEn }) {
     };
   }, [pkg, isEn]);
 
-  if (related === null) return <div data-loading="true" />;
-  if (!related.length && !posts.length) return null;
+  if (related === null || guides === null) return <div data-loading="true" />;
+  if (!related.length && !posts.length && !guides.length) return null;
 
   const text = (p, field) => (isEn && p[`${field}_en`] ? p[`${field}_en`] : p[field]);
 
@@ -116,6 +129,19 @@ export default function RelatedPackages({ pkg, isEn }) {
             ))}
           </div>
         </>
+      )}
+      {guides.length > 0 && (
+        <div className="mt-12 flex flex-wrap gap-4">
+          {guides.map((d) => (
+            <Link
+              key={d._id}
+              to={destinationPath(d, isEn ? "en" : "es")}
+              className="inline-flex items-center gap-2 bg-white border border-sand-200 rounded-full px-5 py-3 font-medium hover:bg-sand-200 transition-colors"
+            >
+              🧭 {isEn ? `Travel guide: ${pickLang(d, "name", true)}` : `Guía de viaje: ${d.name}`} →
+            </Link>
+          ))}
+        </div>
       )}
       {posts.length > 0 && (
         <div className="mt-12">

@@ -71,6 +71,20 @@
       }
     },
     {
+      "src": "^/en/blog/que-ver-en-nueva-york-por-primera-vez-12-lugares-que-te-enamoraran/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/first-time-in-new-york-12-places-to-fall-in-love-with-the-city"
+      }
+    },
+    {
+      "src": "^/blog/first-time-in-new-york-12-places-to-fall-in-love-with-the-city/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/en/blog/first-time-in-new-york-12-places-to-fall-in-love-with-the-city"
+      }
+    },
+    {
       "src": "^/en/blog/merece-la-pena-un-crucero-disney-mi-opinion-despues-de-analizar-todo-lo-que-ofrece/?$",
       "status": 301,
       "headers": {
@@ -127,7 +141,7 @@
       }
     },
     {
-      "src": "^/(destinos|destinations|servicios|services|como-funciona|how-it-works)(/.*)?$",
+      "src": "^/(servicios|services|como-funciona|how-it-works)(/.*)?$",
       "dest": "/410.html",
       "status": 410,
       "headers": {

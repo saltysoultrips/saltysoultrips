@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { postPath, translatedPath, englishPostSlug, hasEnglishPost } from "../../lib/routes";
+import {
+  postPath,
+  translatedPath,
+  englishPostSlug,
+  hasEnglishPost,
+  hasEnglishDestination,
+} from "../../lib/routes";
+import { useLiveDestinations } from "../../lib/destinations";
 import { client } from "../../lib/sanity";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import X from "lucide-react/dist/esm/icons/x";
@@ -25,8 +32,17 @@ export default function Header() {
 
   const isEn = i18n.language === "en";
 
+  const liveDestinations = useLiveDestinations();
+  const showDestinations = Boolean(
+    liveDestinations?.length &&
+      (!isEn || liveDestinations.some(hasEnglishDestination)),
+  );
+
   const navLinks = [
     { name: t("header.nav.paquetes"), href: isEn ? "/packages" : "/paquetes" },
+    ...(showDestinations
+      ? [{ name: isEn ? "Destinations" : "Destinos", href: isEn ? "/destinations" : "/destinos" }]
+      : []),
     {
       name: t("header.nav.experiencias"),
       href: isEn ? "/experiences" : "/experiencias",

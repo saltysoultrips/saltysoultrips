@@ -25,6 +25,8 @@ const PackageDetailPage = lazy(() => import("./pages/PackageDetailPage"));
 const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const DiscountsPage = lazy(() => import("./pages/DiscountsPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const DestinationsPage = lazy(() => import("./pages/DestinationsPage"));
+const DestinationPage = lazy(() => import("./pages/DestinationPage"));
 const BlogList = lazy(() => import("./pages/blog/BlogList"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
 
@@ -254,6 +256,30 @@ function App() {
             </ScrollToTopWrapper>
           }
         />
+
+        {/* Destination guides */}
+        {["/destinos", "/destinations"].map((path) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ScrollToTopWrapper>
+                <DestinationsPage />
+              </ScrollToTopWrapper>
+            }
+          />
+        ))}
+        {["/destinos/:slug", "/destinations/:slug"].map((path) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ScrollToTopWrapper>
+                <DestinationPage />
+              </ScrollToTopWrapper>
+            }
+          />
+        ))}
 
         {/* Dynamic Package Pages */}
         <Route

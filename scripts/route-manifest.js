@@ -1,21 +1,36 @@
 import {
   BASE_URL,
   staticPairs,
+  destinationListPair,
   hasEnglishPost,
   postPath,
   postRedirects,
+  isLiveDestination,
+  hasEnglishDestination,
+  destinationPath,
 } from "../src/lib/routes.js";
 export async function buildManifest() {
   const query =
-    '{"packages": *[_type == "package" && defined(slug.current)]{slug,title_en,longDescription_en,_updatedAt}, "posts": *[_type == "post" && defined(slug.current)]{slug,slug_en,title_en,content_en,_updatedAt}}';
+    '{"packages": *[_type == "package" && defined(slug.current)]{slug,title_en,longDescription_en,_updatedAt}, "posts": *[_type == "post" && defined(slug.current)]{slug,slug_en,title_en,content_en,_updatedAt}, "destinations": *[_type == "destination" && showOnWeb == true]{showOnWeb,slug,slug_en,name,name_en,intro,intro_en,about_en,_updatedAt}}';
   const response = await fetch(
     `https://wzn5s2a9.api.sanity.io/v2024-02-18/data/query/production?query=${encodeURIComponent(query)}`,
   );
   if (!response.ok) throw new Error(`CMS unavailable: ${response.status}`);
   const { result, error } = await response.json();
-  if (error || !result?.packages || !result?.posts)
+  if (error || !result?.packages || !result?.posts || !result?.destinations)
     throw new Error("Invalid CMS response: refusing incomplete sitemap");
   const entries = staticPairs.map(([es, en]) => ({ es, en }));
+  const destinations = result.destinations.filter(isLiveDestination);
+  if (destinations.length) {
+    const [es, en] = destinationListPair;
+    entries.push({ es, en: destinations.some(hasEnglishDestination) ? en : null });
+  }
+  for (const d of destinations)
+    entries.push({
+      es: destinationPath(d, "es"),
+      en: hasEnglishDestination(d) ? destinationPath(d, "en") : null,
+      lastmod: d._updatedAt,
+    });
   for (const p of result.packages)
     entries.push({
       es: `/paquetes/${p.slug.current}`,
