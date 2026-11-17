@@ -58,9 +58,16 @@ body {
   text-wrap: balance;
 }
 
-/* Typography Enhancements */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+/* Typography system (same across the site, modelled on the destination pages):
+   headings  -> Playfair Display, regular weight, brand-dark
+   body text -> Outfit
+   In @layer base so utility classes (font-sans, sizes, colours) can override it. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: inherit;
+  }
 }
 
 /* Legacy Support */

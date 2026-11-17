@@ -74,13 +74,13 @@ export default function NotFound() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="relative z-10 max-w-2xl mx-auto"
         >
-          <h1 className="text-6xl md:text-8xl font-display font-bold text-brand-sage mb-2">
+          <h1 className="text-6xl md:text-8xl text-brand-dark mb-2 font-serif">
             {t('notFound.title')}
           </h1>
-          <h2 className="text-2xl md:text-3xl font-display text-stone-700 mb-6 font-semibold">
+          <h2 className="text-2xl md:text-3xl text-brand-dark/80 mb-6 font-serif">
             {t('notFound.subtitle')}
           </h2>
-          <p className="text-lg text-stone-600 mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="text-lg text-brand-dark/70 mb-10 max-w-lg mx-auto leading-relaxed">
             {t('notFound.description')} <br />
             {t('notFound.description2')}
           </p>

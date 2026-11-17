@@ -149,13 +149,13 @@ export default function Testimonials() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
+          <span className="text-sand-700 font-semibold tracking-wider uppercase text-sm">
             {t("testimonials.label")}
           </span>
-          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-brand-dark mt-2 mb-4">
             {t("testimonials.title")}
           </h1>
-          <p className="text-stone-600 max-w-2xl mx-auto">
+          <p className="text-brand-dark/70 max-w-2xl mx-auto">
             {t("testimonials.subtitle")}
           </p>
         </div>
@@ -177,17 +177,17 @@ export default function Testimonials() {
                       {experience.name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="font-bold text-stone-800 text-lg leading-tight">
+                      <h4 className="text-brand-dark text-lg leading-tight font-serif">
                         {experience.name}
                       </h4>
                       <div className="flex items-center gap-2 mt-1">
-                        <p className="text-xs font-semibold text-brand-sage uppercase tracking-wider">
+                        <p className="text-xs font-semibold text-sand-700 uppercase tracking-wider">
                           {experience.destination}
                         </p>
                         {experience.date && (
                           <>
-                            <span className="text-stone-300">•</span>
-                            <p className="text-xs text-stone-400">
+                            <span className="text-brand-dark/30">•</span>
+                            <p className="text-xs text-brand-dark/50">
                               {experience.date}
                             </p>
                           </>
@@ -208,7 +208,7 @@ export default function Testimonials() {
                   </div>
 
                   {/* Testimonial Text */}
-                  <p className="text-stone-700 italic text-base leading-relaxed">
+                  <p className="text-brand-dark/80 italic text-base leading-relaxed">
                     "{experience.text}"
                   </p>
                 </div>

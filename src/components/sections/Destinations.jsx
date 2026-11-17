@@ -78,23 +78,23 @@ export default function Destinations() {
   };
 
   return (
-    <section className="py-24 bg-stone-50">
+    <section className="py-24 bg-sand-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 text-center md:text-left">
           <div>
-            <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-2">
+            <span className="text-sand-700 font-semibold tracking-wider uppercase text-sm block mb-2">
               {t('destinations.label')}
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-dark leading-tight">
               {t('destinations.title')}
             </h2>
-            <p className="mt-4 text-stone-600 max-w-2xl font-light text-lg">
+            <p className="mt-4 text-brand-dark/70 max-w-2xl font-light text-lg">
               {t('destinations.subtitle')}
             </p>
           </div>
           <a
             href="#contact"
-            className="hidden md:flex items-center gap-2 text-stone-500 hover:text-brand-sage transition-colors font-medium group"
+            className="hidden md:flex items-center gap-2 text-brand-dark/60 hover:text-sand-700 transition-colors font-medium group"
           >
             {t('destinations.designTrip')}{" "}
             <ArrowUpRight
@@ -112,7 +112,7 @@ export default function Destinations() {
           return (
             <div
               key={region}
-              className="mb-12 last:mb-0 border-b border-stone-200 pb-8 last:border-0"
+              className="mb-12 last:mb-0 border-b border-sand-200 pb-8 last:border-0"
             >
               <button
                 onClick={() => toggleRegion(region)}
@@ -120,16 +120,16 @@ export default function Destinations() {
               >
                 <div className="flex items-center gap-2 sm:gap-4 min-w-0">
                   <h3
-                    className={`text-2xl sm:text-3xl font-serif font-bold transition-colors duration-300 ${isOpen ? "text-brand-sage" : "text-stone-800 group-hover:text-brand-sage"}`}
+                    className={`text-2xl sm:text-3xl font-serif font-bold transition-colors duration-300 ${isOpen ? "text-sand-700" : "text-brand-dark group-hover:text-sand-700"}`}
                   >
                     {t(`regions.${region}`)}
                   </h3>
-                  <span className="text-xs sm:text-sm bg-stone-100 text-stone-500 py-1 px-3 rounded-full font-medium whitespace-nowrap shrink-0">
+                  <span className="text-xs sm:text-sm bg-sand-200 text-brand-dark/60 py-1 px-3 rounded-full font-medium whitespace-nowrap shrink-0">
                     {destinations.length} {t('destinations.destinationsCount')}
                   </span>
                 </div>
                 <div
-                  className={`p-1.5 sm:p-2 rounded-full bg-white shadow-sm border border-stone-100 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 bg-brand-sage text-white border-brand-sage" : "text-stone-400"}`}
+                  className={`p-1.5 sm:p-2 rounded-full bg-white shadow-sm border border-sand-200 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 bg-brand-sage text-white border-brand-sage" : "text-brand-dark/50"}`}
                 >
                   <ChevronDown size={20} className="sm:w-6 sm:h-6" />
                 </div>
@@ -203,14 +203,14 @@ export default function Destinations() {
                               <div className="flex items-center gap-2 text-white/90 text-xs font-bold uppercase tracking-widest mb-2">
                                 <MapPin size={12} /> {dest.country}
                               </div>
-                              <h4 className="text-2xl font-serif font-bold text-white mb-3 leading-tight">
+                              <h4 className="text-2xl font-serif text-white mb-3 leading-tight">
                                 {dest.title}
                               </h4>
 
                               {/* Highlights on Hover - "Lo mejor del destino" */}
                               <div className="h-0 group-hover:h-auto overflow-hidden opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                                 <div className="mb-4 space-y-1">
-                                  <p className="text-xs text-brand-sage font-bold uppercase tracking-wider mb-2">
+                                  <p className="text-xs text-sand-700 font-bold uppercase tracking-wider mb-2">
                                     {t('destinations.bestOf')}
                                   </p>
                                   {dest.highlights &&
@@ -221,7 +221,7 @@ export default function Destinations() {
                                       >
                                         <Star
                                           size={12}
-                                          className="text-brand-sage fill-brand-sage"
+                                          className="text-sand-700 fill-brand-sage"
                                         />
                                         <span className="truncate">
                                           {h.title}
@@ -249,7 +249,7 @@ export default function Destinations() {
         <div className="mt-16 text-center md:hidden">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 text-brand-sage font-bold border-b border-brand-sage pb-1"
+            className="inline-flex items-center gap-2 text-sand-700 font-bold border-b border-brand-sage pb-1"
           >
             {t('destinations.noDestination')} <ArrowUpRight size={18} />
           </a>

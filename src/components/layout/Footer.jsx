@@ -78,7 +78,7 @@ export default function Footer() {
           <div className="glass p-8 rounded-3xl shadow-sm border border-white/50">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0 text-center md:text-left">
-                <h3 className="text-2xl font-serif font-bold text-brand-dark">
+                <h3 className="text-2xl font-serif text-brand-dark">
                   Saltysoultrips
                 </h3>
                 <p className="text-sand-700 mt-2 text-sm max-w-xs font-medium">
@@ -105,7 +105,7 @@ export default function Footer() {
               </div>
 
               <div className="mb-8 md:mb-0 text-center md:text-left">
-                <h4 className="text-sm font-bold text-brand-dark uppercase tracking-widest mb-4">
+                <h4 className="text-sm font-bold text-brand-dark uppercase tracking-widest mb-4 font-sans">
                   {t("footer.featuredDestinations")}
                 </h4>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sand-800 text-sm font-medium">
@@ -145,7 +145,7 @@ export default function Footer() {
             </div>
 
             <div className="mt-10 pt-8 border-t border-sand-300 text-center">
-              <h4 className="text-lg font-semibold text-brand-dark mb-6">
+              <h4 className="text-lg text-brand-dark mb-6 font-serif">
                 {t("footer.collaborators")}
               </h4>
               <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">

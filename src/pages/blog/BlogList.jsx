@@ -36,8 +36,8 @@ export default function BlogList() {
 
   if (loading) {
     return (
-      <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
-        <div className="text-stone-400">
+      <div className="pt-24 pb-16 bg-sand-100 min-h-screen flex items-center justify-center">
+        <div className="text-brand-dark/50">
           {lang === "en" ? "Loading blog..." : "Cargando blog..."}
         </div>
       </div>
@@ -64,10 +64,10 @@ export default function BlogList() {
         enUrl="https://www.saltysoultrips.com/en/blog"
       />
 
-      <div className="pt-24 pb-16 bg-stone-50 min-h-screen">
+      <div className="pt-24 pb-16 bg-sand-100 min-h-screen">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-sage mb-6">
+            <h1 className="text-4xl md:text-5xl text-brand-dark mb-6 font-serif">
               {lang === "en" ? (
                 <>
                   Travel Blog: <br className="hidden md:block" /> Inspiration &
@@ -80,7 +80,7 @@ export default function BlogList() {
                 </>
               )}
             </h1>
-            <p className="text-xl text-stone-600">
+            <p className="text-xl text-brand-dark/70">
               {lang === "en"
                 ? "Inspiration, stories and secrets for your next great adventure."
                 : "Inspiración, historias y secretos para tu próxima gran aventura."}
@@ -88,7 +88,7 @@ export default function BlogList() {
           </div>
 
           {visiblePosts.length === 0 ? (
-            <div className="text-center py-20 text-stone-500">
+            <div className="text-center py-20 text-brand-dark/60">
               {lang === "en"
                 ? "No articles published yet."
                 : "No hay artículos publicados todavía."}
@@ -120,7 +120,7 @@ export default function BlogList() {
                   </Link>
 
                   <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center gap-4 text-xs text-stone-500 mb-3">
+                    <div className="flex items-center gap-4 text-xs text-brand-dark/60 mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         <time dateTime={post.date}>
@@ -135,21 +135,21 @@ export default function BlogList() {
                     </div>
 
                     <Link to={postPath(post, lang)} className="block mb-3">
-                      <h2 className="text-xl font-display font-bold text-brand-sage leading-tight group-hover:text-brand-ochre transition-colors">
+                      <h2 className="text-xl text-brand-dark leading-tight group-hover:text-sand-700 transition-colors font-serif">
                         {pick(post, "title")}
                       </h2>
                     </Link>
 
                     {/* Show excerpt if available */}
                     {pick(post, "excerpt") && (
-                      <p className="text-sm text-stone-600 mb-4 line-clamp-2 flex-grow">
+                      <p className="text-sm text-brand-dark/70 mb-4 line-clamp-2 flex-grow">
                         {pick(post, "excerpt")}
                       </p>
                     )}
 
                     <Link
                       to={postPath(post, lang)}
-                      className="inline-flex items-center text-brand-sage font-medium text-sm hover:text-brand-ochre transition-colors mt-auto"
+                      className="inline-flex items-center text-sand-700 font-medium text-sm hover:text-sand-700 transition-colors mt-auto"
                     >
                       {lang === "en" ? "Read article" : "Leer artículo"}{" "}
                       <ArrowRight className="w-4 h-4 ml-1" />

@@ -201,20 +201,20 @@ export default function Discounts() {
   }, [lang]);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-white to-stone-50 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-white to-sand-100 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-brand-sky/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-sage/10 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
+          <span className="text-sand-700 font-semibold tracking-wider uppercase text-sm">
             {t("discounts.label")}
           </span>
-          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2 mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-brand-dark mt-2 mb-4">
             {t("discounts.title")}
           </h1>
-          <p className="text-stone-600 max-w-2xl mx-auto">
+          <p className="text-brand-dark/70 max-w-2xl mx-auto">
             {t("discounts.subtitle")}
           </p>
         </div>
@@ -226,7 +226,7 @@ export default function Discounts() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-3xl border border-stone-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
+                className="bg-white rounded-3xl border border-sand-200 hover:border-brand-sage hover:shadow-2xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
               >
                 <div className="p-8 flex flex-col items-center text-center h-full">
                   {/* Icon */}
@@ -244,12 +244,12 @@ export default function Discounts() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-stone-800 mb-3">
+                  <h3 className="text-xl text-brand-dark mb-3 font-serif">
                     {t(`discounts.${offer.id}.title`)}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-stone-600 mb-6 flex-grow">
+                  <p className="text-brand-dark/70 mb-6 flex-grow">
                     {t(`discounts.${offer.id}.desc`)}
                   </p>
 
@@ -258,7 +258,7 @@ export default function Discounts() {
                     href={offer.url}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="w-full py-3 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-white font-medium text-center transition-all duration-300 shadow-md hover:shadow-lg"
+                    className="w-full py-3 px-6 rounded-xl bg-brand-dark hover:bg-brand-dark/90 text-white font-medium text-center transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     {t(`discounts.${offer.id}.btn`)}
                   </a>
@@ -280,9 +280,9 @@ export default function Discounts() {
         </div>
 
         {/* Partner Tecnológico Section */}
-        <div className="mt-20 pt-12 border-t border-stone-200">
+        <div className="mt-20 pt-12 border-t border-sand-200">
           <div className="text-center">
-            <span className="text-brand-sage font-semibold tracking-wider uppercase text-xs">
+            <span className="text-sand-700 font-semibold tracking-wider uppercase text-xs">
               {t("discounts.techPartner")}
             </span>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-8">
@@ -291,8 +291,8 @@ export default function Discounts() {
                 alt="Siteminder logo"
                 className="h-10 md:h-12 w-auto object-contain"
               />
-              <div className="h-px w-12 bg-stone-300 hidden md:block"></div>
-              <p className="text-stone-600 font-medium text-lg">
+              <div className="h-px w-12 bg-sand-300 hidden md:block"></div>
+              <p className="text-brand-dark/70 font-medium text-lg">
                 <b>SiteMinder</b> | {t("discounts.techPartnerDesc")}
               </p>
             </div>
@@ -301,7 +301,7 @@ export default function Discounts() {
 
         {/* Optional Note */}
         <div className="mt-12 text-center">
-          <p className="text-sm text-stone-500 italic">
+          <p className="text-sm text-brand-dark/60 italic">
             {t("discounts.affiliateNote")}
           </p>
         </div>

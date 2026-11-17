@@ -62,7 +62,7 @@ export default function ServiceTerms({ en = false }) {
         ],
       ];
   return (
-    <div className="space-y-7 text-stone-700">
+    <div className="space-y-7 text-brand-dark/80">
       <h4 className="text-2xl font-serif">
         {en
           ? "Service information and conditions"

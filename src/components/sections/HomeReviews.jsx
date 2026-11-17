@@ -56,7 +56,7 @@ export default function HomeReviews() {
               </div>
               <span>5.0 / 5 · {isEn ? "Traveler Rating" : "Opiniones Reales"}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-dark leading-tight">
+            <h2 className="text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
               {isEn ? "What our travelers say" : "Lo que dicen nuestros viajeros"}
             </h2>
             <p className="mt-4 text-base sm:text-lg text-brand-dark/70 font-light leading-relaxed">
@@ -102,17 +102,17 @@ export default function HomeReviews() {
                       {rev.name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="font-bold text-stone-800 text-lg leading-tight">
+                      <h4 className="text-brand-dark text-lg leading-tight font-serif">
                         {rev.name}
                       </h4>
                       <div className="flex items-center gap-2 mt-1">
-                        <p className="text-xs font-semibold text-brand-sage uppercase tracking-wider">
+                        <p className="text-xs font-semibold text-sand-700 uppercase tracking-wider">
                           {rev.destination}
                         </p>
                         {rev.date && (
                           <>
-                            <span className="text-stone-300">•</span>
-                            <p className="text-xs text-stone-400">
+                            <span className="text-brand-dark/30">•</span>
+                            <p className="text-xs text-brand-dark/50">
                               {rev.date}
                             </p>
                           </>
@@ -133,7 +133,7 @@ export default function HomeReviews() {
                   </div>
 
                   {/* Testimonial Text */}
-                  <p className="text-stone-700 italic text-base leading-relaxed">
+                  <p className="text-brand-dark/80 italic text-base leading-relaxed">
                     "{rev.text}"
                   </p>
                 </div>

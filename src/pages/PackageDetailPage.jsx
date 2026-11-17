@@ -28,17 +28,17 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-sand-200">
-      <h2 className="m-0">
+      <h2 className="m-0 font-serif">
         <button
           type="button"
           aria-expanded={isOpen}
           onClick={() => setIsOpen(!isOpen)}
           className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
         >
-          <span className="text-base sm:text-lg font-serif font-bold text-brand-dark group-hover:text-brand-sage transition-colors pr-4">
+          <span className="text-lg sm:text-xl font-serif text-brand-dark group-hover:text-sand-700 transition-colors pr-4">
             {title}
           </span>
-          <span className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-brand-sage' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
+          <span className={`p-1 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-sage/10 text-sand-700' : 'text-brand-dark/50 group-hover:bg-sand-200 bg-sand-100'}`}>
             <ChevronDown size={20} />
           </span>
         </button>

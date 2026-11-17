@@ -39,12 +39,12 @@ export default function FAQ() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-sage/10 rounded-full mb-4">
-            <HelpCircle className="text-brand-sage" size={32} />
+            <HelpCircle className="text-sand-700" size={32} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800">
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">
             {t('faq.title')}
           </h2>
-          <p className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-brand-dark/70 max-w-2xl mx-auto">
             {t('faq.subtitle')}
           </p>
           <div className="w-16 h-1 bg-brand-sage mx-auto mt-4 rounded-full"></div>
@@ -59,7 +59,7 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-stone-50 rounded-2xl overflow-hidden border border-stone-100 hover:border-brand-sage/30 transition-all duration-300"
+              className="bg-sand-100 rounded-2xl overflow-hidden border border-sand-200 hover:border-brand-sage/30 transition-all duration-300"
             >
               {/* Question Button */}
               <button
@@ -68,7 +68,7 @@ export default function FAQ() {
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <span className="text-stone-800 font-medium text-base md:text-lg group-hover:text-brand-sage transition-colors">
+                <span className="text-brand-dark font-medium text-base md:text-lg group-hover:text-sand-700 transition-colors">
                   {/* Use English if available, else Spanish */}
                   {lang === 'en' && faq.question_en ? faq.question_en : faq.question}
                 </span>
@@ -80,8 +80,8 @@ export default function FAQ() {
                   <ChevronDown
                     className={`transition-colors ${
                       openIndex === index
-                        ? "text-brand-sage"
-                        : "text-stone-400 group-hover:text-brand-sage"
+                        ? "text-sand-700"
+                        : "text-brand-dark/50 group-hover:text-sand-700"
                     }`}
                     size={24}
                   />
@@ -100,7 +100,7 @@ export default function FAQ() {
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-5 pt-0">
-                      <p className="text-stone-600 leading-relaxed">
+                      <p className="text-brand-dark/70 leading-relaxed">
                         {lang === 'en' && faq.answer_en ? faq.answer_en : faq.answer}
                       </p>
                     </div>
@@ -116,12 +116,12 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 text-center bg-stone-800 rounded-2xl p-8 md:p-10"
+          className="mt-12 text-center bg-brand-dark rounded-2xl p-8 md:p-10"
         >
-          <h3 className="text-2xl font-serif font-bold text-white mb-3">
+          <h3 className="text-2xl font-serif text-white mb-3">
             {t('faq.ctaTitle')}
           </h3>
-          <p className="text-stone-300 mb-6 max-w-lg mx-auto">
+          <p className="text-brand-dark/30 mb-6 max-w-lg mx-auto">
             {t('faq.ctaSubtitle')}
           </p>
           <a

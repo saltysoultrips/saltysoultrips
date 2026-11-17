@@ -70,7 +70,7 @@ const components = {
             className="rounded-2xl w-full max-w-3xl aspect-video object-cover shadow-sm"
           />
           {value.caption && (
-            <figcaption className="text-center text-sm text-stone-500 mt-3 font-sans text-balance">
+            <figcaption className="text-center text-sm text-brand-dark/60 mt-3 font-sans text-balance">
               {value.caption}
             </figcaption>
           )}
@@ -80,37 +80,37 @@ const components = {
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-sage mt-12 mb-6">
+      <h2 className="text-2xl md:text-3xl text-brand-dark mt-12 mb-6 font-serif">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl md:text-2xl font-display font-bold text-brand-sage mt-8 mb-4">
+      <h3 className="text-xl md:text-2xl text-brand-dark mt-8 mb-4 font-serif">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl font-display font-bold text-brand-sage mt-6 mb-3">
+      <h4 className="text-lg md:text-xl text-brand-dark mt-6 mb-3 font-serif">
         {children}
       </h4>
     ),
     normal: ({ children }) => (
-      <p className="mb-6 leading-relaxed text-stone-700">{children}</p>
+      <p className="mb-6 leading-relaxed text-brand-dark/80">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-brand-sage pl-6 my-8 italic text-stone-600 bg-stone-50 py-4 rounded-r-lg text-xl">
+      <blockquote className="border-l-4 border-brand-sage pl-6 my-8 italic text-brand-dark/70 bg-sand-100 py-4 rounded-r-lg text-xl">
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-6 mb-8 space-y-2 text-stone-700">
+      <ul className="list-disc pl-6 mb-8 space-y-2 text-brand-dark/80">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-6 mb-8 space-y-2 text-stone-700">
+      <ol className="list-decimal pl-6 mb-8 space-y-2 text-brand-dark/80">
         {children}
       </ol>
     ),
@@ -124,7 +124,7 @@ const components = {
         <a
           href={value.href}
           rel={rel}
-          className="text-brand-sage underline decoration-brand-sage/30 underline-offset-4 hover:decoration-brand-sage transition-all"
+          className="text-sand-700 underline decoration-sand-700/30 underline-offset-4 hover:decoration-sand-700 transition-all"
         >
           {children}
         </a>
@@ -220,8 +220,8 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <div className="pt-24 pb-16 bg-stone-50 min-h-screen flex items-center justify-center">
-        <div className="text-stone-400">
+      <div className="pt-24 pb-16 bg-sand-100 min-h-screen flex items-center justify-center">
+        <div className="text-brand-dark/50">
           {lang === "en" ? "Loading article..." : "Cargando artículo..."}
         </div>
       </div>
@@ -320,11 +320,11 @@ export default function BlogPost() {
         schemaData={[articleSchema, breadcrumbSchema(crumbs)]}
       />
 
-      <article className="pt-24 pb-16 min-h-screen bg-stone-50">
+      <article className="pt-24 pb-16 min-h-screen bg-sand-100">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="flex items-center gap-2 mb-8 text-stone-500">
+          <div className="flex items-center gap-2 mb-8 text-brand-dark/60">
             <ArrowLeft className="w-4 h-4 shrink-0" aria-hidden="true" />
-            <Breadcrumbs items={crumbs} className="!text-stone-500" />
+            <Breadcrumbs items={crumbs} className="!text-brand-dark/60" />
           </div>
 
           <div className="relative rounded-3xl overflow-hidden aspect-video shadow-lg mb-8">
@@ -346,7 +346,7 @@ export default function BlogPost() {
           </div>
 
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm -mt-20 relative z-10 mx-4 md:mx-0">
-            <div className="flex flex-wrap gap-4 items-center text-sm text-stone-500 mb-6 border-b border-stone-100 pb-6">
+            <div className="flex flex-wrap gap-4 items-center text-sm text-brand-dark/60 mb-6 border-b border-sand-200 pb-6">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />{" "}
                 <time dateTime={post.date}>{formatDate(post.date, lang)}</time>
@@ -359,16 +359,16 @@ export default function BlogPost() {
               )}
             </div>
 
-            <p className="text-sm text-stone-500 mb-4">
+            <p className="text-sm text-brand-dark/60 mb-4">
               {lang === "en"
                 ? "By Ángela · SaltySoulTrips"
                 : "Por Ángela · SaltySoulTrips"}
             </p>
-            <h1 className="text-3xl md:text-5xl font-display font-bold text-brand-sage mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-serif text-brand-dark mb-8 leading-tight">
               {displayTitle}
             </h1>
 
-            <div className="prose-custom font-serif text-lg">
+            <div className="prose-custom font-sans text-lg text-brand-dark/80">
               <PortableText value={displayContent} components={components} />
             </div>
             <aside className="mt-10 border-t border-sand-200 pt-8">
@@ -410,7 +410,7 @@ export default function BlogPost() {
                       <li key={p.id}>
                         <Link
                           to={`/${lang === "en" ? "packages" : "paquetes"}/${p.id}`}
-                          className="underline underline-offset-4 hover:text-brand-sage"
+                          className="underline underline-offset-4 hover:text-sand-700"
                         >
                           {lang === "en" && p.title_en ? p.title_en : p.title}
                         </Link>

@@ -246,7 +246,7 @@ export default function DestinationPage() {
                   <li key={i} className="bg-white rounded-2xl border border-sand-200 p-5 flex gap-4">
                     {h.icon && <span className="text-3xl" aria-hidden="true">{h.icon}</span>}
                     <div>
-                      <h3 className="font-serif text-lg font-bold">{pickLang(h, "title", en)}</h3>
+                      <h3 className="font-serif text-lg">{pickLang(h, "title", en)}</h3>
                       {pickLang(h, "desc", en) && <p className="text-brand-dark/70">{pickLang(h, "desc", en)}</p>}
                     </div>
                   </li>
@@ -273,7 +273,7 @@ export default function DestinationPage() {
               <div className="space-y-6">
                 {routes.map((r, i) => (
                   <div key={i} className="bg-white rounded-2xl border border-sand-200 p-6">
-                    <h3 className="font-serif text-xl font-bold mb-3">{pickLang(r, "title", en)}</h3>
+                    <h3 className="font-serif text-xl mb-3">{pickLang(r, "title", en)}</h3>
                     <p className="leading-[1.8] text-brand-dark/80 whitespace-pre-line">{pickLang(r, "description", en)}</p>
                   </div>
                 ))}
@@ -345,7 +345,7 @@ export default function DestinationPage() {
                 {faqs.map((f, i) => (
                   <details key={i} className="group py-4">
                     <summary className="flex items-center justify-between cursor-pointer list-none">
-                      <h3 className="font-serif text-lg font-bold pr-4">{pickLang(f, "question", en)}</h3>
+                      <h3 className="font-serif text-lg pr-4">{pickLang(f, "question", en)}</h3>
                       <ChevronDown size={20} className="shrink-0 transition-transform group-open:rotate-180" />
                     </summary>
                     <p className="mt-3 leading-relaxed text-brand-dark/80 whitespace-pre-line">{pickLang(f, "answer", en)}</p>

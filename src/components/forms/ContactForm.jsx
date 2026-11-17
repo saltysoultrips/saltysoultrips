@@ -225,16 +225,16 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="py-24 bg-stone-100">
+    <section className="py-24 bg-sand-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm">
+          <span className="text-sand-700 font-semibold tracking-wider uppercase text-sm">
             {t("contact.label")}
           </span>
-          <h1 className="text-4xl font-serif font-bold text-stone-800 mt-2">
+          <h1 className="text-4xl md:text-5xl font-serif text-brand-dark mt-2">
             {t("contact.title")}
           </h1>
-          <p className="mt-4 text-lg text-stone-600">{t("contact.subtitle")}</p>
+          <p className="mt-4 text-lg text-brand-dark/70">{t("contact.subtitle")}</p>
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
@@ -247,15 +247,15 @@ export default function ContactForm() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6 text-green-600">
                 <CheckCircle size={40} />
               </div>
-              <h3 className="text-3xl font-serif font-bold text-stone-800 mb-4">
+              <h3 className="text-3xl font-serif text-brand-dark mb-4">
                 {t("contact.successTitle")}
               </h3>
-              <p className="text-stone-600 text-lg mb-8">
+              <p className="text-brand-dark/70 text-lg mb-8">
                 {t("contact.successText")}
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="text-stone-500 hover:text-stone-800 font-medium underline underline-offset-4"
+                className="text-brand-dark/60 hover:text-brand-dark font-medium underline underline-offset-4"
                 aria-label={t("contact.sendAnother")}
               >
                 {t("contact.sendAnother")}
@@ -274,7 +274,7 @@ export default function ContactForm() {
               {/* Personal Info */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                     {t("contact.fullName")}
                   </label>
                   <input
@@ -282,7 +282,7 @@ export default function ContactForm() {
                       required: t("contact.fullNameRequired"),
                     })}
                     type="text"
-                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                     placeholder={t("contact.fullNamePlaceholder")}
                   />
                   {errors.name && (
@@ -292,7 +292,7 @@ export default function ContactForm() {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                     {t("contact.email")}
                   </label>
                   <input
@@ -304,7 +304,7 @@ export default function ContactForm() {
                       },
                     })}
                     type="email"
-                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                     placeholder="tucorreo@ejemplo.com"
                   />
                   {errors.email && (
@@ -314,13 +314,13 @@ export default function ContactForm() {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                     {t("contact.phone")}
                   </label>
                   <div className="flex gap-2">
                     <select
                       {...register("phoneCode")}
-                      className="w-1/3 px-2 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all cursor-pointer text-sm"
+                      className="w-1/3 px-2 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all cursor-pointer text-sm"
                       defaultValue="+34"
                     >
                       {COUNTRY_CODES.map((country, idx) => (
@@ -334,7 +334,7 @@ export default function ContactForm() {
                         required: t("contact.phoneRequired"),
                       })}
                       type="tel"
-                      className="w-2/3 px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                      className="w-2/3 px-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                       placeholder="600..."
                     />
                   </div>
@@ -347,19 +347,19 @@ export default function ContactForm() {
               </div>
 
               {/* Trip Details */}
-              <div className="space-y-6 pt-6 border-t border-stone-100">
-                <h3 className="text-lg font-serif font-semibold text-stone-800">
+              <div className="space-y-6 pt-6 border-t border-sand-200">
+                <h3 className="text-lg font-serif text-brand-dark">
                   {t("contact.tripDetails")}
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                       {t("contact.origin")}
                     </label>
                     <div className="relative">
                       <MapPin
-                        className="absolute left-4 top-3.5 text-stone-400"
+                        className="absolute left-4 top-3.5 text-brand-dark/50"
                         size={18}
                       />
                       <input
@@ -367,7 +367,7 @@ export default function ContactForm() {
                           required: t("contact.originRequired"),
                         })}
                         type="text"
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                         placeholder={t("contact.originPlaceholder")}
                       />
                       {errors.origin && (
@@ -378,12 +378,12 @@ export default function ContactForm() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                       {t("contact.dreamDestination")}
                     </label>
                     <div className="relative">
                       <MapPin
-                        className="absolute left-4 top-3.5 text-stone-400"
+                        className="absolute left-4 top-3.5 text-brand-dark/50"
                         size={18}
                       />
                       <input
@@ -391,7 +391,7 @@ export default function ContactForm() {
                           required: t("contact.dreamDestinationRequired"),
                         })}
                         type="text"
-                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                        className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                         placeholder={t("contact.dreamDestinationPlaceholder")}
                       />
                       {errors.destination && (
@@ -417,11 +417,11 @@ export default function ContactForm() {
                           setValue("dateEnd", "");
                         }
                       }}
-                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                      className="w-4 h-4 text-sand-700 border-sand-300 rounded focus:ring-brand-sage cursor-pointer"
                     />
                     <label
                       htmlFor="flexibleDates"
-                      className="text-sm font-medium text-stone-700 cursor-pointer"
+                      className="text-sm font-medium text-brand-dark/80 cursor-pointer"
                     >
                       {t("contact.flexibleDates")}
                     </label>
@@ -429,12 +429,12 @@ export default function ContactForm() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                         {t("contact.departureDate")}
                       </label>
                       <div className="relative">
                         <Calendar
-                          className="absolute left-4 top-3.5 text-stone-400"
+                          className="absolute left-4 top-3.5 text-brand-dark/50"
                           size={18}
                         />
                         <input
@@ -445,7 +445,7 @@ export default function ContactForm() {
                           })}
                           type="date"
                           disabled={flexibleDates}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-brand-dark/70 disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         {errors.dateStart && (
                           <span className="text-red-500 text-sm mt-1">
@@ -455,12 +455,12 @@ export default function ContactForm() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                         {t("contact.returnDate")}
                       </label>
                       <div className="relative">
                         <Calendar
-                          className="absolute left-4 top-3.5 text-stone-400"
+                          className="absolute left-4 top-3.5 text-brand-dark/50"
                           size={18}
                         />
                         <input
@@ -477,7 +477,7 @@ export default function ContactForm() {
                           })}
                           type="date"
                           disabled={flexibleDates}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none text-brand-dark/70 disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         {errors.dateEnd && (
                           <span className="text-red-500 text-sm mt-1">
@@ -493,17 +493,17 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                   {/* Custom Traveler Counter */}
                   <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                       {t("contact.travelers")}
                     </label>
-                    <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
+                    <div className="bg-sand-100 border border-sand-200 rounded-xl p-4 space-y-4">
                       {/* Adults */}
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="font-medium text-stone-800">
+                          <p className="font-medium text-brand-dark">
                             {t("contact.adults")}
                           </p>
-                          <p className="text-xs text-stone-500">
+                          <p className="text-xs text-brand-dark/60">
                             {t("contact.adultsAge")}
                           </p>
                         </div>
@@ -511,19 +511,19 @@ export default function ContactForm() {
                           <button
                             type="button"
                             onClick={() => updateCount("adults", "minus")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200 disabled:opacity-50"
                             disabled={counts.adults <= 1}
                             aria-label="Decrease adults"
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="w-4 text-center font-medium text-stone-800">
+                          <span className="w-4 text-center font-medium text-brand-dark">
                             {counts.adults}
                           </span>
                           <button
                             type="button"
                             onClick={() => updateCount("adults", "add")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200"
                             aria-label="Increase adults"
                           >
                             <Plus size={14} />
@@ -532,12 +532,12 @@ export default function ContactForm() {
                       </div>
 
                       {/* Children */}
-                      <div className="flex items-center justify-between border-t border-stone-200 pt-3">
+                      <div className="flex items-center justify-between border-t border-sand-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">
+                          <p className="font-medium text-brand-dark">
                             {t("contact.children")}
                           </p>
-                          <p className="text-xs text-stone-500">
+                          <p className="text-xs text-brand-dark/60">
                             {t("contact.childrenAge")}
                           </p>
                         </div>
@@ -545,19 +545,19 @@ export default function ContactForm() {
                           <button
                             type="button"
                             onClick={() => updateCount("children", "minus")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200 disabled:opacity-50"
                             disabled={counts.children <= 0}
                             aria-label="Decrease children"
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="w-4 text-center font-medium text-stone-800">
+                          <span className="w-4 text-center font-medium text-brand-dark">
                             {counts.children}
                           </span>
                           <button
                             type="button"
                             onClick={() => updateCount("children", "add")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200"
                             aria-label="Increase children"
                           >
                             <Plus size={14} />
@@ -573,8 +573,8 @@ export default function ContactForm() {
                             exit={{ opacity: 0, height: 0 }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-2 pb-1 space-y-3 border-t border-stone-100 mt-2">
-                              <p className="text-sm font-medium text-stone-700">
+                            <div className="pt-2 pb-1 space-y-3 border-t border-sand-200 mt-2">
+                              <p className="text-sm font-medium text-brand-dark/80">
                                 {lang === "en"
                                   ? "Ages of the children:"
                                   : "Edades de los niños:"}
@@ -591,7 +591,7 @@ export default function ContactForm() {
                                     onChange={(e) =>
                                       handleAgeChange(i, e.target.value)
                                     }
-                                    className="w-full px-3 py-2 text-sm rounded-lg border border-stone-200 bg-white focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                                    className="w-full px-3 py-2 text-sm rounded-lg border border-sand-200 bg-white focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                                     required
                                   />
                                 ))}
@@ -602,12 +602,12 @@ export default function ContactForm() {
                       </AnimatePresence>
 
                       {/* Babies */}
-                      <div className="flex items-center justify-between border-t border-stone-200 pt-3">
+                      <div className="flex items-center justify-between border-t border-sand-200 pt-3">
                         <div>
-                          <p className="font-medium text-stone-800">
+                          <p className="font-medium text-brand-dark">
                             {t("contact.babies")}
                           </p>
-                          <p className="text-xs text-stone-500">
+                          <p className="text-xs text-brand-dark/60">
                             {t("contact.babiesAge")}
                           </p>
                         </div>
@@ -615,19 +615,19 @@ export default function ContactForm() {
                           <button
                             type="button"
                             onClick={() => updateCount("babies", "minus")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100 disabled:opacity-50"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200 disabled:opacity-50"
                             disabled={counts.babies <= 0}
                             aria-label="Decrease babies"
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="w-4 text-center font-medium text-stone-800">
+                          <span className="w-4 text-center font-medium text-brand-dark">
                             {counts.babies}
                           </span>
                           <button
                             type="button"
                             onClick={() => updateCount("babies", "add")}
-                            className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:bg-stone-100"
+                            className="w-8 h-8 rounded-full bg-white border border-sand-200 flex items-center justify-center text-brand-dark/70 hover:bg-sand-200"
                             aria-label="Increase babies"
                           >
                             <Plus size={14} />
@@ -644,12 +644,12 @@ export default function ContactForm() {
                   <div className="space-y-5">
                     {/* Budget */}
                     <div>
-                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                         {t("contact.budget")}
                       </label>
                       <div className="relative">
                         <Euro
-                          className="absolute left-4 top-3.5 text-stone-400"
+                          className="absolute left-4 top-3.5 text-brand-dark/50"
                           size={18}
                         />
                         <input
@@ -658,7 +658,7 @@ export default function ContactForm() {
                           })}
                           type="text"
                           placeholder={t("contact.budgetPlaceholder")}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                         />
                         {errors.budget && (
                           <span className="text-red-500 text-sm mt-1">
@@ -670,19 +670,19 @@ export default function ContactForm() {
 
                     {/* Trip Type */}
                     <div>
-                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                         {t("contact.tripType")}
                       </label>
                       <div className="relative">
                         <Briefcase
-                          className="absolute left-4 top-3.5 text-stone-400"
+                          className="absolute left-4 top-3.5 text-brand-dark/50"
                           size={18}
                         />
                         <select
                           {...register("tripType", {
                             required: t("contact.tripTypeRequired"),
                           })}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
                         >
                           <option value="">{t("contact.tripTypeSelect")}</option>
                           <option value="luna_miel">
@@ -714,17 +714,17 @@ export default function ContactForm() {
 
                     {/* Pets */}
                     <div>
-                      <label className="block text-sm font-medium text-stone-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                         {t("contact.hasPets")}
                       </label>
                       <div className="relative">
                         <PawPrint
-                          className="absolute left-4 top-3.5 text-stone-400"
+                          className="absolute left-4 top-3.5 text-brand-dark/50"
                           size={18}
                         />
                         <select
                           {...register("hasPets")}
-                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
+                          className="w-full pl-11 pr-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none appearance-none"
                         >
                           <option value="no">{t("contact.hasPetsNo")}</option>
                           <option value="yes">{t("contact.hasPetsYes")}</option>
@@ -739,7 +739,7 @@ export default function ContactForm() {
                             exit={{ opacity: 0, height: 0 }}
                             className="overflow-hidden mt-3"
                           >
-                            <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                            <label className="block text-xs font-medium text-brand-dark/70 mb-1.5">
                               {t("contact.petsDetails")}
                             </label>
                             <input
@@ -750,7 +750,7 @@ export default function ContactForm() {
                                     : false,
                               })}
                               type="text"
-                              className="w-full px-4 py-2.5 text-sm rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
+                              className="w-full px-4 py-2.5 text-sm rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none"
                               placeholder={t("contact.petsDetailsPlaceholder")}
                             />
                             {errors.petsDetails && (
@@ -767,13 +767,13 @@ export default function ContactForm() {
 
                 {/* Extras & Message */}
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-dark/80 mb-2">
                     {t("contact.extras")}
                   </label>
                   <textarea
                     {...register("message")}
                     rows="4"
-                    className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-sand-100 border border-sand-200 focus:border-brand-sage focus:ring-1 focus:ring-brand-sage outline-none transition-all"
                     placeholder={t("contact.extrasPlaceholder")}
                   ></textarea>
                 </div>
@@ -785,13 +785,13 @@ export default function ContactForm() {
                       {...register("orientationPack")}
                       id="orientationPack"
                       type="checkbox"
-                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                      className="w-4 h-4 text-sand-700 border-sand-300 rounded focus:ring-brand-sage cursor-pointer"
                     />
                   </div>
                   <div className="text-sm">
                     <label
                       htmlFor="orientationPack"
-                      className="font-medium text-stone-700 cursor-pointer"
+                      className="font-medium text-brand-dark/80 cursor-pointer"
                     >
                       {t("contact.orientationPack")}
                     </label>
@@ -800,7 +800,7 @@ export default function ContactForm() {
               </div>
 
               {/* RGPD & Consent */}
-              <div className="space-y-4 pt-4 border-t border-stone-100">
+              <div className="space-y-4 pt-4 border-t border-sand-200">
                 <div className="flex items-start gap-3">
                   <div className="flex items-center h-5">
                     <input
@@ -809,18 +809,18 @@ export default function ContactForm() {
                       })}
                       id="privacyPolicy"
                       type="checkbox"
-                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                      className="w-4 h-4 text-sand-700 border-sand-300 rounded focus:ring-brand-sage cursor-pointer"
                     />
                   </div>
                   <div className="text-sm">
                     <label
                       htmlFor="privacyPolicy"
-                      className="font-medium text-stone-700 cursor-pointer"
+                      className="font-medium text-brand-dark/80 cursor-pointer"
                     >
                       {t("contact.privacyLabel")}{" "}
                       <button
                         type="button"
-                        className="text-brand-sage hover:underline"
+                        className="text-sand-700 hover:underline"
                         onClick={() =>
                           window.dispatchEvent(new Event("open-privacy-policy"))
                         }
@@ -844,13 +844,13 @@ export default function ContactForm() {
                       {...register("marketingConsent")}
                       id="marketingConsent"
                       type="checkbox"
-                      className="w-4 h-4 text-brand-sage border-stone-300 rounded focus:ring-brand-sage cursor-pointer"
+                      className="w-4 h-4 text-sand-700 border-sand-300 rounded focus:ring-brand-sage cursor-pointer"
                     />
                   </div>
                   <div className="text-sm">
                     <label
                       htmlFor="marketingConsent"
-                      className="text-stone-600 cursor-pointer"
+                      className="text-brand-dark/70 cursor-pointer"
                     >
                       {t("contact.marketingConsent")}
                     </label>
@@ -862,7 +862,7 @@ export default function ContactForm() {
                 <button
                   disabled={isSubmitting}
                   type="submit"
-                  className="w-full py-4 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 px-6 rounded-xl bg-brand-dark hover:bg-brand-dark/90 text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     t("contact.submitting")

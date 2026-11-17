@@ -14,7 +14,7 @@ export default function Deliverables() {
       icon: <Smartphone size={32} />,
       title: t("deliverables.item1Title"),
       description: t("deliverables.item1Desc"),
-      color: "text-brand-sage",
+      color: "text-sand-700",
       bgColor: "bg-brand-sage/10",
     },
     {
@@ -41,17 +41,17 @@ export default function Deliverables() {
   ];
 
   return (
-    <section className="py-24 bg-stone-50 overflow-hidden">
+    <section className="py-24 bg-sand-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-brand-sage font-semibold tracking-wider uppercase text-sm block mb-3">
+          <span className="text-sand-700 font-semibold tracking-wider uppercase text-sm block mb-3">
             {t("deliverables.label")}
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-serif text-brand-dark mb-6 leading-tight">
             {t("deliverables.title")} <br />
-            <span className="text-brand-sage">{t("deliverables.titleHighlight")}</span>
+            <span className="text-sand-700">{t("deliverables.titleHighlight")}</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-stone-600 font-light">
+          <p className="max-w-2xl mx-auto text-lg text-brand-dark/70 font-light">
             {t("deliverables.subtitle")}
           </p>
         </div>
@@ -66,17 +66,17 @@ export default function Deliverables() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 flex flex-col items-center text-center h-full"
+                className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-sand-200 flex flex-col items-center text-center h-full"
               >
                 <div
                   className={`w-14 h-14 rounded-2xl ${item.bgColor} ${item.color} flex items-center justify-center mb-5`}
                 >
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-stone-800 mb-3 font-serif leading-tight">
+                <h3 className="text-lg text-brand-dark mb-3 font-serif leading-tight">
                   {item.title}
                 </h3>
-                <p className="text-sm text-stone-600 leading-relaxed">
+                <p className="text-sm text-brand-dark/70 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -99,7 +99,7 @@ export default function Deliverables() {
                 className="rounded-3xl shadow-2xl border-4 border-white mx-auto w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-500"
               />
             </motion.div>
-            <p className="text-sm text-stone-400 italic mt-8 text-center max-w-xs mx-auto">
+            <p className="text-sm text-brand-dark/50 italic mt-8 text-center max-w-xs mx-auto">
               {t("deliverables.disclaimer")}
             </p>
           </div>

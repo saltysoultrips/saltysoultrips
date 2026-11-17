@@ -93,23 +93,23 @@ export default function CookieConsent() {
         {!showDetails ? (
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-serif text-stone-800 font-medium flex items-center gap-2">
+              <h3 className="text-lg font-serif text-brand-dark flex items-center gap-2">
                 <span className="text-xl">🍪</span> {t("cookies.title")}
               </h3>
-              <p className="text-stone-600 text-sm leading-relaxed max-w-3xl">
+              <p className="text-brand-dark/70 text-sm leading-relaxed max-w-3xl">
                 {t("cookies.description")}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto min-w-fit">
               <button
                 onClick={() => setShowDetails(true)}
-                className="px-4 py-2 text-sm font-medium text-stone-600 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors whitespace-nowrap"
+                className="px-4 py-2 text-sm font-medium text-brand-dark/70 bg-sand-200 hover:bg-sand-300 rounded-lg transition-colors whitespace-nowrap"
               >
                 {t("cookies.configure")}
               </button>
               <button
                 onClick={handleRejectNonEssential}
-                className="px-4 py-2 text-sm font-medium text-brand-sage border border-brand-sage hover:bg-brand-sage/10 rounded-lg transition-colors whitespace-nowrap"
+                className="px-4 py-2 text-sm font-medium text-sand-700 border border-brand-sage hover:bg-brand-sage/10 rounded-lg transition-colors whitespace-nowrap"
               >
                 {t("cookies.reject")}
               </button>
@@ -124,14 +124,14 @@ export default function CookieConsent() {
         ) : (
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
             <div className="flex items-center justify-between border-b border-brand-sand pb-4">
-              <h3 className="text-lg font-serif text-stone-800 font-medium">
+              <h3 className="text-lg font-serif text-brand-dark">
                 {t("cookies.configTitle")}
               </h3>
               <button
                 onClick={() => setShowDetails(false)}
-                className="p-1 hover:bg-stone-100 rounded-full transition-colors"
+                className="p-1 hover:bg-sand-200 rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-stone-500" />
+                <X className="w-5 h-5 text-brand-dark/60" />
               </button>
             </div>
 
@@ -139,15 +139,15 @@ export default function CookieConsent() {
               {/* Necessary */}
               <div className="p-4 rounded-xl border border-brand-sage/30 bg-brand-sage/5">
                 <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center gap-2 text-stone-800 font-medium">
-                    <Shield className="w-4 h-4 text-brand-sage" />
+                  <div className="flex items-center gap-2 text-brand-dark font-medium">
+                    <Shield className="w-4 h-4 text-sand-700" />
                     {t("cookies.necessary")}
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-medium text-brand-sage bg-white px-2 py-0.5 rounded-full border border-brand-sage/20">
+                  <div className="flex items-center gap-2 text-xs font-medium text-sand-700 bg-white px-2 py-0.5 rounded-full border border-brand-sage/20">
                     <Check className="w-3 h-3" /> {t("cookies.alwaysActive")}
                   </div>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-xs text-brand-dark/70 leading-relaxed">
                   {t("cookies.necessaryDesc")}
                 </p>
               </div>
@@ -157,18 +157,18 @@ export default function CookieConsent() {
                 className={`p-4 rounded-xl border transition-all cursor-pointer ${
                   preferences.analytics
                     ? "border-brand-sage bg-brand-sage/5"
-                    : "border-stone-200 hover:border-brand-sage/50"
+                    : "border-sand-200 hover:border-brand-sage/50"
                 }`}
                 onClick={() => togglePreference("analytics")}
               >
                 <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center gap-2 text-stone-800 font-medium">
-                    <Globe className="w-4 h-4 text-stone-600" />
+                  <div className="flex items-center gap-2 text-brand-dark font-medium">
+                    <Globe className="w-4 h-4 text-brand-dark/70" />
                     {t("cookies.analytics")}
                   </div>
                   <div
                     className={`w-10 h-5 rounded-full relative transition-colors ${
-                      preferences.analytics ? "bg-brand-sage" : "bg-stone-300"
+                      preferences.analytics ? "bg-brand-sage" : "bg-sand-300"
                     }`}
                   >
                     <div
@@ -178,7 +178,7 @@ export default function CookieConsent() {
                     />
                   </div>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-xs text-brand-dark/70 leading-relaxed">
                   {t("cookies.analyticsDesc")}
                 </p>
               </div>
@@ -188,18 +188,18 @@ export default function CookieConsent() {
                 className={`p-4 rounded-xl border transition-all cursor-pointer ${
                   preferences.marketing
                     ? "border-brand-sage bg-brand-sage/5"
-                    : "border-stone-200 hover:border-brand-sage/50"
+                    : "border-sand-200 hover:border-brand-sage/50"
                 }`}
                 onClick={() => togglePreference("marketing")}
               >
                 <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center gap-2 text-stone-800 font-medium">
-                    <Info className="w-4 h-4 text-stone-600" />
+                  <div className="flex items-center gap-2 text-brand-dark font-medium">
+                    <Info className="w-4 h-4 text-brand-dark/70" />
                     {t("cookies.marketing")}
                   </div>
                   <div
                     className={`w-10 h-5 rounded-full relative transition-colors ${
-                      preferences.marketing ? "bg-brand-sage" : "bg-stone-300"
+                      preferences.marketing ? "bg-brand-sage" : "bg-sand-300"
                     }`}
                   >
                     <div
@@ -209,7 +209,7 @@ export default function CookieConsent() {
                     />
                   </div>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-xs text-brand-dark/70 leading-relaxed">
                   {t("cookies.marketingDesc")}
                 </p>
               </div>
@@ -218,7 +218,7 @@ export default function CookieConsent() {
             <div className="flex items-center justify-end gap-3 pt-2 border-t border-brand-sand">
               <button
                 onClick={handleRejectNonEssential}
-                className="px-4 py-2 text-sm font-medium text-stone-600 hover:text-stone-800 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-brand-dark/70 hover:text-brand-dark transition-colors"
               >
                 {t("cookies.reject")}
               </button>
