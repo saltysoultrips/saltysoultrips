@@ -62,7 +62,7 @@ export default function About() {
               <span className="text-sand-600 font-semibold tracking-wider uppercase text-sm block mb-3">
                 {t('about.label')}
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-6 leading-tight">
                 {t('about.title')} <br />
                 <span className="text-sand-600 italic">{t('about.titleItalic')}</span>
               </h2>
@@ -96,7 +96,7 @@ export default function About() {
             </div>
 
             <div className="border-t border-sand-300 pt-8">
-              <h3 className="text-2xl font-serif text-brand-dark mb-4">
+              <h3 className="text-2xl font-serif font-bold text-brand-dark mb-4">
                 {t('about.tagline')}
               </h3>
               <div className="space-y-4 text-brand-dark font-light leading-relaxed">

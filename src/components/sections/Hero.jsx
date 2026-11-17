@@ -42,7 +42,7 @@ export default function Hero() {
             />
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-serif text-white mb-4 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             {t("hero.title")} <br />
             <span className="text-sand-300 italic font-light">
               {t("hero.titleItalic")}

@@ -53,7 +53,7 @@ export default function HowItWorks() {
           <span className="text-sand-600 font-semibold tracking-wider uppercase text-sm block mb-3">
             {t("howItWorks.label", "Cómo Trabajamos")}
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-dark leading-tight">
             {t("howItWorks.title", "Tu viaje a medida en 3 sencillos pasos")}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-brand-dark/70 font-light leading-relaxed">
@@ -93,7 +93,7 @@ export default function HowItWorks() {
               </div>
 
               {/* Title & Desc */}
-              <h3 className="text-xl font-serif text-brand-dark mb-3">
+              <h3 className="text-xl font-serif font-bold text-brand-dark mb-3">
                 {step.title}
               </h3>
               <p className="text-sm font-sans text-brand-dark/75 leading-relaxed">

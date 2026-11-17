@@ -101,7 +101,7 @@ export default function FeaturedPackages() {
             <span className="text-sand-600 font-semibold tracking-wider uppercase text-sm block mb-3">
               {t("packages.featured.label", "Inspiración Viajera")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-dark leading-tight">
               {t("packages.featured.title", "Paquetes Destacados")}
             </h2>
             <p className="mt-4 text-base sm:text-lg text-brand-dark/70 font-light leading-relaxed">
