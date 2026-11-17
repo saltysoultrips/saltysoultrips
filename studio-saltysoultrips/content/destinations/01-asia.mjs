@@ -1,6 +1,6 @@
 export default [
   {
-    id: "imported-viajes-a-bali", slug: "viajes-a-bali", slug_en: "travel-to-bali",
+    id: "imported-viajes-a-bali", continent: "asia", slug: "viajes-a-bali", slug_en: "travel-to-bali",
     name: "Bali", name_en: "Bali", region: "Asia",
     title: "La isla de los dioses", title_en: "The island of the gods",
     terms: ["Bali", "Indonesia", "Ubud", "Nusa Penida", "Gili"],
@@ -67,7 +67,7 @@ export default [
     ]
   },
   {
-    id: "destination-vietnam", slug: "viajes-a-vietnam", slug_en: "travel-to-vietnam",
+    id: "destination-vietnam", continent: "asia", slug: "viajes-a-vietnam", slug_en: "travel-to-vietnam",
     name: "Vietnam", name_en: "Vietnam", region: "Asia",
     title: "De la bahía de Halong al delta del Mekong", title_en: "From Halong Bay to the Mekong Delta",
     terms: ["Vietnam", "Hanói", "Hanoi", "Halong", "Hoi An", "Saigón"],
@@ -134,7 +134,7 @@ export default [
     ]
   },
   {
-    id: "destination-india", slug: "viajes-a-india", slug_en: "travel-to-india",
+    id: "destination-india", continent: "asia", slug: "viajes-a-india", slug_en: "travel-to-india",
     name: "India", name_en: "India", region: "Asia",
     title: "Palacios, colores y espiritualidad", title_en: "Palaces, colour and spirituality",
     terms: ["India", "Rajastán", "Rajasthan", "Delhi", "Agra", "Jaipur", "Taj Mahal"],
@@ -201,7 +201,7 @@ export default [
     ]
   },
   {
-    id: "destination-china", slug: "viajes-a-china", slug_en: "travel-to-china",
+    id: "destination-china", continent: "asia", slug: "viajes-a-china", slug_en: "travel-to-china",
     name: "China", name_en: "China", region: "Asia",
     title: "Milenaria y futurista", title_en: "Ancient and futuristic",
     terms: ["China", "Shanghái", "Shanghai", "Pekín", "Beijing", "Xian"],
@@ -268,7 +268,7 @@ export default [
     ]
   },
   {
-    id: "destination-dubai", slug: "viajes-a-dubai", slug_en: "travel-to-dubai",
+    id: "destination-dubai", continent: "asia", slug: "viajes-a-dubai", slug_en: "travel-to-dubai",
     name: "Dubái", name_en: "Dubai", region: "Oriente Medio",
     title: "Rascacielos, desierto y lujo", title_en: "Skyscrapers, desert and luxury",
     terms: ["Dubái", "Dubai", "Emiratos", "Abu Dabi", "Abu Dhabi"],
@@ -335,7 +335,7 @@ export default [
     ]
   },
   {
-    id: "destination-jordania", slug: "viajes-a-jordania", slug_en: "travel-to-jordan",
+    id: "destination-jordania", continent: "asia", slug: "viajes-a-jordania", slug_en: "travel-to-jordan",
     name: "Jordania", name_en: "Jordan", region: "Oriente Medio",
     title: "Petra, Wadi Rum y el mar Muerto", title_en: "Petra, Wadi Rum and the Dead Sea",
     terms: ["Jordania", "Jordan", "Petra", "Wadi Rum", "Amán"],
@@ -402,7 +402,7 @@ export default [
     ]
   },
   {
-    id: "imported-viajes-a-maldivas", slug: "viajes-a-maldivas", slug_en: "travel-to-the-maldives",
+    id: "imported-viajes-a-maldivas", continent: "asia", slug: "viajes-a-maldivas", slug_en: "travel-to-the-maldives",
     name: "Maldivas", name_en: "the Maldives", region: "Asia",
     title: "El paraíso en la Tierra", title_en: "Paradise on Earth",
     terms: ["Maldivas", "Maldives", "Maafushi"],

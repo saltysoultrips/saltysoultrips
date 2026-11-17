@@ -30,6 +30,7 @@ export function toDocument(d) {
     title: d.title,
     title_en: d.title_en,
     region: d.region,
+    continent: d.continent,
     matchTerms: d.terms,
     heroImage: {
       _type: "image",

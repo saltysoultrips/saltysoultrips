@@ -1,6 +1,6 @@
 export default [
   {
-    id: "imported-viajes-a-barcelona", slug: "viajes-a-barcelona", slug_en: "travel-to-barcelona",
+    id: "imported-viajes-a-barcelona", continent: "europa", slug: "viajes-a-barcelona", slug_en: "travel-to-barcelona",
     name: "Barcelona", name_en: "Barcelona", region: "España",
     title: "Modernismo, mar y Cataluña", title_en: "Modernism, sea and Catalonia",
     terms: ["Barcelona", "Cataluña", "Catalonia", "Girona", "Costa Brava"],
@@ -67,7 +67,7 @@ export default [
     ]
   },
   {
-    id: "destination-andalucia", slug: "viajes-a-andalucia", slug_en: "travel-to-andalusia",
+    id: "destination-andalucia", continent: "europa", slug: "viajes-a-andalucia", slug_en: "travel-to-andalusia",
     name: "Andalucía", name_en: "Andalusia", region: "España",
     title: "La Alhambra, Sevilla y la Costa del Sol", title_en: "The Alhambra, Seville and the Costa del Sol",
     terms: ["Andalucía", "Andalusia", "Málaga", "Sevilla", "Granada", "Córdoba", "Cádiz"],
@@ -134,7 +134,7 @@ export default [
     ]
   },
   {
-    id: "destination-galicia", slug: "viajes-a-galicia", slug_en: "travel-to-galicia",
+    id: "destination-galicia", continent: "europa", slug: "viajes-a-galicia", slug_en: "travel-to-galicia",
     name: "Galicia", name_en: "Galicia", region: "España",
     title: "Rías Baixas, Santiago y la costa atlántica", title_en: "Rías Baixas, Santiago and the Atlantic coast",
     terms: ["Galicia", "Rías Baixas", "Santiago de Compostela", "Vigo", "Islas Cíes"],
@@ -201,7 +201,7 @@ export default [
     ]
   },
   {
-    id: "destination-pais-vasco", slug: "viajes-al-pais-vasco", slug_en: "travel-to-the-basque-country",
+    id: "destination-pais-vasco", continent: "europa", slug: "viajes-al-pais-vasco", slug_en: "travel-to-the-basque-country",
     name: "País Vasco", name_en: "the Basque Country", region: "España",
     title: "Pintxos, costa y el Guggenheim", title_en: "Pintxos, coast and the Guggenheim",
     terms: ["País Vasco", "Euskadi", "Basque Country", "Bilbao", "San Sebastián", "Donostia"],

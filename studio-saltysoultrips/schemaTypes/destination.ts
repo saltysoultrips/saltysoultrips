@@ -80,6 +80,28 @@ export const destination = defineType({
         'Países, ciudades o zonas que identifican este destino en los paquetes y en los títulos del blog. Ej.: Japón, Tokio, Kioto, Japan.',
     }),
     defineField({
+      name: 'continent',
+      title: 'Continente',
+      type: 'string',
+      group: 'main',
+      description: 'Para el filtro de /destinos. Usa el mismo que en los paquetes de este destino.',
+      options: {
+        list: [
+          {title: 'Europa', value: 'europa'},
+          {title: 'América', value: 'america'},
+          {title: 'Asia', value: 'asia'},
+          {title: 'África', value: 'africa'},
+          {title: 'Oceanía', value: 'oceania'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      validation: (Rule) =>
+        Rule.custom((value, ctx: any) =>
+          ctx.document?.showOnWeb && !value ? 'Obligatorio para publicar en la web' : true,
+        ),
+    }),
+    defineField({
       name: 'region',
       title: 'País / región',
       type: 'string',

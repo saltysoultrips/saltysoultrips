@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
+import { continents } from "../data/constants";
 import { useTranslation } from "react-i18next";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -18,6 +19,8 @@ export default function DestinationsPage() {
   const lang = i18n.language === "en" ? "en" : "es";
   const en = lang === "en";
   const [destinations, setDestinations] = React.useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const continentParam = searchParams.get("continente") || searchParams.get("continent");
 
   React.useEffect(() => {
     let active = true;
@@ -42,6 +45,22 @@ export default function DestinationsPage() {
   if (destinations.length === 0) return <Navigate to="/404" replace />;
   if (en && !anyEnglish) return <Navigate to="/destinos" replace />;
   const visible = en ? destinations.filter(hasEnglishDestination) : destinations;
+  const byName = (a, b) =>
+    pickLang(a, "name", en).localeCompare(pickLang(b, "name", en), lang);
+  const groups = continents
+    .filter((c) => c.id !== "all")
+    .map((c) => ({ ...c, items: visible.filter((d) => d.continent === c.id).sort(byName) }))
+    .filter((g) => g.items.length);
+  const others = visible.filter((d) => !groups.some((g) => g.items.includes(d)));
+  if (others.length)
+    groups.push({ id: "otros", label: { es: "Otros", en: "Other" }, items: others.sort(byName) });
+  const selected = groups.some((g) => g.id === continentParam) ? continentParam : "all";
+  const shownGroups = selected === "all" ? groups : groups.filter((g) => g.id === selected);
+  const selectContinent = (id) =>
+    setSearchParams(id === "all" ? {} : { [en ? "continent" : "continente"]: id }, {
+      replace: true,
+      preventScrollReset: true,
+    });
 
   const path = en ? "/destinations" : "/destinos";
   const crumbs = [homeCrumb(lang), { name: en ? "Destinations" : "Destinos", path }];
@@ -70,8 +89,34 @@ export default function DestinationsPage() {
               ? "Practical guides to the places we know best: when to go, how much it costs and sample routes to start planning your trip."
               : "Guías prácticas de los lugares que mejor conocemos: cuándo ir, cuánto cuesta y rutas de ejemplo para empezar a planear tu viaje."}
           </p>
+          {/* Continent filter (client-side; every guide stays linked in the HTML) */}
+          <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label={en ? "Filter by continent" : "Filtrar por continente"}>
+            {[{ id: "all", label: { es: "Todos", en: "All" } }, ...groups].map((g) => {
+              const active = selected === g.id;
+              const count = g.id === "all" ? visible.length : g.items.length;
+              return (
+                <button
+                  key={g.id}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => selectContinent(g.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                    active
+                      ? "bg-brand-dark text-white border-brand-dark"
+                      : "bg-white text-brand-dark border-sand-200 hover:bg-sand-200"
+                  }`}
+                >
+                  {g.label[lang]} <span className="opacity-60">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {shownGroups.map((g) => (
+            <section key={g.id} className="mb-14">
+              <h2 className="text-3xl font-serif mb-6">{g.label[lang]}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visible.map((d) => {
+            {g.items.map((d) => {
               const name = pickLang(d, "name", en);
               return (
                 <Link
@@ -92,9 +137,9 @@ export default function DestinationsPage() {
                     )}
                   </div>
                   <div className="p-6">
-                    <h2 className="text-2xl font-serif group-hover:text-sand-700">
+                    <h3 className="text-2xl font-serif group-hover:text-sand-700">
                       {en ? `Trips to ${name}` : `Viajes ${esPrep("a", name)}`}
-                    </h2>
+                    </h3>
                     {pickLang(d, "title", en) && (
                       <p className="text-brand-dark/70 mt-1">{pickLang(d, "title", en)}</p>
                     )}
@@ -103,6 +148,8 @@ export default function DestinationsPage() {
               );
             })}
           </div>
+            </section>
+          ))}
         </div>
       </main>
       <Footer />

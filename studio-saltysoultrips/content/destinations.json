@@ -16,6 +16,7 @@
   "title": "La isla de los dioses",
   "title_en": "The island of the gods",
   "region": "Asia",
+  "continent": "asia",
   "matchTerms": [
    "Bali",
    "Indonesia",
@@ -185,6 +186,7 @@
   "title": "De la bahía de Halong al delta del Mekong",
   "title_en": "From Halong Bay to the Mekong Delta",
   "region": "Asia",
+  "continent": "asia",
   "matchTerms": [
    "Vietnam",
    "Hanói",
@@ -355,6 +357,7 @@
   "title": "Palacios, colores y espiritualidad",
   "title_en": "Palaces, colour and spirituality",
   "region": "Asia",
+  "continent": "asia",
   "matchTerms": [
    "India",
    "Rajastán",
@@ -526,6 +529,7 @@
   "title": "Milenaria y futurista",
   "title_en": "Ancient and futuristic",
   "region": "Asia",
+  "continent": "asia",
   "matchTerms": [
    "China",
    "Shanghái",
@@ -696,6 +700,7 @@
   "title": "Rascacielos, desierto y lujo",
   "title_en": "Skyscrapers, desert and luxury",
   "region": "Oriente Medio",
+  "continent": "asia",
   "matchTerms": [
    "Dubái",
    "Dubai",
@@ -865,6 +870,7 @@
   "title": "Petra, Wadi Rum y el mar Muerto",
   "title_en": "Petra, Wadi Rum and the Dead Sea",
   "region": "Oriente Medio",
+  "continent": "asia",
   "matchTerms": [
    "Jordania",
    "Jordan",
@@ -1034,6 +1040,7 @@
   "title": "El paraíso en la Tierra",
   "title_en": "Paradise on Earth",
   "region": "Asia",
+  "continent": "asia",
   "matchTerms": [
    "Maldivas",
    "Maldives",
@@ -1201,6 +1208,7 @@
   "title": "Safari en el Serengeti y playas de Zanzíbar",
   "title_en": "Serengeti safari and Zanzibar beaches",
   "region": "África",
+  "continent": "africa",
   "matchTerms": [
    "Tanzania",
    "Zanzíbar",
@@ -1370,6 +1378,7 @@
   "title": "Lagunas turquesa en el Índico",
   "title_en": "Turquoise lagoons in the Indian Ocean",
   "region": "África",
+  "continent": "africa",
   "matchTerms": [
    "Mauricio",
    "Mauritius"
@@ -1536,6 +1545,7 @@
   "title": "Bora Bora, Moorea y Tahití",
   "title_en": "Bora Bora, Moorea and Tahiti",
   "region": "Oceanía",
+  "continent": "oceania",
   "matchTerms": [
    "Polinesia",
    "Polynesia",
@@ -1706,6 +1716,7 @@
   "title": "La ciudad que nunca duerme",
   "title_en": "The city that never sleeps",
   "region": "Estados Unidos",
+  "continent": "america",
   "matchTerms": [
    "Nueva York",
    "New York",
@@ -1875,6 +1886,7 @@
   "title": "Ruta 66, parques nacionales y costa oeste",
   "title_en": "Route 66, national parks and the West Coast",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "Estados Unidos",
    "EE. UU.",
@@ -2047,6 +2059,7 @@
   "title": "Ciudades vibrantes y naturaleza inmensa",
   "title_en": "Vibrant cities and vast nature",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "Canadá",
    "Canada",
@@ -2217,6 +2230,7 @@
   "title": "Playas, cultura y la Riviera Mexicana",
   "title_en": "Beaches, culture and the Mexican Riviera",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "México",
    "Mexico",
@@ -2386,6 +2400,7 @@
   "title": "Volcanes, surf y pueblos coloniales",
   "title_en": "Volcanoes, surf and colonial towns",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "El Salvador",
    "San Salvador",
@@ -2553,6 +2568,7 @@
   "title": "Café, Caribe y ciudades llenas de color",
   "title_en": "Coffee, Caribbean and colourful cities",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "Colombia",
    "Cartagena",
@@ -2721,6 +2737,7 @@
   "title": "Río, Iguazú y playas infinitas",
   "title_en": "Rio, Iguazu and endless beaches",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "Brasil",
    "Brazil",
@@ -2891,6 +2908,7 @@
   "title": "De Buenos Aires a la Patagonia",
   "title_en": "From Buenos Aires to Patagonia",
   "region": "América",
+  "continent": "america",
   "matchTerms": [
    "Argentina",
    "Buenos Aires",
@@ -3060,6 +3078,7 @@
   "title": "París, Disneyland y los pueblos de Alsacia",
   "title_en": "Paris, Disneyland and the villages of Alsace",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Francia",
    "France",
@@ -3232,6 +3251,7 @@
   "title": "Historia clásica e islas de postal",
   "title_en": "Classical history and picture-postcard islands",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Grecia",
    "Greece",
@@ -3402,6 +3422,7 @@
   "title": "Estambul, Capadocia y la costa turquesa",
   "title_en": "Istanbul, Cappadocia and the Turquoise Coast",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Turquía",
    "Turkey",
@@ -3572,6 +3593,7 @@
   "title": "La ciudad de las cien torres",
   "title_en": "The city of a hundred spires",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Praga",
    "Prague",
@@ -3742,6 +3764,7 @@
   "title": "Auroras boreales y la casa de Papá Noel",
   "title_en": "Northern lights and Santa Claus's home",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Laponia",
    "Lapland",
@@ -3911,6 +3934,7 @@
   "title": "Lisboa, Oporto y la isla de Madeira",
   "title_en": "Lisbon, Porto and the island of Madeira",
   "region": "Europa",
+  "continent": "europa",
   "matchTerms": [
    "Portugal",
    "Madeira",
@@ -4082,6 +4106,7 @@
   "title": "Modernismo, mar y Cataluña",
   "title_en": "Modernism, sea and Catalonia",
   "region": "España",
+  "continent": "europa",
   "matchTerms": [
    "Barcelona",
    "Cataluña",
@@ -4251,6 +4276,7 @@
   "title": "La Alhambra, Sevilla y la Costa del Sol",
   "title_en": "The Alhambra, Seville and the Costa del Sol",
   "region": "España",
+  "continent": "europa",
   "matchTerms": [
    "Andalucía",
    "Andalusia",
@@ -4422,6 +4448,7 @@
   "title": "Rías Baixas, Santiago y la costa atlántica",
   "title_en": "Rías Baixas, Santiago and the Atlantic coast",
   "region": "España",
+  "continent": "europa",
   "matchTerms": [
    "Galicia",
    "Rías Baixas",
@@ -4591,6 +4618,7 @@
   "title": "Pintxos, costa y el Guggenheim",
   "title_en": "Pintxos, coast and the Guggenheim",
   "region": "España",
+  "continent": "europa",
   "matchTerms": [
    "País Vasco",
    "Euskadi",

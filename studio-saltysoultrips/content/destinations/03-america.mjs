@@ -1,6 +1,6 @@
 export default [
   {
-    id: "destination-canada", slug: "viajes-a-canada", slug_en: "travel-to-canada",
+    id: "destination-canada", continent: "america", slug: "viajes-a-canada", slug_en: "travel-to-canada",
     name: "Canadá", name_en: "Canada", region: "América",
     title: "Ciudades vibrantes y naturaleza inmensa", title_en: "Vibrant cities and vast nature",
     terms: ["Canadá", "Canada", "Toronto", "Montreal", "Quebec", "Niágara"],
@@ -67,7 +67,7 @@ export default [
     ]
   },
   {
-    id: "destination-mexico", slug: "viajes-a-mexico", slug_en: "travel-to-mexico",
+    id: "destination-mexico", continent: "america", slug: "viajes-a-mexico", slug_en: "travel-to-mexico",
     name: "México", name_en: "Mexico", region: "América",
     title: "Playas, cultura y la Riviera Mexicana", title_en: "Beaches, culture and the Mexican Riviera",
     terms: ["México", "Mexico", "Riviera Mexicana", "Cancún", "Riviera Maya"],
@@ -134,7 +134,7 @@ export default [
     ]
   },
   {
-    id: "destination-el-salvador", slug: "viajes-a-el-salvador", slug_en: "travel-to-el-salvador",
+    id: "destination-el-salvador", continent: "america", slug: "viajes-a-el-salvador", slug_en: "travel-to-el-salvador",
     name: "El Salvador", name_en: "El Salvador", region: "América",
     title: "Volcanes, surf y pueblos coloniales", title_en: "Volcanoes, surf and colonial towns",
     terms: ["El Salvador", "San Salvador", "El Tunco"],
@@ -201,7 +201,7 @@ export default [
     ]
   },
   {
-    id: "destination-colombia", slug: "viajes-a-colombia", slug_en: "travel-to-colombia",
+    id: "destination-colombia", continent: "america", slug: "viajes-a-colombia", slug_en: "travel-to-colombia",
     name: "Colombia", name_en: "Colombia", region: "América",
     title: "Café, Caribe y ciudades llenas de color", title_en: "Coffee, Caribbean and colourful cities",
     terms: ["Colombia", "Cartagena", "Medellín", "Bogotá"],
@@ -268,7 +268,7 @@ export default [
     ]
   },
   {
-    id: "destination-brasil", slug: "viajes-a-brasil", slug_en: "travel-to-brazil",
+    id: "destination-brasil", continent: "america", slug: "viajes-a-brasil", slug_en: "travel-to-brazil",
     name: "Brasil", name_en: "Brazil", region: "América",
     title: "Río, Iguazú y playas infinitas", title_en: "Rio, Iguazu and endless beaches",
     terms: ["Brasil", "Brazil", "Río de Janeiro", "Rio de Janeiro", "Iguazú", "Salvador de Bahía"],
@@ -335,7 +335,7 @@ export default [
     ]
   },
   {
-    id: "destination-argentina", slug: "viajes-a-argentina", slug_en: "travel-to-argentina",
+    id: "destination-argentina", continent: "america", slug: "viajes-a-argentina", slug_en: "travel-to-argentina",
     name: "Argentina", name_en: "Argentina", region: "América",
     title: "De Buenos Aires a la Patagonia", title_en: "From Buenos Aires to Patagonia",
     terms: ["Argentina", "Buenos Aires", "Patagonia", "Perito Moreno", "Iguazú"],

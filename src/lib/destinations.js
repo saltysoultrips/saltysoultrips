@@ -4,7 +4,7 @@ import { getPackageCountries } from "../data/countryMap";
 import { postPath, hasEnglishPost, isLiveDestination } from "./routes";
 
 export const DESTINATION_FIELDS = `_id, _updatedAt, showOnWeb, slug, slug_en, name, name_en,
-  title, title_en, heroImage, matchTerms, region, intro, intro_en, about, about_en,
+  title, title_en, heroImage, matchTerms, region, continent, intro, intro_en, about, about_en,
   highlights, tips, tips_en, bestTime, idealDays, idealDays_en, budget, budget_en,
   routes, faqs, seoTitle, seoTitle_en, metaDescription, metaDescription_en, heroSubtitle`;
 

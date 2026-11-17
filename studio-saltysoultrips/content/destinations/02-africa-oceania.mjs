@@ -1,6 +1,6 @@
 export default [
   {
-    id: "destination-tanzania", slug: "viajes-a-tanzania", slug_en: "travel-to-tanzania",
+    id: "destination-tanzania", continent: "africa", slug: "viajes-a-tanzania", slug_en: "travel-to-tanzania",
     name: "Tanzania", name_en: "Tanzania", region: "África",
     title: "Safari en el Serengeti y playas de Zanzíbar", title_en: "Serengeti safari and Zanzibar beaches",
     terms: ["Tanzania", "Zanzíbar", "Zanzibar", "Serengeti", "Kilimanjaro"],
@@ -67,7 +67,7 @@ export default [
     ]
   },
   {
-    id: "destination-mauricio", slug: "viajes-a-mauricio", slug_en: "travel-to-mauritius",
+    id: "destination-mauricio", continent: "africa", slug: "viajes-a-mauricio", slug_en: "travel-to-mauritius",
     name: "Mauricio", name_en: "Mauritius", region: "África",
     title: "Lagunas turquesa en el Índico", title_en: "Turquoise lagoons in the Indian Ocean",
     terms: ["Mauricio", "Mauritius"],
@@ -134,7 +134,7 @@ export default [
     ]
   },
   {
-    id: "destination-polinesia-francesa", slug: "viajes-a-polinesia-francesa", slug_en: "travel-to-french-polynesia",
+    id: "destination-polinesia-francesa", continent: "oceania", slug: "viajes-a-polinesia-francesa", slug_en: "travel-to-french-polynesia",
     name: "Polinesia Francesa", name_en: "French Polynesia", region: "Oceanía",
     title: "Bora Bora, Moorea y Tahití", title_en: "Bora Bora, Moorea and Tahiti",
     terms: ["Polinesia", "Polynesia", "Tahití", "Tahiti", "Bora Bora", "Moorea"],
@@ -201,7 +201,7 @@ export default [
     ]
   },
   {
-    id: "imported-viajes-a-nueva-york", slug: "viajes-a-nueva-york", slug_en: "travel-to-new-york",
+    id: "imported-viajes-a-nueva-york", continent: "america", slug: "viajes-a-nueva-york", slug_en: "travel-to-new-york",
     name: "Nueva York", name_en: "New York", region: "Estados Unidos",
     title: "La ciudad que nunca duerme", title_en: "The city that never sleeps",
     terms: ["Nueva York", "New York", "NYC", "Manhattan", "Brooklyn"],
@@ -268,7 +268,7 @@ export default [
     ]
   },
   {
-    id: "destination-estados-unidos", slug: "viajes-a-estados-unidos", slug_en: "travel-to-the-usa",
+    id: "destination-estados-unidos", continent: "america", slug: "viajes-a-estados-unidos", slug_en: "travel-to-the-usa",
     name: "Estados Unidos", name_en: "the USA", region: "América",
     title: "Ruta 66, parques nacionales y costa oeste", title_en: "Route 66, national parks and the West Coast",
     terms: ["Estados Unidos", "EE. UU.", "USA", "Ruta 66", "Route 66", "Los Ángeles", "Chicago", "Orlando"],

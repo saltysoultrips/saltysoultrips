@@ -1,6 +1,6 @@
 export default [
   {
-    id: "destination-francia", slug: "viajes-a-francia", slug_en: "travel-to-france",
+    id: "destination-francia", continent: "europa", slug: "viajes-a-francia", slug_en: "travel-to-france",
     name: "Francia", name_en: "France", region: "Europa",
     title: "París, Disneyland y los pueblos de Alsacia", title_en: "Paris, Disneyland and the villages of Alsace",
     terms: ["Francia", "France", "París", "Paris", "Disneyland", "Alsacia", "Estrasburgo", "Colmar"],
@@ -67,7 +67,7 @@ export default [
     ]
   },
   {
-    id: "destination-grecia", slug: "viajes-a-grecia", slug_en: "travel-to-greece",
+    id: "destination-grecia", continent: "europa", slug: "viajes-a-grecia", slug_en: "travel-to-greece",
     name: "Grecia", name_en: "Greece", region: "Europa",
     title: "Historia clásica e islas de postal", title_en: "Classical history and picture-postcard islands",
     terms: ["Grecia", "Greece", "Atenas", "Athens", "Santorini", "Mykonos"],
@@ -134,7 +134,7 @@ export default [
     ]
   },
   {
-    id: "destination-turquia", slug: "viajes-a-turquia", slug_en: "travel-to-turkey",
+    id: "destination-turquia", continent: "europa", slug: "viajes-a-turquia", slug_en: "travel-to-turkey",
     name: "Turquía", name_en: "Turkey", region: "Europa",
     title: "Estambul, Capadocia y la costa turquesa", title_en: "Istanbul, Cappadocia and the Turquoise Coast",
     terms: ["Turquía", "Turkey", "Türkiye", "Estambul", "Istanbul", "Capadocia"],
@@ -201,7 +201,7 @@ export default [
     ]
   },
   {
-    id: "destination-praga", slug: "viajes-a-praga", slug_en: "travel-to-prague",
+    id: "destination-praga", continent: "europa", slug: "viajes-a-praga", slug_en: "travel-to-prague",
     name: "Praga", name_en: "Prague", region: "Europa",
     title: "La ciudad de las cien torres", title_en: "The city of a hundred spires",
     terms: ["Praga", "Prague", "República Checa", "Czech", "Viena", "Vienna"],
@@ -268,7 +268,7 @@ export default [
     ]
   },
   {
-    id: "destination-laponia", slug: "viajes-a-laponia", slug_en: "travel-to-lapland",
+    id: "destination-laponia", continent: "europa", slug: "viajes-a-laponia", slug_en: "travel-to-lapland",
     name: "Laponia", name_en: "Lapland", region: "Europa",
     title: "Auroras boreales y la casa de Papá Noel", title_en: "Northern lights and Santa Claus's home",
     terms: ["Laponia", "Lapland", "Finlandia", "Finland", "Rovaniemi"],
@@ -335,7 +335,7 @@ export default [
     ]
   },
   {
-    id: "imported-viajes-a-portugal", slug: "viajes-a-portugal", slug_en: "travel-to-portugal",
+    id: "imported-viajes-a-portugal", continent: "europa", slug: "viajes-a-portugal", slug_en: "travel-to-portugal",
     name: "Portugal", name_en: "Portugal", region: "Europa",
     title: "Lisboa, Oporto y la isla de Madeira", title_en: "Lisbon, Porto and the island of Madeira",
     terms: ["Portugal", "Madeira", "Lisboa", "Lisbon", "Oporto", "Porto", "Algarve"],
