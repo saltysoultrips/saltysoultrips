@@ -134,13 +134,6 @@
       "continue": true
     },
     {
-      "src": "^/destinos/viajes-a-barcelona/?$",
-      "status": 301,
-      "headers": {
-        "Location": "/paquetes/valencia-barcelona-4-dias"
-      }
-    },
-    {
       "src": "^/(servicios|services|como-funciona|how-it-works)(/.*)?$",
       "dest": "/410.html",
       "status": 410,

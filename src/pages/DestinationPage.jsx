@@ -20,6 +20,7 @@ import {
   DESTINATION_FIELDS,
   fetchDestinationLinks,
   pickLang,
+  esPrep,
 } from "../lib/destinations";
 import {
   Breadcrumbs,
@@ -121,7 +122,7 @@ export default function DestinationPage() {
 
   const brandTitle = en
     ? `Tailor-made trips to ${name} | SaltySoulTrips`
-    : `Viajes a ${name} a medida | SaltySoulTrips`;
+    : `Viajes ${esPrep("a", name)} a medida | SaltySoulTrips`;
   const seoTitle = t("seoTitle") || (brandTitle.length <= 65 ? brandTitle : `${en ? "Trips to" : "Viajes a"} ${name} | SaltySoulTrips`);
   const seoDesc = clampText(t("metaDescription") || intro, 158);
 
@@ -202,7 +203,7 @@ export default function DestinationPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
           <div className="absolute bottom-10 left-0 right-0 max-w-5xl mx-auto px-4 sm:px-6 text-white">
             <h1 className="text-4xl md:text-6xl font-serif leading-tight drop-shadow">
-              {en ? `Trips to ${name}` : `Viajes a ${name}`}
+              {en ? `Trips to ${name}` : `Viajes ${esPrep("a", name)}`}
             </h1>
             {tagline && <p className="mt-3 text-lg md:text-xl italic text-sand-200 drop-shadow">{tagline}</p>}
           </div>
@@ -231,7 +232,7 @@ export default function DestinationPage() {
           )}
 
           {about.length > 0 && (
-            <Section title={en ? `Why travel to ${name}` : `Por qué viajar a ${name}`}>
+            <Section title={en ? `Why travel to ${name}` : `Por qué viajar ${esPrep("a", name)}`}>
               <div className="space-y-5 text-lg leading-relaxed text-brand-dark/80">
                 {about.map((p, i) => <p key={i}>{p}</p>)}
               </div>
@@ -239,7 +240,7 @@ export default function DestinationPage() {
           )}
 
           {highlights.length > 0 && (
-            <Section title={en ? `Must-sees in ${name}` : `Imprescindibles en ${name}`}>
+            <Section title={en ? `Must-sees in ${name}` : `Imprescindibles ${esPrep("en", name)}`}>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {highlights.map((h, i) => (
                   <li key={i} className="bg-white rounded-2xl border border-sand-200 p-5 flex gap-4">
@@ -255,20 +256,20 @@ export default function DestinationPage() {
           )}
 
           {(bestMonths || bestReason) && (
-            <Section title={en ? `Best time to visit ${name}` : `Mejor época para viajar a ${name}`}>
+            <Section title={en ? `Best time to visit ${name}` : `Mejor época para viajar ${esPrep("a", name)}`}>
               {bestMonths && <p className="text-lg font-semibold mb-2">{bestMonths}</p>}
               {bestReason && <p className="text-lg leading-relaxed text-brand-dark/80 whitespace-pre-line">{bestReason}</p>}
             </Section>
           )}
 
           {budget && (
-            <Section id="presupuesto" title={en ? `How much does a trip to ${name} cost?` : `¿Cuánto cuesta un viaje a ${name}?`}>
+            <Section id="presupuesto" title={en ? `How much does a trip to ${name} cost?` : `¿Cuánto cuesta un viaje ${esPrep("a", name)}?`}>
               <p className="text-lg leading-relaxed text-brand-dark/80 whitespace-pre-line">{budget}</p>
             </Section>
           )}
 
           {routes.length > 0 && (
-            <Section title={en ? `Sample itineraries for ${name}` : `Rutas de ejemplo por ${name}`}>
+            <Section title={en ? `Sample itineraries for ${name}` : `Rutas de ejemplo ${esPrep("por", name)}`}>
               <div className="space-y-6">
                 {routes.map((r, i) => (
                   <div key={i} className="bg-white rounded-2xl border border-sand-200 p-6">
@@ -291,7 +292,7 @@ export default function DestinationPage() {
           {links === null && <div data-loading="true" className="mt-14 h-10" />}
 
           {links?.packages.length > 0 && (
-            <Section title={en ? `Our trips to ${name}` : `Nuestros viajes a ${name}`}>
+            <Section title={en ? `Our trips to ${name}` : `Nuestros viajes ${esPrep("a", name)}`}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {links.packages.map((p) => (
                   <Link
@@ -324,7 +325,7 @@ export default function DestinationPage() {
           )}
 
           {links?.posts.length > 0 && (
-            <Section title={en ? `Articles about ${name}` : `Artículos sobre ${name}`}>
+            <Section title={en ? `Articles about ${name}` : `Artículos ${esPrep("sobre", name)}`}>
               <ul className="space-y-4">
                 {links.posts.map((post) => (
                   <li key={post.id} className="bg-white rounded-2xl border border-sand-200 p-5">
@@ -339,7 +340,7 @@ export default function DestinationPage() {
           )}
 
           {faqs.length > 0 && (
-            <Section title={en ? `Frequently asked questions about ${name}` : `Preguntas frecuentes sobre ${name}`}>
+            <Section title={en ? `Frequently asked questions about ${name}` : `Preguntas frecuentes ${esPrep("sobre", name)}`}>
               <div className="divide-y divide-sand-200 border-y border-sand-200">
                 {faqs.map((f, i) => (
                   <details key={i} className="group py-4">
@@ -356,7 +357,7 @@ export default function DestinationPage() {
 
           <aside className="mt-16 bg-white rounded-3xl border border-sand-200 p-8 md:p-10 text-center">
             <h2 className="text-2xl md:text-3xl font-serif mb-3">
-              {en ? `Shall we design your trip to ${name}?` : `¿Diseñamos tu viaje a ${name}?`}
+              {en ? `Shall we design your trip to ${name}?` : `¿Diseñamos tu viaje ${esPrep("a", name)}?`}
             </h2>
             <p className="text-brand-dark/70 mb-6 max-w-2xl mx-auto">
               {en

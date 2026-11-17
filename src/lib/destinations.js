@@ -8,6 +8,18 @@ export const DESTINATION_FIELDS = `_id, _updatedAt, showOnWeb, slug, slug_en, na
   highlights, tips, tips_en, bestTime, idealDays, idealDays_en, budget, budget_en,
   routes, faqs, seoTitle, seoTitle_en, metaDescription, metaDescription_en, heroSubtitle`;
 
+// Spanish place names that take the article ("viajes al País Vasco").
+const WITH_ARTICLE = new Set(["País Vasco"]);
+/** "a" + name → "a Japón" / "al País Vasco"; "en" + name → "en el País Vasco". */
+export const esPrep = (prep, name) =>
+  WITH_ARTICLE.has(name)
+    ? prep === "a"
+      ? `al ${name}`
+      : prep === "de"
+        ? `del ${name}`
+        : `${prep} el ${name}`
+    : `${prep} ${name}`;
+
 /** Bilingual field picker with Spanish fallback. */
 export const pickLang = (obj, field, en) =>
   (en && obj?.[`${field}_en`]) || obj?.[field];

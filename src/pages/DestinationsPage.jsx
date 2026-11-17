@@ -10,7 +10,7 @@ import {
   isLiveDestination,
   hasEnglishDestination,
 } from "../lib/routes";
-import { DESTINATION_FIELDS, pickLang } from "../lib/destinations";
+import { DESTINATION_FIELDS, pickLang, esPrep } from "../lib/destinations";
 import { Breadcrumbs, breadcrumbSchema, homeCrumb, SITE } from "../lib/schema";
 
 export default function DestinationsPage() {
@@ -93,7 +93,7 @@ export default function DestinationsPage() {
                   </div>
                   <div className="p-6">
                     <h2 className="text-2xl font-serif group-hover:text-sand-700">
-                      {en ? `Trips to ${name}` : `Viajes a ${name}`}
+                      {en ? `Trips to ${name}` : `Viajes ${esPrep("a", name)}`}
                     </h2>
                     {pickLang(d, "title", en) && (
                       <p className="text-brand-dark/70 mt-1">{pickLang(d, "title", en)}</p>
